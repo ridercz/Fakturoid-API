@@ -19,7 +19,7 @@ namespace Altairis.Fakturoid.Client {
 
         protected HttpClient GetHttpClient() {
             // Get value of authentication header
-            var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes("X:" + this.Context.AuthenticationName));
+            var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes("X:" + this.Context.AuthenticationToken));
 
             // Setup HTTP client
             var client = new HttpClient();
