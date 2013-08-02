@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FakturoidContext.cs" />
-    <Compile Include="FakturoidEntity.cs" />
+    <Compile Include="FakturoidEntityProxy.cs" />
     <Compile Include="JsonAccount.cs" />
     <Compile Include="JsonEvent.cs" />
     <Compile Include="JsonInvoice.cs" />
