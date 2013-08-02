@@ -11,14 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{0B1AEF50
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{345349C4-78AA-4646-AF2F-90A515E9689E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcent", "Sandbox\ProofOfConcent\ProofOfConcent.csproj", "{5E462FC1-9BA7-443D-AC38-7DBFE4424122}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{41B0E12E-0D1C-4BFB-9D3B-6E58A60EF65C}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept", "Sandbox\ProofOfConcept\ProofOfConcept.csproj", "{5E462FC1-9BA7-443D-AC38-7DBFE4424122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
