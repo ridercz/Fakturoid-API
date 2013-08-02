@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakturoidAccount.cs" />
     <Compile Include="FakturoidContext.cs" />
     <Compile Include="FakturoidEntity.cs" />
     <Compile Include="JsonAccount.cs" />

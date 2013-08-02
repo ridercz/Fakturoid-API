@@ -24,7 +24,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             var accountToken = args[1];
 
             // Create context
-            context = FakturoidContext.Create(accountName, accountToken, "Fakturoid API C#/.NET Client Demo Application (fakturoid@rider.cz)");
+            context = new FakturoidContext(accountName, accountToken, "Fakturoid API C#/.NET Client Demo Application (fakturoid@rider.cz)");
             
             // Do some magic
             ShowAccountInfo();
@@ -36,7 +36,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
 
         private static void ShowAccountInfo() {
             Console.Write("Getting account information...");
-            var ai = context.Account.Select();
+            var ai = context.GetAccountInfo();
             Console.WriteLine("OK");
             ai.DumpProperties();
             Console.WriteLine();
