@@ -53,6 +53,12 @@ namespace Altairis.Fakturoid.Client {
             return base.CreateEntity("subjects.json", entity);
         }
 
+        /// <summary>
+        /// Updates the specified subject.
+        /// </summary>
+        /// <param name="entity">The subject to update.</param>
+        /// <returns>Instance of <see cref="JsonSubject"/> class with modified entity.</returns>
+        /// <exception cref="System.ArgumentNullException">entity</exception>
         public JsonSubject Update(JsonSubject entity) {
             if (entity == null) throw new ArgumentNullException("entity");
 

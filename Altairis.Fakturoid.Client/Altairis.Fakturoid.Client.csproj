@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FakturoidException.cs" />
     <Compile Include="FakturoidSubjectsProxy.cs" />
     <Compile Include="FakturoidContext.cs" />
     <Compile Include="FakturoidEntityProxy.cs" />

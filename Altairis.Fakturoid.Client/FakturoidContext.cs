@@ -106,7 +106,7 @@ namespace Altairis.Fakturoid.Client {
         public JsonAccount GetAccountInfo() {
             var c = this.GetHttpClient();
             var r = c.GetAsync("account.json").Result;
-            r.EnsureSuccessStatusCode();
+            r.EnsureFakturoidSuccess();
             return r.Content.ReadAsAsync<JsonAccount>().Result;
         }
 

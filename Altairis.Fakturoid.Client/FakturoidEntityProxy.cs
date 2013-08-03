@@ -108,7 +108,7 @@ namespace Altairis.Fakturoid.Client {
             var r = c.GetAsync(uri).Result;
 
             // Ensure result was successfull
-            r.EnsureSuccessStatusCode();
+            r.EnsureFakturoidSuccess();
 
             // Parse and return result
             return r.Content.ReadAsAsync<T>().Result;
@@ -137,7 +137,7 @@ namespace Altairis.Fakturoid.Client {
             // Create new entity
             var c = this.Context.GetHttpClient();
             var r = c.PostAsJsonAsync<T>(uri, newEntity).Result;
-            r.EnsureSuccessStatusCode();
+            r.EnsureFakturoidSuccess();
 
             // Extract ID from URI
             try {
@@ -166,7 +166,7 @@ namespace Altairis.Fakturoid.Client {
             var r = c.DeleteAsync(uri).Result;
 
             // Ensure result was successfull
-            r.EnsureSuccessStatusCode();
+            r.EnsureFakturoidSuccess();
         }
 
         protected T UpdateSingleEntity<T>(string uri, T entity) {
@@ -179,7 +179,7 @@ namespace Altairis.Fakturoid.Client {
             var r = c.PutAsJsonAsync(uri, entity).Result;
 
             // Ensure result was successfull
-            r.EnsureSuccessStatusCode();
+            r.EnsureFakturoidSuccess();
 
             // Return updated entity
             return r.Content.ReadAsAsync<T>().Result;
