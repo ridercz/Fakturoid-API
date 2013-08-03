@@ -37,7 +37,6 @@ namespace Altairis.Fakturoid.Client {
         public void Delete(int id) {
             if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
 
-            var c = this.Context.GetHttpClient();
             base.DeleteSingleEntity(string.Format("subjects/{0}.json", id));
         }
 
