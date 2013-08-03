@@ -130,7 +130,7 @@ namespace Altairis.Fakturoid.Client {
         public int due { get; set; }
 
         /// <summary>
-        /// Adresa účtu rawValue GUI
+        /// Adresa účtu v GUI
         /// </summary>
         public string html_url { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Altairis.Fakturoid.Client {
 
@@ -20,7 +21,7 @@ namespace Altairis.Fakturoid.Client {
         public bool? partial_proforma { get; set; }
 
         /// <summary>
-        /// Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla rawValue nastavení účtu)
+        /// Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla v nastavení účtu)
         /// </summary>
         public string number { get; set; }
 
@@ -142,7 +143,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Datum vystavení (zobrazeno na faktuře)
         /// </summary>
-        public DateTime issued_on { get; set; }
+        public DateTime? issued_on { get; set; }
 
         /// <summary>
         /// Datum zdanitelného plnění (nepovinné - doplní se dnes)
@@ -240,7 +241,7 @@ namespace Altairis.Fakturoid.Client {
         public float subtotal { get; set; }
 
         /// <summary>
-        /// Součet bez DPH rawValue měně účtu
+        /// Součet bez DPH v měně účtu
         /// </summary>
         public float native_subtotal { get; set; }
         
@@ -250,7 +251,7 @@ namespace Altairis.Fakturoid.Client {
         public float total { get; set; }
 
         /// <summary>
-        /// Součet včetně DPH rawValue měně účtu
+        /// Součet včetně DPH v měně účtu
         /// </summary>
         public float native_total { get; set; }
 
@@ -260,12 +261,12 @@ namespace Altairis.Fakturoid.Client {
         public float remaining_amount { get; set; }
 
         /// <summary>
-        /// Částka k zaplacení rawValue měně účtu 
+        /// Částka k zaplacení v měně účtu 
         /// </summary>
         public float remaining_native_amount { get; set; }
 
         /// <summary>
-        /// Adresa faktury rawValue GUI
+        /// Adresa faktury v GUI
         /// </summary>
         public string html_url { get; set; }
 
@@ -292,7 +293,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Položky faktury
         /// </summary>
-        public JsonInvoiceLine[] lines { get; set; }
+        public ICollection<JsonInvoiceLine> lines { get; set; }
     
     
     }

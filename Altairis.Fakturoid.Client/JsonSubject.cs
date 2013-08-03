@@ -90,7 +90,7 @@ namespace Altairis.Fakturoid.Client {
         public string web { get; set; }
 
         /// <summary>
-        /// Adresa kontaktu rawValue GUI
+        /// Adresa kontaktu v GUI
         /// </summary>
         public string html_url { get; set; }
 

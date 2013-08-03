@@ -22,7 +22,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="authenticationName">Name of the account used for authentication.</param>
         /// <param name="authenticationToken">The authentication token.</param>
-        /// <param name="userAgent">The User-Agent HTTP header rawValue.</param>
+        /// <param name="userAgent">The User-Agent HTTP header value.</param>
         /// <exception cref="System.ArgumentNullException">
         /// authenticationName
         /// or
@@ -54,6 +54,7 @@ namespace Altairis.Fakturoid.Client {
             this.Events = new FakturoidEventsProxy(this);
             this.Todos = new FakturoidTodosProxy(this);
             this.Subjects = new FakturoidSubjectsProxy(this);
+            this.Invoices = new FakturoidInvoicesProxy(this);
         }
 
         // Properties
@@ -61,25 +62,25 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Gets the Fakturoid account name.
         /// </summary>
-        /// <rawValue>
+        /// <value>
         /// The name of the Fakturoid account.
-        /// </rawValue>
+        /// </value>
         public string AuthenticationName { get; private set; }
 
         /// <summary>
         /// Gets the Fakturoid authentication token.
         /// </summary>
-        /// <rawValue>
+        /// <value>
         /// The Fakturoid authentication token.
-        /// </rawValue>
+        /// </value>
         public string AuthenticationToken { get; private set; }
 
         /// <summary>
         /// Gets the User-Agent header used for HTTP requests.
         /// </summary>
-        /// <rawValue>
-        /// The User-Agent header rawValue.
-        /// </rawValue>
+        /// <value>
+        /// The User-Agent header value.
+        /// </value>
         public string UserAgent { get; private set; }
 
         /// <summary>
@@ -96,6 +97,11 @@ namespace Altairis.Fakturoid.Client {
         /// Proxy for working with subjects.
         /// </summary>
         public FakturoidSubjectsProxy Subjects { get; private set; }
+
+        /// <summary>
+        /// Proxy for working with invoices
+        /// </summary>
+        public FakturoidInvoicesProxy Invoices { get; private set; }
 
         // Public methods
 
@@ -117,7 +123,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <returns>Instance of <see cref="System.Net.Http.HttpClient"/> class, initialized for use with Fakturoid API.</returns>
         internal HttpClient GetHttpClient() {
-            // Get rawValue of authentication header
+            // Get value of authentication header
             var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes("X:" + this.AuthenticationToken));
 
             // Setup HTTP client
