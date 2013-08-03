@@ -20,12 +20,12 @@ namespace Altairis.Fakturoid.Client {
 
         protected FakturoidContext Context { get; private set; }
 
-        protected IEnumerable<T> GetEntities<T>(string baseUri, object additionalQueryParams) {
+        protected IEnumerable<T> GetAllPagedEntities<T>(string baseUri, object additionalQueryParams = null) {
             var completeList = new List<T>();
             var page = 1;
 
             while (true) {
-                var partialList = this.GetEntities<T>(baseUri, page, additionalQueryParams);
+                var partialList = this.GetPagedEntities<T>(baseUri, page, additionalQueryParams);
                 if (!partialList.Any()) break; // no more entities
                 completeList.AddRange(partialList);
                 page++;
@@ -34,13 +34,32 @@ namespace Altairis.Fakturoid.Client {
             return completeList;
         }
 
-        protected IEnumerable<T> GetEntities<T>(string baseUri, int page, object additionalQueryParams) {
+        protected IEnumerable<T> GetPagedEntities<T>(string baseUri, int page, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException("baseUri");
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "baseUri");
             if (page < 1) throw new ArgumentOutOfRangeException("page", "Page must be greater than zero.");
 
             // Build URI
-            var uri = baseUri + "?page=" + page + GetQueryStringFromParams(additionalQueryParams);
+            var uri = baseUri + "?page=" + page + GetQueryStringFromParams(additionalQueryParams, "&");
+
+            // Get result
+            return this.GetEntities<T>(uri);
+        }
+
+        protected IEnumerable<T> GetUnpagedEntities<T>(string baseUri, object additionalQueryParams = null) {
+            if (baseUri == null) throw new ArgumentNullException("baseUri");
+            if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "baseUri");
+
+            // Build URI
+            var uri = baseUri + GetQueryStringFromParams(additionalQueryParams, "?");
+
+            // Get result
+            return this.GetEntities<T>(uri);
+        }
+
+        private IEnumerable<T> GetEntities<T>(string uri) {
+            if (uri == null) throw new ArgumentNullException("uri");
+            if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
 
             // Get result
             var c = this.Context.GetHttpClient();
@@ -53,7 +72,8 @@ namespace Altairis.Fakturoid.Client {
             return r.Content.ReadAsAsync<IEnumerable<T>>().Result;
         }
 
-        private static string GetQueryStringFromParams(object queryParams) {
+        private static string GetQueryStringFromParams(object queryParams, string prefix) {
+            if (prefix == null) throw new ArgumentNullException("prefix");
             if (queryParams == null) return string.Empty;
 
             var qsb = new StringBuilder();
@@ -86,10 +106,12 @@ namespace Altairis.Fakturoid.Client {
                 }
 
                 if (string.IsNullOrWhiteSpace(stringValue)) continue; // empty value after string conversion
-                qsb.AppendFormat("&{0}={1}", descriptor.Name, Uri.EscapeDataString(stringValue));
+                qsb.AppendFormat("{0}={1}&", descriptor.Name, Uri.EscapeDataString(stringValue));
             }
 
-            return qsb.ToString();
+            var qs = qsb.ToString().TrimEnd('&');
+            if (string.IsNullOrWhiteSpace(qs)) return string.Empty;
+            return prefix + qs;
         }
 
     }

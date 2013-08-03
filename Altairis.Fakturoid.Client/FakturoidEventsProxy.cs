@@ -18,7 +18,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="since">The date since when events are to be selected.</param>
         /// <returns>List of <see cref="JsonEvent"/> instances.</returns>
         public IEnumerable<JsonEvent> Select(DateTime? since = null) {
-            return base.GetEntities<JsonEvent>("events.json", new { since = since });
+            return base.GetAllPagedEntities<JsonEvent>("events.json", new { since = since });
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Altairis.Fakturoid.Client {
         public IEnumerable<JsonEvent> Select(int page, DateTime? since = null) {
             if (page < 1) throw new ArgumentOutOfRangeException("page", "Page must be greater than zero.");
 
-            return base.GetEntities<JsonEvent>("events.json", page, new { since = since });
+            return base.GetPagedEntities<JsonEvent>("events.json", page, new { since = since });
         }
 
     }
