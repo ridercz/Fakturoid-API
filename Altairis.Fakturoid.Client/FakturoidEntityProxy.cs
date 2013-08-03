@@ -24,6 +24,20 @@ namespace Altairis.Fakturoid.Client {
 
         // Helper methods for proxy classes
 
+        /// <summary>
+        /// Creates new entity.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="uri">The endpoint URI.</param>
+        /// <param name="newEntity">The new entity.</param>
+        /// <returns>ID of newly created entity.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// uri
+        /// or
+        /// newEntity
+        /// </exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        /// <exception cref="System.FormatException"></exception>
         protected int CreateEntity<T>(string uri, T newEntity) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
@@ -46,6 +60,14 @@ namespace Altairis.Fakturoid.Client {
             }
         }
 
+        /// <summary>
+        /// Gets all paged entities, making sequential repeated requests for pages.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="additionalQueryParams">The additional query params.</param>
+        /// <returns>All existing entities of given type.</returns>
+        /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
         protected IEnumerable<T> GetAllPagedEntities<T>(string baseUri, object additionalQueryParams = null) {
             var completeList = new List<T>();
             var page = 1;
@@ -60,6 +82,18 @@ namespace Altairis.Fakturoid.Client {
             return completeList;
         }
 
+        /// <summary>
+        /// Gets single page of entities.
+        /// </summary>
+        /// <typeparam name="T">Entity type.</typeparam>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="page">The page number.</param>
+        /// <param name="additionalQueryParams">The additional query params.</param>
+        /// <returns>Paged list of entities of given type.</returns>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
+        /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
         protected IEnumerable<T> GetPagedEntities<T>(string baseUri, int page, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
@@ -72,6 +106,15 @@ namespace Altairis.Fakturoid.Client {
             return this.GetSingleEntity<IEnumerable<T>>(uri);
         }
 
+        /// <summary>
+        /// Gets the unpaged entities.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="additionalQueryParams">The additional query params.</param>
+        /// <returns>List of entities of given type.</returns>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected IEnumerable<T> GetUnpagedEntities<T>(string baseUri, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
@@ -83,6 +126,14 @@ namespace Altairis.Fakturoid.Client {
             return this.GetSingleEntity<IEnumerable<T>>(uri);
         }
 
+        /// <summary>
+        /// Gets single entity of given type.
+        /// </summary>
+        /// <typeparam name="T">Entity type.</typeparam>
+        /// <param name="uri">The URI.</param>
+        /// <returns>Single entity of given type.</returns>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected T GetSingleEntity<T>(string uri) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
@@ -98,6 +149,12 @@ namespace Altairis.Fakturoid.Client {
             return r.Content.ReadAsAsync<T>().Result;
         }
 
+        /// <summary>
+        /// Deletes single entity.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected void DeleteSingleEntity(string uri) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");

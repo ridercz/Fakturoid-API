@@ -17,6 +17,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="page">The page number.</param>
         /// <param name="since">The date since when events are to be selected.</param>
         /// <returns>List of <see cref="JsonEvent"/> instances.</returns>
+        /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
         public IEnumerable<JsonEvent> Select(DateTime? since = null) {
             return base.GetAllPagedEntities<JsonEvent>("events.json", new { since = since });
         }

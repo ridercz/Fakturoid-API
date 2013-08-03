@@ -15,6 +15,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="page">The page number.</param>
         /// <param name="since">The date since when todos are to be selected.</param>
         /// <returns>List of <see cref="JsonTodo"/> instances.</returns>
+        /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
         public IEnumerable<JsonTodo> Select(DateTime? since = null) {
             return base.GetAllPagedEntities<JsonTodo>("todos.json", new { since = since });
         }
