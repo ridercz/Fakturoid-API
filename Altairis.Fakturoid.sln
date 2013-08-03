@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.DemoApp", "Altairis.Fakturoid.Client.DemoApp\Altairis.Fakturoid.Client.DemoApp.csproj", "{585D7E5A-1222-4B21-92DE-95078693150A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingImport", "InvoicingImport\InvoicingImport.csproj", "{2FA02938-CE72-479C-8481-9AD5D65FA15C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingImport", "Sandbox\InvoicingImport\InvoicingImport.csproj", "{2FA02938-CE72-479C-8481-9AD5D65FA15C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
