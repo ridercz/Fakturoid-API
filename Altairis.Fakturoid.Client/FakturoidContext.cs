@@ -22,7 +22,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="authenticationName">Name of the account used for authentication.</param>
         /// <param name="authenticationToken">The authentication token.</param>
-        /// <param name="userAgent">The User-Agent HTTP header value.</param>
+        /// <param name="userAgent">The User-Agent HTTP header rawValue.</param>
         /// <exception cref="System.ArgumentNullException">
         /// authenticationName
         /// or
@@ -45,9 +45,13 @@ namespace Altairis.Fakturoid.Client {
             if (userAgent == null) throw new ArgumentNullException("userAgent");
             if (string.IsNullOrWhiteSpace(userAgent)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "userAgent");
 
+            // Configuration properties
             this.AuthenticationName = authenticationName;
             this.AuthenticationToken = authenticationToken;
             this.UserAgent = userAgent;
+
+            // Proxies
+            this.Events = new FakturoidEventsProxy(this);
         }
 
         // Properties
@@ -55,26 +59,28 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Gets the Fakturoid account name.
         /// </summary>
-        /// <value>
+        /// <rawValue>
         /// The name of the Fakturoid account.
-        /// </value>
+        /// </rawValue>
         public string AuthenticationName { get; private set; }
 
         /// <summary>
         /// Gets the Fakturoid authentication token.
         /// </summary>
-        /// <value>
+        /// <rawValue>
         /// The Fakturoid authentication token.
-        /// </value>
+        /// </rawValue>
         public string AuthenticationToken { get; private set; }
 
         /// <summary>
         /// Gets the User-Agent header used for HTTP requests.
         /// </summary>
-        /// <value>
-        /// The User-Agent header value.
-        /// </value>
+        /// <rawValue>
+        /// The User-Agent header rawValue.
+        /// </rawValue>
         public string UserAgent { get; private set; }
+
+        public FakturoidEventsProxy Events { get; private set; }
 
         // Public methods
 
@@ -96,7 +102,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <returns>Instance of <see cref="System.Net.Http.HttpClient"/> class, initialized for use with Fakturoid API.</returns>
         internal HttpClient GetHttpClient() {
-            // Get value of authentication header
+            // Get rawValue of authentication header
             var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes("X:" + this.AuthenticationToken));
 
             // Setup HTTP client

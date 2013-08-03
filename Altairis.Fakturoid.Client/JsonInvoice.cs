@@ -20,7 +20,7 @@ namespace Altairis.Fakturoid.Client {
         public bool? partial_proforma { get; set; }
 
         /// <summary>
-        /// Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla v nastavení účtu)
+        /// Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla rawValue nastavení účtu)
         /// </summary>
         public string number { get; set; }
 
@@ -240,7 +240,7 @@ namespace Altairis.Fakturoid.Client {
         public float subtotal { get; set; }
 
         /// <summary>
-        /// Součet bez DPH v měně účtu
+        /// Součet bez DPH rawValue měně účtu
         /// </summary>
         public float native_subtotal { get; set; }
         
@@ -250,7 +250,7 @@ namespace Altairis.Fakturoid.Client {
         public float total { get; set; }
 
         /// <summary>
-        /// Součet včetně DPH v měně účtu
+        /// Součet včetně DPH rawValue měně účtu
         /// </summary>
         public float native_total { get; set; }
 
@@ -260,12 +260,12 @@ namespace Altairis.Fakturoid.Client {
         public float remaining_amount { get; set; }
 
         /// <summary>
-        /// Částka k zaplacení v měně účtu 
+        /// Částka k zaplacení rawValue měně účtu 
         /// </summary>
         public float remaining_native_amount { get; set; }
 
         /// <summary>
-        /// Adresa faktury v GUI
+        /// Adresa faktury rawValue GUI
         /// </summary>
         public string html_url { get; set; }
 
