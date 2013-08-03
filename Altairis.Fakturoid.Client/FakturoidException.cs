@@ -43,10 +43,11 @@ namespace Altairis.Fakturoid.Client {
             this.Response = response;
             this.ResponseBody = response.Content.ReadAsStringAsync().Result;
 
+            // Populate internal list of errors
             var errors = new List<KeyValuePair<string, string>>();
-            if ((int)response.StatusCode == 422) {
-                // Unprocessable entity
+            if ((int)response.StatusCode == 422) { // Unprocessable entity
                 try {
+                    // Try to deserialize the error structure
                     var jsonError = (JObject)JsonConvert.DeserializeObject(this.ResponseBody);
                     foreach (var prop in jsonError["errors"].Children().OfType<JProperty>()) {
                         var valueArray = ((JArray)prop.Value).Select(x => ((JValue)x).Value as string);
@@ -56,7 +57,8 @@ namespace Altairis.Fakturoid.Client {
                     }
                 }
                 catch (Exception ex) {
-                    errors.Add(new KeyValuePair<string, string>("json_parse", "Error while parsing received body: " + ex.Message));
+                    // Deserialization failed
+                    errors.Add(new KeyValuePair<string, string>("json_parse_on_client_failed", "Error while parsing received body: " + ex.Message));
                 }
             }
             this.Errors = errors;
