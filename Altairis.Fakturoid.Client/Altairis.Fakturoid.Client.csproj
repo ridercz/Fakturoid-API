@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FakturoidException.cs" />
+    <Compile Include="FakturoidInvoicesProxy.cs" />
     <Compile Include="FakturoidSubjectsProxy.cs" />
     <Compile Include="FakturoidContext.cs" />
     <Compile Include="FakturoidEntityProxy.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="JsonSubject.cs" />
     <Compile Include="JsonTodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_EnumClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
