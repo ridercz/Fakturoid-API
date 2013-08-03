@@ -14,7 +14,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <returns>List of <see cref="JsonSubject"/> instances.</returns>
         public IEnumerable<JsonSubject> Select() {
-            return base.GetUnpagedEntities<JsonSubject>("Subjects.json");
+            return base.GetUnpagedEntities<JsonSubject>("subjects.json");
         }
 
         /// <summary>
