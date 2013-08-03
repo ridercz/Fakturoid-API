@@ -53,6 +53,7 @@ namespace Altairis.Fakturoid.Client {
             // Proxies
             this.Events = new FakturoidEventsProxy(this);
             this.Todos = new FakturoidTodosProxy(this);
+            this.Subjects = new FakturoidSubjectsProxy(this);
         }
 
         // Properties
@@ -81,9 +82,20 @@ namespace Altairis.Fakturoid.Client {
         /// </rawValue>
         public string UserAgent { get; private set; }
 
+        /// <summary>
+        /// Proxy for working with events.
+        /// </summary>
         public FakturoidEventsProxy Events { get; private set; }
 
+        /// <summary>
+        /// Proxy for working with todos.
+        /// </summary>
         public FakturoidTodosProxy Todos { get; private set; }
+
+        /// <summary>
+        /// Proxy for working with subjects.
+        /// </summary>
+        public FakturoidSubjectsProxy Subjects { get; private set; }
 
         // Public methods
 

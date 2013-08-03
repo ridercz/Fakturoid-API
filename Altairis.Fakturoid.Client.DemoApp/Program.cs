@@ -30,10 +30,37 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             ShowAccountInfo();
             ShowEvents();
             ShowTodos();
+            ShowSubjects();
 
             // Wait for ENTER
             Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
+        }
+
+        private static void ShowSubjects() {
+            Console.Write("Creating new subject...");
+            var newSubject = new JsonSubject {
+                name = "Altairis, s. r. o.",
+                street = "Bořivojova 35",
+                city = "Praha",
+                zip = "17000",
+                country = "CZ",
+                registration_no = "27560911",
+                vat_no = "CZ27560911",
+            };
+            var newId = context.Subjects.Create(newSubject);
+            Console.WriteLine("OK, ID={0}", newId);
+
+            Console.Write("Getting information about newly created subject...");
+            newSubject = context.Subjects.Select(newId);
+            Console.WriteLine("OK, listing properties:");
+            newSubject.DumpProperties(Console.Out, "\t");
+
+            Console.Write("Deleting newly created contact...");
+            context.Subjects.Delete(newId);
+            Console.WriteLine("OK");
+
+            Console.WriteLine();
         }
 
         private static void ShowTodos() {
