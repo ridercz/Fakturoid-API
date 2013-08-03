@@ -18,7 +18,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Datum a čas odškrtnutí události
         /// </summary>
-        public DateTime completed_at { get; set; }
+        public DateTime? completed_at { get; set; }
 
         /// <summary>
         /// ID faktury
