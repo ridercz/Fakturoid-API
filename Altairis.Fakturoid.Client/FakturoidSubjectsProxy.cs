@@ -44,13 +44,19 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Creates the specified new subject.
         /// </summary>
-        /// <param name="newSubject">The new subject.</param>
+        /// <param name="entity">The new subject.</param>
         /// <returns>ID of newly created subject.</returns>
-        /// <exception cref="System.ArgumentNullException">newSubject</exception>
-        public int Create(JsonSubject newSubject) {
-            if (newSubject == null) throw new ArgumentNullException("newSubject");
+        /// <exception cref="System.ArgumentNullException">entity</exception>
+        public int Create(JsonSubject entity) {
+            if (entity == null) throw new ArgumentNullException("entity");
 
-            return base.CreateEntity("subjects.json", newSubject);
+            return base.CreateEntity("subjects.json", entity);
+        }
+
+        public JsonSubject Update(JsonSubject entity) {
+            if (entity == null) throw new ArgumentNullException("entity");
+
+            return base.UpdateSingleEntity(string.Format("subjects/{0}.json", entity.id), entity);
         }
 
     }

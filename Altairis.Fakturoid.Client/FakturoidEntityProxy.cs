@@ -24,41 +24,6 @@ namespace Altairis.Fakturoid.Client {
 
         // Helper methods for proxy classes
 
-        /// <summary>
-        /// Creates new entity.
-        /// </summary>
-        /// <typeparam name="T">Entity type</typeparam>
-        /// <param name="uri">The endpoint URI.</param>
-        /// <param name="newEntity">The new entity.</param>
-        /// <returns>ID of newly created entity.</returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// uri
-        /// or
-        /// newEntity
-        /// </exception>
-        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        /// <exception cref="System.FormatException"></exception>
-        protected int CreateEntity<T>(string uri, T newEntity) {
-            if (uri == null) throw new ArgumentNullException("uri");
-            if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
-            if (newEntity == null) throw new ArgumentNullException("newEntity");
-
-            // Create new entity
-            var c = this.Context.GetHttpClient();
-            var r = c.PostAsJsonAsync<T>(uri, newEntity).Result;
-            r.EnsureSuccessStatusCode();
-
-            // Extract ID from URI
-            try {
-                var idString = r.Headers.Location.ToString();
-                if (idString.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) idString = idString.Substring(0, idString.Length - 5); // remove .json extension
-                idString = idString.Substring(idString.LastIndexOf('/') + 1); // last path component should now be numeric ID
-                return int.Parse(idString);
-            }
-            catch (Exception) {
-                throw new FormatException(string.Format("Unexpected format of new entity URI. Expected format 'scheme://anystring/123456.json', got '{0}' instead.", r.Headers.Location));
-            }
-        }
 
         /// <summary>
         /// Gets all paged entities, making sequential repeated requests for pages.
@@ -149,6 +114,43 @@ namespace Altairis.Fakturoid.Client {
             return r.Content.ReadAsAsync<T>().Result;
         }
 
+
+        /// <summary>
+        /// Creates new entity.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="uri">The endpoint URI.</param>
+        /// <param name="newEntity">The new entity.</param>
+        /// <returns>ID of newly created entity.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// uri
+        /// or
+        /// newEntity
+        /// </exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        /// <exception cref="System.FormatException"></exception>
+        protected int CreateEntity<T>(string uri, T newEntity) {
+            if (uri == null) throw new ArgumentNullException("uri");
+            if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
+            if (newEntity == null) throw new ArgumentNullException("newEntity");
+
+            // Create new entity
+            var c = this.Context.GetHttpClient();
+            var r = c.PostAsJsonAsync<T>(uri, newEntity).Result;
+            r.EnsureSuccessStatusCode();
+
+            // Extract ID from URI
+            try {
+                var idString = r.Headers.Location.ToString();
+                if (idString.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) idString = idString.Substring(0, idString.Length - 5); // remove .json extension
+                idString = idString.Substring(idString.LastIndexOf('/') + 1); // last path component should now be numeric ID
+                return int.Parse(idString);
+            }
+            catch (Exception) {
+                throw new FormatException(string.Format("Unexpected format of new entity URI. Expected format 'scheme://anystring/123456.json', got '{0}' instead.", r.Headers.Location));
+            }
+        }
+
         /// <summary>
         /// Deletes single entity.
         /// </summary>
@@ -165,6 +167,22 @@ namespace Altairis.Fakturoid.Client {
 
             // Ensure result was successfull
             r.EnsureSuccessStatusCode();
+        }
+
+        protected T UpdateSingleEntity<T>(string uri, T entity) {
+            if (uri == null) throw new ArgumentNullException("uri");
+            if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
+            if (entity == null) throw new ArgumentNullException("entity");
+            
+            // Get result
+            var c = this.Context.GetHttpClient();
+            var r = c.PutAsJsonAsync(uri, entity).Result;
+
+            // Ensure result was successfull
+            r.EnsureSuccessStatusCode();
+
+            // Return updated entity
+            return r.Content.ReadAsAsync<T>().Result;
         }
 
         // Helper methods for this class
