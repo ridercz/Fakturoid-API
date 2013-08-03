@@ -29,19 +29,31 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             // Do some magic
             ShowAccountInfo();
             ShowEvents();
+            ShowTodos();
 
             // Wait for ENTER
             Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
         }
 
-        private static void ShowEvents() {
-            Console.Write("Getting all events...");
-            var evts = context.Events.Select();
+        private static void ShowTodos() {
+            Console.Write("Getting all todos...");
+            var items = context.Todos.Select();
             Console.WriteLine("OK");
 
-            foreach (var evt in evts) {
-                Console.WriteLine("{0}: ({1}) {2}", evt.created_at, evt.name, evt.text);
+            foreach (var item in items) {
+                Console.WriteLine("{0}: ({1}) {2}", item.created_at, item.name, item.text);
+            }
+            Console.WriteLine();
+        }
+
+        private static void ShowEvents() {
+            Console.Write("Getting all events...");
+            var items = context.Events.Select();
+            Console.WriteLine("OK");
+
+            foreach (var item in items) {
+                Console.WriteLine("{0}: ({1}) {2}", item.created_at, item.name, item.text);
             }
             Console.WriteLine();
         }
