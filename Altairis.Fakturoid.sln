@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.DemoApp", "Altairis.Fakturoid.Client.DemoApp\Altairis.Fakturoid.Client.DemoApp.csproj", "{585D7E5A-1222-4B21-92DE-95078693150A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingImport", "InvoicingImport\InvoicingImport.csproj", "{2FA02938-CE72-479C-8481-9AD5D65FA15C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,11 +44,16 @@ Global
 		{585D7E5A-1222-4B21-92DE-95078693150A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{585D7E5A-1222-4B21-92DE-95078693150A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{585D7E5A-1222-4B21-92DE-95078693150A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5E462FC1-9BA7-443D-AC38-7DBFE4424122} = {345349C4-78AA-4646-AF2F-90A515E9689E}
+		{2FA02938-CE72-479C-8481-9AD5D65FA15C} = {345349C4-78AA-4646-AF2F-90A515E9689E}
 	EndGlobalSection
 EndGlobal
