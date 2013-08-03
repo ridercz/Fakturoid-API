@@ -23,7 +23,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The subject id.</param>
         /// <returns>Instance of <see cref="JsonSubject"/> class.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public JsonSubject Select(int id) {
+        public JsonSubject SelectSingle(int id) {
             if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
 
             return base.GetSingleEntity<JsonSubject>(string.Format("subjects/{0}.json", id));
