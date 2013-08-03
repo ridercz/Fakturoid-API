@@ -94,8 +94,8 @@ namespace Altairis.Fakturoid.Client.DemoApp {
         }
 
         private static void ShowEvents() {
-            Console.Write("Getting all events...");
-            var items = context.Events.Select();
+            Console.Write("Getting all events in last 24 hour...");
+            var items = context.Events.Select(since: DateTime.Now.AddDays(-1));
             Console.WriteLine("OK");
 
             foreach (var item in items) {
@@ -109,7 +109,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             var ai = context.GetAccountInfo();
             Console.WriteLine("OK");
 
-            ai.DumpProperties();
+            ai.DumpProperties(Console.Out, "\t");
             Console.WriteLine();
         }
 
