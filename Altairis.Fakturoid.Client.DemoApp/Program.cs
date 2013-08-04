@@ -63,19 +63,19 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             var newInvoiceId = context.Invoices.Create(newInvoice);
             Console.WriteLine("OK, ID={0}", newInvoiceId);
 
-            Console.WriteLine("Sending invoice by e-mail...");
-            context.Invoices.FireAction(newInvoiceId, InvoiceAction.Deliver);
+            Console.Write("Sending invoice by e-mail...");
+            context.Invoices.SendMessage(newInvoiceId, InvoiceMessageType.InvoiceMessage);
             Console.WriteLine("OK");
 
-            Console.WriteLine("Marking invoice as paid...");
-            context.Invoices.FireAction(newInvoiceId, InvoiceAction.Pay);
+            Console.Write("Marking invoice as paid...");
+            context.Invoices.SetPaymentStatus(newInvoiceId, InvoicePaymentStatus.Paid);
             Console.WriteLine("OK");
 
-            Console.WriteLine("Deleting invoice...");
+            Console.Write("Deleting invoice...");
             context.Invoices.Delete(newInvoiceId);
             Console.WriteLine("OK");
 
-            Console.WriteLine("Deleting subject...");
+            Console.Write("Deleting subject...");
             context.Subjects.Delete(subjectId);
             Console.WriteLine("OK");
         }

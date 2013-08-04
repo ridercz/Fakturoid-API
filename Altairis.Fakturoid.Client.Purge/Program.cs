@@ -54,7 +54,7 @@ namespace Altairis.Fakturoid.Client.Purge {
 
             // Delete all invoices
             Console.Write("Getting list of invoices...");
-            var invoices = context.Invoices.Select(InvoiceType.All, InvoiceStatus.All);
+            var invoices = context.Invoices.Select();
             Console.WriteLine("OK");
 
             Console.WriteLine("Deleting invoices:");

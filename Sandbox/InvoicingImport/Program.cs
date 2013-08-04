@@ -68,14 +68,12 @@ namespace InvoicingImport {
                     // Get payment status
                     if (i.Payments.Any()) {
                         Console.Write("  #{0}: Updating payment status...", i.InvoiceId);
-                        context.Invoices.FireAction(newInvoiceId, InvoiceAction.Pay);
-                        //newInvoice = context.Invoices.SelectSingle(newInvoiceId);
-                        //newInvoice.paid_at = i.Payments.Max(x => x.DateReceived);
-                        //context.Invoices.Update(newInvoice);
+                        var datePaid = i.Payments.Max(x => x.DateReceived);
+                        context.Invoices.SetPaymentStatus(newInvoiceId, InvoicePaymentStatus.Paid, datePaid);
                     }
                     else {
                         Console.Write("  #{0}: Updating delivery status...", i.InvoiceId);
-                        context.Invoices.FireAction(newInvoiceId, InvoiceAction.MarkAsSent);
+                        context.Invoices.SendMessage(newInvoiceId, InvoiceMessageType.NoMessage);
                     }
                     Console.WriteLine("OK");
                 }
@@ -119,7 +117,7 @@ namespace InvoicingImport {
         private static void PurgeAll() {
             // Delete all invoices
             Console.Write("Listing all invoices...");
-            var invoices = context.Invoices.Select(InvoiceType.All, InvoiceStatus.All);
+            var invoices = context.Invoices.Select();
             Console.WriteLine("OK");
 
             Console.WriteLine("Deleting invoices:");
