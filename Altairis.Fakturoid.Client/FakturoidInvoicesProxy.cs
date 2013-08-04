@@ -246,10 +246,10 @@ namespace Altairis.Fakturoid.Client {
                     eventName = "deliver";
                     break;
                 case InvoiceMessageType.PaymentReminderMessage:
-                    eventName = "mark_as_sent";
+                    eventName = "deliver_reminder";
                     break;
                 default:
-                    eventName = "deliver_reminder";
+                    eventName = "mark_as_sent";
                     break;
             }
 
