@@ -10,8 +10,4 @@
     <licenseUrl>https://github.com/ridercz/Fakturoid-API/blob/master/LICENSE</licenseUrl>
     <iconUrl>http://www.cdn.altairis.cz/NuGet/icon-150x150.png</iconUrl>
   </metadata>
-  <files>
-    <file src="*.dll" target="lib\net45" />
-    <file src="*.pdb" target="lib\net45" />
-  </files>
 </package>
