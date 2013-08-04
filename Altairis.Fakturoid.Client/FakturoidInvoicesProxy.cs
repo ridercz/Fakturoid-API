@@ -4,10 +4,60 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Altairis.Fakturoid.Client {
     public class FakturoidInvoicesProxy : FakturoidEntityProxy {
 
+        #region Enums
+
+        public enum InvoiceStatusCondition {
+            Any,
+            Open,
+            Sent,
+            Overdue,
+            Paid,
+            Cancelled
+        }
+
+        public enum InvoiceTypeCondition {
+            Any,
+            Proforma,
+            Regular
+        }
+
+        /// <summary>
+        /// Invoice payment status
+        /// </summary>
+        public enum InvoicePaymentStatus {
+            Unpaid,
+            Paid,
+            ProformaPaid,
+            PartialProformaPaid
+        }
+
+        /// <summary>
+        /// Type of e-mail message to be sent.
+        /// </summary>
+        public enum InvoiceMessageType {
+            /// <summary>
+            /// Do not actually send anything, just mark invoice as sent
+            /// </summary>
+            NoMessage,
+
+            /// <summary>
+            /// Predefined message containing link to invoice
+            /// </summary>
+            InvoiceMessage,
+
+            /// <summary>
+            /// Predefined message containing payment reminder
+            /// </summary>
+            PaymentReminderMessage,
+        }
+
+        #endregion
+        
         internal FakturoidInvoicesProxy(FakturoidContext context) : base(context) { }
 
         /// <summary>
@@ -23,7 +73,7 @@ namespace Altairis.Fakturoid.Client {
 
             return base.GetSingleEntity<JsonInvoice>(string.Format("invoices/{0}.json", id));
         }
-        
+
         /// <summary>
         /// Gets list of all invoices.
         /// </summary>
@@ -35,15 +85,50 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>
         /// List of <see cref="JsonInvoice" /> instances.
         /// </returns>
-        public IEnumerable<JsonInvoice> Select(InvoiceType type, InvoiceStatus status, int? subjectId = null, DateTime? since = null, string number = null) {
-            var uri = type.ToString();
+        public IEnumerable<JsonInvoice> Select(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+            // Get URI based on invoice type
+            string uri;
+            switch (type) {
+                case InvoiceTypeCondition.Proforma:
+                    uri = "invoices/proforma.json";
+                    break;
+                case InvoiceTypeCondition.Regular:
+                    uri = "invoices/regular.json";
+                    break;
+                default:
+                    uri = "invoices.json";
+                    break;
+            }
+
+            // Get status string based
+            string statusString = null;
+            switch (status) {
+                case InvoiceStatusCondition.Open:
+                    statusString = "open";
+                    break;
+                case InvoiceStatusCondition.Sent:
+                    statusString = "sent";
+                    break;
+                case InvoiceStatusCondition.Overdue:
+                    statusString = "overdue";
+                    break;
+                case InvoiceStatusCondition.Paid:
+                    statusString = "paid";
+                    break;
+                case InvoiceStatusCondition.Cancelled:
+                    statusString = "cancelled";
+                    break;
+            }
+
+            // Prepare query parameters
             var queryParams = new {
-                status = status.ToString(),
+                status = statusString,
                 subject_id = subjectId.HasValue ? subjectId.Value.ToString() : null,
                 since = since,
                 number = number
             };
 
+            // Get entities
             return base.GetAllPagedEntities<JsonInvoice>(uri, queryParams);
         }
 
@@ -60,16 +145,52 @@ namespace Altairis.Fakturoid.Client {
         /// List of <see cref="JsonInvoice" /> instances.
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
-        public IEnumerable<JsonInvoice> Select(int page, InvoiceType type, InvoiceStatus status, int? subjectId = null, DateTime? since = null, string number = null) {
+        public IEnumerable<JsonInvoice> Select(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             if (page < 1) throw new ArgumentOutOfRangeException("page", "Page must be greater than zero.");
-            var uri = type.ToString();
+
+            // Get URI based on invoice type
+            string uri;
+            switch (type) {
+                case InvoiceTypeCondition.Proforma:
+                    uri = "invoices/proforma.json";
+                    break;
+                case InvoiceTypeCondition.Regular:
+                    uri = "invoices/regular.json";
+                    break;
+                default:
+                    uri = "invoices.json";
+                    break;
+            }
+
+            // Get status string based
+            string statusString = null;
+            switch (status) {
+                case InvoiceStatusCondition.Open:
+                    statusString = "open";
+                    break;
+                case InvoiceStatusCondition.Sent:
+                    statusString = "sent";
+                    break;
+                case InvoiceStatusCondition.Overdue:
+                    statusString = "overdue";
+                    break;
+                case InvoiceStatusCondition.Paid:
+                    statusString = "paid";
+                    break;
+                case InvoiceStatusCondition.Cancelled:
+                    statusString = "cancelled";
+                    break;
+            }
+
+            // Prepare query parameters
             var queryParams = new {
-                status = status.ToString(),
+                status = statusString,
                 subject_id = subjectId.HasValue ? subjectId.Value.ToString() : null,
                 since = since,
                 number = number
             };
 
+            // Get entities
             return base.GetPagedEntities<JsonInvoice>("invoices.json", page);
         }
 
@@ -109,18 +230,70 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Fires action over single invoice.
+        /// Sends e-mail message for the specified invoice.
         /// </summary>
         /// <param name="id">The invoice id.</param>
-        /// <param name="action">The action to be fired.</param>
+        /// <param name="messageType">Type of the message.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        /// <exception cref="System.ArgumentNullException">action</exception>
-        public void FireAction(int id, InvoiceAction action) {
+        public void SendMessage(int id, InvoiceMessageType messageType) {
             if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
-            if (action == null) throw new ArgumentNullException("action");
+
+            // Get name of event
+            string eventName;
+            switch (messageType) {
+                case InvoiceMessageType.InvoiceMessage:
+                    eventName = "deliver";
+                    break;
+                case InvoiceMessageType.PaymentReminderMessage:
+                    eventName = "mark_as_sent";
+                    break;
+                default:
+                    eventName = "deliver_reminder";
+                    break;
+            }
 
             var c = this.Context.GetHttpClient();
-            var r = c.PostAsync(string.Format("invoices/{0}/fire.json?event={1}", id, action), new StringContent(string.Empty)).Result;
+            var r = c.PostAsync(string.Format("invoices/{0}/fire.json?event={1}", id, eventName), new StringContent(string.Empty)).Result;
+            r.EnsureFakturoidSuccess();
+        }
+
+        /// <summary>
+        /// Sets the invoice payment status.
+        /// </summary>
+        /// <param name="id">The invoice id.</param>
+        /// <param name="status">The new payment status.</param>
+        public void SetPaymentStatus(int id, InvoicePaymentStatus status) {
+            this.SetPaymentStatus(id, status, DateTime.Now);
+        }
+
+        /// <summary>
+        /// Sets the invoice payment status.
+        /// </summary>
+        /// <param name="id">The invoice id.</param>
+        /// <param name="status">The new payment status.</param>
+        /// <param name="effectiveDate">The date when payment was performed.</param>
+        public void SetPaymentStatus(int id, InvoicePaymentStatus status, DateTime effectiveDate) {
+            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+
+            // Get url
+            string urlFormat;
+            switch (status) {
+                case InvoicePaymentStatus.Paid:
+                    urlFormat = "invoices/{0}/fire.json?event=pay&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
+                    break;
+                case InvoicePaymentStatus.ProformaPaid:
+                    urlFormat = "invoices/{0}/fire.json?event=pay_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
+                    break;
+                case InvoicePaymentStatus.PartialProformaPaid:
+                    urlFormat = "invoices/{0}/fire.json?event=pay_partial_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
+                    break;
+                default:
+                    urlFormat = "invoices/{0}/fire.json?event=remove_payment";
+                    break;
+            }
+
+            var c = this.Context.GetHttpClient();
+            var r = c.PostAsync(string.Format(urlFormat, id), new StringContent(string.Empty)).Result;
             r.EnsureFakturoidSuccess();
         }
 
