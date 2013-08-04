@@ -86,7 +86,10 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>
         /// List of <see cref="JsonInvoice" /> instances.
         /// </returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
         public IEnumerable<JsonInvoice> Select(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+            if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException("subjectId", "Value must be greater than zero.");
+
             // Get URI based on invoice type
             string uri;
             switch (type) {
@@ -145,9 +148,14 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>
         /// List of <see cref="JsonInvoice" /> instances.
         /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">
+        /// page;Value must be greater than zero.
+        /// or
+        /// subjectId;Value must be greater than zero.
+        /// </exception>
         public IEnumerable<JsonInvoice> Select(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            if (page < 1) throw new ArgumentOutOfRangeException("page", "Page must be greater than zero.");
+            if (page < 1) throw new ArgumentOutOfRangeException("page", "Value must be greater than zero.");
+            if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException("subjectId", "Value must be greater than zero.");
 
             // Get URI based on invoice type
             string uri;
@@ -192,7 +200,7 @@ namespace Altairis.Fakturoid.Client {
             };
 
             // Get entities
-            return base.GetPagedEntities<JsonInvoice>("invoices.json", page);
+            return base.GetPagedEntities<JsonInvoice>(uri, page);
         }
 
         /// <summary>
