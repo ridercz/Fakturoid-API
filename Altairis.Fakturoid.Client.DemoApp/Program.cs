@@ -63,6 +63,10 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             var newInvoiceId = context.Invoices.Create(newInvoice);
             Console.WriteLine("OK, ID={0}", newInvoiceId);
 
+            Console.Write("Reading back invoice information...");
+            newInvoice = context.Invoices.SelectSingle(newInvoiceId);
+            Console.WriteLine("OK");
+
             Console.Write("Sending invoice by e-mail...");
             context.Invoices.SendMessage(newInvoiceId, InvoiceMessageType.InvoiceMessage);
             Console.WriteLine("OK");
