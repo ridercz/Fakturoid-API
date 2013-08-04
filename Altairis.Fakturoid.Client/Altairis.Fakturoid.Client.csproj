@@ -64,7 +64,6 @@
     <Compile Include="JsonSubject.cs" />
     <Compile Include="JsonTodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_EnumClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
