@@ -112,7 +112,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Výchozí sazba DPH
         /// </summary>
-        public float vat_rate { get; set; }
+        public decimal vat_rate { get; set; }
 
         /// <summary>
         /// Text patičky faktury

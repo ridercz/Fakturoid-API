@@ -223,7 +223,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Kurz (nepovinné)
         /// </summary>
-        public float exchange_rate { get; set; }
+        public decimal exchange_rate { get; set; }
 
         /// <summary>
         /// Jazyk faktury
@@ -238,32 +238,32 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Součet bez DPH
         /// </summary>
-        public float subtotal { get; set; }
+        public decimal subtotal { get; set; }
 
         /// <summary>
         /// Součet bez DPH v měně účtu
         /// </summary>
-        public float native_subtotal { get; set; }
+        public decimal native_subtotal { get; set; }
         
         /// <summary>
         /// Součet včetně DPH
         /// </summary>
-        public float total { get; set; }
+        public decimal total { get; set; }
 
         /// <summary>
         /// Součet včetně DPH v měně účtu
         /// </summary>
-        public float native_total { get; set; }
+        public decimal native_total { get; set; }
 
         /// <summary>
         /// Částka k zaplacení
         /// </summary>
-        public float remaining_amount { get; set; }
+        public decimal remaining_amount { get; set; }
 
         /// <summary>
         /// Částka k zaplacení v měně účtu 
         /// </summary>
-        public float remaining_native_amount { get; set; }
+        public decimal remaining_native_amount { get; set; }
 
         /// <summary>
         /// Adresa faktury v GUI

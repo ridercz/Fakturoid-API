@@ -10,7 +10,7 @@
         /// <summary>
         /// Množství
         /// </summary>
-        public float quantity { get; set; }
+        public decimal quantity { get; set; }
 
         /// <summary>
         /// Měrná jednotka
@@ -20,12 +20,12 @@
         /// <summary>
         /// Jednotková cena
         /// </summary>
-        public float unit_price { get; set; }
+        public decimal unit_price { get; set; }
 
         /// <summary>
         /// Sazba DPH
         /// </summary>
-        public float vat_rate { get; set; }
+        public decimal vat_rate { get; set; }
 
         /// <summary>
         /// Cena je uvedena včetně DPH?
