@@ -7,56 +7,57 @@ using System.Threading.Tasks;
 using System.Xml;
 
 namespace Altairis.Fakturoid.Client {
+
+    #region Enums
+
+    public enum InvoiceStatusCondition {
+        Any,
+        Open,
+        Sent,
+        Overdue,
+        Paid,
+        Cancelled
+    }
+
+    public enum InvoiceTypeCondition {
+        Any,
+        Proforma,
+        Regular
+    }
+
+    /// <summary>
+    /// Invoice payment status
+    /// </summary>
+    public enum InvoicePaymentStatus {
+        Unpaid,
+        Paid,
+        ProformaPaid,
+        PartialProformaPaid
+    }
+
+    /// <summary>
+    /// Type of e-mail message to be sent.
+    /// </summary>
+    public enum InvoiceMessageType {
+        /// <summary>
+        /// Do not actually send anything, just mark invoice as sent
+        /// </summary>
+        NoMessage,
+
+        /// <summary>
+        /// Predefined message containing link to invoice
+        /// </summary>
+        InvoiceMessage,
+
+        /// <summary>
+        /// Predefined message containing payment reminder
+        /// </summary>
+        PaymentReminderMessage,
+    }
+
+    #endregion
+
     public class FakturoidInvoicesProxy : FakturoidEntityProxy {
-
-        #region Enums
-
-        public enum InvoiceStatusCondition {
-            Any,
-            Open,
-            Sent,
-            Overdue,
-            Paid,
-            Cancelled
-        }
-
-        public enum InvoiceTypeCondition {
-            Any,
-            Proforma,
-            Regular
-        }
-
-        /// <summary>
-        /// Invoice payment status
-        /// </summary>
-        public enum InvoicePaymentStatus {
-            Unpaid,
-            Paid,
-            ProformaPaid,
-            PartialProformaPaid
-        }
-
-        /// <summary>
-        /// Type of e-mail message to be sent.
-        /// </summary>
-        public enum InvoiceMessageType {
-            /// <summary>
-            /// Do not actually send anything, just mark invoice as sent
-            /// </summary>
-            NoMessage,
-
-            /// <summary>
-            /// Predefined message containing link to invoice
-            /// </summary>
-            InvoiceMessage,
-
-            /// <summary>
-            /// Predefined message containing payment reminder
-            /// </summary>
-            PaymentReminderMessage,
-        }
-
-        #endregion
         
         internal FakturoidInvoicesProxy(FakturoidContext context) : base(context) { }
 
