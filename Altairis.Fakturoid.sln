@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingImport", "Sandbox\InvoicingImport\InvoicingImport.csproj", "{2FA02938-CE72-479C-8481-9AD5D65FA15C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.Purge", "Altairis.Fakturoid.Client.Purge\Altairis.Fakturoid.Client.Purge.csproj", "{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FA02938-CE72-479C-8481-9AD5D65FA15C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
