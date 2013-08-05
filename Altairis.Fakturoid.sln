@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{0B1AEF50-3AAE-46E5-AE0A-726B66E760AB}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\Help\Documentation.chm = Documentation\Help\Documentation.chm
+		Documentation.chm = Documentation.chm
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection

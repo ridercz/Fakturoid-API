@@ -12,6 +12,10 @@ Install current version of library as a NuGet package `Altairis.Fakturoid.Client
 
     install-package Altairis.Fakturoid.Client
 
-Look into the `Altairis.Fakturoid.Client.DemoApp` project for usage. No other documentation is available at the moment.
+Documentation
+-------------
+* Look into the `Altairis.Fakturoid.Client.DemoApp` project for usage.
+* All public members have XML documentation that will show up in IntelliSense.
+* The `Documentation.chm` file build from the XML documentation is available for download. 
 
 > This project is developed and maintained by [Michal A. Valášek](http://www.rider.cz), (of [ASPNET.CZ](http://www.aspnet.cz/) fame) and the [Altairis](http://www.altairis.cz) corporation. This project has no official relation to the Fakturoid service or its owner.
