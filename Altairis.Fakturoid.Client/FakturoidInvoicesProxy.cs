@@ -10,18 +10,59 @@ namespace Altairis.Fakturoid.Client {
 
     #region Enums
 
+    /// <summary>
+    /// Query status condition for listing invoices
+    /// </summary>
     public enum InvoiceStatusCondition {
+        /// <summary>
+        /// Any
+        /// </summary>
         Any,
+
+        /// <summary>
+        /// Faktura není zaplacena, odeslána ani po splatnosti.
+        /// </summary>
         Open,
+
+        /// <summary>
+        /// Faktura byla odeslána a není po splatnosti.
+        /// </summary>
         Sent,
+
+        /// <summary>
+        /// Faktura je po splatnosti.
+        /// </summary>
         Overdue,
+        
+        /// <summary>
+        /// Faktura je zaplacena.
+        /// </summary>
         Paid,
+        
+        /// <summary>
+        /// Faktura je stornována (pouze neplátci DPH).
+        /// </summary>
         Cancelled
     }
 
+    /// <summary>
+    /// Query invoice type condition for listing invoices.
+    /// </summary>
     public enum InvoiceTypeCondition {
+
+        /// <summary>
+        /// Any
+        /// </summary>
         Any,
+
+        /// <summary>
+        /// The proforma invouice.
+        /// </summary>
         Proforma,
+
+        /// <summary>
+        /// The regular, non-proforma invoice
+        /// </summary>
         Regular
     }
 
@@ -29,9 +70,24 @@ namespace Altairis.Fakturoid.Client {
     /// Invoice payment status
     /// </summary>
     public enum InvoicePaymentStatus {
+        /// <summary>
+        /// Reset payment status to unpaid.
+        /// </summary>
         Unpaid,
+
+        /// <summary>
+        /// Set status of regular invoice to paid.
+        /// </summary>
         Paid,
+
+        /// <summary>
+        /// Set status of proforma invoice to paid.
+        /// </summary>
         ProformaPaid,
+
+        /// <summary>
+        /// Set status of partial proforma invoice to paid.
+        /// </summary>
         PartialProformaPaid
     }
 
@@ -57,8 +113,11 @@ namespace Altairis.Fakturoid.Client {
 
     #endregion
 
+    /// <summary>
+    /// Proxy class for working with invoices.
+    /// </summary>
     public class FakturoidInvoicesProxy : FakturoidEntityProxy {
-        
+
         internal FakturoidInvoicesProxy(FakturoidContext context) : base(context) { }
 
         /// <summary>

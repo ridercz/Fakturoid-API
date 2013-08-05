@@ -2,9 +2,11 @@
 
 namespace Altairis.Fakturoid.Client {
 
+    /// <summary>
+    /// Represents a todo task, as received from JSON API.
+    /// </summary>
     public class JsonTodo {
-
-
+        
         /// <summary>
         /// Typ události - initial_todo, initial_fb, already_paid, unpaired_payment, email_bounced
         /// </summary>

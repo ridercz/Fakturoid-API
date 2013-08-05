@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Altairis.Fakturoid.Client {
+    /// <summary>
+    /// Proxy class for working with subjects/contacts.
+    /// </summary>
     public class FakturoidSubjectsProxy : FakturoidEntityProxy {
 
         internal FakturoidSubjectsProxy(FakturoidContext context) : base(context) { }

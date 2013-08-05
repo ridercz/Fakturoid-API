@@ -2,6 +2,9 @@
 
 namespace Altairis.Fakturoid.Client {
 
+    /// <summary>
+    /// User account information, as received from JSON API.
+    /// </summary>
     public class JsonAccount {
 
         /// <summary>

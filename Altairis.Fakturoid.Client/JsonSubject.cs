@@ -2,6 +2,9 @@
 
 namespace Altairis.Fakturoid.Client {
 
+    /// <summary>
+    /// Subject (contact), as received from JSON API.
+    /// </summary>
     public class JsonSubject {
 
         /// <summary>

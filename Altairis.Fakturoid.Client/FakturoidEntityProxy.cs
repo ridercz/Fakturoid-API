@@ -11,15 +11,29 @@ using System.Threading.Tasks;
 using System.Xml;
 
 namespace Altairis.Fakturoid.Client {
+    /// <summary>
+    /// Proxy class for working with 
+    /// </summary>
     public abstract class FakturoidEntityProxy {
 
         // Initialization
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FakturoidEntityProxy"/> class.
+        /// </summary>
+        /// <param name="context">The related context.</param>
+        /// <exception cref="System.ArgumentNullException">context</exception>
         protected FakturoidEntityProxy(FakturoidContext context) {
             if (context == null) throw new ArgumentNullException("context");
             this.Context = context;
         }
 
+        /// <summary>
+        /// Gets the related context.
+        /// </summary>
+        /// <value>
+        /// The related context.
+        /// </value>
         public FakturoidContext Context { get; private set; }
 
         // Helper methods for proxy classes
@@ -169,6 +183,19 @@ namespace Altairis.Fakturoid.Client {
             r.EnsureFakturoidSuccess();
         }
 
+        /// <summary>
+        /// Updates the single entity.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="uri">The entity URI.</param>
+        /// <param name="entity">The entity object.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// uri
+        /// or
+        /// entity
+        /// </exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected T UpdateSingleEntity<T>(string uri, T entity) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");

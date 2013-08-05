@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace Altairis.Fakturoid.Client {
 
+    /// <summary>
+    /// User account information, as received from JSON API.
+    /// Single invoice
+    /// </summary>
     public class JsonInvoice {
 
         /// <summary>

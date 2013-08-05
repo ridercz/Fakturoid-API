@@ -1,5 +1,8 @@
 ﻿namespace Altairis.Fakturoid.Client {
 
+    /// <summary>
+    /// Represents single line of invoice, as received from JSON API.
+    /// </summary>
     public class JsonInvoiceLine {
 
         /// <summary>

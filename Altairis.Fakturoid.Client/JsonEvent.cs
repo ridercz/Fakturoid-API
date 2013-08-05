@@ -2,6 +2,9 @@
 
 namespace Altairis.Fakturoid.Client {
 
+    /// <summary>
+    /// Event, as received from JSON API.
+    /// </summary>
     public class JsonEvent {
 
         /// <summary>
