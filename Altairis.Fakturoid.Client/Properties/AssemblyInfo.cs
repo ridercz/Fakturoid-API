@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("Fakturoid API Client Library")]
-[assembly: AssemblyDescription("C#/.NET client library for fakturoid.cz API")]
+[assembly: AssemblyTitle("Fakturoid API v2 Client Library")]
+[assembly: AssemblyDescription("C#/.NET client library for fakturoid.cz API v2")]
 [assembly: AssemblyCompany("Altairis, sb. r. o.")]
-[assembly: AssemblyProduct("Fakturoid API Client")]
-[assembly: AssemblyCopyright("Copyright © Altairis, 2013")]
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.1")]
+[assembly: AssemblyProduct("Fakturoid API v2 Client")]
+[assembly: AssemblyCopyright("Copyright © Altairis, 2013-2014")]
+[assembly: AssemblyVersion("2.0.0")]
+[assembly: AssemblyFileVersion("2.0.0")]
