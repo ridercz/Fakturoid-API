@@ -68,6 +68,11 @@ namespace Altairis.Fakturoid.Client {
         public string iban { get; set; }
 
         /// <summary>
+        /// Variabilní symbol
+        /// </summary>
+        public string variable_symbol { get; set; }
+
+        /// <summary>
         /// Jméno kontaktní osoby
         /// </summary>
         public string full_name { get; set; }
@@ -91,6 +96,11 @@ namespace Altairis.Fakturoid.Client {
         /// Adresa webu
         /// </summary>
         public string web { get; set; }
+
+        /// <summary>
+        /// Adresa obrázku kontaktu
+        /// </summary>
+        public string avatar_url { get; set; }
 
         /// <summary>
         /// Adresa kontaktu v GUI
