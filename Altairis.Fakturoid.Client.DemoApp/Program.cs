@@ -28,10 +28,10 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             context = new FakturoidContext(accountName, email, accountToken, "Fakturoid API v2 C#/.NET Client Demo Application (fakturoid@rider.cz)");
 
             // Do some magic
-            //ShowAccountInfo();
+            ShowAccountInfo();
             //ShowEvents();
             //ShowTodos();
-            ShowSubjects();
+            //ShowSubjects();
             //ShowInvoices();
 
             // Wait for ENTER
@@ -156,8 +156,16 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             Console.Write("Getting account information...");
             var ai = context.GetAccountInfo();
             Console.WriteLine("OK");
-
             ai.DumpProperties(Console.Out, "\t");
+
+            Console.Write("Getting bank accounts...");
+            var ba = context.BankAccounts.Select().ToArray();
+            Console.WriteLine("OK, {0} found", ba.Length);
+            for (int i = 0; i < ba.Length; i++) {
+                Console.WriteLine("Item #{0}:", i);
+                ba[i].DumpProperties(Console.Out, "\t");
+            }
+
             Console.WriteLine();
         }
 

@@ -55,6 +55,7 @@ namespace Altairis.Fakturoid.Client {
             this.Todos = new FakturoidTodosProxy(this);
             this.Subjects = new FakturoidSubjectsProxy(this);
             this.Invoices = new FakturoidInvoicesProxy(this);
+            this.BankAccounts = new FakturoidBankAccountsProxy(this);
         }
 
         // Properties
@@ -110,6 +111,11 @@ namespace Altairis.Fakturoid.Client {
         /// Proxy for working with invoices
         /// </summary>
         public FakturoidInvoicesProxy Invoices { get; private set; }
+        
+        /// <summary>
+        /// Proxy for working with bank accounts
+        /// </summary>
+        public FakturoidBankAccountsProxy BankAccounts { get; private set; }
 
         // Public methods
 

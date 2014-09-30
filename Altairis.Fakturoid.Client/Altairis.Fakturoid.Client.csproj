@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakturoidBankAccountsProxy.cs" />
     <Compile Include="InternalExtensionMethods.cs" />
     <Compile Include="FakturoidException.cs" />
     <Compile Include="FakturoidInvoicesProxy.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="FakturoidEventsProxy.cs" />
     <Compile Include="FakturoidTodosProxy.cs" />
     <Compile Include="JsonAccount.cs" />
+    <Compile Include="JsonBankAccount.cs" />
     <Compile Include="JsonEvent.cs" />
     <Compile Include="JsonInvoice.cs" />
     <Compile Include="JsonInvoiceLine.cs" />
