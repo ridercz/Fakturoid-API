@@ -63,6 +63,14 @@ namespace Altairis.Fakturoid.Client {
         public string vat_no { get; set; }
 
         /// <summary>
+        /// Plátce DPH / Neplátce DPH / Identifikovaná osoba
+        /// </summary>
+        /// <value>
+        /// vat_payer, non_vat_payer, identified_person
+        /// </value>
+        public string vat_mode { get; set; }
+
+        /// <summary>
         /// Ulice
         /// </summary>
         public string street { get; set; }
@@ -131,6 +139,16 @@ namespace Altairis.Fakturoid.Client {
         /// Výchozí splatnost faktur
         /// </summary>
         public int due { get; set; }
+
+        /// <summary>
+        /// Text emailu pro odeslání faktury
+        /// </summary>
+        public string custom_email_text { get; set; }
+
+        /// <summary>
+        /// Text upomínky o zaplacení
+        /// </summary>
+        public string overdue_email_text { get; set; }
 
         /// <summary>
         /// Adresa účtu v GUI
