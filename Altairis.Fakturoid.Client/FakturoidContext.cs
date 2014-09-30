@@ -132,7 +132,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="System.Net.Http.HttpClient"/> class, initialized for use with Fakturoid API.</returns>
         internal HttpClient GetHttpClient() {
             // Get value of authentication header
-            var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", this.EmailAddress, this.AuthenticationToken));
+            var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", this.EmailAddress, this.AuthenticationToken)));
 
             // Setup HTTP client
             var client = new HttpClient();
