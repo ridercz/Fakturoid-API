@@ -285,6 +285,11 @@ namespace Altairis.Fakturoid.Client {
         public string url { get; set; }
 
         /// <summary>
+        /// API adresa pro stažení faktury v PDF
+        /// </summary>
+        public string pdf_url { get; set; }
+
+        /// <summary>
         /// API adresa kontaktu příjemce
         /// </summary>
         public string subject_url { get; set; }

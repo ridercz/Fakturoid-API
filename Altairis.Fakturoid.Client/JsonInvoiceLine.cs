@@ -30,9 +30,5 @@
         /// </summary>
         public decimal vat_rate { get; set; }
 
-        /// <summary>
-        /// Cena je uvedena včetně DPH?
-        /// </summary>
-        public bool with_vat { get; set; }
     }
 }
