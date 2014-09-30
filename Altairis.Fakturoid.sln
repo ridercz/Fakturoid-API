@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{0B1AEF50-3AAE-46E5-AE0A-726B66E760AB}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{41B0E1
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept", "Sandbox\ProofOfConcept\ProofOfConcept.csproj", "{5E462FC1-9BA7-443D-AC38-7DBFE4424122}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client", "Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj", "{0817AD5F-3092-4916-AFBD-4431823D46D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.DemoApp", "Altairis.Fakturoid.Client.DemoApp\Altairis.Fakturoid.Client.DemoApp.csproj", "{585D7E5A-1222-4B21-92DE-95078693150A}"
@@ -35,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5E462FC1-9BA7-443D-AC38-7DBFE4424122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E462FC1-9BA7-443D-AC38-7DBFE4424122}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E462FC1-9BA7-443D-AC38-7DBFE4424122}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E462FC1-9BA7-443D-AC38-7DBFE4424122}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,7 +54,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5E462FC1-9BA7-443D-AC38-7DBFE4424122} = {345349C4-78AA-4646-AF2F-90A515E9689E}
 		{2FA02938-CE72-479C-8481-9AD5D65FA15C} = {345349C4-78AA-4646-AF2F-90A515E9689E}
 	EndGlobalSection
 EndGlobal
