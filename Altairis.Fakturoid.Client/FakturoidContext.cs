@@ -69,10 +69,10 @@ namespace Altairis.Fakturoid.Client {
         public string AccountName { get; private set; }
 
         /// <summary>
-        /// Gets the email address.
+        /// Gets the Fakturoid account email address.
         /// </summary>
         /// <value>
-        /// The email address.
+        /// The email address associated with Fakturoid account being used.
         /// </value>
         public string EmailAddress { get; private set; }
 
@@ -113,7 +113,7 @@ namespace Altairis.Fakturoid.Client {
         public FakturoidInvoicesProxy Invoices { get; private set; }
         
         /// <summary>
-        /// Proxy for working with bank accounts
+        /// Proxy for working with bank accounts.
         /// </summary>
         public FakturoidBankAccountsProxy BankAccounts { get; private set; }
 
