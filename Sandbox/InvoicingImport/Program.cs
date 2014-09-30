@@ -13,15 +13,16 @@ namespace InvoicingImport {
 
         static void Main(string[] args) {
             // Verify commandline arguments 
-            if (args.Length != 2) {
-                Console.WriteLine("USAGE: InvoicingImport accountname token");
+            if (args.Length != 3) {
+                Console.WriteLine("USAGE: InvoicingImport accountname email token");
                 return;
             }
             var accountName = args[0];
-            var accountToken = args[1];
+            var email = args[1];
+            var accountToken = args[2];
 
             // Create API context
-            context = new FakturoidContext(accountName, accountToken);
+            context = new FakturoidContext(accountName, email, accountToken);
 
             // Process all operations
             PurgeAll();
