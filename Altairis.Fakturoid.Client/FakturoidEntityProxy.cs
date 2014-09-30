@@ -47,7 +47,12 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>All existing entities of given type.</returns>
         /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
         protected IEnumerable<T> GetAllPagedEntities<T>(string baseUri, object additionalQueryParams = null) {
-            return this.GetAllPagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
+            try {
+                return this.GetAllPagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
 
         }
 
@@ -86,7 +91,12 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
         /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
         protected IEnumerable<T> GetPagedEntities<T>(string baseUri, int page, object additionalQueryParams = null) {
-            return this.GetPagedEntitiesAsync<T>(baseUri, page, additionalQueryParams).Result;
+            try {
+                return this.GetPagedEntitiesAsync<T>(baseUri, page, additionalQueryParams).Result;
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
         }
 
         /// <summary>
@@ -123,7 +133,12 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentNullException">uri</exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected IEnumerable<T> GetUnpagedEntities<T>(string baseUri, object additionalQueryParams = null) {
-            return this.GetUnpagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
+            try {
+                return this.GetUnpagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
         }
 
         /// <summary>
