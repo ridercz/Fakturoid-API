@@ -10,28 +10,29 @@ namespace Altairis.Fakturoid.Client.DemoApp {
         private static FakturoidContext context;
 
         static void Main(string[] args) {
-            Console.WriteLine("Fakturoid API C#/.NET Client Demo Application");
+            Console.WriteLine("Fakturoid API v2 C#/.NET Client Demo Application");
             Console.WriteLine("http://github.com/ridercz/Fakturoid-API");
-            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013");
+            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2014");
             Console.WriteLine();
 
             // Verify commandline arguments 
-            if (args.Length != 2) {
-                Console.WriteLine("USAGE: fdemo accountname token");
+            if (args.Length != 3) {
+                Console.WriteLine("USAGE: fdemo accountname email token");
                 return;
             }
             var accountName = args[0];
-            var accountToken = args[1];
+            var email = args[1];
+            var accountToken = args[2];
 
             // Create context
-            context = new FakturoidContext(accountName, accountToken, "Fakturoid API C#/.NET Client Demo Application (fakturoid@rider.cz)");
+            context = new FakturoidContext(accountName, email, accountToken, "Fakturoid API v2 C#/.NET Client Demo Application (fakturoid@rider.cz)");
 
             // Do some magic
             //ShowAccountInfo();
             //ShowEvents();
             //ShowTodos();
-            //ShowSubjects();
-            ShowInvoices();
+            ShowSubjects();
+            //ShowInvoices();
 
             // Wait for ENTER
             Console.WriteLine("Press ENTER to continue...");
