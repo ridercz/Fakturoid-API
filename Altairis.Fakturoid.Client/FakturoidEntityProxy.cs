@@ -38,7 +38,6 @@ namespace Altairis.Fakturoid.Client {
 
         // Helper methods for proxy classes
 
-
         /// <summary>
         /// Gets all paged entities, making sequential repeated requests for pages.
         /// </summary>
@@ -48,11 +47,24 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>All existing entities of given type.</returns>
         /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
         protected IEnumerable<T> GetAllPagedEntities<T>(string baseUri, object additionalQueryParams = null) {
+            return this.GetAllPagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
+
+        }
+
+        /// <summary>
+        /// Gets asynchronously all paged entities, making sequential repeated requests for pages.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="additionalQueryParams">The additional query params.</param>
+        /// <returns>All existing entities of given type.</returns>
+        /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
+        protected async Task<IEnumerable<T>> GetAllPagedEntitiesAsync<T>(string baseUri, object additionalQueryParams = null) {
             var completeList = new List<T>();
             var page = 1;
 
             while (true) {
-                var partialList = this.GetPagedEntities<T>(baseUri, page, additionalQueryParams);
+                var partialList = await this.GetPagedEntitiesAsync<T>(baseUri, page, additionalQueryParams);
                 if (!partialList.Any()) break; // no more entities
                 completeList.AddRange(partialList);
                 page++;
@@ -74,6 +86,22 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
         /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
         protected IEnumerable<T> GetPagedEntities<T>(string baseUri, int page, object additionalQueryParams = null) {
+            return this.GetPagedEntitiesAsync<T>(baseUri, page, additionalQueryParams).Result;
+        }
+
+        /// <summary>
+        /// Gets asynchronously single page of entities.
+        /// </summary>
+        /// <typeparam name="T">Entity type.</typeparam>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="page">The page number.</param>
+        /// <param name="additionalQueryParams">The additional query params.</param>
+        /// <returns>Paged list of entities of given type.</returns>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
+        /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
+        protected async Task<IEnumerable<T>> GetPagedEntitiesAsync<T>(string baseUri, int page, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
             if (page < 1) throw new ArgumentOutOfRangeException("page", "Page must be greater than zero.");
@@ -82,7 +110,7 @@ namespace Altairis.Fakturoid.Client {
             var uri = baseUri + "?page=" + page + GetQueryStringFromParams(additionalQueryParams, "&");
 
             // Get result
-            return this.GetSingleEntity<IEnumerable<T>>(uri);
+            return await this.GetSingleEntityAsync<IEnumerable<T>>(uri);
         }
 
         /// <summary>
@@ -95,6 +123,19 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentNullException">uri</exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected IEnumerable<T> GetUnpagedEntities<T>(string baseUri, object additionalQueryParams = null) {
+            return this.GetUnpagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
+        }
+
+        /// <summary>
+        /// Gets asynchronously the unpaged entities.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="additionalQueryParams">The additional query params.</param>
+        /// <returns>List of entities of given type.</returns>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        protected async Task<IEnumerable<T>> GetUnpagedEntitiesAsync<T>(string baseUri, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
 
@@ -102,7 +143,7 @@ namespace Altairis.Fakturoid.Client {
             var uri = baseUri + GetQueryStringFromParams(additionalQueryParams, "?");
 
             // Get result
-            return this.GetSingleEntity<IEnumerable<T>>(uri);
+            return await this.GetSingleEntityAsync<IEnumerable<T>>(uri);
         }
 
         /// <summary>
@@ -114,20 +155,36 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentNullException">uri</exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected T GetSingleEntity<T>(string uri) {
+            try {
+                return this.GetSingleEntityAsync<T>(uri).Result;
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Gets asynchronously single entity of given type.
+        /// </summary>
+        /// <typeparam name="T">Entity type.</typeparam>
+        /// <param name="uri">The URI.</param>
+        /// <returns>Single entity of given type.</returns>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        protected async Task<T> GetSingleEntityAsync<T>(string uri) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
 
             // Get result
             var c = this.Context.GetHttpClient();
-            var r = c.GetAsync(uri).Result;
+            var r = await c.GetAsync(uri);
 
             // Ensure result was successfull
             r.EnsureFakturoidSuccess();
 
             // Parse and return result
-            return r.Content.ReadAsAsync<T>().Result;
+            return await r.Content.ReadAsAsync<T>();
         }
-
 
         /// <summary>
         /// Creates new entity.
@@ -144,13 +201,36 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         /// <exception cref="System.FormatException"></exception>
         protected int CreateEntity<T>(string uri, T newEntity) {
+            try {
+                return this.CreateEntityAsync(uri, newEntity).Result;
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Creates asynchronously new entity.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="uri">The endpoint URI.</param>
+        /// <param name="newEntity">The new entity.</param>
+        /// <returns>ID of newly created entity.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// uri
+        /// or
+        /// newEntity
+        /// </exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        /// <exception cref="System.FormatException"></exception>
+        protected async Task<int> CreateEntityAsync<T>(string uri, T newEntity) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
             if (newEntity == null) throw new ArgumentNullException("newEntity");
 
             // Create new entity
             var c = this.Context.GetHttpClient();
-            var r = c.PostAsJsonAsync<T>(uri, newEntity).Result;
+            var r = await c.PostAsJsonAsync<T>(uri, newEntity);
             r.EnsureFakturoidSuccess();
 
             // Extract ID from URI
@@ -172,12 +252,27 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentNullException">uri</exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected void DeleteSingleEntity(string uri) {
+            try {
+                this.DeleteSingleEntityAsync(uri).Wait();
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Deletes asynchronously single entity.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <exception cref="System.ArgumentNullException">uri</exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        protected async Task DeleteSingleEntityAsync(string uri) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
 
             // Get result
             var c = this.Context.GetHttpClient();
-            var r = c.DeleteAsync(uri).Result;
+            var r = await c.DeleteAsync(uri);
 
             // Ensure result was successfull
             r.EnsureFakturoidSuccess();
@@ -197,23 +292,52 @@ namespace Altairis.Fakturoid.Client {
         /// </exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected T UpdateSingleEntity<T>(string uri, T entity) {
+            try {
+                return this.UpdateSingleEntityAsync(uri, entity).Result;
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Updates asynchronously the single entity.
+        /// </summary>
+        /// <typeparam name="T">Entity type</typeparam>
+        /// <param name="uri">The entity URI.</param>
+        /// <param name="entity">The entity object.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// uri
+        /// or
+        /// entity
+        /// </exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
+        protected async Task<T> UpdateSingleEntityAsync<T>(string uri, T entity) {
             if (uri == null) throw new ArgumentNullException("uri");
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "uri");
             if (entity == null) throw new ArgumentNullException("entity");
-            
+
             // Get result
             var c = this.Context.GetHttpClient();
-            var r = c.PutAsJsonAsync(uri, entity).Result;
+            var r = await c.PutAsJsonAsync(uri, entity);
 
             // Ensure result was successfull
             r.EnsureFakturoidSuccess();
 
             // Return updated entity
-            return r.Content.ReadAsAsync<T>().Result;
+            return await r.Content.ReadAsAsync<T>();
         }
 
         // Helper methods for this class
 
+        /// <summary>
+        /// Gets the query string from properties of any (usually anonymous) object.
+        /// </summary>
+        /// <param name="queryParams">The query parameters as properties of any object.</param>
+        /// <param name="prefix">The query string prefix.</param>
+        /// <returns>Returns constructed query string.</returns>
+        /// <exception cref="System.ArgumentNullException">prefix</exception>
         private static string GetQueryStringFromParams(object queryParams, string prefix) {
             if (prefix == null) throw new ArgumentNullException("prefix");
             if (queryParams == null) return string.Empty;
