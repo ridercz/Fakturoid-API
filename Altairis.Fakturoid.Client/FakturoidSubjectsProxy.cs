@@ -17,7 +17,18 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <returns>List of <see cref="JsonSubject"/> instances.</returns>
         public IEnumerable<JsonSubject> Select(string customId = null) {
-            return base.GetUnpagedEntities<JsonSubject>("subjects.json", new { custom_id = customId });
+            return base.GetAllPagedEntities<JsonSubject>("subjects.json", new { custom_id = customId });
+        }
+
+        /// <summary>
+        /// Gets paged list of subjects
+        /// </summary>
+        /// <param name="page">The page number.</param>
+        /// <returns>List of <see cref="JsonSubject"/> instances.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">page;Value must be greater than zero.</exception>
+        public IEnumerable<JsonSubject> Select(int page) {
+            if (page < 1) throw new ArgumentOutOfRangeException("page", "Value must be greater than zero.");
+            return base.GetPagedEntities<JsonSubject>("subjects.json", page);
         }
 
         /// <summary>
