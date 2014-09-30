@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Altairis.Fakturoid.Client {
     /// <summary>
@@ -17,6 +18,14 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>List of <see cref="JsonBankAccount"/> instances.</returns>
         public IEnumerable<JsonBankAccount> Select() {
             return base.GetUnpagedEntities<JsonBankAccount>("bank_accounts.json");
+        }
+
+        /// <summary>
+        /// Gets asynchronously list of all bank accounts.
+        /// </summary>
+        /// <returns>List of <see cref="JsonBankAccount"/> instances.</returns>
+        public async Task<IEnumerable<JsonBankAccount>> SelectAsync() {
+            return await base.GetUnpagedEntitiesAsync<JsonBankAccount>("bank_accounts.json");
         }
 
     }
