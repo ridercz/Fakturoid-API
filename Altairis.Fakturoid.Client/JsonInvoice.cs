@@ -200,6 +200,11 @@ namespace Altairis.Fakturoid.Client {
         public string footer_note { get; set; }
 
         /// <summary>
+        /// soukromá poznámka (nepovinné)
+        /// </summary>
+        public string private_note { get; set; }
+
+        /// <summary>
         /// Číslo bankovního účtu (nepovinné - doplní se z účtu)
         /// </summary>
         public string bank_account { get; set; }
