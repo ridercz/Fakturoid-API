@@ -130,6 +130,17 @@ namespace Altairis.Fakturoid.Client {
         public int? related_id { get; set; }
 
         /// <summary>
+        /// Opravný daňový doklad (false = faktura/proforma, nepovinné)
+        /// </summary>
+        public bool? correction { get; set; }
+
+        /// <summary>
+        /// ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad 
+        /// se doplní automaticky doplní ID opravného daňového dokladu (nepovinné)
+        /// </summary>
+        public int? correction_id { get; set; }
+
+        /// <summary>
         /// Token pro public akci
         /// </summary>
         public string token { get; set; }
@@ -204,6 +215,13 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         public string private_note { get; set; }
 
+        // TODO pole `tags` - dle webové dokumentace je typu "array"
+
+        /// <summary>
+        /// ID bankovního účtu (nepovinné - použije se výchozí bankovní účet)
+        /// </summary>
+        public int? bank_account_id { get; set; }
+
         /// <summary>
         /// Číslo bankovního účtu (nepovinné - doplní se z účtu)
         /// </summary>
@@ -235,6 +253,11 @@ namespace Altairis.Fakturoid.Client {
         public decimal exchange_rate { get; set; }
 
         /// <summary>
+        /// Tlačítko pro platbu PayPalem - true/false (nepovinné)
+        /// </summary>
+        public bool? paypal { get; set; }
+
+        /// <summary>
         /// Jazyk faktury
         /// </summary>
         public string language { get; set; }
@@ -243,6 +266,27 @@ namespace Altairis.Fakturoid.Client {
         /// Přenesená daňová povinnost
         /// </summary>
         public bool transferred_tax_liability { get; set; }
+
+        /// <summary>
+        /// Kód plnění pro souhrnná hlášení (pouze pro zahraniční faktury do EU, nepovinné)
+        /// </summary>
+        public int? supply_code { get; set; }
+
+        /// <summary>
+        /// Příznak, pokud je faktura v režimu MOSS (nepovinné)
+        /// </summary>
+        public bool? eu_electronic_service { get; set; }
+
+        /// <summary>
+        /// Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).
+        /// Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost.
+        /// </summary>
+        public string vat_price_mode { get; set; }
+
+        /// <summary>
+        /// Zaokrouhlit cenu s DPH při vystavení (nepovinné)
+        /// </summary>
+        public bool? round_total { get; set; }
 
         /// <summary>
         /// Součet bez DPH
