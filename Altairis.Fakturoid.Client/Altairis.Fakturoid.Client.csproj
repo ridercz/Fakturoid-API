@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Altairis.Fakturoid.Client</RootNamespace>
     <AssemblyName>Altairis.Fakturoid.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FakturoidBankAccountsProxy.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="InternalExtensionMethods.cs" />
     <Compile Include="FakturoidException.cs" />
     <Compile Include="FakturoidInvoicesProxy.cs" />
@@ -72,7 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Altairis.Fakturoid.Client.nuspec" />
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
