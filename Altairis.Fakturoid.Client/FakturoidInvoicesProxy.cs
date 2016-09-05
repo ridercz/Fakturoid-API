@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -350,7 +348,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The new invoice.</param>
         /// <returns>ID of newly created invoice.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public int Create(JsonInvoice entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
@@ -362,7 +360,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The new invoice.</param>
         /// <returns>ID of newly created invoice.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<int> CreateAsync(JsonInvoice entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
@@ -374,7 +372,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The invoice to update.</param>
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public JsonInvoice Update(JsonInvoice entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
@@ -386,7 +384,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The invoice to update.</param>
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<JsonInvoice> UpdateAsync(JsonInvoice entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 

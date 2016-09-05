@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Altairis.Fakturoid.Client {
 
@@ -24,12 +21,12 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="emailAddress">The email address od user being authenticated.</param>
         /// <param name="authenticationToken">The authentication token.</param>
         /// <param name="userAgent">The User-Agent HTTP header value.</param>
-        /// <exception cref="System.ArgumentNullException">accountName
+        /// <exception cref="ArgumentNullException">accountName
         /// or
         /// authenticationToken
         /// or
         /// userAgent</exception>
-        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;accountName
+        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;accountName
         /// or
         /// Value cannot be empty or whitespace only string.;authenticationToken
         /// or
@@ -111,7 +108,7 @@ namespace Altairis.Fakturoid.Client {
         /// Proxy for working with invoices
         /// </summary>
         public FakturoidInvoicesProxy Invoices { get; private set; }
-        
+
         /// <summary>
         /// Proxy for working with bank accounts.
         /// </summary>

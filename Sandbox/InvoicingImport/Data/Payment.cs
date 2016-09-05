@@ -7,11 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InvoicingImport.Data
-{
-    using System;
-    using System.Collections.Generic;
-    
+namespace InvoicingImport.Data {
+
     public partial class Payment
     {
         public int PaymentId { get; set; }

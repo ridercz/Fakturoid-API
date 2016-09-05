@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InvoicingImport.Data
-{
-    using System;
+namespace InvoicingImport.Data {
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class InvoicingEntities : DbContext
     {
         public InvoicingEntities()

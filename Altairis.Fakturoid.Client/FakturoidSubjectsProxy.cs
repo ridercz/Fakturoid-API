@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Altairis.Fakturoid.Client {
@@ -101,7 +99,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The new subject.</param>
         /// <returns>ID of newly created subject.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public int Create(JsonSubject entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
@@ -113,7 +111,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The new subject.</param>
         /// <returns>ID of newly created subject.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<int> CreateAsync(JsonSubject entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
@@ -125,7 +123,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The subject to update.</param>
         /// <returns>Instance of <see cref="JsonSubject"/> class with modified entity.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public JsonSubject Update(JsonSubject entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
@@ -137,7 +135,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="entity">The subject to update.</param>
         /// <returns>Instance of <see cref="JsonSubject"/> class with modified entity.</returns>
-        /// <exception cref="System.ArgumentNullException">entity</exception>
+        /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<JsonSubject> UpdateAsync(JsonSubject entity) {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 

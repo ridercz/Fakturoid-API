@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Altairis.Fakturoid.Client {
+﻿namespace Altairis.Fakturoid.Client {
 
     /// <summary>
     /// Bank account information, as received from JSON API.
     /// </summary>
     public class JsonBankAccount {
-        
+
         /// <summary>
         /// Identifikátor bankovního účtu
         /// </summary>

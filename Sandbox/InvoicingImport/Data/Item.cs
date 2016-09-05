@@ -7,11 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InvoicingImport.Data
-{
+namespace InvoicingImport.Data {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class Item
     {
         public int ItemId { get; set; }
