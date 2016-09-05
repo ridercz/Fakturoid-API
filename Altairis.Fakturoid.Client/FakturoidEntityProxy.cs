@@ -215,7 +215,7 @@ namespace Altairis.Fakturoid.Client {
         /// </exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         /// <exception cref="System.FormatException"></exception>
-        protected int CreateEntity<T>(string uri, T newEntity) {
+        protected int CreateEntity<T>(string uri, T newEntity) where T : class {
             try {
                 return this.CreateEntityAsync(uri, newEntity).Result;
             }
@@ -238,7 +238,7 @@ namespace Altairis.Fakturoid.Client {
         /// </exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         /// <exception cref="System.FormatException"></exception>
-        protected async Task<int> CreateEntityAsync<T>(string uri, T newEntity) {
+        protected async Task<int> CreateEntityAsync<T>(string uri, T newEntity) where T : class {
             if (uri == null) throw new ArgumentNullException(nameof(uri));
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(uri));
             if (newEntity == null) throw new ArgumentNullException(nameof(newEntity));
@@ -306,7 +306,7 @@ namespace Altairis.Fakturoid.Client {
         /// entity
         /// </exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected T UpdateSingleEntity<T>(string uri, T entity) {
+        protected T UpdateSingleEntity<T>(string uri, T entity) where T : class {
             try {
                 return this.UpdateSingleEntityAsync(uri, entity).Result;
             }
@@ -328,7 +328,7 @@ namespace Altairis.Fakturoid.Client {
         /// entity
         /// </exception>
         /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected async Task<T> UpdateSingleEntityAsync<T>(string uri, T entity) {
+        protected async Task<T> UpdateSingleEntityAsync<T>(string uri, T entity) where T : class {
             if (uri == null) throw new ArgumentNullException(nameof(uri));
             if (string.IsNullOrWhiteSpace(uri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(uri));
             if (entity == null) throw new ArgumentNullException(nameof(entity));
