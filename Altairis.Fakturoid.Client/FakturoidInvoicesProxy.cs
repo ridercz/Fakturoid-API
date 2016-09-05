@@ -448,6 +448,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The invoice id.</param>
         /// <param name="status">The new payment status.</param>
+        /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
         public async Task SetPaymentStatusAsync(int id, InvoicePaymentStatus status) {
             await this.SetPaymentStatusAsync(id, status, DateTime.Now);
         }

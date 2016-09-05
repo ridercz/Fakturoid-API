@@ -296,12 +296,10 @@ namespace Altairis.Fakturoid.Client {
         /// <typeparam name="T">Entity type</typeparam>
         /// <param name="uri">The entity URI.</param>
         /// <param name="entity">The entity object.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">
-        /// uri
+        /// <returns>Instance of modified entity.</returns>
+        /// <exception cref="ArgumentNullException">uri
         /// or
-        /// entity
-        /// </exception>
+        /// entity</exception>
         /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected T UpdateSingleEntity<T>(string uri, T entity) where T : class {
             try {
@@ -318,12 +316,13 @@ namespace Altairis.Fakturoid.Client {
         /// <typeparam name="T">Entity type</typeparam>
         /// <param name="uri">The entity URI.</param>
         /// <param name="entity">The entity object.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">
-        /// uri
-        /// or
-        /// entity
+        /// <returns>Returns the updated entity</returns>
+        /// <exception cref="System.ArgumentNullException">
         /// </exception>
+        /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.</exception>
+        /// <exception cref="ArgumentNullException">uri
+        /// or
+        /// entity</exception>
         /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         protected async Task<T> UpdateSingleEntityAsync<T>(string uri, T entity) where T : class {
             if (uri == null) throw new ArgumentNullException(nameof(uri));
