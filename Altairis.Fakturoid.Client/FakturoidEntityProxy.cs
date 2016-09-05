@@ -365,11 +365,11 @@ namespace Altairis.Fakturoid.Client {
                 if (rawValue == null) continue; // null queryParams do not propagate to query
 
                 string stringValue = null;
-                if (rawValue.GetType() == typeof(DateTime)) {
+                if (rawValue is DateTime) {
                     // Format date
                     stringValue = XmlConvert.ToString((DateTime)rawValue, XmlDateTimeSerializationMode.RoundtripKind);
                 }
-                else if (rawValue.GetType() == typeof(DateTime?)) {
+                else if (rawValue is DateTime?) {
                     // Format nullable date
                     var dateValue = (DateTime?)rawValue;
                     if (dateValue.HasValue) stringValue = XmlConvert.ToString(dateValue.Value, XmlDateTimeSerializationMode.RoundtripKind);
