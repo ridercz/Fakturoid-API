@@ -108,3 +108,4 @@ Backup*/
 UpgradeLog*.XML
 *.shfbproj_Altair
 /Documentation/Help
+.vs/
