@@ -19,8 +19,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Initializes a new instance of the <see cref="FakturoidException"/> class.
         /// </summary>
-        public FakturoidException()
-            : base() { }
+        public FakturoidException() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FakturoidException"/> class.
@@ -54,14 +53,6 @@ namespace Altairis.Fakturoid.Client {
         public FakturoidException(string format, Exception innerException, params object[] args)
             : base(string.Format(format, args), innerException) { }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FakturoidException"/> class.
-        /// </summary>
-        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-        protected FakturoidException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
-
         #endregion
 
         /// <summary>
@@ -73,13 +64,73 @@ namespace Altairis.Fakturoid.Client {
                 (int)response.StatusCode,
                 Enum.GetName(typeof(System.Net.HttpStatusCode), response.StatusCode))) {
 
-            // Set response and body
             this.Response = response;
-            this.ResponseBody = response.Content.ReadAsStringAsync().Result;
+            this.PopulateFromResponse();
+        }
 
-            // Populate internal list of errors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FakturoidException"/> class.
+        /// </summary>
+        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        protected FakturoidException(SerializationInfo info, StreamingContext context)
+            : base(info, context) {
+
+            this.Response = (HttpResponseMessage)info.GetValue("Response", typeof(HttpResponseMessage));
+            this.PopulateFromResponse();
+
+        }
+
+        /// <summary>
+        /// Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.
+        /// </summary>
+        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        /// <PermissionSet>
+        ///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*" />
+        ///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter" />
+        /// </PermissionSet>
+        public override void GetObjectData(SerializationInfo info, StreamingContext context) {
+            base.GetObjectData(info, context);
+
+            info.AddValue("Response", this.Response);
+        }
+
+        /// <summary>
+        /// Gets or sets the related HTTP response object.
+        /// </summary>
+        /// <value>
+        /// The HTTP response.
+        /// </value>
+        public HttpResponseMessage Response { get; private set; }
+
+        /// <summary>
+        /// Gets the HTTP response body as string.
+        /// </summary>
+        /// <value>
+        /// The response body as string.
+        /// </value>
+        public string ResponseBody { get; private set; }
+
+        /// <summary>
+        /// Gets the errors returned by Fakturoid API.
+        /// </summary>
+        /// <value>
+        /// The list of errors returned by Fakturoid API.
+        /// </value>
+        public IEnumerable<KeyValuePair<string, string>> Errors { get; private set; }
+
+        /// <summary>
+        /// Populates the exception properties from already set HttpResponseMessage in Response property.
+        /// </summary>
+        private void PopulateFromResponse() {
+            // Publish response body
+            this.ResponseBody = this.Response.Content.ReadAsStringAsync().Result;
+
+            // Populate list of errors
             var errors = new List<KeyValuePair<string, string>>();
-            if ((int)response.StatusCode == 422) { // Unprocessable entity
+            if ((int)this.Response.StatusCode == 422) {
+                // Unprocessable entity
                 try {
                     // Try to deserialize the error structure
                     var jsonError = (JObject)JsonConvert.DeserializeObject(this.ResponseBody);
@@ -97,30 +148,6 @@ namespace Altairis.Fakturoid.Client {
             }
             this.Errors = errors;
         }
-
-        /// <summary>
-        /// Gets or sets the related HTTP response object.
-        /// </summary>
-        /// <value>
-        /// The HTTP response.
-        /// </value>
-        public HttpResponseMessage Response { get; set; }
-
-        /// <summary>
-        /// Gets the HTTP response body as string.
-        /// </summary>
-        /// <value>
-        /// The response body as string.
-        /// </value>
-        public string ResponseBody { get; private set; }
-
-        /// <summary>
-        /// Gets the errors returned by Fakturoid API.
-        /// </summary>
-        /// <value>
-        /// The list of errors returned by Fakturoid API.
-        /// </value>
-        public IEnumerable<KeyValuePair<string, string>> Errors { get; private set; }
 
     }
 }
