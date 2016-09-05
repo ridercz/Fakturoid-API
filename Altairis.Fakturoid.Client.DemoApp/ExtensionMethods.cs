@@ -15,8 +15,8 @@ namespace Altairis.Fakturoid.Client.DemoApp {
         }
 
         public static void DumpProperties(this object element, TextWriter tw, string linePrefix = null) {
-            if (element == null) throw new ArgumentNullException("element");
-            if (tw == null) throw new ArgumentNullException("tw");
+            if (element == null) throw new ArgumentNullException(nameof(element));
+            if (tw == null) throw new ArgumentNullException(nameof(tw));
 
             var propertyInfos = element.GetType().GetMembers(BindingFlags.Public | BindingFlags.Instance).OfType<PropertyInfo>();
             foreach (var pi in propertyInfos) {

@@ -35,14 +35,14 @@ namespace Altairis.Fakturoid.Client {
         /// or
         /// Value cannot be empty or whitespace only string.;userAgent</exception>
         public FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent = DEFAULT_USER_AGENT) {
-            if (accountName == null) throw new ArgumentNullException("accountName");
-            if (string.IsNullOrWhiteSpace(accountName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "accountName");
-            if (emailAddress == null) throw new ArgumentNullException("emailAddress");
-            if (string.IsNullOrWhiteSpace(emailAddress)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "emailAddress");
-            if (authenticationToken == null) throw new ArgumentNullException("authenticationToken");
-            if (string.IsNullOrWhiteSpace(authenticationToken)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "authenticationToken");
-            if (userAgent == null) throw new ArgumentNullException("userAgent");
-            if (string.IsNullOrWhiteSpace(userAgent)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "userAgent");
+            if (accountName == null) throw new ArgumentNullException(nameof(accountName));
+            if (string.IsNullOrWhiteSpace(accountName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(accountName));
+            if (emailAddress == null) throw new ArgumentNullException(nameof(emailAddress));
+            if (string.IsNullOrWhiteSpace(emailAddress)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(emailAddress));
+            if (authenticationToken == null) throw new ArgumentNullException(nameof(authenticationToken));
+            if (string.IsNullOrWhiteSpace(authenticationToken)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(authenticationToken));
+            if (userAgent == null) throw new ArgumentNullException(nameof(userAgent));
+            if (string.IsNullOrWhiteSpace(userAgent)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(userAgent));
 
             // Configuration properties
             this.AccountName = accountName;

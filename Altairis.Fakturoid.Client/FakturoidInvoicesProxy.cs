@@ -129,7 +129,7 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public JsonInvoice SelectSingle(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
             return base.GetSingleEntity<JsonInvoice>(string.Format("invoices/{0}.json", id));
         }
@@ -143,7 +143,7 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task<JsonInvoice> SelectSingleAsync(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
             return await base.GetSingleEntityAsync<JsonInvoice>(string.Format("invoices/{0}.json", id));
         }
@@ -182,7 +182,7 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
         public async Task<IEnumerable<JsonInvoice>> SelectAsync(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException("subjectId", "Value must be greater than zero.");
+            if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
             // Get URI based on invoice type
             string uri;
@@ -274,8 +274,8 @@ namespace Altairis.Fakturoid.Client {
         /// subjectId;Value must be greater than zero.
         /// </exception>
         public async Task<IEnumerable<JsonInvoice>> SelectAsync(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            if (page < 1) throw new ArgumentOutOfRangeException("page", "Value must be greater than zero.");
-            if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException("subjectId", "Value must be greater than zero.");
+            if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
+            if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
             // Get URI based on invoice type
             string uri;
@@ -329,7 +329,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The contact id.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public void Delete(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
             base.DeleteSingleEntity(string.Format("invoices/{0}.json", id));
         }
@@ -340,7 +340,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The contact id.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task DeleteAsync(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
             await base.DeleteSingleEntityAsync(string.Format("invoices/{0}.json", id));
         }
@@ -352,7 +352,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>ID of newly created invoice.</returns>
         /// <exception cref="System.ArgumentNullException">entity</exception>
         public int Create(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException("entity");
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
 
             return base.CreateEntity("invoices.json", entity);
         }
@@ -364,7 +364,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>ID of newly created invoice.</returns>
         /// <exception cref="System.ArgumentNullException">entity</exception>
         public async Task<int> CreateAsync(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException("entity");
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
 
             return await base.CreateEntityAsync("invoices.json", entity);
         }
@@ -376,7 +376,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
         /// <exception cref="System.ArgumentNullException">entity</exception>
         public JsonInvoice Update(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException("entity");
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
 
             return base.UpdateSingleEntity(string.Format("invoices/{0}.json", entity.id), entity);
         }
@@ -388,7 +388,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
         /// <exception cref="System.ArgumentNullException">entity</exception>
         public async Task<JsonInvoice> UpdateAsync(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException("entity");
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
 
             return await base.UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.id), entity);
         }
@@ -415,7 +415,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="messageType">Type of the message.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task SendMessageAsync(int id, InvoiceMessageType messageType) {
-            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
             // Get name of event
             string eventName;
@@ -476,7 +476,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="status">The new payment status.</param>
         /// <param name="effectiveDate">The date when payment was performed.</param>
         public async Task SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate) {
-            if (id < 1) throw new ArgumentOutOfRangeException("id", "Value must be greater than zero.");
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
             // Get url
             string urlFormat;
