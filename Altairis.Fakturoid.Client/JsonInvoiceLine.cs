@@ -1,6 +1,9 @@
 ﻿namespace Altairis.Fakturoid.Client {
-    public class JsonInvoiceLine : JsonEntityLine
-    {
+    /// <summary>
+    /// Invoice line information, as received from JSON API.
+    /// </summary>
+    /// <seealso cref="Altairis.Fakturoid.Client.JsonEntityLine" />
+    public class JsonInvoiceLine : JsonEntityLine {
 
     }
 }

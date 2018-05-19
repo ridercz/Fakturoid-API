@@ -90,7 +90,6 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Gets list of all invoices.
         /// </summary>
-        /// <param name="type">The expense type.</param>
         /// <param name="status">The expense status.</param>
         /// <param name="subjectId">The customer subject id.</param>
         /// <param name="since">The date since when the expense was created.</param>
@@ -155,7 +154,6 @@ namespace Altairis.Fakturoid.Client {
         /// Gets paged list of invoices.
         /// </summary>
         /// <param name="page">The page number.</param>
-        /// <param name="type">The expense type.</param>
         /// <param name="status">The expense status.</param>
         /// <param name="subjectId">The customer subject id.</param>
         /// <param name="since">The date since when the expense was created.</param>
@@ -181,7 +179,6 @@ namespace Altairis.Fakturoid.Client {
         /// Gets asynchronously paged list of invoices.
         /// </summary>
         /// <param name="page">The page number.</param>
-        /// <param name="type">The expense type.</param>
         /// <param name="status">The expense status.</param>
         /// <param name="subjectId">The customer subject id.</param>
         /// <param name="since">The date since when the expense was created.</param>
