@@ -12,16 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{0B1AEF50
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{345349C4-78AA-4646-AF2F-90A515E9689E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{41B0E12E-0D1C-4BFB-9D3B-6E58A60EF65C}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{317A5E9D-07F5-4985-9C1F-E6A264615205}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client", "Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj", "{0817AD5F-3092-4916-AFBD-4431823D46D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.DemoApp", "Altairis.Fakturoid.Client.DemoApp\Altairis.Fakturoid.Client.DemoApp.csproj", "{585D7E5A-1222-4B21-92DE-95078693150A}"
 EndProject
@@ -31,16 +22,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.P
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FakturoidApi", "Documentation\FakturoidApi.shfbproj", "{394D3EC1-BA7D-4746-9815-1D74BF308302}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client", "Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj", "{ECCF38E7-7148-41B9-ADEB-67763E01970A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0817AD5F-3092-4916-AFBD-4431823D46D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{585D7E5A-1222-4B21-92DE-95078693150A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{585D7E5A-1222-4B21-92DE-95078693150A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{585D7E5A-1222-4B21-92DE-95078693150A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +45,10 @@ Global
 		{394D3EC1-BA7D-4746-9815-1D74BF308302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{394D3EC1-BA7D-4746-9815-1D74BF308302}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{394D3EC1-BA7D-4746-9815-1D74BF308302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

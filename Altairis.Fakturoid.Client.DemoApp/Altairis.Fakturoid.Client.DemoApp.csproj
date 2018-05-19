@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj">
-      <Project>{0817ad5f-3092-4916-afbd-4431823d46d3}</Project>
+      <Project>{eccf38e7-7148-41b9-adeb-67763e01970a}</Project>
       <Name>Altairis.Fakturoid.Client</Name>
     </ProjectReference>
   </ItemGroup>

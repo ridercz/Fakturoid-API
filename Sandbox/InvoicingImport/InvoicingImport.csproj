@@ -114,13 +114,13 @@
     <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj">
-      <Project>{0817ad5f-3092-4916-afbd-4431823d46d3}</Project>
-      <Name>Altairis.Fakturoid.Client</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\..\Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj">
+      <Project>{eccf38e7-7148-41b9-adeb-67763e01970a}</Project>
+      <Name>Altairis.Fakturoid.Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
