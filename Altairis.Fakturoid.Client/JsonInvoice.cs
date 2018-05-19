@@ -352,7 +352,5 @@ namespace Altairis.Fakturoid.Client {
         /// Položky faktury
         /// </summary>
         public ICollection<JsonInvoiceLine> lines { get; set; }
-    
-    
     }
 }

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FakturoidBankAccountsProxy.cs" />
+    <Compile Include="FakturoidExpensesProxy.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="InternalExtensionMethods.cs" />
     <Compile Include="FakturoidException.cs" />
@@ -66,7 +67,10 @@
     <Compile Include="FakturoidTodosProxy.cs" />
     <Compile Include="JsonAccount.cs" />
     <Compile Include="JsonBankAccount.cs" />
+    <Compile Include="JsonEntityLine.cs" />
     <Compile Include="JsonEvent.cs" />
+    <Compile Include="JsonExpenseLine.cs" />
+    <Compile Include="JsonExpense.cs" />
     <Compile Include="JsonInvoice.cs" />
     <Compile Include="JsonInvoiceLine.cs" />
     <Compile Include="JsonSubject.cs" />
