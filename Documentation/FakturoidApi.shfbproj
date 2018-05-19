@@ -16,7 +16,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 4.6.1</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.7</FrameworkVersion>
     <OutputPath>..\</OutputPath>
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
@@ -38,7 +38,7 @@
     <NamingMethod>MemberName</NamingMethod>
     <HelpTitle>Fakturoid API C#/.NET client</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
-    <CopyrightText>Copyright &amp;#169%3b Michal A. Valasek - Altairis, 2013-2016</CopyrightText>
+    <CopyrightText>Copyright &amp;#169%3b Michal A. Valasek - Altairis, 2013-2018</CopyrightText>
     <CopyrightHref>https://github.com/ridercz/Fakturoid-API/blob/master/LICENSE</CopyrightHref>
     <ProjectSummary>&amp;lt%3bp&amp;gt%3bThis projects aims to create C#/.NET client for API of Czech online accounting service Fakturoid.&amp;lt%3b/p&amp;gt%3b
 &amp;lt%3bp&amp;gt%3bThe library is developed in C#, Microsoft .NET version 4.5 and uses Microsoft ASP.NET Web API Client Libraries %28NuGet: &amp;lt%3bcode&amp;gt%3bMicrosoft.AspNet.WebApi.Client&amp;lt%3b/code&amp;gt%3b%29.&amp;lt%3b/p&amp;gt%3b
