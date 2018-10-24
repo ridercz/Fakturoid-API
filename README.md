@@ -28,3 +28,9 @@ The only **breaking change** from v1 is that constructor of `FakturoidContext` c
 * The `Documentation.chm` file build from the XML documentation is available for download. 
 
 > This project is developed and maintained by [Michal A. Valášek](http://www.rider.cz), (of [ASPNET.CZ](http://www.aspnet.cz/) fame) and the [Altairis](http://www.altairis.cz) corporation. This project has no official relation to the Fakturoid service or its owner.
+
+## Contributor Code of Conduct
+
+This project adheres to No Code of Conduct. We are all adults. We accept anyone's contributions. Nothing else matters.
+
+For more information please visit the [No Code of Conduct](https://github.com/domgetter/NCoC) homepage.

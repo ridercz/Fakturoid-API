@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{0B1AEF50-3AAE-46E5-AE0A-726B66E760AB}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
 		Documentation.chm = Documentation.chm
 		LICENSE = LICENSE
 		README.md = README.md
@@ -22,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.P
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FakturoidApi", "Documentation\FakturoidApi.shfbproj", "{394D3EC1-BA7D-4746-9815-1D74BF308302}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client", "Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj", "{ECCF38E7-7148-41B9-ADEB-67763E01970A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.Fakturoid.Client", "Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj", "{ECCF38E7-7148-41B9-ADEB-67763E01970A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
