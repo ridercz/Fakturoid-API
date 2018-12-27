@@ -1,4 +1,6 @@
-﻿# Fakturoid API C#/.NET client
+[![NuGet Status](https://img.shields.io/nuget/v/Altairis.Fakturoid.Client.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Altairis.Fakturoid.Client/)
+
+# Fakturoid API C#/.NET client
 
 This projects aims to create C#/.NET client for API of Czech online accounting service [Fakturoid](http://www.fakturoid.cz).
 
