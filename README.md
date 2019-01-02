@@ -6,7 +6,7 @@ This projects aims to create C#/.NET client for API of Czech online accounting s
 
 Please note that some more obscure functions are not (yet) supported - like API access to generators, reports etc. I'll implement them once I would need them, or you can do it in your fork (I accept pull request). The infrastructure is all here.
 
-The library is developed in C#, Microsoft .NET version 4.6.1 and uses _[Microsoft ASP.NET Web API Client Libraries](http://www.asp.net/web-api)_ (NuGet: `Microsoft.AspNet.WebApi.Client`).
+The library is developed in C#, uses _[Microsoft ASP.NET Web API Client Libraries](http://www.asp.net/web-api)_ (NuGet: `Microsoft.AspNet.WebApi.Client`) and conforms to .NET Standard 2.0 - therefore you can use it both in .NET Framework 4.x and .NET Core.
 
 Since version 2.5, the library exposes fully asynchronnous Task-based API for use with `async` and `await`.
 
