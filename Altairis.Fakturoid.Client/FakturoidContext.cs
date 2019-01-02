@@ -144,8 +144,9 @@ namespace Altairis.Fakturoid.Client {
             var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", this.EmailAddress, this.AuthenticationToken)));
 
             // Setup HTTP client
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(string.Format(API_BASE_URL_FORMAT, this.AccountName));
+            var client = new HttpClient {
+                BaseAddress = new Uri(string.Format(API_BASE_URL_FORMAT, this.AccountName))
+            };
             client.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeader);

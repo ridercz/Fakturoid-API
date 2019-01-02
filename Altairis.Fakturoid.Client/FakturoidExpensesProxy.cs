@@ -142,8 +142,8 @@ namespace Altairis.Fakturoid.Client {
             var queryParams = new {
                 status = statusString,
                 subject_id = subjectId.HasValue ? subjectId.Value.ToString() : null,
-                since = since,
-                number = number
+                since,
+                number
             };
 
             // Get entities
@@ -216,8 +216,8 @@ namespace Altairis.Fakturoid.Client {
             var queryParams = new {
                 status = statusString,
                 subject_id = subjectId.HasValue ? subjectId.Value.ToString() : null,
-                since = since,
-                number = number
+                since,
+                number
             };
 
             // Get entities
@@ -301,9 +301,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The expense id.</param>
         /// <param name="status">The new payment status.</param>
-        public void SetPaymentStatus(int id, ExpensePaymentStatus status) {
-            this.SetPaymentStatus(id, status, DateTime.Now);
-        }
+        public void SetPaymentStatus(int id, ExpensePaymentStatus status) => this.SetPaymentStatus(id, status, DateTime.Now);
 
         /// <summary>
         /// Sets asynchronously the expense payment status.
@@ -311,9 +309,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The expense id.</param>
         /// <param name="status">The new payment status.</param>
         /// <returns>Instance of <see cref="JsonExpense"/> class with modified entity.</returns>
-        public async Task SetPaymentStatusAsync(int id, ExpensePaymentStatus status) {
-            await this.SetPaymentStatusAsync(id, status, DateTime.Now);
-        }
+        public async Task SetPaymentStatusAsync(int id, ExpensePaymentStatus status) => await this.SetPaymentStatusAsync(id, status, DateTime.Now);
 
         /// <summary>
         /// Sets the expense payment status.

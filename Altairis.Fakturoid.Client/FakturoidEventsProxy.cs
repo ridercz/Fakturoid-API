@@ -16,9 +16,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="since">The date since when events are to be selected.</param>
         /// <returns>List of <see cref="JsonEvent"/> instances.</returns>
         /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-        public IEnumerable<JsonEvent> Select(DateTime? since = null) {
-            return base.GetAllPagedEntities<JsonEvent>("events.json", new { since = since });
-        }
+        public IEnumerable<JsonEvent> Select(DateTime? since = null) => base.GetAllPagedEntities<JsonEvent>("events.json", new { since });
 
         /// <summary>
         /// Gets asynchronously list of all current events.
@@ -26,9 +24,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="since">The date since when events are to be selected.</param>
         /// <returns>List of <see cref="JsonEvent"/> instances.</returns>
         /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-        public async Task<IEnumerable<JsonEvent>> SelectAsync(DateTime? since = null) {
-            return await base.GetAllPagedEntitiesAsync<JsonEvent>("events.json", new { since = since });
-        }
+        public async Task<IEnumerable<JsonEvent>> SelectAsync(DateTime? since = null) => await base.GetAllPagedEntitiesAsync<JsonEvent>("events.json", new { since });
 
         /// <summary>
         /// Gets list of current events, paged by 15.
@@ -42,7 +38,7 @@ namespace Altairis.Fakturoid.Client {
         public IEnumerable<JsonEvent> Select(int page, DateTime? since = null) {
             if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.");
 
-            return base.GetPagedEntities<JsonEvent>("events.json", page, new { since = since });
+            return base.GetPagedEntities<JsonEvent>("events.json", page, new { since });
         }
 
         /// <summary>
@@ -57,7 +53,7 @@ namespace Altairis.Fakturoid.Client {
         public async Task<IEnumerable<JsonEvent>> SelectAsync(int page, DateTime? since = null) {
             if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.");
 
-            return await base.GetPagedEntitiesAsync<JsonEvent>("events.json", page, new { since = since });
+            return await base.GetPagedEntitiesAsync<JsonEvent>("events.json", page, new { since });
         }
 
     }

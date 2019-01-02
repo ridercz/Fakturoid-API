@@ -7,9 +7,7 @@ using System.Reflection;
 namespace Altairis.Fakturoid.Client.DemoApp {
     internal static class ExtensionMethods {
 
-        public static void DumpProperties(this object element) {
-            element.DumpProperties(Console.Out);
-        }
+        public static void DumpProperties(this object element) => element.DumpProperties(Console.Out);
 
         public static void DumpProperties(this object element, TextWriter tw, string linePrefix = null) {
             if (element == null) throw new ArgumentNullException(nameof(element));

@@ -17,9 +17,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>
         /// List of <see cref="JsonSubject" /> instances.
         /// </returns>
-        public IEnumerable<JsonSubject> Select(string customId = null) {
-            return base.GetAllPagedEntities<JsonSubject>("subjects.json", new { custom_id = customId });
-        }
+        public IEnumerable<JsonSubject> Select(string customId = null) => base.GetAllPagedEntities<JsonSubject>("subjects.json", new { custom_id = customId });
 
         /// <summary>
         /// Gets asynchronously list of all subjects.
@@ -28,9 +26,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>
         /// List of <see cref="JsonSubject" /> instances.
         /// </returns>
-        public async Task<IEnumerable<JsonSubject>> SelectAsync(string customId = null) {
-            return await base.GetAllPagedEntitiesAsync<JsonSubject>("subjects.json", new { custom_id = customId });
-        }
+        public async Task<IEnumerable<JsonSubject>> SelectAsync(string customId = null) => await base.GetAllPagedEntitiesAsync<JsonSubject>("subjects.json", new { custom_id = customId });
 
         /// <summary>
         /// Gets paged list of subjects

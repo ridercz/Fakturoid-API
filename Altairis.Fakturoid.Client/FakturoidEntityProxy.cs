@@ -21,8 +21,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="context">The related context.</param>
         /// <exception cref="ArgumentNullException">context</exception>
         protected FakturoidEntityProxy(FakturoidContext context) {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            this.Context = context;
+            this.Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         /// <summary>
@@ -364,19 +363,16 @@ namespace Altairis.Fakturoid.Client {
                 if (rawValue is DateTime) {
                     // Format date
                     stringValue = XmlConvert.ToString((DateTime)rawValue, XmlDateTimeSerializationMode.RoundtripKind);
-                }
-                else if (rawValue is DateTime?) {
+                } else if (rawValue is DateTime?) {
                     // Format nullable date
                     var dateValue = (DateTime?)rawValue;
                     if (dateValue.HasValue) stringValue = XmlConvert.ToString(dateValue.Value, XmlDateTimeSerializationMode.RoundtripKind);
-                }
-                else {
+                } else {
                     var formattableValue = rawValue as IFormattable;
                     if (formattableValue != null) {
                         // Format IFormattable rawValue
                         stringValue = formattableValue.ToString(null, System.Globalization.CultureInfo.InvariantCulture);
-                    }
-                    else {
+                    } else {
                         // Format other value - just use ToString()
                         stringValue = rawValue.ToString();
                     }
