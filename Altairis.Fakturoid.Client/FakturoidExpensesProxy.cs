@@ -343,7 +343,7 @@ namespace Altairis.Fakturoid.Client {
             string urlFormat;
             switch (status) {
                 case ExpensePaymentStatus.Paid:
-                    urlFormat = "expenses/{0}/fire.json?event=pay&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
+                    urlFormat = "expenses/{0}/fire.json?event=pay&paid_on=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
                     break;
                 default:
                     urlFormat = "expenses/{0}/fire.json?event=remove_payment";
