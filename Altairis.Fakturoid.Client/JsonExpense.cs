@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Altairis.Fakturoid.Client {
@@ -91,6 +91,11 @@ namespace Altairis.Fakturoid.Client {
         /// Datum vystavení (zobrazeno na faktuře)
         /// </summary>
         public DateTime? issued_on { get; set; }
+
+        /// <summary>
+        /// Datum přijetí (nepovinné - doplní se dle duzp)
+        /// </summary>
+        public DateTime? received_on { get; set; }
 
         /// <summary>
         /// Datum zdanitelného plnění (nepovinné - doplní se dnes)
