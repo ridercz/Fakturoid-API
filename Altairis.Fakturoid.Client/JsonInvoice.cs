@@ -322,6 +322,11 @@ namespace Altairis.Fakturoid.Client {
         public decimal remaining_native_amount { get; set; }
 
         /// <summary>
+        /// Příloha
+        /// </summary>
+        public JsonAttachment attachment { get; set; }
+
+        /// <summary>
         /// Adresa faktury v GUI
         /// </summary>
         public string html_url { get; set; }
