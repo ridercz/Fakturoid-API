@@ -202,12 +202,15 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         public decimal native_total { get; set; }
 
+        /// <summary>
+        /// Příloha
+        /// </summary>
+        public JsonAttachment attachment { get; set; }
 
         /// <summary>
         /// Adresa nákladu v GUI
         /// </summary>
         public string html_url { get; set; }
-
 
         /// <summary>
         /// API adresa nákladu
