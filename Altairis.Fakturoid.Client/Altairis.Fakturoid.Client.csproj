@@ -10,7 +10,7 @@
     <Description>The C#/.NET client library for Fakturoid.cz service API.</Description>
     <PackageProjectUrl>https://github.com/ridercz/Fakturoid-API</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/ridercz/Fakturoid-API/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://www.cdn.altairis.cz/NuGet/icon-150x150.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/ridercz/Fakturoid-API/master/NuGet-64x64.png</PackageIconUrl>
     <Copyright>Copyright (c) Altairis, 2013-2019</Copyright>
     <RepositoryUrl>https://github.com/ridercz/Fakturoid-API.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
