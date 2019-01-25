@@ -124,7 +124,10 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         public string private_note { get; set; }
 
-        // TODO pole `tags` - dle webové dokumentace je typu "array"
+        /// <summary>
+        /// Seznam tagů nákladu
+        /// </summary>
+        public ICollection<string> tags { get; set; }
 
         /// <summary>
         /// Číslo bankovního účtu (nepovinné - doplní se z účtu)
