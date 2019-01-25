@@ -530,7 +530,9 @@ namespace Altairis.Fakturoid.Client {
             };
 
             // Get url
-            await this.UpdateSingleEntityAsync($"invoices/{id}.json", attachment);
+            var c = this.Context.GetHttpClient();
+            var r = await c.PutAsJsonAsync($"invoices/{id}.json", attachment);
+            r.EnsureFakturoidSuccess();
         }
 
         /// <summary>
@@ -538,7 +540,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The invoice id.</param>
         /// <param name="filePath">The file path.</param>
-        public async Task SetAttachment(int id, string filePath)
+        public void SetAttachment(int id, string filePath)
         {
             try {
                 this.SetAttachmentAsync(id, filePath).Wait();
@@ -561,7 +563,7 @@ namespace Altairis.Fakturoid.Client {
             var mimeType = MimeTypes.GetMimeType(filePath);
             var bytes = File.ReadAllBytes(filePath);
 
-            this.SetAttachmentAsync(id, mimeType, bytes);
+            await this.SetAttachmentAsync(id, mimeType, bytes);
         }
 
     }
