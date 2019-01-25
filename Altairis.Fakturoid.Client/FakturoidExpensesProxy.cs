@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
@@ -349,6 +350,75 @@ namespace Altairis.Fakturoid.Client {
             var c = this.Context.GetHttpClient();
             var r = await c.PostAsync(string.Format(urlFormat, id), new StringContent(string.Empty));
             r.EnsureFakturoidSuccess();
+        }
+
+        /// <summary>
+        /// Sets attachment for invoice.
+        /// </summary>
+        /// <param name="id">The invoice id.</param>
+        /// <param name="mimeType">The mime type.</param>
+        /// <param name="fileContent">The content of the file.</param>
+        public void SetAttachment(int id, string mimeType, byte[] fileContent)
+        {
+            try {
+                this.SetAttachmentAsync(id, mimeType, fileContent).Wait();
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Sets attachment for invoice.
+        /// </summary>
+        /// <param name="id">The invoice id.</param>
+        /// <param name="mimeType">The mime type.</param>
+        /// <param name="fileContent">The content of the file.</param>
+        public async Task SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
+        {
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
+            if (mimeType == null) throw new ArgumentNullException(nameof(mimeType));
+            if (fileContent == null) throw new ArgumentNullException(nameof(fileContent));
+
+            var base64 = Convert.ToBase64String(fileContent);
+            var attachment = new {
+                attachment = $"data:{mimeType};base64,{base64}"
+            };
+
+            var c = this.Context.GetHttpClient();
+            var r = await c.PutAsJsonAsync($"expenses/{id}.json", attachment);
+            r.EnsureFakturoidSuccess();
+        }
+
+        /// <summary>
+        /// Sets attachment for invoice.
+        /// </summary>
+        /// <param name="id">The invoice id.</param>
+        /// <param name="filePath">The file path.</param>
+        public void SetAttachment(int id, string filePath)
+        {
+            try {
+                this.SetAttachmentAsync(id, filePath).Wait();
+            }
+            catch (AggregateException aex) {
+                throw aex.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Sets attachment for invoice.
+        /// </summary>
+        /// <param name="id">The invoice id.</param>
+        /// <param name="filePath">The file path.</param>
+        public async Task SetAttachmentAsync(int id, string filePath)
+        {
+            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
+            if (filePath == null) throw new ArgumentNullException(nameof(filePath));
+
+            var mimeType = MimeTypes.GetMimeType(filePath);
+            var bytes = File.ReadAllBytes(filePath);
+
+            await this.SetAttachmentAsync(id, mimeType, bytes);
         }
 
     }
