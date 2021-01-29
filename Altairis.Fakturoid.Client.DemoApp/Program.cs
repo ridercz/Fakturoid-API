@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Altairis.Fakturoid.Client.DemoApp {
-    class Program {
+    internal class Program {
         private static FakturoidContext context;
 
-        static void Main(string[] args) {
+        private static void Main(string[] args) {
             Console.WriteLine("Fakturoid API v2 C#/.NET Client Demo Application");
             Console.WriteLine("http://github.com/ridercz/Fakturoid-API");
-            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2014");
+            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2021");
             Console.WriteLine();
 
-            // Verify commandline arguments 
+            // Verify commandline arguments
             if (args.Length != 3) {
                 Console.WriteLine("USAGE: fdemo accountname email token");
                 return;
@@ -171,7 +171,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             Console.Write("Getting bank accounts...");
             var ba = context.BankAccounts.Select().ToArray();
             Console.WriteLine("OK, {0} found", ba.Length);
-            for (int i = 0; i < ba.Length; i++) {
+            for (var i = 0; i < ba.Length; i++) {
                 Console.WriteLine("Item #{0}:", i);
                 ba[i].DumpProperties(Console.Out, "\t");
             }

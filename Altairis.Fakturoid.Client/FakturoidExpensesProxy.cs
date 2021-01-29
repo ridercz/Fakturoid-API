@@ -37,8 +37,7 @@ namespace Altairis.Fakturoid.Client {
     /// <summary>
     /// Expense payment status
     /// </summary>
-    public enum ExpensePaymentStatus
-    {
+    public enum ExpensePaymentStatus {
         /// <summary>
         /// Reset payment status to unpaid.
         /// </summary>
@@ -102,8 +101,7 @@ namespace Altairis.Fakturoid.Client {
         public IEnumerable<JsonExpense> Select(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             try {
                 return this.SelectAsync(status, subjectId, since, number).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -123,7 +121,7 @@ namespace Altairis.Fakturoid.Client {
             if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
             // Get URI based on expense type
-            string uri = CollectionPath;
+            var uri = CollectionPath;
 
             // Get status string based
             string statusString = null;
@@ -170,8 +168,7 @@ namespace Altairis.Fakturoid.Client {
         public IEnumerable<JsonExpense> Select(int page, ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             try {
                 return this.SelectAsync(page, status, subjectId, since, number).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -197,7 +194,7 @@ namespace Altairis.Fakturoid.Client {
             if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
             // Get URI based on expense type
-            string uri = CollectionPath;
+            var uri = CollectionPath;
 
             // Get status string based
             string statusString = null;
@@ -295,8 +292,6 @@ namespace Altairis.Fakturoid.Client {
             return await base.UpdateSingleEntityAsync(string.Format(EntityPath, entity.id), entity);
         }
 
-
-
         /// <summary>
         /// Sets the expense payment status.
         /// </summary>
@@ -321,8 +316,7 @@ namespace Altairis.Fakturoid.Client {
         public void SetPaymentStatus(int id, ExpensePaymentStatus status, DateTime effectiveDate) {
             try {
                 this.SetPaymentStatusAsync(id, status, effectiveDate).Wait();
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -358,12 +352,10 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The invoice id.</param>
         /// <param name="mimeType">The mime type.</param>
         /// <param name="fileContent">The content of the file.</param>
-        public void SetAttachment(int id, string mimeType, byte[] fileContent)
-        {
+        public void SetAttachment(int id, string mimeType, byte[] fileContent) {
             try {
                 this.SetAttachmentAsync(id, mimeType, fileContent).Wait();
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -374,8 +366,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The invoice id.</param>
         /// <param name="mimeType">The mime type.</param>
         /// <param name="fileContent">The content of the file.</param>
-        public async Task SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
-        {
+        public async Task SetAttachmentAsync(int id, string mimeType, byte[] fileContent) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
             if (mimeType == null) throw new ArgumentNullException(nameof(mimeType));
             if (fileContent == null) throw new ArgumentNullException(nameof(fileContent));
@@ -395,12 +386,10 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The invoice id.</param>
         /// <param name="filePath">The file path.</param>
-        public void SetAttachment(int id, string filePath)
-        {
+        public void SetAttachment(int id, string filePath) {
             try {
                 this.SetAttachmentAsync(id, filePath).Wait();
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -410,8 +399,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The invoice id.</param>
         /// <param name="filePath">The file path.</param>
-        public async Task SetAttachmentAsync(int id, string filePath)
-        {
+        public async Task SetAttachmentAsync(int id, string filePath) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 

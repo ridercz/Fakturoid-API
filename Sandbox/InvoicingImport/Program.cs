@@ -1,15 +1,15 @@
-﻿using Altairis.Fakturoid.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Altairis.Fakturoid.Client;
 using InvoicingImport.Data;
 
 namespace InvoicingImport {
-    class Program {
+    internal class Program {
         private static FakturoidContext context;
         private static Dictionary<int, int> subjectIdMap;
 
-        static void Main(string[] args) {
+        private static void Main(string[] args) {
             // Verify commandline arguments 
             if (args.Length != 3) {
                 Console.WriteLine("USAGE: InvoicingImport accountname email token");

@@ -1,15 +1,15 @@
 ﻿using System;
 
 namespace Altairis.Fakturoid.Client.Purge {
-    class Program {
-        static void Main(string[] args) {
+    internal class Program {
+        private static void Main(string[] args) {
             // Show banner
             Console.WriteLine("Fakturoid API v2 C#/.NET Client Purge Application");
             Console.WriteLine("http://github.com/ridercz/Fakturoid-API");
-            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2014");
+            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2021");
             Console.WriteLine();
 
-            // Verify commandline arguments 
+            // Verify commandline arguments
             if (args.Length != 3) {
                 Console.WriteLine("USAGE: fpurge accountname email token");
                 return;
