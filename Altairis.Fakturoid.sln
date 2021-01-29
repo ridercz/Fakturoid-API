@@ -3,18 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{0B1AEF50-3AAE-46E5-AE0A-726B66E760AB}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
-		Documentation.chm = Documentation.chm
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{345349C4-78AA-4646-AF2F-90A515E9689E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{317A5E9D-07F5-4985-9C1F-E6A264615205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.DemoApp", "Altairis.Fakturoid.Client.DemoApp\Altairis.Fakturoid.Client.DemoApp.csproj", "{585D7E5A-1222-4B21-92DE-95078693150A}"
 EndProject
@@ -22,9 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingImport", "Sandbox\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Fakturoid.Client.Purge", "Altairis.Fakturoid.Client.Purge\Altairis.Fakturoid.Client.Purge.csproj", "{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "FakturoidApi", "Documentation\FakturoidApi.shfbproj", "{394D3EC1-BA7D-4746-9815-1D74BF308302}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.Fakturoid.Client", "Altairis.Fakturoid.Client\Altairis.Fakturoid.Client.csproj", "{ECCF38E7-7148-41B9-ADEB-67763E01970A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37D71DC3-ACB6-491E-8DBD-A39E179B0438}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,9 +39,6 @@ Global
 		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BBAECBD-0A8D-4F3C-A07E-9FA518E999E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{394D3EC1-BA7D-4746-9815-1D74BF308302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{394D3EC1-BA7D-4746-9815-1D74BF308302}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{394D3EC1-BA7D-4746-9815-1D74BF308302}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECCF38E7-7148-41B9-ADEB-67763E01970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,7 +49,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2FA02938-CE72-479C-8481-9AD5D65FA15C} = {345349C4-78AA-4646-AF2F-90A515E9689E}
-		{394D3EC1-BA7D-4746-9815-1D74BF308302} = {317A5E9D-07F5-4985-9C1F-E6A264615205}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95E2231F-1D67-435B-9D36-081B31F95966}
