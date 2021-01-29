@@ -30,6 +30,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             //ShowTodos();
             //ShowSubjects();
             //ShowInvoices();
+            //SearchSubjects("Company");
 
             // Wait for ENTER
             Console.WriteLine("Press ENTER to continue...");
@@ -124,6 +125,18 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             context.Subjects.Delete(newId);
             Console.WriteLine("OK");
 
+            Console.WriteLine();
+        }
+
+        private static void SearchSubjects(string searchTerm)
+        {
+            Console.Write($"Searching Subjects. Term: {searchTerm}...");
+            var subjects = context.Subjects.Search(searchTerm);
+            Console.WriteLine("OK");
+            foreach (var subject in subjects)
+            {
+                Console.WriteLine("Name: {0}, RegNo: {1}", subject.name, subject.registration_no);
+            }
             Console.WriteLine();
         }
 
