@@ -1,0 +1,1815 @@
+# Altairis.Fakturoid.Client.dll v.2.9.0.0 API documentation
+
+# All types
+
+|   |   |   |
+|---|---|---|
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEvent Class](#jsonevent-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonExpense Class](#jsonexpense-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonInvoice Class](#jsoninvoice-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonSubject Class](#jsonsubject-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [JsonAccount Class](#jsonaccount-class) | [JsonTodo Class](#jsontodo-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [AllowNullAttribute Class](#allownullattribute-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [NotNullWhenAttribute Class](#notnullwhenattribute-class) |
+| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonEntityLine Class](#jsonentityline-class) |   |
+# ExpensePaymentStatus Enum
+
+Namespace: Altairis.Fakturoid.Client
+
+Expense payment status
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Unpaid** | Reset payment status to unpaid. |
+| **Paid** | Set status of regular expense to paid. |
+# ExpenseStatusCondition Enum
+
+Namespace: Altairis.Fakturoid.Client
+
+Query status condition for listing expenses
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Any** | Any |
+| **Open** | Náklad není zaplacen, odeslán ani po splatnosti. |
+| **Overdue** | Náklad je po splatnosti. |
+| **Paid** | Náklad je zaplacen. |
+# FakturoidBankAccountsProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class form working with bank accounts
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**Select()**](#select) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonBankAccount](#jsonbankaccount-class)\> | Gets list of all bank accounts. |
+| [**SelectAsync()**](#selectasync) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonBankAccount](#jsonbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
+## Methods
+
+### Select()
+
+Gets list of all bank accounts.
+
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonBankAccount](#jsonbankaccount-class)>
+
+List of **Altairis.Fakturoid.Client.JsonBankAccount** instances.
+
+### SelectAsync()
+
+Gets asynchronously list of all bank accounts.
+
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonBankAccount](#jsonbankaccount-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonBankAccount** instances.
+
+# FakturoidContext Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Class representing connection to Fakturoid API, holds authentication information etc.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **AccountName** | string | Gets the Fakturoid account name. |
+| **EmailAddress** | string | Gets the Fakturoid account email address. |
+| **AuthenticationToken** | string | Gets the Fakturoid authentication token. |
+| **UserAgent** | string | Gets the User-Agent header used for HTTP requests. |
+| **Events** | [FakturoidEventsProxy](#fakturoideventsproxy-class) | Proxy for working with events. |
+| **Todos** | [FakturoidTodosProxy](#fakturoidtodosproxy-class) | Proxy for working with todos. |
+| **Subjects** | [FakturoidSubjectsProxy](#fakturoidsubjectsproxy-class) | Proxy for working with subjects. |
+| **Invoices** | [FakturoidInvoicesProxy](#fakturoidinvoicesproxy-class) | Proxy for working with invoices |
+| **Expenses** | [FakturoidExpensesProxy](#fakturoidexpensesproxy-class) | Proxy for working with expenses |
+| **BankAccounts** | [FakturoidBankAccountsProxy](#fakturoidbankaccountsproxy-class) | Proxy for working with bank accounts. |
+## Constructors
+
+| Name | Summary |
+|---|---|
+| [**FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent)**](#fakturoidcontextstring-accountname-string-emailaddress-string-authenticationtoken-string-useragent) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**GetAccountInfo()**](#getaccountinfo) | [JsonAccount](#jsonaccount-class) | Gets the account information. |
+## Constructors
+
+### FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent)
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class.
+
+| Parameter | Type | Description |
+|---|---|---|
+| accountName | string | Account name (accountName). |
+| emailAddress | string | The email address od user being authenticated. |
+| authenticationToken | string | The authentication token. |
+| userAgent | string | The User-Agent HTTP header value. |
+
+
+## Methods
+
+### GetAccountInfo()
+
+Gets the account information.
+
+
+
+### Returns
+
+[JsonAccount](#jsonaccount-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonAccount** class containing the account information.
+
+# FakturoidEntityProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Proxy class for working with any Fakturoid entity
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+# FakturoidEventsProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with events
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**Select(DateTime? since)**](#selectdatetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\> | Gets list of all current events. |
+| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\> | Gets list of current events, paged by 15. |
+| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of all current events. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of current events, paged by 15. |
+## Methods
+
+### Select(DateTime? since)
+
+Gets list of all current events.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTime? | The date since when events are to be selected. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>
+
+List of **Altairis.Fakturoid.Client.JsonEvent** instances.
+
+### Select(int page, DateTime? since)
+
+Gets list of current events, paged by 15.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTime? | The date since when events are to be selected. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>
+
+List of **Altairis.Fakturoid.Client.JsonEvent** instances.
+
+### SelectAsync(DateTime? since)
+
+Gets asynchronously list of all current events.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTime? | The date since when events are to be selected. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonEvent** instances.
+
+### SelectAsync(int page, DateTime? since)
+
+Gets asynchronously list of current events, paged by 15.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTime? | The date since when events are to be selected. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonEvent** instances.
+
+# FakturoidException Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception)
+
+The exception representing error returned by Fakturoid API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Response** | [HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) | Gets or sets the related HTTP response object. |
+| **ResponseBody** | string | Gets the HTTP response body as string. |
+| **Errors** | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<KeyValuePair\<string, string\>\> | Gets the errors returned by Fakturoid API. |
+| **TargetSite** | [MethodBase](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodbase) |  |
+| **StackTrace** | string |  |
+| **Message** | string |  |
+| **Data** | [IDictionary](https://docs.microsoft.com/en-us/dotnet/api/system.collections.idictionary) |  |
+| **InnerException** | [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) |  |
+| **HelpLink** | string |  |
+| **Source** | string |  |
+| **HResult** | int |  |
+## Constructors
+
+| Name | Summary |
+|---|---|
+| [**FakturoidException()**](#fakturoidexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string message)**](#fakturoidexceptionstring-message) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) response)**](#fakturoidexceptionhttpresponsemessagehttpsdocsmicrosoftcomen-usdotnetapisystemnethttphttpresponsemessage-response) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string format, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)**](#fakturoidexceptionstring-format-objecthttpsdocsmicrosoftcomen-usdotnetapisystemobject-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string message, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException)**](#fakturoidexceptionstring-message-exceptionhttpsdocsmicrosoftcomen-usdotnetapisystemexception-innerexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string format, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)**](#fakturoidexceptionstring-format-exceptionhttpsdocsmicrosoftcomen-usdotnetapisystemexception-innerexception-objecthttpsdocsmicrosoftcomen-usdotnetapisystemobject-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**GetObjectData([SerializationInfo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.serializationinfo) info, StreamingContext context)**](#getobjectdataserializationinfohttpsdocsmicrosoftcomen-usdotnetapisystemruntimeserializationserializationinfo-info-streamingcontext-context) | void | Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception. |
+## Constructors
+
+### FakturoidException()
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
+
+
+
+### FakturoidException(string message)
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
+
+| Parameter | Type | Description |
+|---|---|---|
+| message | string | The message that describes the error. |
+
+
+### FakturoidException([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) response)
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
+
+| Parameter | Type | Description |
+|---|---|---|
+| response | [HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) | The HTTP response to get exception information from. |
+
+
+### FakturoidException(string format, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
+
+| Parameter | Type | Description |
+|---|---|---|
+| format | string | The format. |
+| args | [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) | The args. |
+
+
+### FakturoidException(string message, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException)
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
+
+| Parameter | Type | Description |
+|---|---|---|
+| message | string | The error message that explains the reason for the exception. |
+| innerException | [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) | The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. |
+
+
+### FakturoidException(string format, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)
+
+Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
+
+| Parameter | Type | Description |
+|---|---|---|
+| format | string | The format. |
+| innerException | [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) | The inner exception. |
+| args | [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) | The args. |
+
+
+## Methods
+
+### GetObjectData([SerializationInfo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.serializationinfo) info, StreamingContext context)
+
+Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception.
+
+| Parameter | Type | Description |
+|---|---|---|
+| info | [SerializationInfo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.serializationinfo) | The **System.Runtime.Serialization.SerializationInfo** that holds the serialized object data about the exception being thrown. |
+| context | StreamingContext | The **System.Runtime.Serialization.StreamingContext** that contains contextual information about the source or destination. |
+
+
+# FakturoidExpensesProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with invoices.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**Create([JsonExpense](#jsonexpense-class) entity)**](#createjsonexpensejsonexpense-class-entity) | int | Creates the specified new expense. |
+| [**CreateAsync([JsonExpense](#jsonexpense-class) entity)**](#createasyncjsonexpensejsonexpense-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<int\> | Creates asynchronously the specified new expense. |
+| [**Delete(int id)**](#deleteint-id) | void | Deletes expense with specified id. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Deletes asynchronously expense with specified id. |
+| [**Select([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\> | Gets list of all invoices. |
+| [**Select(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\> | Gets paged list of invoices. |
+| [**SelectAsync([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectSingle(int id)**](#selectsingleint-id) | [JsonExpense](#jsonexpense-class) | Selects single expense with specified ID. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonExpense](#jsonexpense-class)\> | Selects asynchronously single expense with specified ID. |
+| [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
+| [**SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | void | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentasyncint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
+| [**SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | void | Sets the expense payment status. |
+| [**SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | void | Sets the expense payment status. |
+| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the expense payment status. |
+| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the expense payment status. |
+| [**Update([JsonExpense](#jsonexpense-class) entity)**](#updatejsonexpensejsonexpense-class-entity) | [JsonExpense](#jsonexpense-class) | Updates the specified expense. |
+| [**UpdateAsync([JsonExpense](#jsonexpense-class) entity)**](#updateasyncjsonexpensejsonexpense-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
+## Methods
+
+### Create([JsonExpense](#jsonexpense-class) entity)
+
+Creates the specified new expense.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonExpense](#jsonexpense-class) | The new expense. |
+
+
+### Returns
+
+int
+
+ID of newly created expense.
+
+### CreateAsync([JsonExpense](#jsonexpense-class) entity)
+
+Creates asynchronously the specified new expense.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonExpense](#jsonexpense-class) | The new expense. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<int>
+
+ID of newly created expense.
+
+### Delete(int id)
+
+Deletes expense with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### DeleteAsync(int id)
+
+Deletes asynchronously expense with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### Select([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets list of all invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the expense was created. |
+| number | string | The expense display number. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>
+
+List of **Altairis.Fakturoid.Client.JsonExpense** instances.
+
+### Select(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets paged list of invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the expense was created. |
+| number | string | The expense display number. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>
+
+List of **Altairis.Fakturoid.Client.JsonExpense** instances.
+
+### SelectAsync([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously list of all invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the expense was created. |
+| number | string | The expense display number. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonExpense** instances.
+
+### SelectAsync(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously paged list of invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the expense was created. |
+| number | string | The expense display number. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonExpense** instances.
+
+### SelectSingle(int id)
+
+Selects single expense with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+
+
+### Returns
+
+[JsonExpense](#jsonexpense-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonExpense** class.
+
+### SelectSingleAsync(int id)
+
+Selects asynchronously single expense with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonExpense](#jsonexpense-class)>
+
+Instance of **Altairis.Fakturoid.Client.JsonExpense** class.
+
+### SetAttachment(int id, string filePath)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| filePath | string | The file path. |
+
+
+### SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| mimeType | string | The mime type. |
+| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+
+
+### SetAttachmentAsync(int id, string filePath)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| filePath | string | The file path. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| mimeType | string | The mime type. |
+| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)
+
+Sets the expense payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
+
+
+### SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)
+
+Sets the expense payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
+| effectiveDate | DateTime | The date when payment was performed. |
+
+
+### SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)
+
+Sets asynchronously the expense payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
+
+### SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)
+
+Sets asynchronously the expense payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
+| effectiveDate | DateTime | The date when payment was performed. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### Update([JsonExpense](#jsonexpense-class) entity)
+
+Updates the specified expense.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonExpense](#jsonexpense-class) | The expense to update. |
+
+
+### Returns
+
+[JsonExpense](#jsonexpense-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
+
+### UpdateAsync([JsonExpense](#jsonexpense-class) entity)
+
+Updates asynchronously the specified expense.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonExpense](#jsonexpense-class) | The expense to update. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonExpense](#jsonexpense-class)>
+
+Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
+
+# FakturoidInvoicesProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with invoices.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**Create([JsonInvoice](#jsoninvoice-class) entity)**](#createjsoninvoicejsoninvoice-class-entity) | int | Creates the specified new invoice. |
+| [**CreateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#createasyncjsoninvoicejsoninvoice-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<int\> | Creates asynchronously the specified new invoice. |
+| [**Delete(int id)**](#deleteint-id) | void | Deletes invoice with specified id. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Deletes asynchronously invoice with specified id. |
+| [**Select([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\> | Gets list of all invoices. |
+| [**Select(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\> | Gets paged list of invoices. |
+| [**SelectAsync([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectSingle(int id)**](#selectsingleint-id) | [JsonInvoice](#jsoninvoice-class) | Selects single invoice with specified ID. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonInvoice](#jsoninvoice-class)\> | Selects asynchronously single invoice with specified ID. |
+| [**SendMessage(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | void | Sends e-mail message for the specified invoice. |
+| [**SendMessageAsync(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageasyncint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sends asynchronously e-mail message for the specified invoice. |
+| [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
+| [**SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | void | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentasyncint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
+| [**SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | void | Sets the invoice payment status. |
+| [**SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | void | Sets the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the invoice payment status. |
+| [**Update([JsonInvoice](#jsoninvoice-class) entity)**](#updatejsoninvoicejsoninvoice-class-entity) | [JsonInvoice](#jsoninvoice-class) | Updates the specified invoice. |
+| [**UpdateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#updateasyncjsoninvoicejsoninvoice-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
+## Methods
+
+### Create([JsonInvoice](#jsoninvoice-class) entity)
+
+Creates the specified new invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonInvoice](#jsoninvoice-class) | The new invoice. |
+
+
+### Returns
+
+int
+
+ID of newly created invoice.
+
+### CreateAsync([JsonInvoice](#jsoninvoice-class) entity)
+
+Creates asynchronously the specified new invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonInvoice](#jsoninvoice-class) | The new invoice. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<int>
+
+ID of newly created invoice.
+
+### Delete(int id)
+
+Deletes invoice with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### DeleteAsync(int id)
+
+Deletes asynchronously invoice with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### Select([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets list of all invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the invoice was created. |
+| number | string | The invoice display number. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>
+
+List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
+
+### Select(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets paged list of invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the invoice was created. |
+| number | string | The invoice display number. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>
+
+List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
+
+### SelectAsync([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously list of all invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the invoice was created. |
+| number | string | The invoice display number. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
+
+### SelectAsync(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously paged list of invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the invoice was created. |
+| number | string | The invoice display number. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
+
+### SelectSingle(int id)
+
+Selects single invoice with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+
+
+### Returns
+
+[JsonInvoice](#jsoninvoice-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
+
+### SelectSingleAsync(int id)
+
+Selects asynchronously single invoice with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonInvoice](#jsoninvoice-class)>
+
+Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
+
+### SendMessage(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)
+
+Sends e-mail message for the specified invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
+
+
+### SendMessageAsync(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)
+
+Sends asynchronously e-mail message for the specified invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### SetAttachment(int id, string filePath)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| filePath | string | The file path. |
+
+
+### SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| mimeType | string | The mime type. |
+| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+
+
+### SetAttachmentAsync(int id, string filePath)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| filePath | string | The file path. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| mimeType | string | The mime type. |
+| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)
+
+Sets the invoice payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
+
+
+### SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)
+
+Sets the invoice payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
+| effectiveDate | DateTime | The date when payment was performed. |
+
+
+### SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)
+
+Sets asynchronously the invoice payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
+
+### SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)
+
+Sets asynchronously the invoice payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
+| effectiveDate | DateTime | The date when payment was performed. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### Update([JsonInvoice](#jsoninvoice-class) entity)
+
+Updates the specified invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonInvoice](#jsoninvoice-class) | The invoice to update. |
+
+
+### Returns
+
+[JsonInvoice](#jsoninvoice-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
+
+### UpdateAsync([JsonInvoice](#jsoninvoice-class) entity)
+
+Updates asynchronously the specified invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonInvoice](#jsoninvoice-class) | The invoice to update. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonInvoice](#jsoninvoice-class)>
+
+Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
+
+# FakturoidSubjectsProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with subjects/contacts.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**Create([JsonSubject](#jsonsubject-class) entity)**](#createjsonsubjectjsonsubject-class-entity) | int | Creates the specified new subject. |
+| [**CreateAsync([JsonSubject](#jsonsubject-class) entity)**](#createasyncjsonsubjectjsonsubject-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<int\> | Creates asynchronously the specified new subject. |
+| [**Delete(int id)**](#deleteint-id) | void | Deletes subject with specified id. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Deletes asynchronously with specified id. |
+| [**Search(string searchTerm)**](#searchstring-searchterm) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\> | Searches all Subjects in Name, Full name, Email, Registration number and Country. |
+| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country. |
+| [**Select(string customId)**](#selectstring-customid) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\> | Gets list of all subjects. |
+| [**Select(int page)**](#selectint-page) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\> | Gets paged list of subjects |
+| [**SelectAsync(string customId)**](#selectasyncstring-customid) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
+| [**SelectAsync(int page)**](#selectasyncint-page) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
+| [**SelectSingle(int id)**](#selectsingleint-id) | [JsonSubject](#jsonsubject-class) | Selects single subject with specified ID. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
+| [**Update([JsonSubject](#jsonsubject-class) entity)**](#updatejsonsubjectjsonsubject-class-entity) | [JsonSubject](#jsonsubject-class) | Updates the specified subject. |
+| [**UpdateAsync([JsonSubject](#jsonsubject-class) entity)**](#updateasyncjsonsubjectjsonsubject-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
+## Methods
+
+### Create([JsonSubject](#jsonsubject-class) entity)
+
+Creates the specified new subject.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonSubject](#jsonsubject-class) | The new subject. |
+
+
+### Returns
+
+int
+
+ID of newly created subject.
+
+### CreateAsync([JsonSubject](#jsonsubject-class) entity)
+
+Creates asynchronously the specified new subject.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonSubject](#jsonsubject-class) | The new subject. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<int>
+
+ID of newly created subject.
+
+### Delete(int id)
+
+Deletes subject with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### DeleteAsync(int id)
+
+Deletes asynchronously with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+
+
+
+### Search(string searchTerm)
+
+Searches all Subjects in Name, Full name, Email, Registration number and Country.
+
+| Parameter | Type | Description |
+|---|---|---|
+| searchTerm | string | Search string. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>
+
+Collection if search results.
+
+### SearchAsync(string searchTerm)
+
+Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country.
+
+| Parameter | Type | Description |
+|---|---|---|
+| searchTerm | string | Search string. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>>
+
+Collection if search results.
+
+### Select(string customId)
+
+Gets list of all subjects.
+
+| Parameter | Type | Description |
+|---|---|---|
+| customId | string | The custom identifier used for filtering. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>
+
+List of **Altairis.Fakturoid.Client.JsonSubject** instances.
+
+### Select(int page)
+
+Gets paged list of subjects
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>
+
+List of **Altairis.Fakturoid.Client.JsonSubject** instances.
+
+### SelectAsync(string customId)
+
+Gets asynchronously list of all subjects.
+
+| Parameter | Type | Description |
+|---|---|---|
+| customId | string | The custom identifier used for filtering. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonSubject** instances.
+
+### SelectAsync(int page)
+
+Gets asynchronously paged list of subjects
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonSubject** instances.
+
+### SelectSingle(int id)
+
+Selects single subject with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The subject id. |
+
+
+### Returns
+
+[JsonSubject](#jsonsubject-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
+
+### SelectSingleAsync(int id)
+
+Selects asynchronously single subject with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The subject id. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonSubject](#jsonsubject-class)>
+
+Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
+
+### Update([JsonSubject](#jsonsubject-class) entity)
+
+Updates the specified subject.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonSubject](#jsonsubject-class) | The subject to update. |
+
+
+### Returns
+
+[JsonSubject](#jsonsubject-class)
+
+Instance of **Altairis.Fakturoid.Client.JsonSubject** class with modified entity.
+
+### UpdateAsync([JsonSubject](#jsonsubject-class) entity)
+
+Updates asynchronously the specified subject.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [JsonSubject](#jsonsubject-class) | The subject to update. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonSubject](#jsonsubject-class)>
+
+Instance of **Altairis.Fakturoid.Client.JsonSubject** class with modified entity.
+
+# FakturoidTodosProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with todo tasks.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**Select(DateTime? since)**](#selectdatetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\> | Gets list of all current todos. |
+| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\> | Gets paged list of current todos |
+| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously list of all current todos. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously paged list of current todos |
+## Methods
+
+### Select(DateTime? since)
+
+Gets list of all current todos.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTime? | The date since when todos are to be selected. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>
+
+List of **Altairis.Fakturoid.Client.JsonTodo** instances.
+
+### Select(int page, DateTime? since)
+
+Gets paged list of current todos
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTime? | The date since when todos are to be selected. |
+
+
+### Returns
+
+[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>
+
+List of **Altairis.Fakturoid.Client.JsonTodo** instances.
+
+### SelectAsync(DateTime? since)
+
+Gets asynchronously list of all current todos.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTime? | The date since when todos are to be selected. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonTodo** instances.
+
+### SelectAsync(int page, DateTime? since)
+
+Gets asynchronously paged list of current todos
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTime? | The date since when todos are to be selected. |
+
+
+### Returns
+
+[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>>
+
+List of **Altairis.Fakturoid.Client.JsonTodo** instances.
+
+# InternalExtensionMethods Class
+
+Namespace: Altairis.Fakturoid.Client
+
+
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**EnsureFakturoidSuccess([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) r)**](#ensurefakturoidsuccesshttpresponsemessagehttpsdocsmicrosoftcomen-usdotnetapisystemnethttphttpresponsemessage-r) | void |  |
+## Methods
+
+### EnsureFakturoidSuccess([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) r)
+
+
+
+
+# InvoiceMessageType Enum
+
+Namespace: Altairis.Fakturoid.Client
+
+Type of e-mail message to be sent.
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **NoMessage** | Do not actually send anything, just mark invoice as sent |
+| **InvoiceMessage** | Predefined message containing link to invoice |
+| **PaymentReminderMessage** | Predefined message containing payment reminder |
+# InvoicePaymentStatus Enum
+
+Namespace: Altairis.Fakturoid.Client
+
+Invoice payment status
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Unpaid** | Reset payment status to unpaid. |
+| **Paid** | Set status of regular invoice to paid. |
+| **ProformaPaid** | Set status of proforma invoice to paid. |
+| **PartialProformaPaid** | Set status of partial proforma invoice to paid. |
+# InvoiceStatusCondition Enum
+
+Namespace: Altairis.Fakturoid.Client
+
+Query status condition for listing invoices
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Any** | Any |
+| **Open** | Faktura není zaplacena, odeslána ani po splatnosti. |
+| **Sent** | Faktura byla odeslána a není po splatnosti. |
+| **Overdue** | Faktura je po splatnosti. |
+| **Paid** | Faktura je zaplacena. |
+| **Cancelled** | Faktura je stornována (pouze neplátci DPH). |
+# InvoiceTypeCondition Enum
+
+Namespace: Altairis.Fakturoid.Client
+
+Query invoice type condition for listing invoices.
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Any** | Any |
+| **Proforma** | The proforma invouice. |
+| **Regular** | The regular, non-proforma invoice |
+# JsonAccount Class
+
+Namespace: Altairis.Fakturoid.Client
+
+User account information, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **subdomain** | string | Subdoména |
+| **plan** | string | Jméno tarifu |
+| **plan_price** | int | Cena tarifu |
+| **email** | string | E-mail vlastníka účtu |
+| **invoice_email** | string | E-mail, ze kterého jsou odesílány faktury |
+| **phone** | string | Telefon vlastníka účtu |
+| **web** | string | Web vlastníka účtu |
+| **name** | string | Jméno firmy |
+| **full_name** | string | Jméno majitele účtu |
+| **registration_no** | string | IČ |
+| **vat_no** | string | DIČ |
+| **vat_mode** | string | Plátce DPH / Neplátce DPH / Identifikovaná osoba |
+| **street** | string | Ulice |
+| **street2** | string | Ulice - druhý řádek |
+| **city** | string | Místo |
+| **zip** | string | PSČ |
+| **country** | string | ISO kód země |
+| **bank_account** | string | Číslo účtu |
+| **iban** | string | Číslo účtu jako IBAN |
+| **swift_bic** | string | BIC (pro SWIFT platby) |
+| **currency** | string | Měna |
+| **unit_name** | string | Výchozí měrná jednotka |
+| **vat_rate** | decimal | Výchozí sazba DPH |
+| **displayed_note** | string | Text patičky faktury |
+| **invoice_note** | string | Text před položkami faktury |
+| **due** | int | Výchozí splatnost faktur |
+| **custom_email_text** | string | Text emailu pro odeslání faktury |
+| **overdue_email_text** | string | Text upomínky o zaplacení |
+| **html_url** | string | Adresa účtu v GUI |
+| **url** | string | Adresa API |
+| **updated_at** | DateTime | Datum poslední úpravy účtu |
+| **created_at** | DateTime | Datum vytvoření účtu |
+# JsonAttachment Class
+
+Namespace: Altairis.Fakturoid.Client
+
+User account information, as received from JSON API.
+Single invoice
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **file_name** | string | Název souboru |
+| **content_type** | string | MIME type souboru |
+| **download_url** | string | URL pro download přílohy přes API |
+# JsonBankAccount Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Bank account information, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **id** | int | Identifikátor bankovního účtu |
+| **name** | string | Název účtu |
+| **currency** | string | Měna účtu |
+| **number** | string | Číslo účtu |
+| **iban** | string | Číslo účtu ve formátu IBAN |
+| **swift_bic** | string | BIC pro SWIFT platby |
+| **pairing** | bool | Povoleno párování plateb |
+| **payment_adjustment** | bool | Haléřové vyrovnání pro párování plateb |
+# JsonEntityLine Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Represents single line of entity, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **name** | string | Název položky |
+| **quantity** | decimal | Množství |
+| **unit_name** | string | Měrná jednotka |
+| **unit_price** | decimal | Jednotková cena |
+| **vat_rate** | decimal | Sazba DPH |
+# JsonEvent Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Event, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **name** | string | Typ události - generated, sent, accepted, sent_reminder, overdue, paid, paid_bank, payment_removed, unpaired_payment |
+| **created_at** | DateTime | Datum a čas vytvoření události |
+| **invoice_id** | int? | ID faktury (nepovinné) |
+| **subject_id** | int? | ID kontaktu (nepovinné) |
+| **text** | string | Text události |
+| **invoice_url** | string | API adresa faktury (nepovinné) |
+| **subject_url** | string | API adresa kontaktu (nepovinné) |
+# JsonExpense Class
+
+Namespace: Altairis.Fakturoid.Client
+
+User account information, as received from JSON API.
+Single invoice
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **id** | int | Identifikátor nákladu |
+| **custom_id** | string | identifikátor nákladu ve vaší aplikaci |
+| **number** | string | číslo nákladu (Př: N20150101, musí odpovídat formátu čísla v nastavení účtu, doplní se automaticky) |
+| **original_number** | string | číslo dokladu (uvedené na přijaté faktuře) |
+| **variable_symbol** | string | Variabilní symbol |
+| **supplier_name** | string | Nazev firmy kontaktu |
+| **supplier_street** | string | kontakt ulice |
+| **supplier_city** | string | kontakt město |
+| **supplier_zip** | string | kontakt PSČ |
+| **supplier_country** | string | kontakt země |
+| **supplier_registration_no** | string | kontakt IČ |
+| **supplier_vat_no** | string | kontakt DIČ |
+| **subject_id** | int | ID kontaktu příjemce |
+| **status** | string | Stav nákladu - open/overdue/paid |
+| **document_type** | string | typ dokumentu - bill/invoice/other |
+| **issued_on** | DateTime? | Datum vystavení (zobrazeno na faktuře) |
+| **received_on** | DateTime? | Datum přijetí (nepovinné - doplní se dle duzp) |
+| **taxable_fulfillment_due** | DateTime? | Datum zdanitelného plnění (nepovinné - doplní se dnes) |
+| **due_on** | DateTime? | Datum splatnosti (doplní se podle due) |
+| **paid_on** | DateTime? | Datum a čas zaplacení nákladu |
+| **description** | string | popis (nepovinné) |
+| **private_note** | string | Soukromá poznámka (nepovinné) |
+| **tags** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<string\> | Seznam tagů nákladu |
+| **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
+| **iban** | string | IBAN (nepovinné - doplní se z účtu) |
+| **swift_bic** | string | BIC (nepovinné - doplní se z účtu) |
+| **payment_method** | string | Způsob úhrady: bank (bankovní převod) / cash (hotově) / cod (dobírka) |
+| **currency** | string | Kód měny (nepovinné - doplní se z účtu, 3 znaky) |
+| **exchange_rate** | decimal | Kurz (nepovinné) |
+| **transferred_tax_liability** | bool | Přenesená daňová povinnost |
+| **vat_price_mode** | string | Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).<br>Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost. |
+| **supply_code** | int? | Kód plnění pro souhrnná hlášení (pouze pro zahraniční nákladu do EU, nepovinné) |
+| **round_total** | bool? | Zaokrouhlit cenu s DPH při vystavení (nepovinné) |
+| **subtotal** | decimal | Součet bez DPH |
+| **native_subtotal** | decimal | Součet bez DPH v měně účtu |
+| **total** | decimal | Součet včetně DPH |
+| **native_total** | decimal | Součet včetně DPH v měně účtu |
+| **attachment** | [JsonAttachment](#jsonattachment-class) | Příloha |
+| **html_url** | string | Adresa nákladu v GUI |
+| **url** | string | API adresa nákladu |
+| **pdf_url** | string | API adresa pro stažení nákladu v PDF |
+| **subject_url** | string | API adresa kontaktu příjemce |
+| **created_at** | DateTime? | Datum vytvoreni nákladu |
+| **updated_at** | DateTime? | Datum poslední aktualizace nákladu |
+| **lines** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<[JsonExpenseLine](#jsonexpenseline-class)\> | Položky nákladu |
+# JsonExpenseLine Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [JsonEntityLine](#jsonentityline-class)
+
+Expense line information, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **name** | string | Název položky |
+| **quantity** | decimal | Množství |
+| **unit_name** | string | Měrná jednotka |
+| **unit_price** | decimal | Jednotková cena |
+| **vat_rate** | decimal | Sazba DPH |
+# JsonInvoice Class
+
+Namespace: Altairis.Fakturoid.Client
+
+User account information, as received from JSON API.
+Single invoice
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **id** | int | Identifikátor faktury |
+| **proforma** | bool | Příznak proformy |
+| **partial_proforma** | bool? | Přiznak zda je proforma na plnou částku |
+| **number** | string | Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla v nastavení účtu) |
+| **variable_symbol** | string | Variabilní symbol |
+| **your_name** | string | Vaše obchodní jméno |
+| **your_street** | string | Vaše ulice |
+| **your_street2** | string | Vaše ulice - druhý řádek |
+| **your_city** | string | Vaše město |
+| **your_zip** | string | Vaše PSČ |
+| **your_country** | string | Vaše země |
+| **your_registration_no** | string | Vaše IČ |
+| **your_vat_no** | string | Vaše DIČ |
+| **client_name** | string | Obchodní jméno příjemce |
+| **client_street** | string | Ulice příjemce |
+| **client_street2** | string | Ulice příjemce - druhý řádek |
+| **client_city** | string | Místo příjemce |
+| **client_zip** | string | PSČ příjemce |
+| **client_country** | string | Země příjemce |
+| **client_registration_no** | string | IČ příjemce |
+| **client_vat_no** | string | DIČ příjemce |
+| **subject_id** | int | ID kontaktu příjemce |
+| **generator_id** | int? | ID šablony ze které byla faktura vystavena (nepovinné) |
+| **related_id** | int? | ID proformy/faktury (nepovinné) |
+| **correction** | bool? | Opravný daňový doklad (false = faktura/proforma, nepovinné) |
+| **correction_id** | int? | ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad <br>se doplní automaticky doplní ID opravného daňového dokladu (nepovinné) |
+| **token** | string | Token pro public akci |
+| **status** | string | Stav faktury - open/sent/overdue/paid |
+| **order_number** | string | Číslo objednávky (nepovinné) |
+| **issued_on** | DateTime? | Datum vystavení (zobrazeno na faktuře) |
+| **taxable_fulfillment_due** | DateTime? | Datum zdanitelného plnění (nepovinné - doplní se dnes) |
+| **due** | int? | Počet dní, než bude po splatnosti (nepovinné - doplní se z účtu) |
+| **due_on** | DateTime? | Datum splatnosti (doplní se podle due) |
+| **sent_at** | DateTime? | Datum a čas odeslání faktury |
+| **paid_at** | DateTime? | Datum a čas zaplacení faktury |
+| **reminder_sent_at** | DateTime? | Datum a čas odeslání upomínky |
+| **accepted_at** | DateTime? | Datum a čas odsouhlasení faktury klientem |
+| **cancelled_at** | DateTime? | Datum stornování faktury (pouze pro neplátce DPH) |
+| **note** | string | Text před položkami faktury (nepovinné - doplní se z účtu) |
+| **footer_note** | string | Patička faktury (nepovinné - doplní se z účtu) |
+| **private_note** | string | Soukromá poznámka (nepovinné) |
+| **tags** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<string\> | Seznam tagů faktury |
+| **bank_account_id** | int? | ID bankovního účtu (nepovinné - použije se výchozí bankovní účet) |
+| **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
+| **iban** | string | IBAN (nepovinné - doplní se z účtu) |
+| **swift_bic** | string | BIC (nepovinné - doplní se z účtu) |
+| **payment_method** | string | Způsob úhrady: bank (bankovní převod) / cash (hotově) / cod (dobírka) |
+| **currency** | string | Kód měny (nepovinné - doplní se z účtu, 3 znaky) |
+| **exchange_rate** | decimal | Kurz (nepovinné) |
+| **paypal** | bool? | Tlačítko pro platbu PayPalem - true/false (nepovinné) |
+| **language** | string | Jazyk faktury |
+| **transferred_tax_liability** | bool | Přenesená daňová povinnost |
+| **supply_code** | int? | Kód plnění pro souhrnná hlášení (pouze pro zahraniční faktury do EU, nepovinné) |
+| **eu_electronic_service** | bool? | Příznak, pokud je faktura v režimu MOSS (nepovinné) |
+| **vat_price_mode** | string | Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).<br>Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost. |
+| **round_total** | bool? | Zaokrouhlit cenu s DPH při vystavení (nepovinné) |
+| **subtotal** | decimal | Součet bez DPH |
+| **native_subtotal** | decimal | Součet bez DPH v měně účtu |
+| **total** | decimal | Součet včetně DPH |
+| **native_total** | decimal | Součet včetně DPH v měně účtu |
+| **remaining_amount** | decimal | Částka k zaplacení |
+| **remaining_native_amount** | decimal | Částka k zaplacení v měně účtu |
+| **attachment** | [JsonAttachment](#jsonattachment-class) | Příloha |
+| **html_url** | string | Adresa faktury v GUI |
+| **public_html_url** | string | Veřejná HTML adresa faktury |
+| **url** | string | API adresa faktury |
+| **pdf_url** | string | API adresa pro stažení faktury v PDF |
+| **subject_url** | string | API adresa kontaktu příjemce |
+| **updated_at** | DateTime? | Datum poslední aktualizace faktury |
+| **lines** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<[JsonInvoiceLine](#jsoninvoiceline-class)\> | Položky faktury |
+# JsonInvoiceLine Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [JsonEntityLine](#jsonentityline-class)
+
+Invoice line information, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **name** | string | Název položky |
+| **quantity** | decimal | Množství |
+| **unit_name** | string | Měrná jednotka |
+| **unit_price** | decimal | Jednotková cena |
+| **vat_rate** | decimal | Sazba DPH |
+# JsonSubject Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Subject (contact), as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **id** | int | Identifikátor kontaktu |
+| **custom_id** | string | Vlastní identifikátor kontaktu |
+| **name** | string | Obchodní jméno |
+| **street** | string | Ulice |
+| **street2** | string | Ulice - druhý řádek |
+| **city** | string | Město |
+| **zip** | string | PSČ |
+| **country** | string | Země |
+| **registration_no** | string | IČ |
+| **vat_no** | string | DIČ |
+| **bank_account** | string | Číslo účtu |
+| **iban** | string | Číslo účtu jako IBAN |
+| **variable_symbol** | string | Variabilní symbol |
+| **full_name** | string | Jméno kontaktní osoby |
+| **email** | string | E-mail pro zasílání faktur |
+| **email_copy** | string | E-mail pro zasílání kopie faktury |
+| **phone** | string | Telefonní číslo |
+| **web** | string | Adresa webu |
+| **avatar_url** | string | Adresa obrázku kontaktu |
+| **html_url** | string | Adresa kontaktu v GUI |
+| **url** | string | API adresa kontaktu |
+| **updated_at** | DateTime | Datum poslední aktualizace kontaktu |
+# JsonTodo Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Represents a todo task, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **name** | string | Typ události - initial_todo, initial_fb, already_paid, unpaired_payment, email_bounced |
+| **created_at** | DateTime | Datum a čas vytvoření události |
+| **completed_at** | DateTime? | Datum a čas odškrtnutí události |
+| **invoice_id** | int? | ID faktury |
+| **subject_id** | int? | ID kontaktu |
+| **text** | string | Text události |
+| **invoice_url** | string | API adresa faktury |
+| **subject_url** | string | API adresa kontaktu |
+# AllowNullAttribute Class
+
+Namespace: System.Diagnostics.CodeAnalysis
+
+Base class: [Attribute](https://docs.microsoft.com/en-us/dotnet/api/system.attribute)
+
+Specifies that null is allowed as an input even if the corresponding type disallows it.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **TypeId** | [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) |  |
+# NotNullWhenAttribute Class
+
+Namespace: System.Diagnostics.CodeAnalysis
+
+Base class: [Attribute](https://docs.microsoft.com/en-us/dotnet/api/system.attribute)
+
+Specifies that when a method returns **System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue**, the parameter will not be null even if the corresponding type allows it.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **ReturnValue** | bool | Gets the return value condition. |
+| **TypeId** | [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) |  |
+## Constructors
+
+| Name | Summary |
+|---|---|
+| [**NotNullWhenAttribute(bool returnValue)**](#notnullwhenattributebool-returnvalue) | Initializes the attribute with the specified return value condition. |
+## Constructors
+
+### NotNullWhenAttribute(bool returnValue)
+
+Initializes the attribute with the specified return value condition.
+
+| Parameter | Type | Description |
+|---|---|---|
+| returnValue | bool | The return value condition. If the method returns this value, the associated parameter will not be null. |
+
+

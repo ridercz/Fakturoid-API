@@ -6,7 +6,7 @@ This projects aims to create C#/.NET client for API of Czech online accounting s
 
 Please note that some more obscure functions are not (yet) supported - like API access to generators, reports etc. I'll implement them once I would need them, or you can do it in your fork (I accept pull request). The infrastructure is all here.
 
-The library is developed in C#, uses _[Microsoft ASP.NET Web API Client Libraries](http://www.asp.net/web-api)_ (NuGet: `Microsoft.AspNet.WebApi.Client`) and conforms to .NET Standard 2.0 - therefore you can use it both in .NET Framework 4.x and .NET Core.
+The library is developed in C#, uses _[Microsoft ASP.NET Web API Client Libraries](http://www.asp.net/web-api)_ (NuGet: `Microsoft.AspNet.WebApi.Client`) and conforms to .NET Standard 2.0 - therefore you can use it both in .NET Framework 4.x and .NET5.
 
 Since version 2.5, the library exposes fully asynchronnous Task-based API for use with `async` and `await`.
 
@@ -27,12 +27,13 @@ The only **breaking change** from v1 is that constructor of `FakturoidContext` c
 
 * Look into the `Altairis.Fakturoid.Client.DemoApp` project for usage.
 * All public members have XML documentation that will show up in IntelliSense.
-* The `Documentation.chm` file build from the XML documentation is available for download. 
+* The [API Reference](API-Reference.md) is available.
 
-> This project is developed and maintained by [Michal A. Valášek](http://www.rider.cz), (of [ASPNET.CZ](http://www.aspnet.cz/) fame) and the [Altairis](http://www.altairis.cz) corporation. This project has no official relation to the Fakturoid service or its owner.
 
 ## Contributor Code of Conduct
 
 This project adheres to No Code of Conduct. We are all adults. We accept anyone's contributions. Nothing else matters.
 
 For more information please visit the [No Code of Conduct](https://github.com/domgetter/NCoC) homepage.
+
+> This project is developed and maintained by [Michal A. Valášek](http://www.rider.cz), (of [ASPNET.CZ](http://www.aspnet.cz/) fame) and the [Altairis](http://www.altairis.cz) corporation. This project has no official relation to the Fakturoid service or its owner.
