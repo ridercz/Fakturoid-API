@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="mddox &quot;$(TargetPath)&quot; -o &quot;$(SolutionDir)\API-Reference.md&quot; -f github -s -n -d" />
+    <Exec Command="mddox &quot;$(TargetPath)&quot; -o &quot;$(SolutionDir)\API-Reference.md&quot; -f github -n -d" />
   </Target>
 
 </Project>

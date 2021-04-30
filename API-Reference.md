@@ -57,8 +57,8 @@ Proxy class form working with bank accounts
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Select()**](#select) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonBankAccount](#jsonbankaccount-class)\> | Gets list of all bank accounts. |
-| [**SelectAsync()**](#selectasync) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonBankAccount](#jsonbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
+| [**Select()**](#select) | IEnumerable\<[JsonBankAccount](#jsonbankaccount-class)\> | Gets list of all bank accounts. |
+| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[JsonBankAccount](#jsonbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
 ## Methods
 
 ### Select()
@@ -69,7 +69,7 @@ Gets list of all bank accounts.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonBankAccount](#jsonbankaccount-class)>
+IEnumerable<[JsonBankAccount](#jsonbankaccount-class)>
 
 List of **Altairis.Fakturoid.Client.JsonBankAccount** instances.
 
@@ -81,7 +81,7 @@ Gets asynchronously list of all bank accounts.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonBankAccount](#jsonbankaccount-class)>>
+Task<IEnumerable<[JsonBankAccount](#jsonbankaccount-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonBankAccount** instances.
 
@@ -171,10 +171,10 @@ Proxy class for working with events
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Select(DateTime? since)**](#selectdatetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\> | Gets list of all current events. |
-| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\> | Gets list of current events, paged by 15. |
-| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of all current events. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of current events, paged by 15. |
+| [**Select(DateTime? since)**](#selectdatetime-since) | IEnumerable\<[JsonEvent](#jsonevent-class)\> | Gets list of all current events. |
+| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | IEnumerable\<[JsonEvent](#jsonevent-class)\> | Gets list of current events, paged by 15. |
+| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of all current events. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of current events, paged by 15. |
 ## Methods
 
 ### Select(DateTime? since)
@@ -188,7 +188,7 @@ Gets list of all current events.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>
+IEnumerable<[JsonEvent](#jsonevent-class)>
 
 List of **Altairis.Fakturoid.Client.JsonEvent** instances.
 
@@ -204,7 +204,7 @@ Gets list of current events, paged by 15.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>
+IEnumerable<[JsonEvent](#jsonevent-class)>
 
 List of **Altairis.Fakturoid.Client.JsonEvent** instances.
 
@@ -219,7 +219,7 @@ Gets asynchronously list of all current events.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>>
+Task<IEnumerable<[JsonEvent](#jsonevent-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonEvent** instances.
 
@@ -235,7 +235,7 @@ Gets asynchronously list of current events, paged by 15.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonEvent](#jsonevent-class)>>
+Task<IEnumerable<[JsonEvent](#jsonevent-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonEvent** instances.
 
@@ -243,7 +243,7 @@ List of **Altairis.Fakturoid.Client.JsonEvent** instances.
 
 Namespace: Altairis.Fakturoid.Client
 
-Base class: [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception)
+Base class: Exception
 
 The exception representing error returned by Fakturoid API.
 
@@ -251,14 +251,14 @@ The exception representing error returned by Fakturoid API.
 
 | Name | Type | Summary |
 |---|---|---|
-| **Response** | [HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) | Gets or sets the related HTTP response object. |
+| **Response** | HttpResponseMessage | Gets or sets the related HTTP response object. |
 | **ResponseBody** | string | Gets the HTTP response body as string. |
-| **Errors** | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<KeyValuePair\<string, string\>\> | Gets the errors returned by Fakturoid API. |
-| **TargetSite** | [MethodBase](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodbase) |  |
+| **Errors** | IEnumerable\<KeyValuePair\<string, string\>\> | Gets the errors returned by Fakturoid API. |
+| **TargetSite** | MethodBase |  |
 | **StackTrace** | string |  |
 | **Message** | string |  |
-| **Data** | [IDictionary](https://docs.microsoft.com/en-us/dotnet/api/system.collections.idictionary) |  |
-| **InnerException** | [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) |  |
+| **Data** | IDictionary |  |
+| **InnerException** | Exception |  |
 | **HelpLink** | string |  |
 | **Source** | string |  |
 | **HResult** | int |  |
@@ -268,15 +268,15 @@ The exception representing error returned by Fakturoid API.
 |---|---|
 | [**FakturoidException()**](#fakturoidexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
 | [**FakturoidException(string message)**](#fakturoidexceptionstring-message) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) response)**](#fakturoidexceptionhttpresponsemessagehttpsdocsmicrosoftcomen-usdotnetapisystemnethttphttpresponsemessage-response) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string format, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)**](#fakturoidexceptionstring-format-objecthttpsdocsmicrosoftcomen-usdotnetapisystemobject-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string message, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException)**](#fakturoidexceptionstring-message-exceptionhttpsdocsmicrosoftcomen-usdotnetapisystemexception-innerexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string format, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)**](#fakturoidexceptionstring-format-exceptionhttpsdocsmicrosoftcomen-usdotnetapisystemexception-innerexception-objecthttpsdocsmicrosoftcomen-usdotnetapisystemobject-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(HttpResponseMessage response)**](#fakturoidexceptionhttpresponsemessage-response) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string format, Object[] args)**](#fakturoidexceptionstring-format-object-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string message, Exception innerException)**](#fakturoidexceptionstring-message-exception-innerexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [**FakturoidException(string format, Exception innerException, Object[] args)**](#fakturoidexceptionstring-format-exception-innerexception-object-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
 ## Methods
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**GetObjectData([SerializationInfo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.serializationinfo) info, StreamingContext context)**](#getobjectdataserializationinfohttpsdocsmicrosoftcomen-usdotnetapisystemruntimeserializationserializationinfo-info-streamingcontext-context) | void | Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception. |
+| [**GetObjectData(SerializationInfo info, StreamingContext context)**](#getobjectdataserializationinfo-info-streamingcontext-context) | void | Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception. |
 ## Constructors
 
 ### FakturoidException()
@@ -294,55 +294,55 @@ Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException
 | message | string | The message that describes the error. |
 
 
-### FakturoidException([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) response)
+### FakturoidException(HttpResponseMessage response)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
 
 | Parameter | Type | Description |
 |---|---|---|
-| response | [HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) | The HTTP response to get exception information from. |
+| response | HttpResponseMessage | The HTTP response to get exception information from. |
 
 
-### FakturoidException(string format, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)
+### FakturoidException(string format, Object[] args)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
 
 | Parameter | Type | Description |
 |---|---|---|
 | format | string | The format. |
-| args | [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) | The args. |
+| args | Object[] | The args. |
 
 
-### FakturoidException(string message, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException)
+### FakturoidException(string message, Exception innerException)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
 
 | Parameter | Type | Description |
 |---|---|---|
 | message | string | The error message that explains the reason for the exception. |
-| innerException | [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) | The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. |
+| innerException | Exception | The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. |
 
 
-### FakturoidException(string format, [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) innerException, [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) args)
+### FakturoidException(string format, Exception innerException, Object[] args)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class.
 
 | Parameter | Type | Description |
 |---|---|---|
 | format | string | The format. |
-| innerException | [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception) | The inner exception. |
-| args | [Object[]](https://docs.microsoft.com/en-us/dotnet/api/system.object[]) | The args. |
+| innerException | Exception | The inner exception. |
+| args | Object[] | The args. |
 
 
 ## Methods
 
-### GetObjectData([SerializationInfo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.serializationinfo) info, StreamingContext context)
+### GetObjectData(SerializationInfo info, StreamingContext context)
 
 Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception.
 
 | Parameter | Type | Description |
 |---|---|---|
-| info | [SerializationInfo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.serializationinfo) | The **System.Runtime.Serialization.SerializationInfo** that holds the serialized object data about the exception being thrown. |
+| info | SerializationInfo | The **System.Runtime.Serialization.SerializationInfo** that holds the serialized object data about the exception being thrown. |
 | context | StreamingContext | The **System.Runtime.Serialization.StreamingContext** that contains contextual information about the source or destination. |
 
 
@@ -364,25 +364,25 @@ Proxy class for working with invoices.
 | Name | Returns | Summary |
 |---|---|---|
 | [**Create([JsonExpense](#jsonexpense-class) entity)**](#createjsonexpensejsonexpense-class-entity) | int | Creates the specified new expense. |
-| [**CreateAsync([JsonExpense](#jsonexpense-class) entity)**](#createasyncjsonexpensejsonexpense-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<int\> | Creates asynchronously the specified new expense. |
+| [**CreateAsync([JsonExpense](#jsonexpense-class) entity)**](#createasyncjsonexpensejsonexpense-class-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
 | [**Delete(int id)**](#deleteint-id) | void | Deletes expense with specified id. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Deletes asynchronously expense with specified id. |
-| [**Select([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\> | Gets list of all invoices. |
-| [**Select(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\> | Gets paged list of invoices. |
-| [**SelectAsync([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
+| [**Select([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets list of all invoices. |
+| [**Select(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets paged list of invoices. |
+| [**SelectAsync([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonExpense](#jsonexpense-class) | Selects single expense with specified ID. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonExpense](#jsonexpense-class)\> | Selects asynchronously single expense with specified ID. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonExpense](#jsonexpense-class)\> | Selects asynchronously single expense with specified ID. |
 | [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
-| [**SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | void | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentasyncint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
+| [**SetAttachment(int id, string mimeType, byte[] fileContent)**](#setattachmentint-id-string-mimetype-byte-filecontent) | void | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
 | [**SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | void | Sets the expense payment status. |
 | [**SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | void | Sets the expense payment status. |
-| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the expense payment status. |
-| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the expense payment status. |
+| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | Task | Sets asynchronously the expense payment status. |
+| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
 | [**Update([JsonExpense](#jsonexpense-class) entity)**](#updatejsonexpensejsonexpense-class-entity) | [JsonExpense](#jsonexpense-class) | Updates the specified expense. |
-| [**UpdateAsync([JsonExpense](#jsonexpense-class) entity)**](#updateasyncjsonexpensejsonexpense-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
+| [**UpdateAsync([JsonExpense](#jsonexpense-class) entity)**](#updateasyncjsonexpensejsonexpense-class-entity) | Task\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
 ## Methods
 
 ### Create([JsonExpense](#jsonexpense-class) entity)
@@ -411,7 +411,7 @@ Creates asynchronously the specified new expense.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<int>
+Task<int>
 
 ID of newly created expense.
 
@@ -435,7 +435,7 @@ Deletes asynchronously expense with specified id.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -453,7 +453,7 @@ Gets list of all invoices.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>
+IEnumerable<[JsonExpense](#jsonexpense-class)>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
@@ -472,7 +472,7 @@ Gets paged list of invoices.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>
+IEnumerable<[JsonExpense](#jsonexpense-class)>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
@@ -490,7 +490,7 @@ Gets asynchronously list of all invoices.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>>
+Task<IEnumerable<[JsonExpense](#jsonexpense-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
@@ -509,7 +509,7 @@ Gets asynchronously paged list of invoices.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonExpense](#jsonexpense-class)>>
+Task<IEnumerable<[JsonExpense](#jsonexpense-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
@@ -539,7 +539,7 @@ Selects asynchronously single expense with specified ID.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonExpense](#jsonexpense-class)>
+Task<[JsonExpense](#jsonexpense-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonExpense** class.
 
@@ -553,7 +553,7 @@ Sets attachment for invoice.
 | filePath | string | The file path. |
 
 
-### SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+### SetAttachment(int id, string mimeType, byte[] fileContent)
 
 Sets attachment for invoice.
 
@@ -561,7 +561,7 @@ Sets attachment for invoice.
 |---|---|---|
 | id | int | The invoice id. |
 | mimeType | string | The mime type. |
-| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+| fileContent | byte[] | The content of the file. |
 
 
 ### SetAttachmentAsync(int id, string filePath)
@@ -576,11 +576,11 @@ Sets attachment for invoice.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
-### SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
 
 Sets attachment for invoice.
 
@@ -588,12 +588,12 @@ Sets attachment for invoice.
 |---|---|---|
 | id | int | The invoice id. |
 | mimeType | string | The mime type. |
-| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+| fileContent | byte[] | The content of the file. |
 
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -630,7 +630,7 @@ Sets asynchronously the expense payment status.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
 
@@ -647,7 +647,7 @@ Sets asynchronously the expense payment status.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -677,7 +677,7 @@ Updates asynchronously the specified expense.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonExpense](#jsonexpense-class)>
+Task<[JsonExpense](#jsonexpense-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
 
@@ -699,27 +699,27 @@ Proxy class for working with invoices.
 | Name | Returns | Summary |
 |---|---|---|
 | [**Create([JsonInvoice](#jsoninvoice-class) entity)**](#createjsoninvoicejsoninvoice-class-entity) | int | Creates the specified new invoice. |
-| [**CreateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#createasyncjsoninvoicejsoninvoice-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<int\> | Creates asynchronously the specified new invoice. |
+| [**CreateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#createasyncjsoninvoicejsoninvoice-class-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
 | [**Delete(int id)**](#deleteint-id) | void | Deletes invoice with specified id. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Deletes asynchronously invoice with specified id. |
-| [**Select([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\> | Gets list of all invoices. |
-| [**Select(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\> | Gets paged list of invoices. |
-| [**SelectAsync([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
+| [**Select([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets list of all invoices. |
+| [**Select(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets paged list of invoices. |
+| [**SelectAsync([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonInvoice](#jsoninvoice-class) | Selects single invoice with specified ID. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonInvoice](#jsoninvoice-class)\> | Selects asynchronously single invoice with specified ID. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Selects asynchronously single invoice with specified ID. |
 | [**SendMessage(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | void | Sends e-mail message for the specified invoice. |
-| [**SendMessageAsync(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageasyncint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sends asynchronously e-mail message for the specified invoice. |
+| [**SendMessageAsync(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageasyncint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
 | [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
-| [**SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | void | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)**](#setattachmentasyncint-id-string-mimetype-bytehttpsdocsmicrosoftcomen-usdotnetapisystembyte-filecontent) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets attachment for invoice. |
+| [**SetAttachment(int id, string mimeType, byte[] fileContent)**](#setattachmentint-id-string-mimetype-byte-filecontent) | void | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
 | [**SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | void | Sets the invoice payment status. |
 | [**SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | void | Sets the invoice payment status. |
-| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the invoice payment status. |
-| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Sets asynchronously the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | Task | Sets asynchronously the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
 | [**Update([JsonInvoice](#jsoninvoice-class) entity)**](#updatejsoninvoicejsoninvoice-class-entity) | [JsonInvoice](#jsoninvoice-class) | Updates the specified invoice. |
-| [**UpdateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#updateasyncjsoninvoicejsoninvoice-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
+| [**UpdateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#updateasyncjsoninvoicejsoninvoice-class-entity) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
 ## Methods
 
 ### Create([JsonInvoice](#jsoninvoice-class) entity)
@@ -748,7 +748,7 @@ Creates asynchronously the specified new invoice.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<int>
+Task<int>
 
 ID of newly created invoice.
 
@@ -772,7 +772,7 @@ Deletes asynchronously invoice with specified id.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -791,7 +791,7 @@ Gets list of all invoices.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>
+IEnumerable<[JsonInvoice](#jsoninvoice-class)>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
@@ -811,7 +811,7 @@ Gets paged list of invoices.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>
+IEnumerable<[JsonInvoice](#jsoninvoice-class)>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
@@ -830,7 +830,7 @@ Gets asynchronously list of all invoices.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>>
+Task<IEnumerable<[JsonInvoice](#jsoninvoice-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
@@ -850,7 +850,7 @@ Gets asynchronously paged list of invoices.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonInvoice](#jsoninvoice-class)>>
+Task<IEnumerable<[JsonInvoice](#jsoninvoice-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
@@ -880,7 +880,7 @@ Selects asynchronously single invoice with specified ID.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonInvoice](#jsoninvoice-class)>
+Task<[JsonInvoice](#jsoninvoice-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
 
@@ -906,7 +906,7 @@ Sends asynchronously e-mail message for the specified invoice.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -920,7 +920,7 @@ Sets attachment for invoice.
 | filePath | string | The file path. |
 
 
-### SetAttachment(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+### SetAttachment(int id, string mimeType, byte[] fileContent)
 
 Sets attachment for invoice.
 
@@ -928,7 +928,7 @@ Sets attachment for invoice.
 |---|---|---|
 | id | int | The invoice id. |
 | mimeType | string | The mime type. |
-| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+| fileContent | byte[] | The content of the file. |
 
 
 ### SetAttachmentAsync(int id, string filePath)
@@ -943,11 +943,11 @@ Sets attachment for invoice.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
-### SetAttachmentAsync(int id, string mimeType, [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) fileContent)
+### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
 
 Sets attachment for invoice.
 
@@ -955,12 +955,12 @@ Sets attachment for invoice.
 |---|---|---|
 | id | int | The invoice id. |
 | mimeType | string | The mime type. |
-| fileContent | [byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte[]) | The content of the file. |
+| fileContent | byte[] | The content of the file. |
 
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -997,7 +997,7 @@ Sets asynchronously the invoice payment status.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
 
@@ -1014,7 +1014,7 @@ Sets asynchronously the invoice payment status.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -1044,7 +1044,7 @@ Updates asynchronously the specified invoice.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonInvoice](#jsoninvoice-class)>
+Task<[JsonInvoice](#jsoninvoice-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
 
@@ -1066,19 +1066,19 @@ Proxy class for working with subjects/contacts.
 | Name | Returns | Summary |
 |---|---|---|
 | [**Create([JsonSubject](#jsonsubject-class) entity)**](#createjsonsubjectjsonsubject-class-entity) | int | Creates the specified new subject. |
-| [**CreateAsync([JsonSubject](#jsonsubject-class) entity)**](#createasyncjsonsubjectjsonsubject-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<int\> | Creates asynchronously the specified new subject. |
+| [**CreateAsync([JsonSubject](#jsonsubject-class) entity)**](#createasyncjsonsubjectjsonsubject-class-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
 | [**Delete(int id)**](#deleteint-id) | void | Deletes subject with specified id. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task) | Deletes asynchronously with specified id. |
-| [**Search(string searchTerm)**](#searchstring-searchterm) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\> | Searches all Subjects in Name, Full name, Email, Registration number and Country. |
-| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country. |
-| [**Select(string customId)**](#selectstring-customid) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\> | Gets list of all subjects. |
-| [**Select(int page)**](#selectint-page) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\> | Gets paged list of subjects |
-| [**SelectAsync(string customId)**](#selectasyncstring-customid) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
-| [**SelectAsync(int page)**](#selectasyncint-page) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
+| [**Search(string searchTerm)**](#searchstring-searchterm) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Searches all Subjects in Name, Full name, Email, Registration number and Country. |
+| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country. |
+| [**Select(string customId)**](#selectstring-customid) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Gets list of all subjects. |
+| [**Select(int page)**](#selectint-page) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Gets paged list of subjects |
+| [**SelectAsync(string customId)**](#selectasyncstring-customid) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
+| [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonSubject](#jsonsubject-class) | Selects single subject with specified ID. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
 | [**Update([JsonSubject](#jsonsubject-class) entity)**](#updatejsonsubjectjsonsubject-class-entity) | [JsonSubject](#jsonsubject-class) | Updates the specified subject. |
-| [**UpdateAsync([JsonSubject](#jsonsubject-class) entity)**](#updateasyncjsonsubjectjsonsubject-class-entity) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
+| [**UpdateAsync([JsonSubject](#jsonsubject-class) entity)**](#updateasyncjsonsubjectjsonsubject-class-entity) | Task\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
 ## Methods
 
 ### Create([JsonSubject](#jsonsubject-class) entity)
@@ -1107,7 +1107,7 @@ Creates asynchronously the specified new subject.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<int>
+Task<int>
 
 ID of newly created subject.
 
@@ -1131,7 +1131,7 @@ Deletes asynchronously with specified id.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task)
+Task
 
 
 
@@ -1146,7 +1146,7 @@ Searches all Subjects in Name, Full name, Email, Registration number and Country
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>
+IEnumerable<[JsonSubject](#jsonsubject-class)>
 
 Collection if search results.
 
@@ -1161,7 +1161,7 @@ Searches asynchronously all Subjects in Name, Full name, Email, Registration num
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>>
+Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 Collection if search results.
 
@@ -1176,7 +1176,7 @@ Gets list of all subjects.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>
+IEnumerable<[JsonSubject](#jsonsubject-class)>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
@@ -1191,7 +1191,7 @@ Gets paged list of subjects
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>
+IEnumerable<[JsonSubject](#jsonsubject-class)>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
@@ -1206,7 +1206,7 @@ Gets asynchronously list of all subjects.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>>
+Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
@@ -1221,7 +1221,7 @@ Gets asynchronously paged list of subjects
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonSubject](#jsonsubject-class)>>
+Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
@@ -1251,7 +1251,7 @@ Selects asynchronously single subject with specified ID.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonSubject](#jsonsubject-class)>
+Task<[JsonSubject](#jsonsubject-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
 
@@ -1281,7 +1281,7 @@ Updates asynchronously the specified subject.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[JsonSubject](#jsonsubject-class)>
+Task<[JsonSubject](#jsonsubject-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonSubject** class with modified entity.
 
@@ -1302,10 +1302,10 @@ Proxy class for working with todo tasks.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Select(DateTime? since)**](#selectdatetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\> | Gets list of all current todos. |
-| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\> | Gets paged list of current todos |
-| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously list of all current todos. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | [Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously paged list of current todos |
+| [**Select(DateTime? since)**](#selectdatetime-since) | IEnumerable\<[JsonTodo](#jsontodo-class)\> | Gets list of all current todos. |
+| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | IEnumerable\<[JsonTodo](#jsontodo-class)\> | Gets paged list of current todos |
+| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously list of all current todos. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously paged list of current todos |
 ## Methods
 
 ### Select(DateTime? since)
@@ -1319,7 +1319,7 @@ Gets list of all current todos.
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>
+IEnumerable<[JsonTodo](#jsontodo-class)>
 
 List of **Altairis.Fakturoid.Client.JsonTodo** instances.
 
@@ -1335,7 +1335,7 @@ Gets paged list of current todos
 
 ### Returns
 
-[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>
+IEnumerable<[JsonTodo](#jsontodo-class)>
 
 List of **Altairis.Fakturoid.Client.JsonTodo** instances.
 
@@ -1350,7 +1350,7 @@ Gets asynchronously list of all current todos.
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>>
+Task<IEnumerable<[JsonTodo](#jsontodo-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonTodo** instances.
 
@@ -1366,7 +1366,7 @@ Gets asynchronously paged list of current todos
 
 ### Returns
 
-[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)<[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)<[JsonTodo](#jsontodo-class)>>
+Task<IEnumerable<[JsonTodo](#jsontodo-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonTodo** instances.
 
@@ -1379,10 +1379,10 @@ Namespace: Altairis.Fakturoid.Client
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**EnsureFakturoidSuccess([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) r)**](#ensurefakturoidsuccesshttpresponsemessagehttpsdocsmicrosoftcomen-usdotnetapisystemnethttphttpresponsemessage-r) | void |  |
+| [**EnsureFakturoidSuccess(HttpResponseMessage r)**](#ensurefakturoidsuccesshttpresponsemessage-r) | void |  |
 ## Methods
 
-### EnsureFakturoidSuccess([HttpResponseMessage](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage) r)
+### EnsureFakturoidSuccess(HttpResponseMessage r)
 
 
 
@@ -1582,7 +1582,7 @@ Single invoice
 | **paid_on** | DateTime? | Datum a čas zaplacení nákladu |
 | **description** | string | popis (nepovinné) |
 | **private_note** | string | Soukromá poznámka (nepovinné) |
-| **tags** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<string\> | Seznam tagů nákladu |
+| **tags** | ICollection\<string\> | Seznam tagů nákladu |
 | **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
 | **iban** | string | IBAN (nepovinné - doplní se z účtu) |
 | **swift_bic** | string | BIC (nepovinné - doplní se z účtu) |
@@ -1604,7 +1604,7 @@ Single invoice
 | **subject_url** | string | API adresa kontaktu příjemce |
 | **created_at** | DateTime? | Datum vytvoreni nákladu |
 | **updated_at** | DateTime? | Datum poslední aktualizace nákladu |
-| **lines** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<[JsonExpenseLine](#jsonexpenseline-class)\> | Položky nákladu |
+| **lines** | ICollection\<[JsonExpenseLine](#jsonexpenseline-class)\> | Položky nákladu |
 # JsonExpenseLine Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1674,7 +1674,7 @@ Single invoice
 | **note** | string | Text před položkami faktury (nepovinné - doplní se z účtu) |
 | **footer_note** | string | Patička faktury (nepovinné - doplní se z účtu) |
 | **private_note** | string | Soukromá poznámka (nepovinné) |
-| **tags** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<string\> | Seznam tagů faktury |
+| **tags** | ICollection\<string\> | Seznam tagů faktury |
 | **bank_account_id** | int? | ID bankovního účtu (nepovinné - použije se výchozí bankovní účet) |
 | **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
 | **iban** | string | IBAN (nepovinné - doplní se z účtu) |
@@ -1702,7 +1702,7 @@ Single invoice
 | **pdf_url** | string | API adresa pro stažení faktury v PDF |
 | **subject_url** | string | API adresa kontaktu příjemce |
 | **updated_at** | DateTime? | Datum poslední aktualizace faktury |
-| **lines** | [ICollection](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1)\<[JsonInvoiceLine](#jsoninvoiceline-class)\> | Položky faktury |
+| **lines** | ICollection\<[JsonInvoiceLine](#jsoninvoiceline-class)\> | Položky faktury |
 # JsonInvoiceLine Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1774,7 +1774,7 @@ Represents a todo task, as received from JSON API.
 
 Namespace: System.Diagnostics.CodeAnalysis
 
-Base class: [Attribute](https://docs.microsoft.com/en-us/dotnet/api/system.attribute)
+Base class: Attribute
 
 Specifies that null is allowed as an input even if the corresponding type disallows it.
 
@@ -1782,12 +1782,12 @@ Specifies that null is allowed as an input even if the corresponding type disall
 
 | Name | Type | Summary |
 |---|---|---|
-| **TypeId** | [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) |  |
+| **TypeId** | Object |  |
 # NotNullWhenAttribute Class
 
 Namespace: System.Diagnostics.CodeAnalysis
 
-Base class: [Attribute](https://docs.microsoft.com/en-us/dotnet/api/system.attribute)
+Base class: Attribute
 
 Specifies that when a method returns **System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue**, the parameter will not be null even if the corresponding type allows it.
 
@@ -1796,7 +1796,7 @@ Specifies that when a method returns **System.Diagnostics.CodeAnalysis.NotNullWh
 | Name | Type | Summary |
 |---|---|---|
 | **ReturnValue** | bool | Gets the return value condition. |
-| **TypeId** | [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) |  |
+| **TypeId** | Object |  |
 ## Constructors
 
 | Name | Summary |
