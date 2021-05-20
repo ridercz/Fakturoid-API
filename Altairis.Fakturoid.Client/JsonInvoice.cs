@@ -360,5 +360,20 @@ namespace Altairis.Fakturoid.Client {
         /// Položky faktury
         /// </summary>
         public ICollection<JsonInvoiceLine> lines { get; set; }
+
+        /// <summary>
+        /// true - Vystavená faktura se zaeviduje do EET / false - Vystavená faktura se nezaeviduje do EET
+        /// </summary>
+        public bool? eet { get; set; }
+
+        /// <summary>
+        /// Pokladna
+        /// </summary>
+        public string? eet_store { get; set; }
+
+        /// <summary>
+        /// Číslo provozovny
+        /// </summary>
+        public string? eet_cash_register { get; set; }
     }
 }
