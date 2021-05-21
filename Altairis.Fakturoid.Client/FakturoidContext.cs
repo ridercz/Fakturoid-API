@@ -11,9 +11,16 @@ namespace Altairis.Fakturoid.Client {
     public class FakturoidContext {
         private const string DEFAULT_USER_AGENT = "C#/.NET API Client v2 by Altairis (fakturoid@rider.cz)";
         private const string API_BASE_URL_FORMAT = "https://app.fakturoid.cz/api/v2/accounts/{0}/";
+        private readonly GetCustomHttpClient getCustomHttpClient;
+
+        /// <summary>
+        /// To provide custom http client
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        public delegate HttpClient GetCustomHttpClient(Uri uri);
 
         // Constructor
-
         /// <summary>
         /// Initializes a new instance of the <see cref="FakturoidContext" /> class.
         /// </summary>
@@ -21,6 +28,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="emailAddress">The email address od user being authenticated.</param>
         /// <param name="authenticationToken">The authentication token.</param>
         /// <param name="userAgent">The User-Agent HTTP header value.</param>
+        /// <param name="getCustomHttpClient">Getter for custom http client</param>
         /// <exception cref="ArgumentNullException">accountName
         /// or
         /// authenticationToken
@@ -31,7 +39,7 @@ namespace Altairis.Fakturoid.Client {
         /// Value cannot be empty or whitespace only string.;authenticationToken
         /// or
         /// Value cannot be empty or whitespace only string.;userAgent</exception>
-        public FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent = DEFAULT_USER_AGENT) {
+        public FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent = DEFAULT_USER_AGENT, GetCustomHttpClient getCustomHttpClient = null) {
             if (accountName == null) throw new ArgumentNullException(nameof(accountName));
             if (string.IsNullOrWhiteSpace(accountName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(accountName));
             if (emailAddress == null) throw new ArgumentNullException(nameof(emailAddress));
@@ -54,6 +62,8 @@ namespace Altairis.Fakturoid.Client {
             this.Invoices = new FakturoidInvoicesProxy(this);
             this.Expenses = new FakturoidExpensesProxy(this);
             this.BankAccounts = new FakturoidBankAccountsProxy(this);
+
+            this.getCustomHttpClient = getCustomHttpClient;
         }
 
         // Properties
@@ -144,9 +154,9 @@ namespace Altairis.Fakturoid.Client {
             var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", this.EmailAddress, this.AuthenticationToken)));
 
             // Setup HTTP client
-            var client = new HttpClient {
-                BaseAddress = new Uri(string.Format(API_BASE_URL_FORMAT, this.AccountName))
-            };
+            var baseAddress = new Uri(string.Format(API_BASE_URL_FORMAT, this.AccountName));
+            var client = this.getCustomHttpClient is not null ? this.getCustomHttpClient(baseAddress) : new HttpClient { BaseAddress = baseAddress };
+
             client.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeader);

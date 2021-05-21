@@ -87,7 +87,12 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Set status of partial proforma invoice to paid.
         /// </summary>
-        PartialProformaPaid
+        PartialProformaPaid,
+
+        /// <summary>
+        /// Set status to cancelled (for proforma or invoice without VAT)
+        /// </summary>
+        Cancelled
     }
 
     /// <summary>
@@ -485,6 +490,9 @@ namespace Altairis.Fakturoid.Client {
                     break;
                 case InvoicePaymentStatus.PartialProformaPaid:
                     urlFormat = "invoices/{0}/fire.json?event=pay_partial_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
+                    break;
+                case InvoicePaymentStatus.Cancelled:
+                    urlFormat = "invoices/{0}/fire.json?event=cancel";
                     break;
                 default:
                     urlFormat = "invoices/{0}/fire.json?event=remove_payment";
