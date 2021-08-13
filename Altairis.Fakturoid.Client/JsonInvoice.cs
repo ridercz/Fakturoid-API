@@ -135,7 +135,7 @@ namespace Altairis.Fakturoid.Client {
         public bool? correction { get; set; }
 
         /// <summary>
-        /// ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad 
+        /// ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad
         /// se doplní automaticky doplní ID opravného daňového dokladu (nepovinné)
         /// </summary>
         public int? correction_id { get; set; }
@@ -300,7 +300,7 @@ namespace Altairis.Fakturoid.Client {
         /// Součet bez DPH v měně účtu
         /// </summary>
         public decimal native_subtotal { get; set; }
-        
+
         /// <summary>
         /// Součet včetně DPH
         /// </summary>
@@ -317,7 +317,7 @@ namespace Altairis.Fakturoid.Client {
         public decimal remaining_amount { get; set; }
 
         /// <summary>
-        /// Částka k zaplacení v měně účtu 
+        /// Částka k zaplacení v měně účtu
         /// </summary>
         public decimal remaining_native_amount { get; set; }
 
@@ -369,11 +369,11 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// Pokladna
         /// </summary>
-        public string? eet_store { get; set; }
+        public string eet_store { get; set; }
 
         /// <summary>
         /// Číslo provozovny
         /// </summary>
-        public string? eet_cash_register { get; set; }
+        public string eet_cash_register { get; set; }
     }
 }
