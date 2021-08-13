@@ -45,8 +45,7 @@ namespace Altairis.Fakturoid.Client {
         protected IEnumerable<T> GetAllPagedEntities<T>(string baseUri, object additionalQueryParams = null) {
             try {
                 return this.GetAllPagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
 
@@ -89,8 +88,7 @@ namespace Altairis.Fakturoid.Client {
         protected IEnumerable<T> GetPagedEntities<T>(string baseUri, int page, object additionalQueryParams = null) {
             try {
                 return this.GetPagedEntitiesAsync<T>(baseUri, page, additionalQueryParams).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -131,8 +129,7 @@ namespace Altairis.Fakturoid.Client {
         protected IEnumerable<T> GetUnpagedEntities<T>(string baseUri, object additionalQueryParams = null) {
             try {
                 return this.GetUnpagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -168,8 +165,7 @@ namespace Altairis.Fakturoid.Client {
         protected T GetSingleEntity<T>(string uri) {
             try {
                 return this.GetSingleEntityAsync<T>(uri).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -214,8 +210,7 @@ namespace Altairis.Fakturoid.Client {
         protected int CreateEntity<T>(string uri, T newEntity) where T : class {
             try {
                 return this.CreateEntityAsync(uri, newEntity).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -250,8 +245,7 @@ namespace Altairis.Fakturoid.Client {
                 if (idString.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) idString = idString.Substring(0, idString.Length - 5); // remove .json extension
                 idString = idString.Substring(idString.LastIndexOf('/') + 1); // last path component should now be numeric ID
                 return int.Parse(idString);
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 throw new FormatException(string.Format("Unexpected format of new entity URI. Expected format 'scheme://anystring/123456.json', got '{0}' instead.", r.Headers.Location));
             }
         }
@@ -265,8 +259,7 @@ namespace Altairis.Fakturoid.Client {
         protected void DeleteSingleEntity(string uri) {
             try {
                 this.DeleteSingleEntityAsync(uri).Wait();
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }
@@ -303,8 +296,7 @@ namespace Altairis.Fakturoid.Client {
         protected T UpdateSingleEntity<T>(string uri, T entity) where T : class {
             try {
                 return this.UpdateSingleEntityAsync(uri, entity).Result;
-            }
-            catch (AggregateException aex) {
+            } catch (AggregateException aex) {
                 throw aex.InnerException;
             }
         }

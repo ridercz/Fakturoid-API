@@ -18,12 +18,10 @@ namespace Altairis.Fakturoid.Client.DemoApp {
                 if (pi.PropertyType.IsValueType || pi.PropertyType == typeof(string)) {
                     // Primitive type or string
                     Console.WriteLine("{0}{1} = {2}", linePrefix, pi.Name, pi.GetValue(element));
-                }
-                else if (typeof(IEnumerable).IsAssignableFrom(pi.PropertyType)) {
+                } else if (typeof(IEnumerable).IsAssignableFrom(pi.PropertyType)) {
                     // Some kind of enumerable
                     Console.WriteLine("{0}{1} = ... (enumerable)", linePrefix, pi.Name);
-                }
-                else {
+                } else {
                     // Complex type
                     Console.WriteLine("{0}{1}:", linePrefix, pi.Name);
                     pi.GetValue(element).DumpProperties(tw, linePrefix + "  ");

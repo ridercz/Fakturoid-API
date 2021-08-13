@@ -70,7 +70,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         public string supplier_vat_no { get; set; }
 
-     
+
         /// <summary>
         /// ID kontaktu příjemce
         /// </summary>
@@ -164,7 +164,7 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         public bool transferred_tax_liability { get; set; }
 
-        
+
         /// <summary>
         /// Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).
         /// Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost.
@@ -191,7 +191,7 @@ namespace Altairis.Fakturoid.Client {
         /// Součet bez DPH v měně účtu
         /// </summary>
         public decimal native_subtotal { get; set; }
-        
+
         /// <summary>
         /// Součet včetně DPH
         /// </summary>

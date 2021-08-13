@@ -60,8 +60,7 @@ namespace Altairis.Fakturoid.Client.Purge {
                     Console.Write("  #{0}: ({1}) {2}...", invoice.id, invoice.number, invoice.client_name);
                     context.Invoices.Delete(invoice.id);
                     Console.WriteLine("OK");
-                }
-                catch (FakturoidException fex) {
+                } catch (FakturoidException fex) {
                     Console.WriteLine("Failed!");
                     Console.WriteLine("    " + fex.Message);
                 }
@@ -78,8 +77,7 @@ namespace Altairis.Fakturoid.Client.Purge {
                     Console.Write("  #{0}: {1}...", subject.id, subject.name);
                     context.Subjects.Delete(subject.id);
                     Console.WriteLine("OK");
-                }
-                catch (FakturoidException fex) {
+                } catch (FakturoidException fex) {
                     Console.WriteLine("Failed!");
                     Console.WriteLine("    " + fex.Message);
                     Console.WriteLine(fex.Message);

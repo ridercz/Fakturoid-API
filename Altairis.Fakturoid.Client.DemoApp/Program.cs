@@ -112,8 +112,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
                 Console.Write("Causing intentional error...");
                 context.Subjects.Create(subject);
                 Console.WriteLine("OK (that's unexpected!)");
-            }
-            catch (FakturoidException fex) {
+            } catch (FakturoidException fex) {
                 Console.WriteLine("Failed! (that's expected)");
                 Console.WriteLine(fex.Message);
                 foreach (var item in fex.Errors) {
@@ -128,13 +127,11 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             Console.WriteLine();
         }
 
-        private static void SearchSubjects(string searchTerm)
-        {
+        private static void SearchSubjects(string searchTerm) {
             Console.Write($"Searching Subjects. Term: {searchTerm}...");
             var subjects = context.Subjects.Search(searchTerm);
             Console.WriteLine("OK");
-            foreach (var subject in subjects)
-            {
+            foreach (var subject in subjects) {
                 Console.WriteLine("Name: {0}, RegNo: {1}", subject.name, subject.registration_no);
             }
             Console.WriteLine();

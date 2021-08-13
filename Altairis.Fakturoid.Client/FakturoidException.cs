@@ -140,8 +140,7 @@ namespace Altairis.Fakturoid.Client {
                             errors.Add(new KeyValuePair<string, string>(prop.Name, value));
                         }
                     }
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     // Deserialization failed
                     errors.Add(new KeyValuePair<string, string>("json_parse_on_client_failed", "Error while parsing received body: " + ex.Message));
                 }
