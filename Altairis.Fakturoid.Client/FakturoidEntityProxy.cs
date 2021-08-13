@@ -352,16 +352,15 @@ namespace Altairis.Fakturoid.Client {
                 if (rawValue == null) continue; // null queryParams do not propagate to query
 
                 string stringValue = null;
-                if (rawValue is DateTime) {
+                if (rawValue is DateTime time) {
                     // Format date
-                    stringValue = XmlConvert.ToString((DateTime)rawValue, XmlDateTimeSerializationMode.RoundtripKind);
+                    stringValue = XmlConvert.ToString(time, XmlDateTimeSerializationMode.RoundtripKind);
                 } else if (rawValue is DateTime?) {
                     // Format nullable date
                     var dateValue = (DateTime?)rawValue;
                     if (dateValue.HasValue) stringValue = XmlConvert.ToString(dateValue.Value, XmlDateTimeSerializationMode.RoundtripKind);
                 } else {
-                    var formattableValue = rawValue as IFormattable;
-                    if (formattableValue != null) {
+                    if (rawValue is IFormattable formattableValue) {
                         // Format IFormattable rawValue
                         stringValue = formattableValue.ToString(null, System.Globalization.CultureInfo.InvariantCulture);
                     } else {
@@ -375,8 +374,7 @@ namespace Altairis.Fakturoid.Client {
             }
 
             var qs = qsb.ToString().TrimEnd('&');
-            if (string.IsNullOrWhiteSpace(qs)) return string.Empty;
-            return prefix + qs;
+            return string.IsNullOrWhiteSpace(qs) ? string.Empty : prefix + qs;
         }
 
     }

@@ -36,9 +36,9 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
         public IEnumerable<JsonEvent> Select(int page, DateTime? since = null) {
-            if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.");
-
-            return base.GetPagedEntities<JsonEvent>("events.json", page, new { since });
+            return page < 1
+                ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
+                : base.GetPagedEntities<JsonEvent>("events.json", page, new { since });
         }
 
         /// <summary>
@@ -51,9 +51,9 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
         public async Task<IEnumerable<JsonEvent>> SelectAsync(int page, DateTime? since = null) {
-            if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.");
-
-            return await base.GetPagedEntitiesAsync<JsonEvent>("events.json", page, new { since });
+            return page < 1
+                ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
+                : await base.GetPagedEntitiesAsync<JsonEvent>("events.json", page, new { since });
         }
 
     }

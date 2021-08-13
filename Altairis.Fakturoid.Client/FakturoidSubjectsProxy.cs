@@ -56,8 +56,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>List of <see cref="JsonSubject"/> instances.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">page;Value must be greater than zero.</exception>
         public IEnumerable<JsonSubject> Select(int page) {
-            if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
-            return base.GetPagedEntities<JsonSubject>("subjects.json", page);
+            return page < 1
+                ? throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.")
+                : base.GetPagedEntities<JsonSubject>("subjects.json", page);
         }
 
         /// <summary>
@@ -67,8 +68,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>List of <see cref="JsonSubject"/> instances.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">page;Value must be greater than zero.</exception>
         public async Task<IEnumerable<JsonSubject>> SelectAsync(int page) {
-            if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
-            return await base.GetPagedEntitiesAsync<JsonSubject>("subjects.json", page);
+            return page < 1
+                ? throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.")
+                : await base.GetPagedEntitiesAsync<JsonSubject>("subjects.json", page);
         }
 
         /// <summary>
@@ -78,9 +80,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonSubject"/> class.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public JsonSubject SelectSingle(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            return base.GetSingleEntity<JsonSubject>(string.Format("subjects/{0}.json", id));
+            return id < 1
+                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
+                : base.GetSingleEntity<JsonSubject>(string.Format("subjects/{0}.json", id));
         }
 
         /// <summary>
@@ -90,9 +92,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonSubject"/> class.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task<JsonSubject> SelectSingleAsync(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            return await base.GetSingleEntityAsync<JsonSubject>(string.Format("subjects/{0}.json", id));
+            return id < 1
+                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
+                : await base.GetSingleEntityAsync<JsonSubject>(string.Format("subjects/{0}.json", id));
         }
 
         /// <summary>
@@ -123,11 +125,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="entity">The new subject.</param>
         /// <returns>ID of newly created subject.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
-        public int Create(JsonSubject entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return base.CreateEntity("subjects.json", entity);
-        }
+        public int Create(JsonSubject entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : base.CreateEntity("subjects.json", entity);
 
         /// <summary>
         /// Creates asynchronously the specified new subject.
@@ -135,11 +133,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="entity">The new subject.</param>
         /// <returns>ID of newly created subject.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
-        public async Task<int> CreateAsync(JsonSubject entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return await base.CreateEntityAsync("subjects.json", entity);
-        }
+        public async Task<int> CreateAsync(JsonSubject entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync("subjects.json", entity);
 
         /// <summary>
         /// Updates the specified subject.
@@ -148,9 +142,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonSubject"/> class with modified entity.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public JsonSubject Update(JsonSubject entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return base.UpdateSingleEntity(string.Format("subjects/{0}.json", entity.id), entity);
+            return entity == null
+                ? throw new ArgumentNullException(nameof(entity))
+                : base.UpdateSingleEntity(string.Format("subjects/{0}.json", entity.id), entity);
         }
 
         /// <summary>
@@ -160,9 +154,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonSubject"/> class with modified entity.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<JsonSubject> UpdateAsync(JsonSubject entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return await base.UpdateSingleEntityAsync(string.Format("subjects/{0}.json", entity.id), entity);
+            return entity == null
+                ? throw new ArgumentNullException(nameof(entity))
+                : await base.UpdateSingleEntityAsync(string.Format("subjects/{0}.json", entity.id), entity);
         }
 
     }

@@ -140,10 +140,12 @@ namespace Altairis.Fakturoid.Client {
                             errors.Add(new KeyValuePair<string, string>(prop.Name, value));
                         }
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                 } catch (Exception ex) {
                     // Deserialization failed
                     errors.Add(new KeyValuePair<string, string>("json_parse_on_client_failed", "Error while parsing received body: " + ex.Message));
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
             this.Errors = errors;
         }

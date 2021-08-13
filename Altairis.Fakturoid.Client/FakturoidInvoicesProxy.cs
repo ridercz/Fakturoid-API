@@ -133,9 +133,9 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public JsonInvoice SelectSingle(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            return base.GetSingleEntity<JsonInvoice>(string.Format("invoices/{0}.json", id));
+            return id < 1
+                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
+                : base.GetSingleEntity<JsonInvoice>(string.Format("invoices/{0}.json", id));
         }
 
         /// <summary>
@@ -147,9 +147,9 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task<JsonInvoice> SelectSingleAsync(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            return await base.GetSingleEntityAsync<JsonInvoice>(string.Format("invoices/{0}.json", id));
+            return id < 1
+                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
+                : await base.GetSingleEntityAsync<JsonInvoice>(string.Format("invoices/{0}.json", id));
         }
 
         /// <summary>
@@ -186,20 +186,11 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
         public async Task<IEnumerable<JsonInvoice>> SelectAsync(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
-
-            // Get URI based on invoice type
-            string uri;
-            switch (type) {
-                case InvoiceTypeCondition.Proforma:
-                    uri = "invoices/proforma.json";
-                    break;
-                case InvoiceTypeCondition.Regular:
-                    uri = "invoices/regular.json";
-                    break;
-                default:
-                    uri = "invoices.json";
-                    break;
-            }
+            var uri = type switch {
+                InvoiceTypeCondition.Proforma => "invoices/proforma.json",
+                InvoiceTypeCondition.Regular => "invoices/regular.json",
+                _ => "invoices.json",
+            };
 
             // Get status string based
             string statusString = null;
@@ -278,20 +269,11 @@ namespace Altairis.Fakturoid.Client {
         public async Task<IEnumerable<JsonInvoice>> SelectAsync(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
             if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
-
-            // Get URI based on invoice type
-            string uri;
-            switch (type) {
-                case InvoiceTypeCondition.Proforma:
-                    uri = "invoices/proforma.json";
-                    break;
-                case InvoiceTypeCondition.Regular:
-                    uri = "invoices/regular.json";
-                    break;
-                default:
-                    uri = "invoices.json";
-                    break;
-            }
+            var uri = type switch {
+                InvoiceTypeCondition.Proforma => "invoices/proforma.json",
+                InvoiceTypeCondition.Regular => "invoices/regular.json",
+                _ => "invoices.json",
+            };
 
             // Get status string based
             string statusString = null;
@@ -353,11 +335,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="entity">The new invoice.</param>
         /// <returns>ID of newly created invoice.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
-        public int Create(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return base.CreateEntity("invoices.json", entity);
-        }
+        public int Create(JsonInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : base.CreateEntity("invoices.json", entity);
 
         /// <summary>
         /// Creates asynchronously the specified new invoice.
@@ -365,11 +343,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="entity">The new invoice.</param>
         /// <returns>ID of newly created invoice.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
-        public async Task<int> CreateAsync(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return await base.CreateEntityAsync("invoices.json", entity);
-        }
+        public async Task<int> CreateAsync(JsonInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync("invoices.json", entity);
 
         /// <summary>
         /// Updates the specified invoice.
@@ -378,9 +352,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public JsonInvoice Update(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return base.UpdateSingleEntity(string.Format("invoices/{0}.json", entity.id), entity);
+            return entity == null
+                ? throw new ArgumentNullException(nameof(entity))
+                : base.UpdateSingleEntity(string.Format("invoices/{0}.json", entity.id), entity);
         }
 
         /// <summary>
@@ -390,9 +364,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<JsonInvoice> UpdateAsync(JsonInvoice entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return await base.UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.id), entity);
+            return entity == null
+                ? throw new ArgumentNullException(nameof(entity))
+                : await base.UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.id), entity);
         }
 
         /// <summary>
@@ -417,21 +391,11 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task SendMessageAsync(int id, InvoiceMessageType messageType) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            // Get name of event
-            string eventName;
-            switch (messageType) {
-                case InvoiceMessageType.InvoiceMessage:
-                    eventName = "deliver";
-                    break;
-                case InvoiceMessageType.PaymentReminderMessage:
-                    eventName = "deliver_reminder";
-                    break;
-                default:
-                    eventName = "mark_as_sent";
-                    break;
-            }
-
+            var eventName = messageType switch {
+                InvoiceMessageType.InvoiceMessage => "deliver",
+                InvoiceMessageType.PaymentReminderMessage => "deliver_reminder",
+                _ => "mark_as_sent",
+            };
             var c = this.Context.GetHttpClient();
             var r = await c.PostAsync(string.Format("invoices/{0}/fire.json?event={1}", id, eventName), new StringContent(string.Empty));
             r.EnsureFakturoidSuccess();
@@ -474,27 +438,13 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="effectiveDate">The date when payment was performed.</param>
         public async Task SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            // Get url
-            string urlFormat;
-            switch (status) {
-                case InvoicePaymentStatus.Paid:
-                    urlFormat = "invoices/{0}/fire.json?event=pay&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
-                    break;
-                case InvoicePaymentStatus.ProformaPaid:
-                    urlFormat = "invoices/{0}/fire.json?event=pay_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
-                    break;
-                case InvoicePaymentStatus.PartialProformaPaid:
-                    urlFormat = "invoices/{0}/fire.json?event=pay_partial_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind));
-                    break;
-                case InvoicePaymentStatus.Cancelled:
-                    urlFormat = "invoices/{0}/fire.json?event=cancel";
-                    break;
-                default:
-                    urlFormat = "invoices/{0}/fire.json?event=remove_payment";
-                    break;
-            }
-
+            var urlFormat = status switch {
+                InvoicePaymentStatus.Paid => "invoices/{0}/fire.json?event=pay&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind)),
+                InvoicePaymentStatus.ProformaPaid => "invoices/{0}/fire.json?event=pay_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind)),
+                InvoicePaymentStatus.PartialProformaPaid => "invoices/{0}/fire.json?event=pay_partial_proforma&paid_at=" + Uri.EscapeDataString(XmlConvert.ToString(effectiveDate, XmlDateTimeSerializationMode.RoundtripKind)),
+                InvoicePaymentStatus.Cancelled => "invoices/{0}/fire.json?event=cancel",
+                _ => "invoices/{0}/fire.json?event=remove_payment",
+            };
             var c = this.Context.GetHttpClient();
             var r = await c.PostAsync(string.Format(urlFormat, id), new StringContent(string.Empty));
             r.EnsureFakturoidSuccess();

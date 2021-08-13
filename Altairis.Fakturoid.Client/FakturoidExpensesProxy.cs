@@ -68,9 +68,9 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public JsonExpense SelectSingle(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            return base.GetSingleEntity<JsonExpense>(string.Format(EntityPath, id));
+            return id < 1
+                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
+                : base.GetSingleEntity<JsonExpense>(string.Format(EntityPath, id));
         }
 
         /// <summary>
@@ -82,9 +82,9 @@ namespace Altairis.Fakturoid.Client {
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
         public async Task<JsonExpense> SelectSingleAsync(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            return await base.GetSingleEntityAsync<JsonExpense>(string.Format(EntityPath, id));
+            return id < 1
+                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
+                : await base.GetSingleEntityAsync<JsonExpense>(string.Format(EntityPath, id));
         }
 
         /// <summary>
@@ -251,9 +251,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>ID of newly created expense.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public int Create(JsonExpense entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return base.CreateEntity(CollectionPath, entity);
+            return entity == null ? throw new ArgumentNullException(nameof(entity)) : base.CreateEntity(CollectionPath, entity);
         }
 
         /// <summary>
@@ -263,9 +261,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>ID of newly created expense.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<int> CreateAsync(JsonExpense entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return await base.CreateEntityAsync(CollectionPath, entity);
+            return entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync(CollectionPath, entity);
         }
 
         /// <summary>
@@ -275,9 +271,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonExpense"/> class with modified entity.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public JsonExpense Update(JsonExpense entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return base.UpdateSingleEntity(string.Format(EntityPath, entity.id), entity);
+            return entity == null
+                ? throw new ArgumentNullException(nameof(entity))
+                : base.UpdateSingleEntity(string.Format(EntityPath, entity.id), entity);
         }
 
         /// <summary>
@@ -287,9 +283,9 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>Instance of <see cref="JsonExpense"/> class with modified entity.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<JsonExpense> UpdateAsync(JsonExpense entity) {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
-
-            return await base.UpdateSingleEntityAsync(string.Format(EntityPath, entity.id), entity);
+            return entity == null
+                ? throw new ArgumentNullException(nameof(entity))
+                : await base.UpdateSingleEntityAsync(string.Format(EntityPath, entity.id), entity);
         }
 
         /// <summary>
