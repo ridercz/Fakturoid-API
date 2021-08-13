@@ -1,4 +1,4 @@
-# Altairis.Fakturoid.Client.dll v.2.9.0.0 API documentation
+# Altairis.Fakturoid.Client.dll v.2.10.0.0 API documentation
 
 # All types
 
