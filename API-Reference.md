@@ -4,16 +4,16 @@
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEvent Class](#jsonevent-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonExpense Class](#jsonexpense-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonInvoice Class](#jsoninvoice-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonSubject Class](#jsonsubject-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [JsonAccount Class](#jsonaccount-class) | [JsonTodo Class](#jsontodo-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [AllowNullAttribute Class](#allownullattribute-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [NotNullWhenAttribute Class](#notnullwhenattribute-class) |
-| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonEntityLine Class](#jsonentityline-class) |   |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEntityLine Class](#jsonentityline-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [GetCustomHttpClient Class](#getcustomhttpclient-class) | [JsonEvent Class](#jsonevent-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonExpense Class](#jsonexpense-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonInvoice Class](#jsoninvoice-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonSubject Class](#jsonsubject-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAccount Class](#jsonaccount-class) | [JsonTodo Class](#jsontodo-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [AllowNullAttribute Class](#allownullattribute-class) |
+| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [NotNullWhenAttribute Class](#notnullwhenattribute-class) |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -109,7 +109,7 @@ Class representing connection to Fakturoid API, holds authentication information
 
 | Name | Summary |
 |---|---|
-| [**FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent)**](#fakturoidcontextstring-accountname-string-emailaddress-string-authenticationtoken-string-useragent) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
+| [**FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent, GetCustomHttpClient getCustomHttpClient)**](#fakturoidcontextstring-accountname-string-emailaddress-string-authenticationtoken-string-useragent-getcustomhttpclient-getcustomhttpclient) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
 ## Methods
 
 | Name | Returns | Summary |
@@ -117,7 +117,7 @@ Class representing connection to Fakturoid API, holds authentication information
 | [**GetAccountInfo()**](#getaccountinfo) | [JsonAccount](#jsonaccount-class) | Gets the account information. |
 ## Constructors
 
-### FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent)
+### FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent, GetCustomHttpClient getCustomHttpClient)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class.
 
@@ -127,6 +127,7 @@ Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext**
 | emailAddress | string | The email address od user being authenticated. |
 | authenticationToken | string | The authentication token. |
 | userAgent | string | The User-Agent HTTP header value. |
+| getCustomHttpClient | [GetCustomHttpClient](#getcustomhttpclient-class) | Getter for custom http client |
 
 
 ## Methods
@@ -1073,8 +1074,8 @@ Proxy class for working with subjects/contacts.
 | [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country. |
 | [**Select(string customId)**](#selectstring-customid) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Gets list of all subjects. |
 | [**Select(int page)**](#selectint-page) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Gets paged list of subjects |
-| [**SelectAsync(string customId)**](#selectasyncstring-customid) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
 | [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
+| [**SelectAsync(string customId, DateTime? updatedSince)**](#selectasyncstring-customid-datetime-updatedsince) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonSubject](#jsonsubject-class) | Selects single subject with specified ID. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
 | [**Update(JsonSubject entity)**](#updatejsonsubject-entity) | [JsonSubject](#jsonsubject-class) | Updates the specified subject. |
@@ -1195,13 +1196,13 @@ IEnumerable<[JsonSubject](#jsonsubject-class)>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
-### SelectAsync(string customId)
+### SelectAsync(int page)
 
-Gets asynchronously list of all subjects.
+Gets asynchronously paged list of subjects
 
 | Parameter | Type | Description |
 |---|---|---|
-| customId | string | The custom identifier used for filtering. |
+| page | int | The page number. |
 
 
 ### Returns
@@ -1210,13 +1211,14 @@ Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
-### SelectAsync(int page)
+### SelectAsync(string customId, DateTime? updatedSince)
 
-Gets asynchronously paged list of subjects
+Gets asynchronously list of all subjects.
 
 | Parameter | Type | Description |
 |---|---|---|
-| page | int | The page number. |
+| customId | string | The custom identifier used for filtering. |
+| updatedSince | DateTime? | List only subjects updated since certain date. |
 
 
 ### Returns
@@ -1370,6 +1372,71 @@ Task<IEnumerable<[JsonTodo](#jsontodo-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonTodo** instances.
 
+# GetCustomHttpClient Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: MulticastDelegate
+
+To provide custom http client
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Target** | Object |  |
+| **Method** | MethodInfo |  |
+## Constructors
+
+| Name | Summary |
+|---|---|
+| [**GetCustomHttpClient(Object object, IntPtr method)**](#getcustomhttpclientobject-object-intptr-method) |  |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**BeginInvoke(Uri uri, AsyncCallback callback, Object object)**](#begininvokeuri-uri-asynccallback-callback-object-object) | IAsyncResult |  |
+| [**EndInvoke(IAsyncResult result)**](#endinvokeiasyncresult-result) | HttpClient |  |
+| [**Invoke(Uri uri)**](#invokeuri-uri) | HttpClient |  |
+## Constructors
+
+### GetCustomHttpClient(Object object, IntPtr method)
+
+
+
+
+## Methods
+
+### BeginInvoke(Uri uri, AsyncCallback callback, Object object)
+
+
+
+
+### Returns
+
+IAsyncResult
+
+
+### EndInvoke(IAsyncResult result)
+
+
+
+
+### Returns
+
+HttpClient
+
+
+### Invoke(Uri uri)
+
+
+
+
+### Returns
+
+HttpClient
+
+
 # InternalExtensionMethods Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1414,6 +1481,7 @@ Invoice payment status
 | **Paid** | Set status of regular invoice to paid. |
 | **ProformaPaid** | Set status of proforma invoice to paid. |
 | **PartialProformaPaid** | Set status of partial proforma invoice to paid. |
+| **Cancelled** | Set status to cancelled (for proforma or invoice without VAT) |
 # InvoiceStatusCondition Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -1658,7 +1726,7 @@ Single invoice
 | **generator_id** | int? | ID šablony ze které byla faktura vystavena (nepovinné) |
 | **related_id** | int? | ID proformy/faktury (nepovinné) |
 | **correction** | bool? | Opravný daňový doklad (false = faktura/proforma, nepovinné) |
-| **correction_id** | int? | ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad <br>se doplní automaticky doplní ID opravného daňového dokladu (nepovinné) |
+| **correction_id** | int? | ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad<br>se doplní automaticky doplní ID opravného daňového dokladu (nepovinné) |
 | **token** | string | Token pro public akci |
 | **status** | string | Stav faktury - open/sent/overdue/paid |
 | **order_number** | string | Číslo objednávky (nepovinné) |
@@ -1703,6 +1771,9 @@ Single invoice
 | **subject_url** | string | API adresa kontaktu příjemce |
 | **updated_at** | DateTime? | Datum poslední aktualizace faktury |
 | **lines** | ICollection\<[JsonInvoiceLine](#jsoninvoiceline-class)\> | Položky faktury |
+| **eet** | bool? | true - Vystavená faktura se zaeviduje do EET / false - Vystavená faktura se nezaeviduje do EET |
+| **eet_store** | string | Pokladna |
+| **eet_cash_register** | string | Číslo provozovny |
 # JsonInvoiceLine Class
 
 Namespace: Altairis.Fakturoid.Client

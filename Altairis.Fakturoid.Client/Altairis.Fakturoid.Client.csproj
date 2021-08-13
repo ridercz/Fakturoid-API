@@ -20,9 +20,6 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>NuGet-64x64.png</PackageIcon>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Altairis.Fakturoid.Client.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -43,8 +40,8 @@
     </None>
   </ItemGroup>
 
-  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="mddox &quot;$(TargetPath)&quot; -o &quot;$(SolutionDir)\API-Reference.md&quot; -f github -n -d" />
-  </Target>-->
+  </Target>
 
 </Project>
