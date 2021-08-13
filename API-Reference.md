@@ -363,29 +363,29 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Create([JsonExpense](#jsonexpense-class) entity)**](#createjsonexpensejsonexpense-class-entity) | int | Creates the specified new expense. |
-| [**CreateAsync([JsonExpense](#jsonexpense-class) entity)**](#createasyncjsonexpensejsonexpense-class-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
+| [**Create(JsonExpense entity)**](#createjsonexpense-entity) | int | Creates the specified new expense. |
+| [**CreateAsync(JsonExpense entity)**](#createasyncjsonexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
 | [**Delete(int id)**](#deleteint-id) | void | Deletes expense with specified id. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
-| [**Select([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets list of all invoices. |
-| [**Select(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets paged list of invoices. |
-| [**SelectAsync([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatusconditionexpensestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**Select(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets list of all invoices. |
+| [**Select(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets paged list of invoices. |
+| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonExpense](#jsonexpense-class) | Selects single expense with specified ID. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonExpense](#jsonexpense-class)\> | Selects asynchronously single expense with specified ID. |
 | [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
 | [**SetAttachment(int id, string mimeType, byte[] fileContent)**](#setattachmentint-id-string-mimetype-byte-filecontent) | void | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | void | Sets the expense payment status. |
-| [**SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | void | Sets the expense payment status. |
-| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status) | Task | Sets asynchronously the expense payment status. |
-| [**SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatusexpensepaymentstatus-enum-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
-| [**Update([JsonExpense](#jsonexpense-class) entity)**](#updatejsonexpensejsonexpense-class-entity) | [JsonExpense](#jsonexpense-class) | Updates the specified expense. |
-| [**UpdateAsync([JsonExpense](#jsonexpense-class) entity)**](#updateasyncjsonexpensejsonexpense-class-entity) | Task\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
+| [**SetPaymentStatus(int id, ExpensePaymentStatus status)**](#setpaymentstatusint-id-expensepaymentstatus-status) | void | Sets the expense payment status. |
+| [**SetPaymentStatus(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusint-id-expensepaymentstatus-status-datetime-effectivedate) | void | Sets the expense payment status. |
+| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
+| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
+| [**Update(JsonExpense entity)**](#updatejsonexpense-entity) | [JsonExpense](#jsonexpense-class) | Updates the specified expense. |
+| [**UpdateAsync(JsonExpense entity)**](#updateasyncjsonexpense-entity) | Task\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
 ## Methods
 
-### Create([JsonExpense](#jsonexpense-class) entity)
+### Create(JsonExpense entity)
 
 Creates the specified new expense.
 
@@ -400,7 +400,7 @@ int
 
 ID of newly created expense.
 
-### CreateAsync([JsonExpense](#jsonexpense-class) entity)
+### CreateAsync(JsonExpense entity)
 
 Creates asynchronously the specified new expense.
 
@@ -439,7 +439,7 @@ Task
 
 
 
-### Select([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### Select(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets list of all invoices.
 
@@ -457,7 +457,7 @@ IEnumerable<[JsonExpense](#jsonexpense-class)>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
-### Select(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### Select(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets paged list of invoices.
 
@@ -476,7 +476,7 @@ IEnumerable<[JsonExpense](#jsonexpense-class)>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
-### SelectAsync([ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets asynchronously list of all invoices.
 
@@ -494,7 +494,7 @@ Task<IEnumerable<[JsonExpense](#jsonexpense-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
-### SelectAsync(int page, [ExpenseStatusCondition](#expensestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets asynchronously paged list of invoices.
 
@@ -597,7 +597,7 @@ Task
 
 
 
-### SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)
+### SetPaymentStatus(int id, ExpensePaymentStatus status)
 
 Sets the expense payment status.
 
@@ -607,7 +607,7 @@ Sets the expense payment status.
 | status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
 
 
-### SetPaymentStatus(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)
+### SetPaymentStatus(int id, ExpensePaymentStatus status, DateTime effectiveDate)
 
 Sets the expense payment status.
 
@@ -618,7 +618,7 @@ Sets the expense payment status.
 | effectiveDate | DateTime | The date when payment was performed. |
 
 
-### SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status)
+### SetPaymentStatusAsync(int id, ExpensePaymentStatus status)
 
 Sets asynchronously the expense payment status.
 
@@ -634,7 +634,7 @@ Task
 
 Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
 
-### SetPaymentStatusAsync(int id, [ExpensePaymentStatus](#expensepaymentstatus-enum) status, DateTime effectiveDate)
+### SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)
 
 Sets asynchronously the expense payment status.
 
@@ -651,7 +651,7 @@ Task
 
 
 
-### Update([JsonExpense](#jsonexpense-class) entity)
+### Update(JsonExpense entity)
 
 Updates the specified expense.
 
@@ -666,7 +666,7 @@ Updates the specified expense.
 
 Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
 
-### UpdateAsync([JsonExpense](#jsonexpense-class) entity)
+### UpdateAsync(JsonExpense entity)
 
 Updates asynchronously the specified expense.
 
@@ -698,31 +698,31 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Create([JsonInvoice](#jsoninvoice-class) entity)**](#createjsoninvoicejsoninvoice-class-entity) | int | Creates the specified new invoice. |
-| [**CreateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#createasyncjsoninvoicejsoninvoice-class-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
+| [**Create(JsonInvoice entity)**](#createjsoninvoice-entity) | int | Creates the specified new invoice. |
+| [**CreateAsync(JsonInvoice entity)**](#createasyncjsoninvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
 | [**Delete(int id)**](#deleteint-id) | void | Deletes invoice with specified id. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
-| [**Select([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets list of all invoices. |
-| [**Select(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets paged list of invoices. |
-| [**SelectAsync([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypeconditioninvoicetypecondition-enum-type-invoicestatusconditioninvoicestatuscondition-enum-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**Select(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets list of all invoices. |
+| [**Select(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets paged list of invoices. |
+| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonInvoice](#jsoninvoice-class) | Selects single invoice with specified ID. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Selects asynchronously single invoice with specified ID. |
-| [**SendMessage(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | void | Sends e-mail message for the specified invoice. |
-| [**SendMessageAsync(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)**](#sendmessageasyncint-id-invoicemessagetypeinvoicemessagetype-enum-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
+| [**SendMessage(int id, InvoiceMessageType messageType)**](#sendmessageint-id-invoicemessagetype-messagetype) | void | Sends e-mail message for the specified invoice. |
+| [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
 | [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
 | [**SetAttachment(int id, string mimeType, byte[] fileContent)**](#setattachmentint-id-string-mimetype-byte-filecontent) | void | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | void | Sets the invoice payment status. |
-| [**SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | void | Sets the invoice payment status. |
-| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status) | Task | Sets asynchronously the invoice payment status. |
-| [**SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatusinvoicepaymentstatus-enum-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
-| [**Update([JsonInvoice](#jsoninvoice-class) entity)**](#updatejsoninvoicejsoninvoice-class-entity) | [JsonInvoice](#jsoninvoice-class) | Updates the specified invoice. |
-| [**UpdateAsync([JsonInvoice](#jsoninvoice-class) entity)**](#updateasyncjsoninvoicejsoninvoice-class-entity) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
+| [**SetPaymentStatus(int id, InvoicePaymentStatus status)**](#setpaymentstatusint-id-invoicepaymentstatus-status) | void | Sets the invoice payment status. |
+| [**SetPaymentStatus(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusint-id-invoicepaymentstatus-status-datetime-effectivedate) | void | Sets the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status) | Task | Sets asynchronously the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
+| [**Update(JsonInvoice entity)**](#updatejsoninvoice-entity) | [JsonInvoice](#jsoninvoice-class) | Updates the specified invoice. |
+| [**UpdateAsync(JsonInvoice entity)**](#updateasyncjsoninvoice-entity) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
 ## Methods
 
-### Create([JsonInvoice](#jsoninvoice-class) entity)
+### Create(JsonInvoice entity)
 
 Creates the specified new invoice.
 
@@ -737,7 +737,7 @@ int
 
 ID of newly created invoice.
 
-### CreateAsync([JsonInvoice](#jsoninvoice-class) entity)
+### CreateAsync(JsonInvoice entity)
 
 Creates asynchronously the specified new invoice.
 
@@ -776,7 +776,7 @@ Task
 
 
 
-### Select([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### Select(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets list of all invoices.
 
@@ -795,7 +795,7 @@ IEnumerable<[JsonInvoice](#jsoninvoice-class)>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
-### Select(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### Select(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets paged list of invoices.
 
@@ -815,7 +815,7 @@ IEnumerable<[JsonInvoice](#jsoninvoice-class)>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
-### SelectAsync([InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets asynchronously list of all invoices.
 
@@ -834,7 +834,7 @@ Task<IEnumerable<[JsonInvoice](#jsoninvoice-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
-### SelectAsync(int page, [InvoiceTypeCondition](#invoicetypecondition-enum) type, [InvoiceStatusCondition](#invoicestatuscondition-enum) status, int? subjectId, DateTime? since, string number)
+### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
 
 Gets asynchronously paged list of invoices.
 
@@ -884,7 +884,7 @@ Task<[JsonInvoice](#jsoninvoice-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
 
-### SendMessage(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)
+### SendMessage(int id, InvoiceMessageType messageType)
 
 Sends e-mail message for the specified invoice.
 
@@ -894,7 +894,7 @@ Sends e-mail message for the specified invoice.
 | messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
 
 
-### SendMessageAsync(int id, [InvoiceMessageType](#invoicemessagetype-enum) messageType)
+### SendMessageAsync(int id, InvoiceMessageType messageType)
 
 Sends asynchronously e-mail message for the specified invoice.
 
@@ -964,7 +964,7 @@ Task
 
 
 
-### SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)
+### SetPaymentStatus(int id, InvoicePaymentStatus status)
 
 Sets the invoice payment status.
 
@@ -974,7 +974,7 @@ Sets the invoice payment status.
 | status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
 
 
-### SetPaymentStatus(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)
+### SetPaymentStatus(int id, InvoicePaymentStatus status, DateTime effectiveDate)
 
 Sets the invoice payment status.
 
@@ -985,7 +985,7 @@ Sets the invoice payment status.
 | effectiveDate | DateTime | The date when payment was performed. |
 
 
-### SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status)
+### SetPaymentStatusAsync(int id, InvoicePaymentStatus status)
 
 Sets asynchronously the invoice payment status.
 
@@ -1001,7 +1001,7 @@ Task
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
 
-### SetPaymentStatusAsync(int id, [InvoicePaymentStatus](#invoicepaymentstatus-enum) status, DateTime effectiveDate)
+### SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)
 
 Sets asynchronously the invoice payment status.
 
@@ -1018,7 +1018,7 @@ Task
 
 
 
-### Update([JsonInvoice](#jsoninvoice-class) entity)
+### Update(JsonInvoice entity)
 
 Updates the specified invoice.
 
@@ -1033,7 +1033,7 @@ Updates the specified invoice.
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
 
-### UpdateAsync([JsonInvoice](#jsoninvoice-class) entity)
+### UpdateAsync(JsonInvoice entity)
 
 Updates asynchronously the specified invoice.
 
@@ -1065,8 +1065,8 @@ Proxy class for working with subjects/contacts.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Create([JsonSubject](#jsonsubject-class) entity)**](#createjsonsubjectjsonsubject-class-entity) | int | Creates the specified new subject. |
-| [**CreateAsync([JsonSubject](#jsonsubject-class) entity)**](#createasyncjsonsubjectjsonsubject-class-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
+| [**Create(JsonSubject entity)**](#createjsonsubject-entity) | int | Creates the specified new subject. |
+| [**CreateAsync(JsonSubject entity)**](#createasyncjsonsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
 | [**Delete(int id)**](#deleteint-id) | void | Deletes subject with specified id. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
 | [**Search(string searchTerm)**](#searchstring-searchterm) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Searches all Subjects in Name, Full name, Email, Registration number and Country. |
@@ -1077,11 +1077,11 @@ Proxy class for working with subjects/contacts.
 | [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
 | [**SelectSingle(int id)**](#selectsingleint-id) | [JsonSubject](#jsonsubject-class) | Selects single subject with specified ID. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
-| [**Update([JsonSubject](#jsonsubject-class) entity)**](#updatejsonsubjectjsonsubject-class-entity) | [JsonSubject](#jsonsubject-class) | Updates the specified subject. |
-| [**UpdateAsync([JsonSubject](#jsonsubject-class) entity)**](#updateasyncjsonsubjectjsonsubject-class-entity) | Task\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
+| [**Update(JsonSubject entity)**](#updatejsonsubject-entity) | [JsonSubject](#jsonsubject-class) | Updates the specified subject. |
+| [**UpdateAsync(JsonSubject entity)**](#updateasyncjsonsubject-entity) | Task\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
 ## Methods
 
-### Create([JsonSubject](#jsonsubject-class) entity)
+### Create(JsonSubject entity)
 
 Creates the specified new subject.
 
@@ -1096,7 +1096,7 @@ int
 
 ID of newly created subject.
 
-### CreateAsync([JsonSubject](#jsonsubject-class) entity)
+### CreateAsync(JsonSubject entity)
 
 Creates asynchronously the specified new subject.
 
@@ -1255,7 +1255,7 @@ Task<[JsonSubject](#jsonsubject-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
 
-### Update([JsonSubject](#jsonsubject-class) entity)
+### Update(JsonSubject entity)
 
 Updates the specified subject.
 
@@ -1270,7 +1270,7 @@ Updates the specified subject.
 
 Instance of **Altairis.Fakturoid.Client.JsonSubject** class with modified entity.
 
-### UpdateAsync([JsonSubject](#jsonsubject-class) entity)
+### UpdateAsync(JsonSubject entity)
 
 Updates asynchronously the specified subject.
 
