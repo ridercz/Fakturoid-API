@@ -322,7 +322,7 @@ namespace Altairis.Fakturoid.Client {
             };
 
             // Get entities
-            return await base.GetPagedEntitiesAsync<JsonInvoice>(uri, page);
+            return await base.GetPagedEntitiesAsync<JsonInvoice>(uri, page, queryParams);
         }
 
         /// <summary>
