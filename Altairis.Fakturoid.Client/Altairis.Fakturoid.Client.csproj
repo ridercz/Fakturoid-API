@@ -33,7 +33,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="newtonsoft.json" Version="13.0.1" />
+    <PackageReference Include="newtonsoft.json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,8 +43,8 @@
     </None>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="mddox &quot;$(TargetPath)&quot; -o &quot;$(SolutionDir)\API-Reference.md&quot; -f github -n -d" />
-  </Target>
+  </Target>-->
 
 </Project>
