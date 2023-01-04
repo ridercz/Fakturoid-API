@@ -2,6 +2,12 @@
 
 # Fakturoid API C#/.NET client
 
+> Toto je knihovna určená pro další vývojáře. 
+> [Máte zájem o vývoj na zakázku?](DEVELOPMENT.md)
+>
+> This is library intended for other developers. 
+> [Are you interested in custom development?](DEVELOPMENT.md)
+
 This projects aims to create C#/.NET client for API of Czech online accounting service [Fakturoid](http://www.fakturoid.cz).
 
 Please note that some more obscure functions are not (yet) supported - like API access to generators, reports etc. I'll implement them once I would need them, or you can do it in your fork (I accept pull request). The infrastructure is all here.
