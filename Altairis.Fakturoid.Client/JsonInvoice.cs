@@ -10,6 +10,10 @@ namespace Altairis.Fakturoid.Client {
     public class JsonInvoice {
 
         /// <summary>
+        /// identifikátor faktury ve vaší aplikaci, nepovinné
+        /// </summary>
+        public string custom_id { get; set; }
+        /// <summary>
         /// Identifikátor faktury
         /// </summary>
         public int id { get; set; }
@@ -28,6 +32,11 @@ namespace Altairis.Fakturoid.Client {
         /// Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla v nastavení účtu)
         /// </summary>
         public string number { get; set; }
+
+        /// <summary>
+        /// ID číselné řady	- nepovinné
+        /// </summary>
+        public int number_format_id { get; set; }
 
         /// <summary>
         /// Variabilní symbol
@@ -75,6 +84,11 @@ namespace Altairis.Fakturoid.Client {
         public string your_vat_no { get; set; }
 
         /// <summary>
+        /// vaše SK DIČ (pouze pro Slovensko, nezačíná kódem země) - nepovinné
+        /// </summary>
+        public string your_local_vat_no { get; set; }
+
+        /// <summary>
         /// Obchodní jméno příjemce
         /// </summary>
         public string client_name { get; set; }
@@ -115,9 +129,19 @@ namespace Altairis.Fakturoid.Client {
         public string client_vat_no { get; set; }
 
         /// <summary>
+        /// SK DIČ kontaktu (pouze pro Slovensko, nezačíná kódem země) - Nepovinné
+        /// </summary>
+        public string client_local_vat_no { get; set; }
+
+        /// <summary>
         /// ID kontaktu příjemce
         /// </summary>
         public int subject_id { get; set; }
+
+        /// <summary>
+        /// identifikátor kontaktu ve vaší aplikaci - nepovinné
+        /// </summary>
+        public int subject_custom_id { get; set; }
 
         /// <summary>
         /// ID šablony ze které byla faktura vystavena (nepovinné)
@@ -236,9 +260,19 @@ namespace Altairis.Fakturoid.Client {
         public string iban { get; set; }
 
         /// <summary>
+        /// viditelnost IBANu	
+        /// </summary>
+        public string iban_visibility { get; set; }
+
+        /// <summary>
         /// BIC (nepovinné - doplní se z účtu)
         /// </summary>
         public string swift_bic { get; set; }
+
+        /// <summary>
+        /// zobrazí na faktuře "Neplaťte již uhrazeno" v jazyce faktury **bez ohledu na stav platby**. Lze nastavit pouze pro faktury, pro proformy je vždy `false`. Pro faktury vystavené z plné proformy je vždy `true`. - nepovinné
+        /// </summary>
+        public bool show_already_paid_note_in_pdf { get; set; }
 
         /// <summary>
         /// Způsob úhrady: bank (bankovní převod) / cash (hotově) / cod (dobírka)
@@ -281,6 +315,11 @@ namespace Altairis.Fakturoid.Client {
         public bool? eu_electronic_service { get; set; }
 
         /// <summary>
+        /// příznak, jestli je faktura v režimu OSS, povolené hodnoty disabled - vypnuto, service - služba, goods - zboží. Prázdná hodnota znamená disabled, nepovinné
+        /// </summary>
+        public string oss { get; set; }
+
+        /// <summary>
         /// Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).
         /// Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost.
         /// </summary>
@@ -320,6 +359,11 @@ namespace Altairis.Fakturoid.Client {
         /// Částka k zaplacení v měně účtu
         /// </summary>
         public decimal remaining_native_amount { get; set; }
+
+        /// <summary>
+        /// skutečně zaplacená částka	
+        /// </summary>
+        public decimal paid_amount { get; set; }
 
         /// <summary>
         /// Příloha
@@ -375,5 +419,10 @@ namespace Altairis.Fakturoid.Client {
         /// Číslo provozovny
         /// </summary>
         public string eet_cash_register { get; set; }
+        /// <summary>
+        /// EET záznamy	- nepovinné
+        /// </summary>
+        public JsonEet[] eet_records { get; set; }
+
     }
 }
