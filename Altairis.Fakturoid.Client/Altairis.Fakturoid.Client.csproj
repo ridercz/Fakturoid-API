@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latestMajor</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.10.0</Version>
+    <Version>2.11.0</Version>
     <Authors>Michal Altair Valášek</Authors>
     <Company>Altairis</Company>
     <Product />

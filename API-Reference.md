@@ -1,19 +1,20 @@
-# Altairis.Fakturoid.Client.dll v.2.10.0.0 API documentation
+# Altairis.Fakturoid.Client.dll v.2.11.0.0 API documentation
 
 # All types
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEntityLine Class](#jsonentityline-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [GetCustomHttpClient Class](#getcustomhttpclient-class) | [JsonEvent Class](#jsonevent-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonExpense Class](#jsonexpense-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonInvoice Class](#jsoninvoice-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonSubject Class](#jsonsubject-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAccount Class](#jsonaccount-class) | [JsonTodo Class](#jsontodo-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [AllowNullAttribute Class](#allownullattribute-class) |
-| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [NotNullWhenAttribute Class](#notnullwhenattribute-class) |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [GetCustomHttpClient Class](#getcustomhttpclient-class) | [JsonEvent Class](#jsonevent-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonExpense Class](#jsonexpense-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonInvoice Class](#jsoninvoice-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonSubject Class](#jsonsubject-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [JsonAccount Class](#jsonaccount-class) | [JsonTodo Class](#jsontodo-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [AllowNullAttribute Class](#allownullattribute-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [NotNullWhenAttribute Class](#notnullwhenattribute-class) |
+| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonEet Class](#jsoneet-class) |   |
+| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEntityLine Class](#jsonentityline-class) |   |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -1585,6 +1586,43 @@ Bank account information, as received from JSON API.
 | **swift_bic** | string | BIC pro SWIFT platby |
 | **pairing** | bool | Povoleno párování plateb |
 | **payment_adjustment** | bool | Haléřové vyrovnání pro párování plateb |
+# JsonEet Class
+
+Namespace: Altairis.Fakturoid.Client
+
+EET Information, as recieved from API
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **id** | long | ID záznamu |
+| **vat_no** | string | DIČ účtu ve Fakturoidu |
+| **number** | string | Pořadové číslo dokladu |
+| **store** | long | ID provozovny |
+| **cash_register** | string | Číslo pokladny |
+| **paid_at** | DateTimeOffset | Datum a čas tržby |
+| **vat_base0** | Object | Základ nepodléhající DPH |
+| **vat1** | string | DPH pro základní sazbu |
+| **vat_base1** | string | Základ pro základní sazbu DPH (21 %) |
+| **vat2** | Object | DPH pro 1. sníženou sazbu DPH |
+| **vat_base2** | Object | Základ pro 1. sníženou sazbu DPH (15 %) |
+| **vat3** | Object | DPH pro 2. sníženou sazbu DPH |
+| **vat_base3** | Object | Základ pro 2. sníženou sazbu DPH (10 %) |
+| **total** | string | Celková částka tržby |
+| **fik** | string | FIK kód |
+| **bkp** | string | BKP kód |
+| **pkp** | string | PKP kód |
+| **status** | string | Stav zaevidování:<br>   waiting - čeká se na první odpověď serveru EET<br>   pkp - na faktuře se zobrazí PKP kód<br>   fik - na faktuře se zobrazí FIK kód |
+| **fik_received_at** | DateTimeOffset | Datum a čas získání FIK ze serverů EET |
+| **external** | bool | Tržba je zaevidována mimo Fakturoid a potřebné kódy jsou zadány přes API |
+| **attempts** | long | Počet pokusů o zaevidování tržby |
+| **last_attempt_at** | DateTimeOffset | Datum a čas posledního pokusu o zaevidování tržby |
+| **last_uuid** | Guid | UUID posledního pokusu o zaevidování tržby |
+| **playground** | bool | Evidováno v EET Playground prostředí |
+| **invoice_id** | long | ID faktury, ke které EET záznam patří |
+| **created_at** | DateTimeOffset | Datum a čas vytvoření záznamu |
+| **updated_at** | DateTimeOffset | Datum a čas poslední úpravy záznamu |
 # JsonEntityLine Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1701,10 +1739,12 @@ Single invoice
 
 | Name | Type | Summary |
 |---|---|---|
+| **custom_id** | string | identifikátor faktury ve vaší aplikaci, nepovinné |
 | **id** | int | Identifikátor faktury |
 | **proforma** | bool | Příznak proformy |
 | **partial_proforma** | bool? | Přiznak zda je proforma na plnou částku |
 | **number** | string | Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla v nastavení účtu) |
+| **number_format_id** | int | ID číselné řady	- nepovinné |
 | **variable_symbol** | string | Variabilní symbol |
 | **your_name** | string | Vaše obchodní jméno |
 | **your_street** | string | Vaše ulice |
@@ -1714,6 +1754,7 @@ Single invoice
 | **your_country** | string | Vaše země |
 | **your_registration_no** | string | Vaše IČ |
 | **your_vat_no** | string | Vaše DIČ |
+| **your_local_vat_no** | string | vaše SK DIČ (pouze pro Slovensko, nezačíná kódem země) - nepovinné |
 | **client_name** | string | Obchodní jméno příjemce |
 | **client_street** | string | Ulice příjemce |
 | **client_street2** | string | Ulice příjemce - druhý řádek |
@@ -1722,7 +1763,9 @@ Single invoice
 | **client_country** | string | Země příjemce |
 | **client_registration_no** | string | IČ příjemce |
 | **client_vat_no** | string | DIČ příjemce |
+| **client_local_vat_no** | string | SK DIČ kontaktu (pouze pro Slovensko, nezačíná kódem země) - Nepovinné |
 | **subject_id** | int | ID kontaktu příjemce |
+| **subject_custom_id** | int | identifikátor kontaktu ve vaší aplikaci - nepovinné |
 | **generator_id** | int? | ID šablony ze které byla faktura vystavena (nepovinné) |
 | **related_id** | int? | ID proformy/faktury (nepovinné) |
 | **correction** | bool? | Opravný daňový doklad (false = faktura/proforma, nepovinné) |
@@ -1746,7 +1789,9 @@ Single invoice
 | **bank_account_id** | int? | ID bankovního účtu (nepovinné - použije se výchozí bankovní účet) |
 | **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
 | **iban** | string | IBAN (nepovinné - doplní se z účtu) |
+| **iban_visibility** | string | viditelnost IBANu |
 | **swift_bic** | string | BIC (nepovinné - doplní se z účtu) |
+| **show_already_paid_note_in_pdf** | bool | zobrazí na faktuře "Neplaťte již uhrazeno" v jazyce faktury **bez ohledu na stav platby**. Lze nastavit pouze pro faktury, pro proformy je vždy `false`. Pro faktury vystavené z plné proformy je vždy `true`. - nepovinné |
 | **payment_method** | string | Způsob úhrady: bank (bankovní převod) / cash (hotově) / cod (dobírka) |
 | **currency** | string | Kód měny (nepovinné - doplní se z účtu, 3 znaky) |
 | **exchange_rate** | decimal | Kurz (nepovinné) |
@@ -1755,6 +1800,7 @@ Single invoice
 | **transferred_tax_liability** | bool | Přenesená daňová povinnost |
 | **supply_code** | int? | Kód plnění pro souhrnná hlášení (pouze pro zahraniční faktury do EU, nepovinné) |
 | **eu_electronic_service** | bool? | Příznak, pokud je faktura v režimu MOSS (nepovinné) |
+| **oss** | string | příznak, jestli je faktura v režimu OSS, povolené hodnoty disabled - vypnuto, service - služba, goods - zboží. Prázdná hodnota znamená disabled, nepovinné |
 | **vat_price_mode** | string | Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).<br>Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost. |
 | **round_total** | bool? | Zaokrouhlit cenu s DPH při vystavení (nepovinné) |
 | **subtotal** | decimal | Součet bez DPH |
@@ -1763,6 +1809,7 @@ Single invoice
 | **native_total** | decimal | Součet včetně DPH v měně účtu |
 | **remaining_amount** | decimal | Částka k zaplacení |
 | **remaining_native_amount** | decimal | Částka k zaplacení v měně účtu |
+| **paid_amount** | decimal | skutečně zaplacená částka |
 | **attachment** | [JsonAttachment](#jsonattachment-class) | Příloha |
 | **html_url** | string | Adresa faktury v GUI |
 | **public_html_url** | string | Veřejná HTML adresa faktury |
@@ -1774,6 +1821,7 @@ Single invoice
 | **eet** | bool? | true - Vystavená faktura se zaeviduje do EET / false - Vystavená faktura se nezaeviduje do EET |
 | **eet_store** | string | Pokladna |
 | **eet_cash_register** | string | Číslo provozovny |
+| **eet_records** | [JsonEet](#jsoneet-class)[] | EET záznamy	- nepovinné |
 # JsonInvoiceLine Class
 
 Namespace: Altairis.Fakturoid.Client
