@@ -1,13 +1,11 @@
-﻿namespace Altairis.Fakturoid.Client
-{
-    using System;
-    using Newtonsoft.Json;
+﻿using System;
+
+namespace Altairis.Fakturoid.Client {
 
     /// <summary>
     /// EET Information, as recieved from API
     /// </summary>
-    public partial class JsonEet
-    {
+    public partial class JsonEet {
         /// <summary>
         /// ID záznamu
         /// </summary>
