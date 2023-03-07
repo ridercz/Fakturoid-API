@@ -141,7 +141,7 @@ namespace Altairis.Fakturoid.Client {
         /// <summary>
         /// identifikátor kontaktu ve vaší aplikaci - nepovinné
         /// </summary>
-        public int subject_custom_id { get; set; }
+        public string subject_custom_id { get; set; }
 
         /// <summary>
         /// ID šablony ze které byla faktura vystavena (nepovinné)

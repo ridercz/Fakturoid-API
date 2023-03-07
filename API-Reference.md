@@ -1,4 +1,4 @@
-# Altairis.Fakturoid.Client.dll v.2.11.0.0 API documentation
+# Altairis.Fakturoid.Client.dll v.2.11.1.0 API documentation
 
 # All types
 
@@ -1765,7 +1765,7 @@ Single invoice
 | **client_vat_no** | string | DIČ příjemce |
 | **client_local_vat_no** | string | SK DIČ kontaktu (pouze pro Slovensko, nezačíná kódem země) - Nepovinné |
 | **subject_id** | int | ID kontaktu příjemce |
-| **subject_custom_id** | int | identifikátor kontaktu ve vaší aplikaci - nepovinné |
+| **subject_custom_id** | string | identifikátor kontaktu ve vaší aplikaci - nepovinné |
 | **generator_id** | int? | ID šablony ze které byla faktura vystavena (nepovinné) |
 | **related_id** | int? | ID proformy/faktury (nepovinné) |
 | **correction** | bool? | Opravný daňový doklad (false = faktura/proforma, nepovinné) |
