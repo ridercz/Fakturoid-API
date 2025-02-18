@@ -9,9 +9,14 @@ namespace Altairis.Fakturoid.Client {
     /// Class representing connection to Fakturoid API, holds authentication information etc.
     /// </summary>
     public class FakturoidContext {
-        private const string DEFAULT_USER_AGENT = "C#/.NET API Client v2 by Altairis (fakturoid@rider.cz)";
-        private const string API_BASE_URL_FORMAT = "https://app.fakturoid.cz/api/v2/accounts/{0}/";
+        private const string DEFAULT_USER_AGENT = "C#/.NET API Client v3 by Altairis (fakturoid@rider.cz)";
+        private const string API_BASE_URL_FORMAT = "https://app.fakturoid.cz/api/v3/accounts/{0}/";
+        private const float ACCESS_TOKEN_REFRESH_MARGIN = 0.66f; // Refresh access token in 2/3 of its lifetime
+
         private readonly GetCustomHttpClient getCustomHttpClient;
+        private string accessTokenType;
+        private string accessTokenValue;
+        private DateTime accessTokenRefresh;
 
         /// <summary>
         /// To provide custom http client
@@ -25,8 +30,8 @@ namespace Altairis.Fakturoid.Client {
         /// Initializes a new instance of the <see cref="FakturoidContext" /> class.
         /// </summary>
         /// <param name="accountName">Account name (accountName).</param>
-        /// <param name="emailAddress">The email address od user being authenticated.</param>
-        /// <param name="authenticationToken">The authentication token.</param>
+        /// <param name="clientId">The client ID for OAuth 2 Client Credentials Flow.</param>
+        /// <param name="clientSecret">The client secret for OAuth 2 Client Credentials Flow.</param>
         /// <param name="userAgent">The User-Agent HTTP header value.</param>
         /// <param name="getCustomHttpClient">Getter for custom http client</param>
         /// <exception cref="ArgumentNullException">accountName
@@ -39,20 +44,20 @@ namespace Altairis.Fakturoid.Client {
         /// Value cannot be empty or whitespace only string.;authenticationToken
         /// or
         /// Value cannot be empty or whitespace only string.;userAgent</exception>
-        public FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent = DEFAULT_USER_AGENT, GetCustomHttpClient getCustomHttpClient = null) {
+        public FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent = DEFAULT_USER_AGENT, GetCustomHttpClient getCustomHttpClient = null) {
             if (accountName == null) throw new ArgumentNullException(nameof(accountName));
             if (string.IsNullOrWhiteSpace(accountName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(accountName));
-            if (emailAddress == null) throw new ArgumentNullException(nameof(emailAddress));
-            if (string.IsNullOrWhiteSpace(emailAddress)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(emailAddress));
-            if (authenticationToken == null) throw new ArgumentNullException(nameof(authenticationToken));
-            if (string.IsNullOrWhiteSpace(authenticationToken)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(authenticationToken));
+            if (clientId == null) throw new ArgumentNullException(nameof(clientId));
+            if (string.IsNullOrWhiteSpace(clientId)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(clientId));
+            if (clientSecret == null) throw new ArgumentNullException(nameof(clientSecret));
+            if (string.IsNullOrWhiteSpace(clientSecret)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(clientSecret));
             if (userAgent == null) throw new ArgumentNullException(nameof(userAgent));
             if (string.IsNullOrWhiteSpace(userAgent)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(userAgent));
 
             // Configuration properties
             this.AccountName = accountName;
-            this.EmailAddress = emailAddress;
-            this.AuthenticationToken = authenticationToken;
+            this.ClientId = clientId;
+            this.ClientSecret = clientSecret;
             this.UserAgent = userAgent;
 
             // Proxies
@@ -82,7 +87,7 @@ namespace Altairis.Fakturoid.Client {
         /// <value>
         /// The email address associated with Fakturoid account being used.
         /// </value>
-        public string EmailAddress { get; private set; }
+        public string ClientId { get; private set; }
 
         /// <summary>
         /// Gets the Fakturoid authentication token.
@@ -90,7 +95,7 @@ namespace Altairis.Fakturoid.Client {
         /// <value>
         /// The Fakturoid authentication token.
         /// </value>
-        public string AuthenticationToken { get; private set; }
+        public string ClientSecret { get; private set; }
 
         /// <summary>
         /// Gets the User-Agent header used for HTTP requests.
@@ -143,25 +148,53 @@ namespace Altairis.Fakturoid.Client {
             return r.Content.ReadAsAsync<JsonAccount>().Result;
         }
 
-        // Non-public helper methods
+        // Internal methods
 
         /// <summary>
         /// Gets the <see cref="System.Net.Http.HttpClient"/> class, initialized for use with Fakturoid API.
         /// </summary>
+        /// <param name="forceTokenRefresh">If set to <c>true</c>, forces the refresh of the access token.</param>
         /// <returns>Instance of <see cref="System.Net.Http.HttpClient"/> class, initialized for use with Fakturoid API.</returns>
-        internal HttpClient GetHttpClient() {
-            // Get value of authentication header
-            var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", this.EmailAddress, this.AuthenticationToken)));
-
+        internal HttpClient GetHttpClient(bool forceTokenRefresh = false) {
             // Setup HTTP client
             var baseAddress = new Uri(string.Format(API_BASE_URL_FORMAT, this.AccountName));
             var client = this.getCustomHttpClient is not null ? this.getCustomHttpClient(baseAddress) : new HttpClient { BaseAddress = baseAddress };
 
+            // Set default headers
             client.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            // Get authentication token if needed
+            if (forceTokenRefresh || this.accessTokenType is null || this.accessTokenValue is null || this.accessTokenRefresh > DateTime.Now) this.GetAccessToken(client);
+
+            // Set authentication header
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(this.accessTokenType, this.accessTokenValue);
+            return client;
+        }
+
+        /// <summary>
+        /// Retrieves and sets the access token for the Fakturoid API.
+        /// </summary>
+        /// <param name="client">The <see cref="HttpClient"/> instance used to make the request.</param>
+        /// <exception cref="HttpRequestException">Thrown when the request to get the access token fails.</exception>
+        /// <exception cref="InvalidOperationException">Thrown when the response content cannot be read as <see cref="JsonAccessToken"/>.</exception>
+        internal void GetAccessToken(HttpClient client) {
+            // Prepare request body
+            var body = new { grant_type = "client_credentials" };
+
+            // Add authentication header
+            var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", this.ClientId, this.ClientSecret)));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeader);
 
-            return client;
+            // Send request
+            var response = client.PostAsJsonAsync("oauth/token", body).Result;
+            response.EnsureSuccessStatusCode();
+
+            // Parse response
+            var token = response.Content.ReadAsAsync<JsonAccessToken>().Result;
+            this.accessTokenType = token.token_type;
+            this.accessTokenValue = token.access_token;
+            this.accessTokenRefresh = DateTime.Now.AddSeconds(token.expires_in * ACCESS_TOKEN_REFRESH_MARGIN);
         }
 
     }
