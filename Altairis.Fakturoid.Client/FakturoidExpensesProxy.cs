@@ -117,7 +117,7 @@ namespace Altairis.Fakturoid.Client {
         /// List of <see cref="JsonExpense" /> instances.
         /// </returns>
         /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
-        public async Task<IEnumerable<JsonExpense>> SelectAsync(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+        public Task<IEnumerable<JsonExpense>> SelectAsync(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
             // Get URI based on expense type
@@ -146,7 +146,7 @@ namespace Altairis.Fakturoid.Client {
             };
 
             // Get entities
-            return await base.GetAllPagedEntitiesAsync<JsonExpense>(uri, queryParams);
+            return base.GetAllPagedEntitiesAsync<JsonExpense>(uri, queryParams);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Altairis.Fakturoid.Client {
         /// or
         /// subjectId;Value must be greater than zero.
         /// </exception>
-        public async Task<IEnumerable<JsonExpense>> SelectAsync(int page, ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+        public Task<IEnumerable<JsonExpense>> SelectAsync(int page, ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
             if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
             if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
@@ -219,7 +219,7 @@ namespace Altairis.Fakturoid.Client {
             };
 
             // Get entities
-            return await base.GetPagedEntitiesAsync<JsonExpense>(uri, page);
+            return base.GetPagedEntitiesAsync<JsonExpense>(uri, page);
         }
 
         /// <summary>
@@ -238,10 +238,10 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The contact id.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public async Task DeleteAsync(int id) {
+        public Task DeleteAsync(int id) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-            await base.DeleteSingleEntityAsync(string.Format(EntityPath, id));
+            return base.DeleteSingleEntityAsync(string.Format(EntityPath, id));
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The expense id.</param>
         /// <param name="status">The new payment status.</param>
         /// <returns>Instance of <see cref="JsonExpense"/> class with modified entity.</returns>
-        public async Task SetPaymentStatusAsync(int id, ExpensePaymentStatus status) => await this.SetPaymentStatusAsync(id, status, DateTime.Now);
+        public Task SetPaymentStatusAsync(int id, ExpensePaymentStatus status) => this.SetPaymentStatusAsync(id, status, DateTime.Now);
 
         /// <summary>
         /// Sets the expense payment status.
@@ -395,14 +395,14 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The invoice id.</param>
         /// <param name="filePath">The file path.</param>
-        public async Task SetAttachmentAsync(int id, string filePath) {
+        public Task SetAttachmentAsync(int id, string filePath) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 
             var mimeType = MimeTypes.GetMimeType(filePath);
             var bytes = File.ReadAllBytes(filePath);
 
-            await this.SetAttachmentAsync(id, mimeType, bytes);
+            return this.SetAttachmentAsync(id, mimeType, bytes);
         }
 
     }

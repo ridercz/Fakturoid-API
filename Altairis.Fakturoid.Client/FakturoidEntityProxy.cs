@@ -105,7 +105,7 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
         /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
-        protected async Task<IEnumerable<T>> GetPagedEntitiesAsync<T>(string baseUri, int page, object additionalQueryParams = null) {
+        protected Task<IEnumerable<T>> GetPagedEntitiesAsync<T>(string baseUri, int page, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(baseUri));
             if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.");
@@ -114,7 +114,7 @@ namespace Altairis.Fakturoid.Client {
             var uri = baseUri + "?page=" + page + GetQueryStringFromParams(additionalQueryParams, "&");
 
             // Get result
-            return await this.GetSingleEntityAsync<IEnumerable<T>>(uri);
+            return this.GetSingleEntityAsync<IEnumerable<T>>(uri);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>List of entities of given type.</returns>
         /// <exception cref="ArgumentNullException">uri</exception>
         /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected async Task<IEnumerable<T>> GetUnpagedEntitiesAsync<T>(string baseUri, object additionalQueryParams = null) {
+        protected Task<IEnumerable<T>> GetUnpagedEntitiesAsync<T>(string baseUri, object additionalQueryParams = null) {
             if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(baseUri));
 
@@ -151,7 +151,7 @@ namespace Altairis.Fakturoid.Client {
             var uri = baseUri + GetQueryStringFromParams(additionalQueryParams, "?");
 
             // Get result
-            return await this.GetSingleEntityAsync<IEnumerable<T>>(uri);
+            return this.GetSingleEntityAsync<IEnumerable<T>>(uri);
         }
 
         /// <summary>

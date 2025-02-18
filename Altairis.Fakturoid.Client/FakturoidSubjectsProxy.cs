@@ -27,7 +27,7 @@ namespace Altairis.Fakturoid.Client {
         /// <returns>
         /// List of <see cref="JsonSubject" /> instances.
         /// </returns>
-        public async Task<IEnumerable<JsonSubject>> SelectAsync(string customId = null, DateTime? updatedSince = default) => await base.GetAllPagedEntitiesAsync<JsonSubject>("subjects.json", new { custom_id = customId, updated_since = updatedSince });
+        public Task<IEnumerable<JsonSubject>> SelectAsync(string customId = null, DateTime? updatedSince = default) => base.GetAllPagedEntitiesAsync<JsonSubject>("subjects.json", new { custom_id = customId, updated_since = updatedSince });
 
         /// <summary>
         /// Searches all Subjects in Name, Full name, Email, Registration number and Country.
@@ -44,8 +44,8 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="searchTerm">Search string.</param>
         /// <returns>Collection if search results.</returns>
-        public async Task<IEnumerable<JsonSubject>> SearchAsync(string searchTerm) =>
-            await base.GetUnpagedEntitiesAsync<JsonSubject>("subjects/search.json", new {
+        public Task<IEnumerable<JsonSubject>> SearchAsync(string searchTerm) =>
+base.GetUnpagedEntitiesAsync<JsonSubject>("subjects/search.json", new {
                 query = searchTerm
             });
 
@@ -113,10 +113,10 @@ namespace Altairis.Fakturoid.Client {
         /// </summary>
         /// <param name="id">The contact id.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public async Task DeleteAsync(int id) {
+        public Task DeleteAsync(int id) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-            await base.DeleteSingleEntityAsync(string.Format("subjects/{0}.json", id));
+            return base.DeleteSingleEntityAsync(string.Format("subjects/{0}.json", id));
         }
 
         /// <summary>
