@@ -125,20 +125,6 @@ namespace Altairis.Fakturoid.Client {
         internal FakturoidInvoicesProxy(FakturoidContext context) : base(context) { }
 
         /// <summary>
-        /// Selects single invoice with specified ID.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <returns>
-        /// Instance of <see cref="JsonInvoice" /> class.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public JsonInvoice SelectSingle(int id) {
-            return id < 1
-                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
-                : base.GetSingleEntity<JsonInvoice>(string.Format("invoices/{0}.json", id));
-        }
-
-        /// <summary>
         /// Selects asynchronously single invoice with specified ID.
         /// </summary>
         /// <param name="id">The invoice id.</param>
@@ -150,26 +136,6 @@ namespace Altairis.Fakturoid.Client {
             return id < 1
                 ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
                 : await base.GetSingleEntityAsync<JsonInvoice>(string.Format("invoices/{0}.json", id));
-        }
-
-        /// <summary>
-        /// Gets list of all invoices.
-        /// </summary>
-        /// <param name="type">The invoice type.</param>
-        /// <param name="status">The invoice status.</param>
-        /// <param name="subjectId">The customer subject id.</param>
-        /// <param name="since">The date since when the invoice was created.</param>
-        /// <param name="number">The invoice display number.</param>
-        /// <returns>
-        /// List of <see cref="JsonInvoice" /> instances.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
-        public IEnumerable<JsonInvoice> Select(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            try {
-                return this.SelectAsync(type, status, subjectId, since, number).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -222,31 +188,6 @@ namespace Altairis.Fakturoid.Client {
 
             // Get entities
             return base.GetAllPagedEntitiesAsync<JsonInvoice>(uri, queryParams);
-        }
-
-        /// <summary>
-        /// Gets paged list of invoices.
-        /// </summary>
-        /// <param name="page">The page number.</param>
-        /// <param name="type">The invoice type.</param>
-        /// <param name="status">The invoice status.</param>
-        /// <param name="subjectId">The customer subject id.</param>
-        /// <param name="since">The date since when the invoice was created.</param>
-        /// <param name="number">The invoice display number.</param>
-        /// <returns>
-        /// List of <see cref="JsonInvoice" /> instances.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">
-        /// page;Value must be greater than zero.
-        /// or
-        /// subjectId;Value must be greater than zero.
-        /// </exception>
-        public IEnumerable<JsonInvoice> Select(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            try {
-                return this.SelectAsync(page, type, status, subjectId, since, number).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -308,17 +249,6 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Deletes invoice with specified id.
-        /// </summary>
-        /// <param name="id">The contact id.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public void Delete(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            base.DeleteSingleEntity(string.Format("invoices/{0}.json", id));
-        }
-
-        /// <summary>
         /// Deletes asynchronously invoice with specified id.
         /// </summary>
         /// <param name="id">The contact id.</param>
@@ -330,32 +260,12 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Creates the specified new invoice.
-        /// </summary>
-        /// <param name="entity">The new invoice.</param>
-        /// <returns>ID of newly created invoice.</returns>
-        /// <exception cref="ArgumentNullException">entity</exception>
-        public int Create(JsonInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : base.CreateEntity("invoices.json", entity);
-
-        /// <summary>
         /// Creates asynchronously the specified new invoice.
         /// </summary>
         /// <param name="entity">The new invoice.</param>
         /// <returns>ID of newly created invoice.</returns>
         /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<int> CreateAsync(JsonInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync("invoices.json", entity);
-
-        /// <summary>
-        /// Updates the specified invoice.
-        /// </summary>
-        /// <param name="entity">The invoice to update.</param>
-        /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
-        /// <exception cref="ArgumentNullException">entity</exception>
-        public JsonInvoice Update(JsonInvoice entity) {
-            return entity == null
-                ? throw new ArgumentNullException(nameof(entity))
-                : base.UpdateSingleEntity(string.Format("invoices/{0}.json", entity.id), entity);
-        }
 
         /// <summary>
         /// Updates asynchronously the specified invoice.
@@ -367,20 +277,6 @@ namespace Altairis.Fakturoid.Client {
             return entity == null
                 ? throw new ArgumentNullException(nameof(entity))
                 : await base.UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.id), entity);
-        }
-
-        /// <summary>
-        /// Sends e-mail message for the specified invoice.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="messageType">Type of the message.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public void SendMessage(int id, InvoiceMessageType messageType) {
-            try {
-                this.SendMessageAsync(id, messageType).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -402,33 +298,12 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Sets the invoice payment status.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="status">The new payment status.</param>
-        public void SetPaymentStatus(int id, InvoicePaymentStatus status) => this.SetPaymentStatus(id, status, DateTime.Now);
-
-        /// <summary>
         /// Sets asynchronously the invoice payment status.
         /// </summary>
         /// <param name="id">The invoice id.</param>
         /// <param name="status">The new payment status.</param>
         /// <returns>Instance of <see cref="JsonInvoice"/> class with modified entity.</returns>
         public Task SetPaymentStatusAsync(int id, InvoicePaymentStatus status) => this.SetPaymentStatusAsync(id, status, DateTime.Now);
-
-        /// <summary>
-        /// Sets the invoice payment status.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="status">The new payment status.</param>
-        /// <param name="effectiveDate">The date when payment was performed.</param>
-        public void SetPaymentStatus(int id, InvoicePaymentStatus status, DateTime effectiveDate) {
-            try {
-                this.SetPaymentStatusAsync(id, status, effectiveDate).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
-        }
 
         /// <summary>
         /// Sets asynchronously the invoice payment status.
@@ -456,20 +331,6 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The invoice id.</param>
         /// <param name="mimeType">The mime type.</param>
         /// <param name="fileContent">The content of the file.</param>
-        public void SetAttachment(int id, string mimeType, byte[] fileContent) {
-            try {
-                this.SetAttachmentAsync(id, mimeType, fileContent).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
-        }
-
-        /// <summary>
-        /// Sets attachment for invoice.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="mimeType">The mime type.</param>
-        /// <param name="fileContent">The content of the file.</param>
         public async Task SetAttachmentAsync(int id, string mimeType, byte[] fileContent) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
             if (mimeType == null) throw new ArgumentNullException(nameof(mimeType));
@@ -484,19 +345,6 @@ namespace Altairis.Fakturoid.Client {
             var c = this.Context.GetHttpClient();
             var r = await c.PutAsJsonAsync($"invoices/{id}.json", attachment);
             r.EnsureFakturoidSuccess();
-        }
-
-        /// <summary>
-        /// Sets attachment for invoice.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="filePath">The file path.</param>
-        public void SetAttachment(int id, string filePath) {
-            try {
-                this.SetAttachmentAsync(id, filePath).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>

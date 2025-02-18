@@ -10,12 +10,6 @@ namespace Altairis.Fakturoid.Client {
         internal FakturoidBankAccountsProxy(FakturoidContext context) : base(context) { }
 
         /// <summary>
-        /// Gets list of all bank accounts.
-        /// </summary>
-        /// <returns>List of <see cref="JsonBankAccount"/> instances.</returns>
-        public IEnumerable<JsonBankAccount> Select() => base.GetUnpagedEntities<JsonBankAccount>("bank_accounts.json");
-
-        /// <summary>
         /// Gets asynchronously list of all bank accounts.
         /// </summary>
         /// <returns>List of <see cref="JsonBankAccount"/> instances.</returns>

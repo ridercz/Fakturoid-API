@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -36,23 +34,6 @@ namespace Altairis.Fakturoid.Client {
         // Helper methods for proxy classes
 
         /// <summary>
-        /// Gets all paged entities, making sequential repeated requests for pages.
-        /// </summary>
-        /// <typeparam name="T">Entity type</typeparam>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="additionalQueryParams">The additional query params.</param>
-        /// <returns>All existing entities of given type.</returns>
-        /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-        protected IEnumerable<T> GetAllPagedEntities<T>(string baseUri, object additionalQueryParams = null) {
-            try {
-                return this.GetAllPagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
-
-        }
-
-        /// <summary>
         /// Gets asynchronously all paged entities, making sequential repeated requests for pages.
         /// </summary>
         /// <typeparam name="T">Entity type</typeparam>
@@ -72,26 +53,6 @@ namespace Altairis.Fakturoid.Client {
             }
 
             return completeList;
-        }
-
-        /// <summary>
-        /// Gets single page of entities.
-        /// </summary>
-        /// <typeparam name="T">Entity type.</typeparam>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="page">The page number.</param>
-        /// <param name="additionalQueryParams">The additional query params.</param>
-        /// <returns>Paged list of entities of given type.</returns>
-        /// <exception cref="ArgumentNullException">uri</exception>
-        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
-        /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
-        protected IEnumerable<T> GetPagedEntities<T>(string baseUri, int page, object additionalQueryParams = null) {
-            try {
-                return this.GetPagedEntitiesAsync<T>(baseUri, page, additionalQueryParams).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -119,23 +80,6 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Gets the unpaged entities.
-        /// </summary>
-        /// <typeparam name="T">Entity type</typeparam>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="additionalQueryParams">The additional query params.</param>
-        /// <returns>List of entities of given type.</returns>
-        /// <exception cref="ArgumentNullException">uri</exception>
-        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected IEnumerable<T> GetUnpagedEntities<T>(string baseUri, object additionalQueryParams = null) {
-            try {
-                return this.GetUnpagedEntitiesAsync<T>(baseUri, additionalQueryParams).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
-        }
-
-        /// <summary>
         /// Gets asynchronously the unpaged entities.
         /// </summary>
         /// <typeparam name="T">Entity type</typeparam>
@@ -153,22 +97,6 @@ namespace Altairis.Fakturoid.Client {
 
             // Get result
             return this.GetSingleEntityAsync<IEnumerable<T>>(uri);
-        }
-
-        /// <summary>
-        /// Gets single entity of given type.
-        /// </summary>
-        /// <typeparam name="T">Entity type.</typeparam>
-        /// <param name="uri">The URI.</param>
-        /// <returns>Single entity of given type.</returns>
-        /// <exception cref="ArgumentNullException">uri</exception>
-        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected T GetSingleEntity<T>(string uri) {
-            try {
-                return this.GetSingleEntityAsync<T>(uri).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -191,29 +119,7 @@ namespace Altairis.Fakturoid.Client {
             r.EnsureFakturoidSuccess();
 
             // Parse and return result
-            return await r.Content.ReadAsAsync<T>();
-        }
-
-        /// <summary>
-        /// Creates new entity.
-        /// </summary>
-        /// <typeparam name="T">Entity type</typeparam>
-        /// <param name="uri">The endpoint URI.</param>
-        /// <param name="newEntity">The new entity.</param>
-        /// <returns>ID of newly created entity.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// uri
-        /// or
-        /// newEntity
-        /// </exception>
-        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        /// <exception cref="FormatException"></exception>
-        protected int CreateEntity<T>(string uri, T newEntity) where T : class {
-            try {
-                return this.CreateEntityAsync(uri, newEntity).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
+            return await r.Content.FakturoidReadAsAsync<T>();
         }
 
         /// <summary>
@@ -237,7 +143,7 @@ namespace Altairis.Fakturoid.Client {
 
             // Create new entity
             var c = this.Context.GetHttpClient();
-            var r = await c.PostAsJsonAsync<T>(uri, newEntity);
+            var r = await c.FakturoidPostAsJsonAsync(uri, newEntity);
             r.EnsureFakturoidSuccess();
 
             // Extract ID from URI
@@ -248,20 +154,6 @@ namespace Altairis.Fakturoid.Client {
                 return int.Parse(idString);
             } catch (Exception) {
                 throw new FormatException(string.Format("Unexpected format of new entity URI. Expected format 'scheme://anystring/123456.json', got '{0}' instead.", r.Headers.Location));
-            }
-        }
-
-        /// <summary>
-        /// Deletes single entity.
-        /// </summary>
-        /// <param name="uri">The URI.</param>
-        /// <exception cref="ArgumentNullException">uri</exception>
-        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected void DeleteSingleEntity(string uri) {
-            try {
-                this.DeleteSingleEntityAsync(uri).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
             }
         }
 
@@ -281,25 +173,6 @@ namespace Altairis.Fakturoid.Client {
 
             // Ensure result was successfull
             r.EnsureFakturoidSuccess();
-        }
-
-        /// <summary>
-        /// Updates the single entity.
-        /// </summary>
-        /// <typeparam name="T">Entity type</typeparam>
-        /// <param name="uri">The entity URI.</param>
-        /// <param name="entity">The entity object.</param>
-        /// <returns>Instance of modified entity.</returns>
-        /// <exception cref="ArgumentNullException">uri
-        /// or
-        /// entity</exception>
-        /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-        protected T UpdateSingleEntity<T>(string uri, T entity) where T : class {
-            try {
-                return this.UpdateSingleEntityAsync(uri, entity).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -323,13 +196,13 @@ namespace Altairis.Fakturoid.Client {
 
             // Get result
             var c = this.Context.GetHttpClient();
-            var r = await c.PatchAsJsonAsync(uri, entity);
+            var r = await c.FakturoidPatchAsJsonAsync(uri, entity);
 
             // Ensure result was successfull
             r.EnsureFakturoidSuccess();
 
             // Return updated entity
-            return await r.Content.ReadAsAsync<T>();
+            return await r.Content.FakturoidReadAsAsync<T>();
         }
 
         // Helper methods for this class

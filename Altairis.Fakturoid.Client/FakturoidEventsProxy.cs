@@ -11,38 +11,15 @@ namespace Altairis.Fakturoid.Client {
         internal FakturoidEventsProxy(FakturoidContext context) : base(context) { }
 
         /// <summary>
-        /// Gets list of all current events.
-        /// </summary>
-        /// <param name="since">The date since when events are to be selected.</param>
-        /// <returns>List of <see cref="JsonEvent"/> instances.</returns>
-        /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-        public IEnumerable<JsonEvent> Select(DateTime? since = null) => base.GetAllPagedEntities<JsonEvent>("events.json", new { since });
-
-        /// <summary>
         /// Gets asynchronously list of all current events.
         /// </summary>
         /// <param name="since">The date since when events are to be selected.</param>
         /// <returns>List of <see cref="JsonEvent"/> instances.</returns>
         /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-        public Task<IEnumerable<JsonEvent>> SelectAsync(DateTime? since = null) => base.GetAllPagedEntitiesAsync<JsonEvent>("events.json", new { since });
+        public Task<IEnumerable<JsonEvent>> SelectAsync(DateTime? since = null, int? subjectId = null) => base.GetAllPagedEntitiesAsync<JsonEvent>("events.json", new { since, subject_id = subjectId});
 
         /// <summary>
-        /// Gets list of current events, paged by 15.
-        /// </summary>
-        /// <param name="page">The page number.</param>
-        /// <param name="since">The date since when events are to be selected.</param>
-        /// <returns>
-        /// List of <see cref="JsonEvent" /> instances.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
-        public IEnumerable<JsonEvent> Select(int page, DateTime? since = null) {
-            return page < 1
-                ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
-                : base.GetPagedEntities<JsonEvent>("events.json", page, new { since });
-        }
-
-        /// <summary>
-        /// Gets asynchronously list of current events, paged by 15.
+        /// Gets asynchronously list of current events, paged by 40.
         /// </summary>
         /// <param name="page">The page number.</param>
         /// <param name="since">The date since when events are to be selected.</param>

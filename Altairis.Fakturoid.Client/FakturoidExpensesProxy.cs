@@ -60,20 +60,6 @@ namespace Altairis.Fakturoid.Client {
         internal FakturoidExpensesProxy(FakturoidContext context) : base(context) { }
 
         /// <summary>
-        /// Selects single expense with specified ID.
-        /// </summary>
-        /// <param name="id">The expense id.</param>
-        /// <returns>
-        /// Instance of <see cref="JsonExpense" /> class.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public JsonExpense SelectSingle(int id) {
-            return id < 1
-                ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
-                : base.GetSingleEntity<JsonExpense>(string.Format(EntityPath, id));
-        }
-
-        /// <summary>
         /// Selects asynchronously single expense with specified ID.
         /// </summary>
         /// <param name="id">The expense id.</param>
@@ -85,25 +71,6 @@ namespace Altairis.Fakturoid.Client {
             return id < 1
                 ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
                 : await base.GetSingleEntityAsync<JsonExpense>(string.Format(EntityPath, id));
-        }
-
-        /// <summary>
-        /// Gets list of all invoices.
-        /// </summary>
-        /// <param name="status">The expense status.</param>
-        /// <param name="subjectId">The customer subject id.</param>
-        /// <param name="since">The date since when the expense was created.</param>
-        /// <param name="number">The expense display number.</param>
-        /// <returns>
-        /// List of <see cref="JsonExpense" /> instances.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
-        public IEnumerable<JsonExpense> Select(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            try {
-                return this.SelectAsync(status, subjectId, since, number).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -147,30 +114,6 @@ namespace Altairis.Fakturoid.Client {
 
             // Get entities
             return base.GetAllPagedEntitiesAsync<JsonExpense>(uri, queryParams);
-        }
-
-        /// <summary>
-        /// Gets paged list of invoices.
-        /// </summary>
-        /// <param name="page">The page number.</param>
-        /// <param name="status">The expense status.</param>
-        /// <param name="subjectId">The customer subject id.</param>
-        /// <param name="since">The date since when the expense was created.</param>
-        /// <param name="number">The expense display number.</param>
-        /// <returns>
-        /// List of <see cref="JsonExpense" /> instances.
-        /// </returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">
-        /// page;Value must be greater than zero.
-        /// or
-        /// subjectId;Value must be greater than zero.
-        /// </exception>
-        public IEnumerable<JsonExpense> Select(int page, ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
-            try {
-                return this.SelectAsync(page, status, subjectId, since, number).Result;
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
@@ -223,17 +166,6 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Deletes expense with specified id.
-        /// </summary>
-        /// <param name="id">The contact id.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-        public void Delete(int id) {
-            if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
-
-            base.DeleteSingleEntity(string.Format(EntityPath, id));
-        }
-
-        /// <summary>
         /// Deletes asynchronously expense with specified id.
         /// </summary>
         /// <param name="id">The contact id.</param>
@@ -245,16 +177,6 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Creates the specified new expense.
-        /// </summary>
-        /// <param name="entity">The new expense.</param>
-        /// <returns>ID of newly created expense.</returns>
-        /// <exception cref="ArgumentNullException">entity</exception>
-        public int Create(JsonExpense entity) {
-            return entity == null ? throw new ArgumentNullException(nameof(entity)) : base.CreateEntity(CollectionPath, entity);
-        }
-
-        /// <summary>
         /// Creates asynchronously the specified new expense.
         /// </summary>
         /// <param name="entity">The new expense.</param>
@@ -262,18 +184,6 @@ namespace Altairis.Fakturoid.Client {
         /// <exception cref="ArgumentNullException">entity</exception>
         public async Task<int> CreateAsync(JsonExpense entity) {
             return entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync(CollectionPath, entity);
-        }
-
-        /// <summary>
-        /// Updates the specified expense.
-        /// </summary>
-        /// <param name="entity">The expense to update.</param>
-        /// <returns>Instance of <see cref="JsonExpense"/> class with modified entity.</returns>
-        /// <exception cref="ArgumentNullException">entity</exception>
-        public JsonExpense Update(JsonExpense entity) {
-            return entity == null
-                ? throw new ArgumentNullException(nameof(entity))
-                : base.UpdateSingleEntity(string.Format(EntityPath, entity.id), entity);
         }
 
         /// <summary>
@@ -289,33 +199,12 @@ namespace Altairis.Fakturoid.Client {
         }
 
         /// <summary>
-        /// Sets the expense payment status.
-        /// </summary>
-        /// <param name="id">The expense id.</param>
-        /// <param name="status">The new payment status.</param>
-        public void SetPaymentStatus(int id, ExpensePaymentStatus status) => this.SetPaymentStatus(id, status, DateTime.Now);
-
-        /// <summary>
         /// Sets asynchronously the expense payment status.
         /// </summary>
         /// <param name="id">The expense id.</param>
         /// <param name="status">The new payment status.</param>
         /// <returns>Instance of <see cref="JsonExpense"/> class with modified entity.</returns>
         public Task SetPaymentStatusAsync(int id, ExpensePaymentStatus status) => this.SetPaymentStatusAsync(id, status, DateTime.Now);
-
-        /// <summary>
-        /// Sets the expense payment status.
-        /// </summary>
-        /// <param name="id">The expense id.</param>
-        /// <param name="status">The new payment status.</param>
-        /// <param name="effectiveDate">The date when payment was performed.</param>
-        public void SetPaymentStatus(int id, ExpensePaymentStatus status, DateTime effectiveDate) {
-            try {
-                this.SetPaymentStatusAsync(id, status, effectiveDate).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
-        }
 
         /// <summary>
         /// Sets asynchronously the expense payment status.
@@ -348,20 +237,6 @@ namespace Altairis.Fakturoid.Client {
         /// <param name="id">The invoice id.</param>
         /// <param name="mimeType">The mime type.</param>
         /// <param name="fileContent">The content of the file.</param>
-        public void SetAttachment(int id, string mimeType, byte[] fileContent) {
-            try {
-                this.SetAttachmentAsync(id, mimeType, fileContent).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
-        }
-
-        /// <summary>
-        /// Sets attachment for invoice.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="mimeType">The mime type.</param>
-        /// <param name="fileContent">The content of the file.</param>
         public async Task SetAttachmentAsync(int id, string mimeType, byte[] fileContent) {
             if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
             if (mimeType == null) throw new ArgumentNullException(nameof(mimeType));
@@ -375,19 +250,6 @@ namespace Altairis.Fakturoid.Client {
             var c = this.Context.GetHttpClient();
             var r = await c.PutAsJsonAsync($"expenses/{id}.json", attachment);
             r.EnsureFakturoidSuccess();
-        }
-
-        /// <summary>
-        /// Sets attachment for invoice.
-        /// </summary>
-        /// <param name="id">The invoice id.</param>
-        /// <param name="filePath">The file path.</param>
-        public void SetAttachment(int id, string filePath) {
-            try {
-                this.SetAttachmentAsync(id, filePath).Wait();
-            } catch (AggregateException aex) {
-                throw aex.InnerException;
-            }
         }
 
         /// <summary>
