@@ -1,4 +1,6 @@
-﻿namespace Altairis.Fakturoid.Client {
+﻿using System;
+
+namespace Altairis.Fakturoid.Client {
 
     /// <summary>
     /// Bank account information, as received from JSON API.
@@ -6,45 +8,64 @@
     public class JsonBankAccount {
 
         /// <summary>
-        /// Identifikátor bankovního účtu
+        /// Unique identifier in Fakturoid.
         /// </summary>
-        public int id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
-        /// Název účtu
+        /// Account name.
         /// </summary>
-        public string name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Měna účtu
+        /// Currency.
         /// </summary>
-        public string currency { get; set; }
-
-
-        /// <summary>
-        /// Číslo účtu
-        /// </summary>
-        public string number { get; set; }
+        public string Currency { get; set; }
 
         /// <summary>
-        /// Číslo účtu ve formátu IBAN
+        /// Account number.
         /// </summary>
-        public string iban { get; set; }
+        public string Number { get; set; }
 
         /// <summary>
-        /// BIC pro SWIFT platby
+        /// IBAN code.
         /// </summary>
-        public string swift_bic { get; set; }
+        public string Iban { get; set; }
 
         /// <summary>
-        /// Povoleno párování plateb
+        /// BIC (for SWIFT payments).
         /// </summary>
-        public bool pairing { get; set; }
+        public string SwiftBic { get; set; }
 
         /// <summary>
-        /// Haléřové vyrovnání pro párování plateb
+        /// Pairing of incoming payments.
         /// </summary>
-        public bool payment_adjustment { get; set; }
+        public bool Pairing { get; set; }
+
+        /// <summary>
+        /// Pairing of outgoing payments.
+        /// </summary>
+        public bool ExpensePairing { get; set; }
+
+        /// <summary>
+        /// Small amount settlement when matching payments.
+        /// </summary>
+        public bool PaymentAdjustment { get; set; }
+
+        /// <summary>
+        /// Default bank account.
+        /// </summary>
+        public bool Default { get; set; }
+
+        /// <summary>
+        /// Date and time of bank account creation.
+        /// </summary>
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Date and time of last bank account update.
+        /// </summary>
+        public DateTime UpdatedAt { get; set; }
 
     }
 }
