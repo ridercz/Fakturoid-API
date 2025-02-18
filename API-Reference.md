@@ -4,17 +4,17 @@
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [GetCustomHttpClient Class](#getcustomhttpclient-class) | [JsonEvent Class](#jsonevent-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonExpense Class](#jsonexpense-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonInvoice Class](#jsoninvoice-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonSubject Class](#jsonsubject-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [JsonAccount Class](#jsonaccount-class) | [JsonTodo Class](#jsontodo-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [AllowNullAttribute Class](#allownullattribute-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [NotNullWhenAttribute Class](#notnullwhenattribute-class) |
-| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonEet Class](#jsoneet-class) |   |
-| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEntityLine Class](#jsonentityline-class) |   |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [GetCustomHttpClient Class](#getcustomhttpclient-class) | [JsonEntityLine Class](#jsonentityline-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonEvent Class](#jsonevent-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpense Class](#jsonexpense-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoice Class](#jsoninvoice-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [JsonAccessToken Class](#jsonaccesstoken-class) | [JsonRelatedObject Class](#jsonrelatedobject-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAccount Class](#jsonaccount-class) | [JsonSubject Class](#jsonsubject-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [JsonTodo Class](#jsontodo-class) |
+| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [JsonUser Class](#jsonuser-class) |
+| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEet Class](#jsoneet-class) | [MyHttpClientExtensions Class](#myhttpclientextensions-class) |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -58,21 +58,8 @@ Proxy class form working with bank accounts
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Select()**](#select) | IEnumerable\<[JsonBankAccount](#jsonbankaccount-class)\> | Gets list of all bank accounts. |
 | [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[JsonBankAccount](#jsonbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
 ## Methods
-
-### Select()
-
-Gets list of all bank accounts.
-
-
-
-### Returns
-
-IEnumerable<[JsonBankAccount](#jsonbankaccount-class)>
-
-List of **Altairis.Fakturoid.Client.JsonBankAccount** instances.
 
 ### SelectAsync()
 
@@ -97,8 +84,8 @@ Class representing connection to Fakturoid API, holds authentication information
 | Name | Type | Summary |
 |---|---|---|
 | **AccountName** | string | Gets the Fakturoid account name. |
-| **EmailAddress** | string | Gets the Fakturoid account email address. |
-| **AuthenticationToken** | string | Gets the Fakturoid authentication token. |
+| **ClientId** | string | Gets the Fakturoid account email address. |
+| **ClientSecret** | string | Gets the Fakturoid authentication token. |
 | **UserAgent** | string | Gets the User-Agent header used for HTTP requests. |
 | **Events** | [FakturoidEventsProxy](#fakturoideventsproxy-class) | Proxy for working with events. |
 | **Todos** | [FakturoidTodosProxy](#fakturoidtodosproxy-class) | Proxy for working with todos. |
@@ -110,7 +97,7 @@ Class representing connection to Fakturoid API, holds authentication information
 
 | Name | Summary |
 |---|---|
-| [**FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent, GetCustomHttpClient getCustomHttpClient)**](#fakturoidcontextstring-accountname-string-emailaddress-string-authenticationtoken-string-useragent-getcustomhttpclient-getcustomhttpclient) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
+| [**FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent, GetCustomHttpClient getCustomHttpClient)**](#fakturoidcontextstring-accountname-string-clientid-string-clientsecret-string-useragent-getcustomhttpclient-getcustomhttpclient) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
 ## Methods
 
 | Name | Returns | Summary |
@@ -118,15 +105,15 @@ Class representing connection to Fakturoid API, holds authentication information
 | [**GetAccountInfo()**](#getaccountinfo) | [JsonAccount](#jsonaccount-class) | Gets the account information. |
 ## Constructors
 
-### FakturoidContext(string accountName, string emailAddress, string authenticationToken, string userAgent, GetCustomHttpClient getCustomHttpClient)
+### FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent, GetCustomHttpClient getCustomHttpClient)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class.
 
 | Parameter | Type | Description |
 |---|---|---|
 | accountName | string | Account name (accountName). |
-| emailAddress | string | The email address od user being authenticated. |
-| authenticationToken | string | The authentication token. |
+| clientId | string | The client ID for OAuth 2 Client Credentials Flow. |
+| clientSecret | string | The client secret for OAuth 2 Client Credentials Flow. |
 | userAgent | string | The User-Agent HTTP header value. |
 | getCustomHttpClient | [GetCustomHttpClient](#getcustomhttpclient-class) | Getter for custom http client |
 
@@ -173,44 +160,11 @@ Proxy class for working with events
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Select(DateTime? since)**](#selectdatetime-since) | IEnumerable\<[JsonEvent](#jsonevent-class)\> | Gets list of all current events. |
-| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | IEnumerable\<[JsonEvent](#jsonevent-class)\> | Gets list of current events, paged by 15. |
-| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of all current events. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of current events, paged by 15. |
+| [**SelectAsync(DateTime? since, int? subjectId)**](#selectasyncdatetime-since-int-subjectid) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of all current events. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
 ## Methods
 
-### Select(DateTime? since)
-
-Gets list of all current events.
-
-| Parameter | Type | Description |
-|---|---|---|
-| since | DateTime? | The date since when events are to be selected. |
-
-
-### Returns
-
-IEnumerable<[JsonEvent](#jsonevent-class)>
-
-List of **Altairis.Fakturoid.Client.JsonEvent** instances.
-
-### Select(int page, DateTime? since)
-
-Gets list of current events, paged by 15.
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| since | DateTime? | The date since when events are to be selected. |
-
-
-### Returns
-
-IEnumerable<[JsonEvent](#jsonevent-class)>
-
-List of **Altairis.Fakturoid.Client.JsonEvent** instances.
-
-### SelectAsync(DateTime? since)
+### SelectAsync(DateTime? since, int? subjectId)
 
 Gets asynchronously list of all current events.
 
@@ -227,7 +181,7 @@ List of **Altairis.Fakturoid.Client.JsonEvent** instances.
 
 ### SelectAsync(int page, DateTime? since)
 
-Gets asynchronously list of current events, paged by 15.
+Gets asynchronously list of current events, paged by 40.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -365,42 +319,17 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Create(JsonExpense entity)**](#createjsonexpense-entity) | int | Creates the specified new expense. |
 | [**CreateAsync(JsonExpense entity)**](#createasyncjsonexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
-| [**Delete(int id)**](#deleteint-id) | void | Deletes expense with specified id. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
-| [**Select(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets list of all invoices. |
-| [**Select(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonExpense](#jsonexpense-class)\> | Gets paged list of invoices. |
 | [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
 | [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingle(int id)**](#selectsingleint-id) | [JsonExpense](#jsonexpense-class) | Selects single expense with specified ID. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonExpense](#jsonexpense-class)\> | Selects asynchronously single expense with specified ID. |
-| [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
-| [**SetAttachment(int id, string mimeType, byte[] fileContent)**](#setattachmentint-id-string-mimetype-byte-filecontent) | void | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatus(int id, ExpensePaymentStatus status)**](#setpaymentstatusint-id-expensepaymentstatus-status) | void | Sets the expense payment status. |
-| [**SetPaymentStatus(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusint-id-expensepaymentstatus-status-datetime-effectivedate) | void | Sets the expense payment status. |
 | [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
 | [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
-| [**Update(JsonExpense entity)**](#updatejsonexpense-entity) | [JsonExpense](#jsonexpense-class) | Updates the specified expense. |
 | [**UpdateAsync(JsonExpense entity)**](#updateasyncjsonexpense-entity) | Task\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
 ## Methods
-
-### Create(JsonExpense entity)
-
-Creates the specified new expense.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [JsonExpense](#jsonexpense-class) | The new expense. |
-
-
-### Returns
-
-int
-
-ID of newly created expense.
 
 ### CreateAsync(JsonExpense entity)
 
@@ -417,15 +346,6 @@ Task<int>
 
 ID of newly created expense.
 
-### Delete(int id)
-
-Deletes expense with specified id.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The contact id. |
-
-
 ### DeleteAsync(int id)
 
 Deletes asynchronously expense with specified id.
@@ -440,43 +360,6 @@ Deletes asynchronously expense with specified id.
 Task
 
 
-
-### Select(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets list of all invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the expense was created. |
-| number | string | The expense display number. |
-
-
-### Returns
-
-IEnumerable<[JsonExpense](#jsonexpense-class)>
-
-List of **Altairis.Fakturoid.Client.JsonExpense** instances.
-
-### Select(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets paged list of invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the expense was created. |
-| number | string | The expense display number. |
-
-
-### Returns
-
-IEnumerable<[JsonExpense](#jsonexpense-class)>
-
-List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
 ### SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
 
@@ -515,21 +398,6 @@ Task<IEnumerable<[JsonExpense](#jsonexpense-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonExpense** instances.
 
-### SelectSingle(int id)
-
-Selects single expense with specified ID.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The expense id. |
-
-
-### Returns
-
-[JsonExpense](#jsonexpense-class)
-
-Instance of **Altairis.Fakturoid.Client.JsonExpense** class.
-
 ### SelectSingleAsync(int id)
 
 Selects asynchronously single expense with specified ID.
@@ -544,27 +412,6 @@ Selects asynchronously single expense with specified ID.
 Task<[JsonExpense](#jsonexpense-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonExpense** class.
-
-### SetAttachment(int id, string filePath)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| filePath | string | The file path. |
-
-
-### SetAttachment(int id, string mimeType, byte[] fileContent)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| mimeType | string | The mime type. |
-| fileContent | byte[] | The content of the file. |
-
 
 ### SetAttachmentAsync(int id, string filePath)
 
@@ -597,27 +444,6 @@ Sets attachment for invoice.
 
 Task
 
-
-
-### SetPaymentStatus(int id, ExpensePaymentStatus status)
-
-Sets the expense payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The expense id. |
-| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
-
-
-### SetPaymentStatus(int id, ExpensePaymentStatus status, DateTime effectiveDate)
-
-Sets the expense payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The expense id. |
-| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
-| effectiveDate | DateTime | The date when payment was performed. |
 
 
 ### SetPaymentStatusAsync(int id, ExpensePaymentStatus status)
@@ -653,21 +479,6 @@ Task
 
 
 
-### Update(JsonExpense entity)
-
-Updates the specified expense.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [JsonExpense](#jsonexpense-class) | The expense to update. |
-
-
-### Returns
-
-[JsonExpense](#jsonexpense-class)
-
-Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
-
 ### UpdateAsync(JsonExpense entity)
 
 Updates asynchronously the specified expense.
@@ -700,44 +511,18 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Create(JsonInvoice entity)**](#createjsoninvoice-entity) | int | Creates the specified new invoice. |
 | [**CreateAsync(JsonInvoice entity)**](#createasyncjsoninvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
-| [**Delete(int id)**](#deleteint-id) | void | Deletes invoice with specified id. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
-| [**Select(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets list of all invoices. |
-| [**Select(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | IEnumerable\<[JsonInvoice](#jsoninvoice-class)\> | Gets paged list of invoices. |
 | [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
 | [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingle(int id)**](#selectsingleint-id) | [JsonInvoice](#jsoninvoice-class) | Selects single invoice with specified ID. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Selects asynchronously single invoice with specified ID. |
-| [**SendMessage(int id, InvoiceMessageType messageType)**](#sendmessageint-id-invoicemessagetype-messagetype) | void | Sends e-mail message for the specified invoice. |
 | [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
-| [**SetAttachment(int id, string filePath)**](#setattachmentint-id-string-filepath) | void | Sets attachment for invoice. |
-| [**SetAttachment(int id, string mimeType, byte[] fileContent)**](#setattachmentint-id-string-mimetype-byte-filecontent) | void | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatus(int id, InvoicePaymentStatus status)**](#setpaymentstatusint-id-invoicepaymentstatus-status) | void | Sets the invoice payment status. |
-| [**SetPaymentStatus(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusint-id-invoicepaymentstatus-status-datetime-effectivedate) | void | Sets the invoice payment status. |
 | [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status) | Task | Sets asynchronously the invoice payment status. |
 | [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
-| [**Update(JsonInvoice entity)**](#updatejsoninvoice-entity) | [JsonInvoice](#jsoninvoice-class) | Updates the specified invoice. |
 | [**UpdateAsync(JsonInvoice entity)**](#updateasyncjsoninvoice-entity) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
 ## Methods
-
-### Create(JsonInvoice entity)
-
-Creates the specified new invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [JsonInvoice](#jsoninvoice-class) | The new invoice. |
-
-
-### Returns
-
-int
-
-ID of newly created invoice.
 
 ### CreateAsync(JsonInvoice entity)
 
@@ -754,15 +539,6 @@ Task<int>
 
 ID of newly created invoice.
 
-### Delete(int id)
-
-Deletes invoice with specified id.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The contact id. |
-
-
 ### DeleteAsync(int id)
 
 Deletes asynchronously invoice with specified id.
@@ -777,45 +553,6 @@ Deletes asynchronously invoice with specified id.
 Task
 
 
-
-### Select(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets list of all invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
-| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the invoice was created. |
-| number | string | The invoice display number. |
-
-
-### Returns
-
-IEnumerable<[JsonInvoice](#jsoninvoice-class)>
-
-List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
-
-### Select(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets paged list of invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
-| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the invoice was created. |
-| number | string | The invoice display number. |
-
-
-### Returns
-
-IEnumerable<[JsonInvoice](#jsoninvoice-class)>
-
-List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
 ### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
 
@@ -856,21 +593,6 @@ Task<IEnumerable<[JsonInvoice](#jsoninvoice-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
 
-### SelectSingle(int id)
-
-Selects single invoice with specified ID.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-
-
-### Returns
-
-[JsonInvoice](#jsoninvoice-class)
-
-Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
-
 ### SelectSingleAsync(int id)
 
 Selects asynchronously single invoice with specified ID.
@@ -886,16 +608,6 @@ Task<[JsonInvoice](#jsoninvoice-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
 
-### SendMessage(int id, InvoiceMessageType messageType)
-
-Sends e-mail message for the specified invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
-
-
 ### SendMessageAsync(int id, InvoiceMessageType messageType)
 
 Sends asynchronously e-mail message for the specified invoice.
@@ -910,27 +622,6 @@ Sends asynchronously e-mail message for the specified invoice.
 
 Task
 
-
-
-### SetAttachment(int id, string filePath)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| filePath | string | The file path. |
-
-
-### SetAttachment(int id, string mimeType, byte[] fileContent)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| mimeType | string | The mime type. |
-| fileContent | byte[] | The content of the file. |
 
 
 ### SetAttachmentAsync(int id, string filePath)
@@ -966,27 +657,6 @@ Task
 
 
 
-### SetPaymentStatus(int id, InvoicePaymentStatus status)
-
-Sets the invoice payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
-
-
-### SetPaymentStatus(int id, InvoicePaymentStatus status, DateTime effectiveDate)
-
-Sets the invoice payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
-| effectiveDate | DateTime | The date when payment was performed. |
-
-
 ### SetPaymentStatusAsync(int id, InvoicePaymentStatus status)
 
 Sets asynchronously the invoice payment status.
@@ -1020,21 +690,6 @@ Task
 
 
 
-### Update(JsonInvoice entity)
-
-Updates the specified invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [JsonInvoice](#jsoninvoice-class) | The invoice to update. |
-
-
-### Returns
-
-[JsonInvoice](#jsoninvoice-class)
-
-Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
-
 ### UpdateAsync(JsonInvoice entity)
 
 Updates asynchronously the specified invoice.
@@ -1067,36 +722,14 @@ Proxy class for working with subjects/contacts.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Create(JsonSubject entity)**](#createjsonsubject-entity) | int | Creates the specified new subject. |
 | [**CreateAsync(JsonSubject entity)**](#createasyncjsonsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
-| [**Delete(int id)**](#deleteint-id) | void | Deletes subject with specified id. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
-| [**Search(string searchTerm)**](#searchstring-searchterm) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Searches all Subjects in Name, Full name, Email, Registration number and Country. |
-| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country. |
-| [**Select(string customId)**](#selectstring-customid) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Gets list of all subjects. |
-| [**Select(int page)**](#selectint-page) | IEnumerable\<[JsonSubject](#jsonsubject-class)\> | Gets paged list of subjects |
+| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
 | [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
-| [**SelectAsync(string customId, DateTime? updatedSince)**](#selectasyncstring-customid-datetime-updatedsince) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
-| [**SelectSingle(int id)**](#selectsingleint-id) | [JsonSubject](#jsonsubject-class) | Selects single subject with specified ID. |
+| [**SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)**](#selectasyncstring-customid-datetime-createdsince-datetime-updatedsince) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
-| [**Update(JsonSubject entity)**](#updatejsonsubject-entity) | [JsonSubject](#jsonsubject-class) | Updates the specified subject. |
 | [**UpdateAsync(JsonSubject entity)**](#updateasyncjsonsubject-entity) | Task\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
 ## Methods
-
-### Create(JsonSubject entity)
-
-Creates the specified new subject.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [JsonSubject](#jsonsubject-class) | The new subject. |
-
-
-### Returns
-
-int
-
-ID of newly created subject.
 
 ### CreateAsync(JsonSubject entity)
 
@@ -1113,15 +746,6 @@ Task<int>
 
 ID of newly created subject.
 
-### Delete(int id)
-
-Deletes subject with specified id.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The contact id. |
-
-
 ### DeleteAsync(int id)
 
 Deletes asynchronously with specified id.
@@ -1137,24 +761,9 @@ Task
 
 
 
-### Search(string searchTerm)
-
-Searches all Subjects in Name, Full name, Email, Registration number and Country.
-
-| Parameter | Type | Description |
-|---|---|---|
-| searchTerm | string | Search string. |
-
-
-### Returns
-
-IEnumerable<[JsonSubject](#jsonsubject-class)>
-
-Collection if search results.
-
 ### SearchAsync(string searchTerm)
 
-Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country.
+Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -1166,36 +775,6 @@ Searches asynchronously all Subjects in Name, Full name, Email, Registration num
 Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 Collection if search results.
-
-### Select(string customId)
-
-Gets list of all subjects.
-
-| Parameter | Type | Description |
-|---|---|---|
-| customId | string | The custom identifier used for filtering. |
-
-
-### Returns
-
-IEnumerable<[JsonSubject](#jsonsubject-class)>
-
-List of **Altairis.Fakturoid.Client.JsonSubject** instances.
-
-### Select(int page)
-
-Gets paged list of subjects
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-
-
-### Returns
-
-IEnumerable<[JsonSubject](#jsonsubject-class)>
-
-List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
 ### SelectAsync(int page)
 
@@ -1212,13 +791,14 @@ Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
 
-### SelectAsync(string customId, DateTime? updatedSince)
+### SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)
 
 Gets asynchronously list of all subjects.
 
 | Parameter | Type | Description |
 |---|---|---|
 | customId | string | The custom identifier used for filtering. |
+| createdSince | DateTime? | List only subjects created since certain date. |
 | updatedSince | DateTime? | List only subjects updated since certain date. |
 
 
@@ -1227,21 +807,6 @@ Gets asynchronously list of all subjects.
 Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
 
 List of **Altairis.Fakturoid.Client.JsonSubject** instances.
-
-### SelectSingle(int id)
-
-Selects single subject with specified ID.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The subject id. |
-
-
-### Returns
-
-[JsonSubject](#jsonsubject-class)
-
-Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
 
 ### SelectSingleAsync(int id)
 
@@ -1257,21 +822,6 @@ Selects asynchronously single subject with specified ID.
 Task<[JsonSubject](#jsonsubject-class)>
 
 Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
-
-### Update(JsonSubject entity)
-
-Updates the specified subject.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [JsonSubject](#jsonsubject-class) | The subject to update. |
-
-
-### Returns
-
-[JsonSubject](#jsonsubject-class)
-
-Instance of **Altairis.Fakturoid.Client.JsonSubject** class with modified entity.
 
 ### UpdateAsync(JsonSubject entity)
 
@@ -1305,42 +855,9 @@ Proxy class for working with todo tasks.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**Select(DateTime? since)**](#selectdatetime-since) | IEnumerable\<[JsonTodo](#jsontodo-class)\> | Gets list of all current todos. |
-| [**Select(int page, DateTime? since)**](#selectint-page-datetime-since) | IEnumerable\<[JsonTodo](#jsontodo-class)\> | Gets paged list of current todos |
 | [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously list of all current todos. |
 | [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously paged list of current todos |
 ## Methods
-
-### Select(DateTime? since)
-
-Gets list of all current todos.
-
-| Parameter | Type | Description |
-|---|---|---|
-| since | DateTime? | The date since when todos are to be selected. |
-
-
-### Returns
-
-IEnumerable<[JsonTodo](#jsontodo-class)>
-
-List of **Altairis.Fakturoid.Client.JsonTodo** instances.
-
-### Select(int page, DateTime? since)
-
-Gets paged list of current todos
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| since | DateTime? | The date since when todos are to be selected. |
-
-
-### Returns
-
-IEnumerable<[JsonTodo](#jsontodo-class)>
-
-List of **Altairis.Fakturoid.Client.JsonTodo** instances.
 
 ### SelectAsync(DateTime? since)
 
@@ -1512,48 +1029,71 @@ Query invoice type condition for listing invoices.
 | **Any** | Any |
 | **Proforma** | The proforma invouice. |
 | **Regular** | The regular, non-proforma invoice |
-# JsonAccount Class
+# JsonAccessToken Class
 
 Namespace: Altairis.Fakturoid.Client
 
-User account information, as received from JSON API.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **subdomain** | string | Subdoména |
-| **plan** | string | Jméno tarifu |
-| **plan_price** | int | Cena tarifu |
-| **email** | string | E-mail vlastníka účtu |
-| **invoice_email** | string | E-mail, ze kterého jsou odesílány faktury |
-| **phone** | string | Telefon vlastníka účtu |
-| **web** | string | Web vlastníka účtu |
-| **name** | string | Jméno firmy |
-| **full_name** | string | Jméno majitele účtu |
-| **registration_no** | string | IČ |
-| **vat_no** | string | DIČ |
-| **vat_mode** | string | Plátce DPH / Neplátce DPH / Identifikovaná osoba |
-| **street** | string | Ulice |
-| **street2** | string | Ulice - druhý řádek |
-| **city** | string | Místo |
-| **zip** | string | PSČ |
-| **country** | string | ISO kód země |
-| **bank_account** | string | Číslo účtu |
-| **iban** | string | Číslo účtu jako IBAN |
-| **swift_bic** | string | BIC (pro SWIFT platby) |
-| **currency** | string | Měna |
-| **unit_name** | string | Výchozí měrná jednotka |
-| **vat_rate** | decimal | Výchozí sazba DPH |
-| **displayed_note** | string | Text patičky faktury |
-| **invoice_note** | string | Text před položkami faktury |
-| **due** | int | Výchozí splatnost faktur |
-| **custom_email_text** | string | Text emailu pro odeslání faktury |
-| **overdue_email_text** | string | Text upomínky o zaplacení |
-| **html_url** | string | Adresa účtu v GUI |
-| **url** | string | Adresa API |
-| **updated_at** | DateTime | Datum poslední úpravy účtu |
-| **created_at** | DateTime | Datum vytvoření účtu |
+| **AccessToken** | string |  |
+| **TokenType** | string |  |
+| **ExpiresIn** | int |  |
+# JsonAccount Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Account information, as received from JSON API.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Subdomain** | string | Subdomain. |
+| **Plan** | string | Subscription plan. |
+| **PlanPrice** | int | Price of subscription plan. |
+| **PlanPaidUsers** | int | Number of paid users. |
+| **InvoiceEmail** | string | Email for sending invoices. |
+| **Phone** | string | Phone number. |
+| **Web** | string | Account owner's website. |
+| **Name** | string | The name of the company. |
+| **FullName** | string | Name of the account holder. |
+| **RegistrationNo** | string | Registration number. |
+| **VatNo** | string | Tax identification number. |
+| **LocalVatNo** | string | Tax identification number for SK subject. |
+| **VatMode** | string | VAT mode. |
+| **VatPriceMode** | string | VAT calculation mode. |
+| **Street** | string | Street. |
+| **City** | string | City. |
+| **Zip** | string | Postal code. |
+| **Country** | string | Country (ISO Code). |
+| **Currency** | string | Default currency (ISO Code). |
+| **UnitName** | string | Default measurement unit. |
+| **VatRate** | int | Default VAT rate. |
+| **DisplayedNote** | string | Invoice footer. |
+| **InvoiceNote** | string | Text before lines. |
+| **Due** | int | Default number of days until an invoice becomes overdue. |
+| **InvoiceLanguage** | string | Default invoice language. |
+| **InvoicePaymentMethod** | string | Default payment method. |
+| **InvoiceProforma** | bool | Issue proforma by default. |
+| **InvoiceHideBankAccountForPayments** | string[] | Hide bank account for payments. |
+| **FixedExchangeRate** | bool | Fixed exchange rate. |
+| **InvoiceSelfbilling** | bool | Selfbilling enabled? |
+| **DefaultEstimateType** | string | Default estimate in English. |
+| **SendOverdueEmail** | bool | Send overdue reminders automatically? |
+| **OverdueEmailDays** | int | Days after the due date to send an automatic overdue reminder? |
+| **SendRepeatedReminders** | bool | Send automatic overdue reminders repeatedly? |
+| **SendInvoiceFromProformaEmail** | bool | Send email automatically when proforma is paid? |
+| **SendThankYouEmail** | bool | Send a thank you email when invoices is paid automatically? |
+| **InvoicePaypal** | bool | PayPal enabled for all invoices? |
+| **InvoiceGopay** | bool | GoPay enabled for all invoices? |
+| **DigitooEnabled** | bool | Digitoo service enabled? |
+| **DigitooAutoProcessingEnabled** | bool | Digitoo service auto processing enabled. |
+| **DigitooExtractionsRemaining** | int | Number of remaining extractions by Digitoo service. |
+| **CreatedAt** | string | Account creation date. |
+| **UpdatedAt** | string | The date the account was last modified. |
 # JsonAttachment Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1578,14 +1118,18 @@ Bank account information, as received from JSON API.
 
 | Name | Type | Summary |
 |---|---|---|
-| **id** | int | Identifikátor bankovního účtu |
-| **name** | string | Název účtu |
-| **currency** | string | Měna účtu |
-| **number** | string | Číslo účtu |
-| **iban** | string | Číslo účtu ve formátu IBAN |
-| **swift_bic** | string | BIC pro SWIFT platby |
-| **pairing** | bool | Povoleno párování plateb |
-| **payment_adjustment** | bool | Haléřové vyrovnání pro párování plateb |
+| **Id** | int | Unique identifier in Fakturoid. |
+| **Name** | string | Account name. |
+| **Currency** | string | Currency. |
+| **Number** | string | Account number. |
+| **Iban** | string | IBAN code. |
+| **SwiftBic** | string | BIC (for SWIFT payments). |
+| **Pairing** | bool | Pairing of incoming payments. |
+| **ExpensePairing** | bool | Pairing of outgoing payments. |
+| **PaymentAdjustment** | bool | Small amount settlement when matching payments. |
+| **Default** | bool | Default bank account. |
+| **CreatedAt** | DateTime | Date and time of bank account creation. |
+| **UpdatedAt** | DateTime | Date and time of last bank account update. |
 # JsonEet Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1648,13 +1192,12 @@ Event, as received from JSON API.
 
 | Name | Type | Summary |
 |---|---|---|
-| **name** | string | Typ události - generated, sent, accepted, sent_reminder, overdue, paid, paid_bank, payment_removed, unpaired_payment |
-| **created_at** | DateTime | Datum a čas vytvoření události |
-| **invoice_id** | int? | ID faktury (nepovinné) |
-| **subject_id** | int? | ID kontaktu (nepovinné) |
-| **text** | string | Text události |
-| **invoice_url** | string | API adresa faktury (nepovinné) |
-| **subject_url** | string | API adresa kontaktu (nepovinné) |
+| **Name** | string | Event name |
+| **CreatedAt** | DateTime | Date and time of event creation |
+| **Text** | string | Text of the event |
+| **RelatedObjects** | [JsonRelatedObject](#jsonrelatedobject-class)[] | Attributes of objects related to the event |
+| **User** | [JsonUser](#jsonuser-class) | User details |
+| **Params** | Object | Parameters with details about event, specific for each type of event |
 # JsonExpense Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1839,6 +1382,18 @@ Invoice line information, as received from JSON API.
 | **unit_name** | string | Měrná jednotka |
 | **unit_price** | decimal | Jednotková cena |
 | **vat_rate** | decimal | Sazba DPH |
+# JsonRelatedObject Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Represents an object related to the event.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Type** | string | Type of the object related to the event<br>Values: Invoice, Subject, Expense, Generator, RecurringGenerator, ExpenseGenerator, Estimate |
+| **Id** | int | ID of the object related to event |
 # JsonSubject Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1849,28 +1404,57 @@ Subject (contact), as received from JSON API.
 
 | Name | Type | Summary |
 |---|---|---|
-| **id** | int | Identifikátor kontaktu |
-| **custom_id** | string | Vlastní identifikátor kontaktu |
-| **name** | string | Obchodní jméno |
-| **street** | string | Ulice |
-| **street2** | string | Ulice - druhý řádek |
-| **city** | string | Město |
-| **zip** | string | PSČ |
-| **country** | string | Země |
-| **registration_no** | string | IČ |
-| **vat_no** | string | DIČ |
-| **bank_account** | string | Číslo účtu |
-| **iban** | string | Číslo účtu jako IBAN |
-| **variable_symbol** | string | Variabilní symbol |
-| **full_name** | string | Jméno kontaktní osoby |
-| **email** | string | E-mail pro zasílání faktur |
-| **email_copy** | string | E-mail pro zasílání kopie faktury |
-| **phone** | string | Telefonní číslo |
-| **web** | string | Adresa webu |
-| **avatar_url** | string | Adresa obrázku kontaktu |
-| **html_url** | string | Adresa kontaktu v GUI |
-| **url** | string | API adresa kontaktu |
-| **updated_at** | DateTime | Datum poslední aktualizace kontaktu |
+| **id** | int | Unique identifier in Fakturoid |
+| **custom_id** | string | Identifier in your application |
+| **user_id** | int | User ID who created the subject |
+| **type** | string | Type of subject. Values: "customer", "supplier", "both". Default: "customer" |
+| **name** | string | Name of the subject |
+| **full_name** | string | Contact person name |
+| **email** | string | Main email address to receive invoice emails |
+| **email_copy** | string | Email copy address to receive invoice emails |
+| **phone** | string | Phone number |
+| **web** | string | Web page |
+| **street** | string | Street |
+| **city** | string | City |
+| **zip** | string | ZIP or postal code |
+| **country** | string | Country (ISO code). Default: Account setting |
+| **has_delivery_address** | bool | Enable delivery address. Default: false |
+| **delivery_name** | string | Delivery address name |
+| **delivery_street** | string | Delivery address street |
+| **delivery_city** | string | Delivery address city |
+| **delivery_zip** | string | Delivery address ZIP or postal code |
+| **delivery_country** | string | Delivery address country (ISO code). Default: Account setting |
+| **due** | int | Number of days until an invoice is due for this subject. Default: Inherit from account settings |
+| **currency** | string | Currency (ISO code). Default: Inherit from account settings |
+| **language** | string | Invoice language. Default: Inherit from account settings |
+| **private_note** | string | Private note |
+| **registration_no** | string | Registration number (IČO) |
+| **vat_no** | string | VAT-payer VAT number (DIČ, IČ DPH in Slovakia, typically starts with the country code) |
+| **local_vat_no** | string | SK DIČ (only in Slovakia, does not start with country code) |
+| **unreliable** | bool | Unreliable VAT-payer |
+| **unreliable_checked_at** | DateTime? | Date of last check for unreliable VAT-payer |
+| **legal_form** | string | Legal form |
+| **vat_mode** | string | VAT mode |
+| **bank_account** | string | Bank account number |
+| **iban** | string | IBAN |
+| **swift_bic** | string | SWIFT/BIC |
+| **variable_symbol** | string | Fixed variable symbol (used for all invoices for this client instead of invoice number) |
+| **setting_update_from_ares** | string | Whether to update subject data from ARES. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **ares_update** | bool | Whether to update subject data from ARES. Used to override account settings. Default: true. Deprecated in favor of setting_update_from_ares |
+| **setting_invoice_pdf_attachments** | string | Whether to attach invoice PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **setting_estimate_pdf_attachments** | string | Whether to attach estimate PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **setting_invoice_send_reminders** | string | Whether to send overdue invoice email reminders. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **suggestion_enabled** | bool | Suggest for documents. Default: true |
+| **custom_email_text** | string | New invoice custom email text |
+| **overdue_email_text** | string | Overdue reminder custom email text |
+| **invoice_from_proforma_email_text** | string | Proforma paid custom email text |
+| **thank_you_email_text** | string | Thanks for payment custom email text |
+| **custom_estimate_email_text** | string | Estimate custom email text |
+| **webinvoice_history** | string | Webinvoice history. Values: null, "disabled", "recent", "client_portal". Default: null (inherit from account settings) |
+| **html_url** | string | Subject HTML web address |
+| **url** | string | Subject API address |
+| **created_at** | DateTime | Date and time of subject creation |
+| **updated_at** | DateTime | Date and time of last subject update |
 # JsonTodo Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1889,46 +1473,60 @@ Represents a todo task, as received from JSON API.
 | **text** | string | Text události |
 | **invoice_url** | string | API adresa faktury |
 | **subject_url** | string | API adresa kontaktu |
-# AllowNullAttribute Class
+# JsonUser Class
 
-Namespace: System.Diagnostics.CodeAnalysis
+Namespace: Altairis.Fakturoid.Client
 
-Base class: Attribute
-
-Specifies that null is allowed as an input even if the corresponding type disallows it.
+Represents a user associated with the event.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **TypeId** | Object |  |
-# NotNullWhenAttribute Class
+| **Id** | int | User ID |
+| **FullName** | string | Full user name |
+| **Avatar** | string | Avatar URL |
+# MyHttpClientExtensions Class
 
-Namespace: System.Diagnostics.CodeAnalysis
+Namespace: Altairis.Fakturoid.Client
 
-Base class: Attribute
 
-Specifies that when a method returns **System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue**, the parameter will not be null even if the corresponding type allows it.
+## Methods
 
-## Properties
-
-| Name | Type | Summary |
+| Name | Returns | Summary |
 |---|---|---|
-| **ReturnValue** | bool | Gets the return value condition. |
-| **TypeId** | Object |  |
-## Constructors
+| [**FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpatchasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
+| [**FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpostasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
+| [**FakturoidReadAsAsync(HttpContent content)**](#fakturoidreadasasynchttpcontent-content) | Task\<T\> |  |
+## Methods
 
-| Name | Summary |
-|---|---|
-| [**NotNullWhenAttribute(bool returnValue)**](#notnullwhenattributebool-returnvalue) | Initializes the attribute with the specified return value condition. |
-## Constructors
+### FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)
 
-### NotNullWhenAttribute(bool returnValue)
 
-Initializes the attribute with the specified return value condition.
 
-| Parameter | Type | Description |
-|---|---|---|
-| returnValue | bool | The return value condition. If the method returns this value, the associated parameter will not be null. |
+
+### Returns
+
+Task<HttpResponseMessage>
+
+
+### FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)
+
+
+
+
+### Returns
+
+Task<HttpResponseMessage>
+
+
+### FakturoidReadAsAsync(HttpContent content)
+
+
+
+
+### Returns
+
+Task<T>
 
 

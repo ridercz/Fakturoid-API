@@ -8,38 +8,73 @@ namespace Altairis.Fakturoid.Client {
     public class JsonEvent {
 
         /// <summary>
-        /// Typ události - generated, sent, accepted, sent_reminder, overdue, paid, paid_bank, payment_removed, unpaired_payment
+        /// Event name
         /// </summary>
-        public string name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Datum a čas vytvoření události
+        /// Date and time of event creation
         /// </summary>
-        public DateTime created_at { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// ID faktury (nepovinné)
+        /// Text of the event
         /// </summary>
-        public int? invoice_id { get; set; }
+        public string Text { get; set; }
 
         /// <summary>
-        /// ID kontaktu (nepovinné)
+        /// Attributes of objects related to the event
         /// </summary>
-        public int? subject_id { get; set; }
+        public JsonRelatedObject[] RelatedObjects { get; set; }
 
         /// <summary>
-        /// Text události
+        /// User details
         /// </summary>
-        public string text { get; set; }
+        public JsonUser User { get; set; }
 
         /// <summary>
-        /// API adresa faktury (nepovinné)
+        /// Parameters with details about event, specific for each type of event
         /// </summary>
-        public string invoice_url { get; set; }
+        public object Params { get; set; }
 
         /// <summary>
-        /// API adresa kontaktu (nepovinné)
+        /// Represents an object related to the event.
         /// </summary>
-        public string subject_url { get; set; }
+        public class JsonRelatedObject {
+
+            /// <summary>
+            /// Type of the object related to the event
+            /// Values: Invoice, Subject, Expense, Generator, RecurringGenerator, ExpenseGenerator, Estimate
+            /// </summary>
+            public string Type { get; set; }
+
+            /// <summary>
+            /// ID of the object related to event
+            /// </summary>
+            public int Id { get; set; }
+        }
+
+        /// <summary>
+        /// Represents a user associated with the event.
+        /// </summary>
+        public class JsonUser {
+
+            /// <summary>
+            /// User ID
+            /// </summary>
+            public int Id { get; set; }
+
+            /// <summary>
+            /// Full user name
+            /// </summary>
+            public string FullName { get; set; }
+
+            /// <summary>
+            /// Avatar URL
+            /// </summary>
+            public string Avatar { get; set; }
+
+        }
+
     }
 }

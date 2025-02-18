@@ -68,6 +68,7 @@ namespace Altairis.Fakturoid.Client {
             this.Expenses = new FakturoidExpensesProxy(this);
             this.BankAccounts = new FakturoidBankAccountsProxy(this);
 
+            // Custom HTTP client
             this.getCustomHttpClient = getCustomHttpClient;
         }
 
@@ -145,7 +146,7 @@ namespace Altairis.Fakturoid.Client {
             var c = this.GetHttpClient();
             var r = c.GetAsync("account.json").Result;
             r.EnsureFakturoidSuccess();
-            return r.Content.ReadAsAsync<JsonAccount>().Result;
+            return r.Content.FakturoidReadAsAsync<JsonAccount>().Result;
         }
 
         // Internal methods
@@ -187,14 +188,14 @@ namespace Altairis.Fakturoid.Client {
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeader);
 
             // Send request
-            var response = client.PostAsJsonAsync("oauth/token", body).Result;
+            var response = client.FakturoidPostAsJsonAsync("oauth/token", body).Result;
             response.EnsureSuccessStatusCode();
 
             // Parse response
-            var token = response.Content.ReadAsAsync<JsonAccessToken>().Result;
-            this.accessTokenType = token.token_type;
-            this.accessTokenValue = token.access_token;
-            this.accessTokenRefresh = DateTime.Now.AddSeconds(token.expires_in * ACCESS_TOKEN_REFRESH_MARGIN);
+            var token = response.Content.FakturoidReadAsAsync<JsonAccessToken>().Result;
+            this.accessTokenType = token.TokenType;
+            this.accessTokenValue = token.AccessToken;
+            this.accessTokenRefresh = DateTime.Now.AddSeconds(token.ExpiresIn * ACCESS_TOKEN_REFRESH_MARGIN);
         }
 
     }

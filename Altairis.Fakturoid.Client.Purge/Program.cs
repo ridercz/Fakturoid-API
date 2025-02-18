@@ -23,9 +23,9 @@ namespace Altairis.Fakturoid.Client.Purge {
 
             // Get account info
             var info = context.GetAccountInfo();
-            Console.WriteLine("Company name:     {0}", info.name);
-            Console.WriteLine("Company reg. no.: {0}", info.registration_no);
-            Console.WriteLine("Account name:     {0}", info.subdomain);
+            Console.WriteLine("Company name:     {0}", info.Name);
+            Console.WriteLine("Company reg. no.: {0}", info.RegistrationNo);
+            Console.WriteLine("Account name:     {0}", info.Subdomain);
             Console.WriteLine();
 
             // Verify if user really wants to delete all
