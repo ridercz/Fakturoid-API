@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -322,7 +323,7 @@ namespace Altairis.Fakturoid.Client {
 
             // Get result
             var c = this.Context.GetHttpClient();
-            var r = await c.PutAsJsonAsync(uri, entity);
+            var r = await c.PatchAsJsonAsync(uri, entity);
 
             // Ensure result was successfull
             r.EnsureFakturoidSuccess();
