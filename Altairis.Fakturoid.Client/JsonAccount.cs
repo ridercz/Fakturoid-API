@@ -1,173 +1,224 @@
-﻿using System;
-
-namespace Altairis.Fakturoid.Client {
+﻿namespace Altairis.Fakturoid.Client {
 
     /// <summary>
-    /// User account information, as received from JSON API.
+    /// Account information, as received from JSON API.
     /// </summary>
     public class JsonAccount {
+        /// <summary>
+        /// Subdomain.
+        /// </summary>
+        public string Subdomain { get; set; }
 
         /// <summary>
-        /// Subdoména
+        /// Subscription plan.
         /// </summary>
-        public string subdomain { get; set; }
+        public string Plan { get; set; }
 
         /// <summary>
-        /// Jméno tarifu
+        /// Price of subscription plan.
         /// </summary>
-        public string plan { get; set; }
+        public int PlanPrice { get; set; }
 
         /// <summary>
-        /// Cena tarifu
+        /// Number of paid users.
         /// </summary>
-        public int plan_price { get; set; }
+        public int PlanPaidUsers { get; set; }
 
         /// <summary>
-        /// E-mail vlastníka účtu
+        /// Email for sending invoices.
         /// </summary>
-        public string email { get; set; }
+        public string InvoiceEmail { get; set; }
 
         /// <summary>
-        /// E-mail, ze kterého jsou odesílány faktury
+        /// Phone number.
         /// </summary>
-        public string invoice_email { get; set; }
+        public string Phone { get; set; }
 
         /// <summary>
-        /// Telefon vlastníka účtu
+        /// Account owner's website.
         /// </summary>
-        public string phone { get; set; }
+        public string Web { get; set; }
 
         /// <summary>
-        /// Web vlastníka účtu
+        /// The name of the company.
         /// </summary>
-        public string web { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Jméno firmy
+        /// Name of the account holder.
         /// </summary>
-        public string name { get; set; }
+        public string FullName { get; set; }
 
         /// <summary>
-        /// Jméno majitele účtu
+        /// Registration number.
         /// </summary>
-        public string full_name { get; set; }
+        public string RegistrationNo { get; set; }
 
         /// <summary>
-        /// IČ
+        /// Tax identification number.
         /// </summary>
-        public string registration_no { get; set; }
+        public string VatNo { get; set; }
 
         /// <summary>
-        /// DIČ
+        /// Tax identification number for SK subject.
         /// </summary>
-        public string vat_no { get; set; }
+        public string LocalVatNo { get; set; }
 
         /// <summary>
-        /// Plátce DPH / Neplátce DPH / Identifikovaná osoba
+        /// VAT mode.
         /// </summary>
-        /// <value>
-        /// vat_payer, non_vat_payer, identified_person
-        /// </value>
-        public string vat_mode { get; set; }
+        public string VatMode { get; set; }
 
         /// <summary>
-        /// Ulice
+        /// VAT calculation mode.
         /// </summary>
-        public string street { get; set; }
+        public string VatPriceMode { get; set; }
 
         /// <summary>
-        /// Ulice - druhý řádek
+        /// Street.
         /// </summary>
-        public string street2 { get; set; }
+        public string Street { get; set; }
 
         /// <summary>
-        /// Místo
+        /// City.
         /// </summary>
-        public string city { get; set; }
+        public string City { get; set; }
 
         /// <summary>
-        /// PSČ
+        /// Postal code.
         /// </summary>
-        public string zip { get; set; }
+        public string Zip { get; set; }
 
         /// <summary>
-        /// ISO kód země
+        /// Country (ISO Code).
         /// </summary>
-        public string country { get; set; }
+        public string Country { get; set; }
 
         /// <summary>
-        /// Číslo účtu
+        /// Default currency (ISO Code).
         /// </summary>
-        public string bank_account { get; set; }
+        public string Currency { get; set; }
 
         /// <summary>
-        /// Číslo účtu jako IBAN
+        /// Default measurement unit.
         /// </summary>
-        public string iban { get; set; }
+        public string UnitName { get; set; }
 
         /// <summary>
-        /// BIC (pro SWIFT platby)
+        /// Default VAT rate.
         /// </summary>
-        public string swift_bic { get; set; }
+        public int VatRate { get; set; }
 
         /// <summary>
-        /// Měna
+        /// Invoice footer.
         /// </summary>
-        public string currency { get; set; }
+        public string DisplayedNote { get; set; }
 
         /// <summary>
-        /// Výchozí měrná jednotka
+        /// Text before lines.
         /// </summary>
-        public string unit_name { get; set; }
+        public string InvoiceNote { get; set; }
 
         /// <summary>
-        /// Výchozí sazba DPH
+        /// Default number of days until an invoice becomes overdue.
         /// </summary>
-        public decimal vat_rate { get; set; }
+        public int Due { get; set; }
 
         /// <summary>
-        /// Text patičky faktury
+        /// Default invoice language.
         /// </summary>
-        public string displayed_note { get; set; }
+        public string InvoiceLanguage { get; set; } 
 
         /// <summary>
-        /// Text před položkami faktury
+        /// Default payment method.
         /// </summary>
-        public string invoice_note { get; set; }
+        public string InvoicePaymentMethod { get; set; }
 
         /// <summary>
-        /// Výchozí splatnost faktur
+        /// Issue proforma by default.
         /// </summary>
-        public int due { get; set; }
+        public bool InvoiceProforma { get; set; }
 
         /// <summary>
-        /// Text emailu pro odeslání faktury
+        /// Hide bank account for payments.
         /// </summary>
-        public string custom_email_text { get; set; }
+        public string[] InvoiceHideBankAccountForPayments { get; set; }
 
         /// <summary>
-        /// Text upomínky o zaplacení
+        /// Fixed exchange rate.
         /// </summary>
-        public string overdue_email_text { get; set; }
+        public bool FixedExchangeRate { get; set; }
 
         /// <summary>
-        /// Adresa účtu v GUI
+        /// Selfbilling enabled?
         /// </summary>
-        public string html_url { get; set; }
+        public bool InvoiceSelfbilling { get; set; }
 
         /// <summary>
-        /// Adresa API
+        /// Default estimate in English.
         /// </summary>
-        public string url { get; set; }
+        public string DefaultEstimateType { get; set; }
 
         /// <summary>
-        /// Datum poslední úpravy účtu
+        /// Send overdue reminders automatically?
         /// </summary>
-        public DateTime updated_at { get; set; }
+        public bool SendOverdueEmail { get; set; }
 
         /// <summary>
-        /// Datum vytvoření účtu
+        /// Days after the due date to send an automatic overdue reminder?
         /// </summary>
-        public DateTime created_at { get; set; }
+        public int OverdueEmailDays { get; set; }
+
+        /// <summary>
+        /// Send automatic overdue reminders repeatedly?
+        /// </summary>
+        public bool SendRepeatedReminders { get; set; }
+
+        /// <summary>
+        /// Send email automatically when proforma is paid?
+        /// </summary>
+        public bool SendInvoiceFromProformaEmail { get; set; }
+
+        /// <summary>
+        /// Send a thank you email when invoices is paid automatically?
+        /// </summary>
+        public bool SendThankYouEmail { get; set; }
+
+        /// <summary>
+        /// PayPal enabled for all invoices?
+        /// </summary>
+        public bool InvoicePaypal { get; set; }
+
+        /// <summary>
+        /// GoPay enabled for all invoices?
+        /// </summary>
+        public bool InvoiceGopay { get; set; }
+
+        /// <summary>
+        /// Digitoo service enabled?
+        /// </summary>
+        public bool DigitooEnabled { get; set; }
+
+        /// <summary>
+        /// Digitoo service auto processing enabled.
+        /// </summary>
+        public bool DigitooAutoProcessingEnabled { get; set; }
+
+        /// <summary>
+        /// Number of remaining extractions by Digitoo service.
+        /// </summary>
+        public int DigitooExtractionsRemaining { get; set; }
+
+        /// <summary>
+        /// Account creation date.
+        /// </summary>
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// The date the account was last modified.
+        /// </summary>
+        public string UpdatedAt { get; set; }
+ 
     }
+
 }
