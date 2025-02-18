@@ -23,14 +23,15 @@ namespace Altairis.Fakturoid.Client {
         /// Gets asynchronously list of all subjects.
         /// </summary>
         /// <param name="customId">The custom identifier used for filtering.</param>
+        /// <param name="createdSince">List only subjects created since certain date.</param>
         /// <param name="updatedSince">List only subjects updated since certain date.</param>
         /// <returns>
         /// List of <see cref="JsonSubject" /> instances.
         /// </returns>
-        public Task<IEnumerable<JsonSubject>> SelectAsync(string customId = null, DateTime? updatedSince = default) => base.GetAllPagedEntitiesAsync<JsonSubject>("subjects.json", new { custom_id = customId, updated_since = updatedSince });
+        public Task<IEnumerable<JsonSubject>> SelectAsync(string customId = null, DateTime? createdSince = default, DateTime? updatedSince = default) => base.GetAllPagedEntitiesAsync<JsonSubject>("subjects.json", new { custom_id = customId, updated_since = updatedSince, since = createdSince });
 
         /// <summary>
-        /// Searches all Subjects in Name, Full name, Email, Registration number and Country.
+        /// Searches all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
         /// </summary>
         /// <param name="searchTerm">Search string.</param>
         /// <returns>Collection if search results.</returns>
@@ -40,12 +41,12 @@ namespace Altairis.Fakturoid.Client {
             });
 
         /// <summary>
-        /// Searches asynchronously all Subjects in Name, Full name, Email, Registration number and Country.
+        /// Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
         /// </summary>
         /// <param name="searchTerm">Search string.</param>
         /// <returns>Collection if search results.</returns>
         public Task<IEnumerable<JsonSubject>> SearchAsync(string searchTerm) =>
-base.GetUnpagedEntitiesAsync<JsonSubject>("subjects/search.json", new {
+            base.GetUnpagedEntitiesAsync<JsonSubject>("subjects/search.json", new {
                 query = searchTerm
             });
 
