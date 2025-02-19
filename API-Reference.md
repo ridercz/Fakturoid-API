@@ -4,80 +4,22 @@
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) |
-| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
-| [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidTodo Class](#fakturoidtodo-class) |
-| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidUser Class](#fakturoiduser-class) |
-| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) |
-| [InvoiceMessageType Enum](#invoicemessagetype-enum) | [FakturoidInventory Class](#fakturoidinventory-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |
-| [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) |
-| [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) |   |
-# ExpensePaymentStatus Enum
-
-Namespace: Altairis.Fakturoid.Client
-
-Expense payment status
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **Unpaid** | Reset payment status to unpaid. |
-| **Paid** | Set status of regular expense to paid. |
-# ExpenseStatusCondition Enum
-
-Namespace: Altairis.Fakturoid.Client
-
-Query status condition for listing expenses
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **Any** | Any |
-| **Open** | Náklad není zaplacen, odeslán ani po splatnosti. |
-| **Overdue** | Náklad je po splatnosti. |
-| **Paid** | Náklad je zaplacen. |
-# FakturoidBankAccountsProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class form working with bank accounts
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidBankAccount](#fakturoidbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
-## Methods
-
-### SelectAsync()
-
-Gets asynchronously list of all bank accounts.
-
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidBankAccount](#fakturoidbankaccount-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidBankAccount** instances.
-
+| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) | [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) |
+| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) | [ExpenseStatusCondition Enum](#expensestatuscondition-enum) |
+| [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) | [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) |
+| [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) | [FakturoidEntityProxy Class](#fakturoidentityproxy-class) |
+| [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) | [FakturoidEventsProxy Class](#fakturoideventsproxy-class) |
+| [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) | [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) |
+| [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) | [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) |
+| [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) | [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) |
+| [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) | [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) |
+| [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) |
+| [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidSubject Class](#fakturoidsubject-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) |
+| [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidTodo Class](#fakturoidtodo-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) |
+| [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidUser Class](#fakturoiduser-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) |
+| [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) |
+| [FakturoidInventory Class](#fakturoidinventory-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |   |
 # FakturoidContext Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -93,7 +35,8 @@ Class representing connection to Fakturoid API, holds authentication information
 | **ClientSecret** | string | Gets the Fakturoid authentication token. |
 | **UserAgent** | string | Gets the User-Agent header used for HTTP requests. |
 | **BankAccounts** | [FakturoidBankAccountsProxy](#fakturoidbankaccountsproxy-class) | Gets the bank accounts. |
-| **NumberFormats** | [FakturoidNumberFormatsProxy](#fakturoidnumberformatsproxy-class) |  |
+| **NumberFormats** | [FakturoidNumberFormatsProxy](#fakturoidnumberformatsproxy-class) | Gets the number formats. |
+| **Subjects** | [FakturoidSubjectsProxy](#fakturoidsubjectsproxy-class) | Gets the subjects. |
 ## Constructors
 
 | Name | Summary |
@@ -131,70 +74,6 @@ Gets the account information.
 Task<[FakturoidAccount](#fakturoidaccount-class)>
 
 Instance of **Altairis.Fakturoid.Client.Models.FakturoidAccount** class containing the account information.
-
-# FakturoidEntityProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Proxy class for working with any Fakturoid entity
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-# FakturoidEventsProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class for working with events
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**SelectAsync(DateTime? since, int? subjectId)**](#selectasyncdatetime-since-int-subjectid) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of all current events. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
-## Methods
-
-### SelectAsync(DateTime? since, int? subjectId)
-
-Gets asynchronously list of all current events.
-
-| Parameter | Type | Description |
-|---|---|---|
-| since | DateTime? | The date since when events are to be selected. |
-| subjectId | int? | The ID of the subject to filter events by. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
-
-### SelectAsync(int page, DateTime? since)
-
-Gets asynchronously list of current events, paged by 40.
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| since | DateTime? | The date since when events are to be selected. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
 
 # FakturoidException Class
 
@@ -303,198 +182,6 @@ Sets the **System.Runtime.Serialization.SerializationInfo** with information abo
 | context | StreamingContext | The **System.Runtime.Serialization.StreamingContext** that contains contextual information about the source or destination. |
 
 
-# FakturoidExpensesProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class for working with invoices.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**CreateAsync(FakturoidExpense entity)**](#createasyncfakturoidexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
-| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Selects asynchronously single expense with specified ID. |
-| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
-| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
-| [**UpdateAsync(FakturoidExpense entity)**](#updateasyncfakturoidexpense-entity) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Updates asynchronously the specified expense. |
-## Methods
-
-### CreateAsync(FakturoidExpense entity)
-
-Creates asynchronously the specified new expense.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [FakturoidExpense](#fakturoidexpense-class) | The new expense. |
-
-
-### Returns
-
-Task<int>
-
-ID of newly created expense.
-
-### DeleteAsync(int id)
-
-Deletes asynchronously expense with specified id.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The contact id. |
-
-
-### Returns
-
-Task
-
-
-
-### SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets asynchronously list of all invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the expense was created. |
-| number | string | The expense display number. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
-
-### SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets asynchronously paged list of invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the expense was created. |
-| number | string | The expense display number. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
-
-### SelectSingleAsync(int id)
-
-Selects asynchronously single expense with specified ID.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The expense id. |
-
-
-### Returns
-
-Task<[FakturoidExpense](#fakturoidexpense-class)>
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class.
-
-### SetAttachmentAsync(int id, string filePath)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| filePath | string | The file path. |
-
-
-### Returns
-
-Task
-
-
-
-### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| mimeType | string | The mime type. |
-| fileContent | byte[] | The content of the file. |
-
-
-### Returns
-
-Task
-
-
-
-### SetPaymentStatusAsync(int id, ExpensePaymentStatus status)
-
-Sets asynchronously the expense payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The expense id. |
-| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
-
-
-### Returns
-
-Task
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class with modified entity.
-
-### SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)
-
-Sets asynchronously the expense payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The expense id. |
-| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
-| effectiveDate | DateTime | The date when payment was performed. |
-
-
-### Returns
-
-Task
-
-
-
-### UpdateAsync(FakturoidExpense entity)
-
-Updates asynchronously the specified expense.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [FakturoidExpense](#fakturoidexpense-class) | The expense to update. |
-
-
-### Returns
-
-Task<[FakturoidExpense](#fakturoidexpense-class)>
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class with modified entity.
-
 # FakturoidExtensionMethods Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -545,491 +232,6 @@ Task<HttpResponseMessage>
 Task<T>
 
 
-# FakturoidInvoicesProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class for working with invoices.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**CreateAsync(FakturoidInvoice entity)**](#createasyncfakturoidinvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
-| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Selects asynchronously single invoice with specified ID. |
-| [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
-| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status) | Task | Sets asynchronously the invoice payment status. |
-| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
-| [**UpdateAsync(FakturoidInvoice entity)**](#updateasyncfakturoidinvoice-entity) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Updates asynchronously the specified invoice. |
-## Methods
-
-### CreateAsync(FakturoidInvoice entity)
-
-Creates asynchronously the specified new invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [FakturoidInvoice](#fakturoidinvoice-class) | The new invoice. |
-
-
-### Returns
-
-Task<int>
-
-ID of newly created invoice.
-
-### DeleteAsync(int id)
-
-Deletes asynchronously invoice with specified id.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The contact id. |
-
-
-### Returns
-
-Task
-
-
-
-### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets asynchronously list of all invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
-| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the invoice was created. |
-| number | string | The invoice display number. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
-
-### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
-
-Gets asynchronously paged list of invoices.
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
-| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the invoice was created. |
-| number | string | The invoice display number. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
-
-### SelectSingleAsync(int id)
-
-Selects asynchronously single invoice with specified ID.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-
-
-### Returns
-
-Task<[FakturoidInvoice](#fakturoidinvoice-class)>
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class.
-
-### SendMessageAsync(int id, InvoiceMessageType messageType)
-
-Sends asynchronously e-mail message for the specified invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
-
-
-### Returns
-
-Task
-
-
-
-### SetAttachmentAsync(int id, string filePath)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| filePath | string | The file path. |
-
-
-### Returns
-
-Task
-
-
-
-### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
-
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| mimeType | string | The mime type. |
-| fileContent | byte[] | The content of the file. |
-
-
-### Returns
-
-Task
-
-
-
-### SetPaymentStatusAsync(int id, InvoicePaymentStatus status)
-
-Sets asynchronously the invoice payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
-
-
-### Returns
-
-Task
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
-
-### SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)
-
-Sets asynchronously the invoice payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
-| effectiveDate | DateTime | The date when payment was performed. |
-
-
-### Returns
-
-Task
-
-
-
-### UpdateAsync(FakturoidInvoice entity)
-
-Updates asynchronously the specified invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [FakturoidInvoice](#fakturoidinvoice-class) | The invoice to update. |
-
-
-### Returns
-
-Task<[FakturoidInvoice](#fakturoidinvoice-class)>
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
-
-# FakturoidNumberFormatsProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class for working with number formats
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidNumberFormat](#fakturoidnumberformat-class)\>\> | Gets asynchronously list of all number formats. |
-## Methods
-
-### SelectAsync()
-
-Gets asynchronously list of all number formats.
-
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidNumberFormat](#fakturoidnumberformat-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidNumberFormat** instances.
-
-# FakturoidSubjectsProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class for working with subjects/contacts.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**CreateAsync(FakturoidSubject entity)**](#createasyncfakturoidsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
-| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
-| [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously paged list of subjects |
-| [**SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)**](#selectasyncstring-customid-datetime-createdsince-datetime-updatedsince) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously list of all subjects. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Selects asynchronously single subject with specified ID. |
-| [**UpdateAsync(FakturoidSubject entity)**](#updateasyncfakturoidsubject-entity) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Updates asynchronously the specified subject. |
-## Methods
-
-### CreateAsync(FakturoidSubject entity)
-
-Creates asynchronously the specified new subject.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [FakturoidSubject](#fakturoidsubject-class) | The new subject. |
-
-
-### Returns
-
-Task<int>
-
-ID of newly created subject.
-
-### DeleteAsync(int id)
-
-Deletes asynchronously with specified id.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The contact id. |
-
-
-### Returns
-
-Task
-
-
-
-### SearchAsync(string searchTerm)
-
-Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
-
-| Parameter | Type | Description |
-|---|---|---|
-| searchTerm | string | Search string. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
-
-Collection if search results.
-
-### SelectAsync(int page)
-
-Gets asynchronously paged list of subjects
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
-
-### SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)
-
-Gets asynchronously list of all subjects.
-
-| Parameter | Type | Description |
-|---|---|---|
-| customId | string | The custom identifier used for filtering. |
-| createdSince | DateTime? | List only subjects created since certain date. |
-| updatedSince | DateTime? | List only subjects updated since certain date. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
-
-### SelectSingleAsync(int id)
-
-Selects asynchronously single subject with specified ID.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The subject id. |
-
-
-### Returns
-
-Task<[FakturoidSubject](#fakturoidsubject-class)>
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidSubject** class.
-
-### UpdateAsync(FakturoidSubject entity)
-
-Updates asynchronously the specified subject.
-
-| Parameter | Type | Description |
-|---|---|---|
-| entity | [FakturoidSubject](#fakturoidsubject-class) | The subject to update. |
-
-
-### Returns
-
-Task<[FakturoidSubject](#fakturoidsubject-class)>
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidSubject** class with modified entity.
-
-# FakturoidTodosProxy Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
-
-Proxy class for working with todo tasks.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
-## Methods
-
-### SelectAsync(DateTime? since)
-
-Gets asynchronously list of all current todos.
-
-| Parameter | Type | Description |
-|---|---|---|
-| since | DateTime? | The date since when todos are to be selected. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
-
-### SelectAsync(int page, DateTime? since)
-
-Gets asynchronously paged list of current todos
-
-| Parameter | Type | Description |
-|---|---|---|
-| page | int | The page number. |
-| since | DateTime? | The date since when todos are to be selected. |
-
-
-### Returns
-
-Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
-
-List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
-
-# InvoiceMessageType Enum
-
-Namespace: Altairis.Fakturoid.Client
-
-Type of e-mail message to be sent.
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **NoMessage** | Do not actually send anything, just mark invoice as sent |
-| **InvoiceMessage** | Predefined message containing link to invoice |
-| **PaymentReminderMessage** | Predefined message containing payment reminder |
-# InvoicePaymentStatus Enum
-
-Namespace: Altairis.Fakturoid.Client
-
-Invoice payment status
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **Unpaid** | Reset payment status to unpaid. |
-| **Paid** | Set status of regular invoice to paid. |
-| **ProformaPaid** | Set status of proforma invoice to paid. |
-| **PartialProformaPaid** | Set status of partial proforma invoice to paid. |
-| **Cancelled** | Set status to cancelled (for proforma or invoice without VAT) |
-# InvoiceStatusCondition Enum
-
-Namespace: Altairis.Fakturoid.Client
-
-Query status condition for listing invoices
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **Any** | Any |
-| **Open** | Faktura není zaplacena, odeslána ani po splatnosti. |
-| **Sent** | Faktura byla odeslána a není po splatnosti. |
-| **Overdue** | Faktura je po splatnosti. |
-| **Paid** | Faktura je zaplacena. |
-| **Cancelled** | Faktura je stornována (pouze neplátci DPH). |
-# InvoiceTypeCondition Enum
-
-Namespace: Altairis.Fakturoid.Client
-
-Query invoice type condition for listing invoices.
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **Any** | Any |
-| **Proforma** | The proforma invouice. |
-| **Regular** | The regular, non-proforma invoice |
 # RecurringGenerator Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1710,7 +912,7 @@ Subject (contact).
 | **DeliveryCity** | string | Delivery address city |
 | **DeliveryZip** | string | Delivery address ZIP or postal code |
 | **DeliveryCountry** | string | Delivery address country (ISO code). Default: Account setting |
-| **Due** | int | Number of days until an invoice is due for this subject. Default: Inherit from account settings |
+| **Due** | int? | Number of days until an invoice is due for this subject. Default: Inherit from account settings |
 | **Currency** | string | Currency (ISO code). Default: Inherit from account settings |
 | **Language** | string | Invoice language. Default: Inherit from account settings |
 | **PrivateNote** | string | Private note |
@@ -1827,3 +1029,822 @@ Webhook
 | **Url** | string | Webhook API address |
 | **CreatedAt** | DateTimeOffset | Date and time of webhook creation |
 | **UpdatedAt** | DateTimeOffset | Date and time of last webhook update |
+# ExpensePaymentStatus Enum
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Expense payment status
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Unpaid** | Reset payment status to unpaid. |
+| **Paid** | Set status of regular expense to paid. |
+# ExpenseStatusCondition Enum
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Query status condition for listing expenses
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Any** | Any |
+| **Open** | Náklad není zaplacen, odeslán ani po splatnosti. |
+| **Overdue** | Náklad je po splatnosti. |
+| **Paid** | Náklad je zaplacen. |
+# FakturoidBankAccountsProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class form working with bank accounts
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidBankAccount](#fakturoidbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
+## Methods
+
+### SelectAsync()
+
+Gets asynchronously list of all bank accounts.
+
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidBankAccount](#fakturoidbankaccount-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidBankAccount** instances.
+
+# FakturoidEntityProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Proxy class for working with any Fakturoid entity
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+# FakturoidEventsProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with events
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**SelectAsync(DateTime? since, int? subjectId)**](#selectasyncdatetime-since-int-subjectid) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of all current events. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
+## Methods
+
+### SelectAsync(DateTime? since, int? subjectId)
+
+Gets asynchronously list of all current events.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTime? | The date since when events are to be selected. |
+| subjectId | int? | The ID of the subject to filter events by. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
+
+### SelectAsync(int page, DateTime? since)
+
+Gets asynchronously list of current events, paged by 40.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTime? | The date since when events are to be selected. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
+
+# FakturoidExpensesProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with invoices.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**CreateAsync(FakturoidExpense entity)**](#createasyncfakturoidexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
+| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Selects asynchronously single expense with specified ID. |
+| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
+| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
+| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
+| [**UpdateAsync(FakturoidExpense entity)**](#updateasyncfakturoidexpense-entity) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Updates asynchronously the specified expense. |
+## Methods
+
+### CreateAsync(FakturoidExpense entity)
+
+Creates asynchronously the specified new expense.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [FakturoidExpense](#fakturoidexpense-class) | The new expense. |
+
+
+### Returns
+
+Task<int>
+
+ID of newly created expense.
+
+### DeleteAsync(int id)
+
+Deletes asynchronously expense with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### Returns
+
+Task
+
+
+
+### SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously list of all invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the expense was created. |
+| number | string | The expense display number. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
+
+### SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously paged list of invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the expense was created. |
+| number | string | The expense display number. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
+
+### SelectSingleAsync(int id)
+
+Selects asynchronously single expense with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+
+
+### Returns
+
+Task<[FakturoidExpense](#fakturoidexpense-class)>
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class.
+
+### SetAttachmentAsync(int id, string filePath)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| filePath | string | The file path. |
+
+
+### Returns
+
+Task
+
+
+
+### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| mimeType | string | The mime type. |
+| fileContent | byte[] | The content of the file. |
+
+
+### Returns
+
+Task
+
+
+
+### SetPaymentStatusAsync(int id, ExpensePaymentStatus status)
+
+Sets asynchronously the expense payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
+
+
+### Returns
+
+Task
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class with modified entity.
+
+### SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)
+
+Sets asynchronously the expense payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The expense id. |
+| status | [ExpensePaymentStatus](#expensepaymentstatus-enum) | The new payment status. |
+| effectiveDate | DateTime | The date when payment was performed. |
+
+
+### Returns
+
+Task
+
+
+
+### UpdateAsync(FakturoidExpense entity)
+
+Updates asynchronously the specified expense.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [FakturoidExpense](#fakturoidexpense-class) | The expense to update. |
+
+
+### Returns
+
+Task<[FakturoidExpense](#fakturoidexpense-class)>
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class with modified entity.
+
+# FakturoidInvoicesProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with invoices.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**CreateAsync(FakturoidInvoice entity)**](#createasyncfakturoidinvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
+| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Selects asynchronously single invoice with specified ID. |
+| [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
+| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
+| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
+| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status) | Task | Sets asynchronously the invoice payment status. |
+| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
+| [**UpdateAsync(FakturoidInvoice entity)**](#updateasyncfakturoidinvoice-entity) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Updates asynchronously the specified invoice. |
+## Methods
+
+### CreateAsync(FakturoidInvoice entity)
+
+Creates asynchronously the specified new invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [FakturoidInvoice](#fakturoidinvoice-class) | The new invoice. |
+
+
+### Returns
+
+Task<int>
+
+ID of newly created invoice.
+
+### DeleteAsync(int id)
+
+Deletes asynchronously invoice with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### Returns
+
+Task
+
+
+
+### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously list of all invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the invoice was created. |
+| number | string | The invoice display number. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
+
+### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
+
+Gets asynchronously paged list of invoices.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
+| subjectId | int? | The customer subject id. |
+| since | DateTime? | The date since when the invoice was created. |
+| number | string | The invoice display number. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
+
+### SelectSingleAsync(int id)
+
+Selects asynchronously single invoice with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+
+
+### Returns
+
+Task<[FakturoidInvoice](#fakturoidinvoice-class)>
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class.
+
+### SendMessageAsync(int id, InvoiceMessageType messageType)
+
+Sends asynchronously e-mail message for the specified invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
+
+
+### Returns
+
+Task
+
+
+
+### SetAttachmentAsync(int id, string filePath)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| filePath | string | The file path. |
+
+
+### Returns
+
+Task
+
+
+
+### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
+
+Sets attachment for invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| mimeType | string | The mime type. |
+| fileContent | byte[] | The content of the file. |
+
+
+### Returns
+
+Task
+
+
+
+### SetPaymentStatusAsync(int id, InvoicePaymentStatus status)
+
+Sets asynchronously the invoice payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
+
+
+### Returns
+
+Task
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
+
+### SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)
+
+Sets asynchronously the invoice payment status.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The invoice id. |
+| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
+| effectiveDate | DateTime | The date when payment was performed. |
+
+
+### Returns
+
+Task
+
+
+
+### UpdateAsync(FakturoidInvoice entity)
+
+Updates asynchronously the specified invoice.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [FakturoidInvoice](#fakturoidinvoice-class) | The invoice to update. |
+
+
+### Returns
+
+Task<[FakturoidInvoice](#fakturoidinvoice-class)>
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
+
+# FakturoidNumberFormatsProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with number formats
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidNumberFormat](#fakturoidnumberformat-class)\>\> | Gets asynchronously list of all number formats. |
+## Methods
+
+### SelectAsync()
+
+Gets asynchronously list of all number formats.
+
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidNumberFormat](#fakturoidnumberformat-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidNumberFormat** instances.
+
+# FakturoidSubjectsProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with subjects/contacts.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**CreateAsync(FakturoidSubject entity)**](#createasyncfakturoidsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
+| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
+| [**SearchAsync(string query)**](#searchasyncstring-query) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
+| [**SearchAsync(int page, string query)**](#searchasyncint-page-string-query) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note with pagination. |
+| [**SelectAsync(DateTime? createdSince, DateTime? updatedSince, string customId)**](#selectasyncdatetime-createdsince-datetime-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously list of all subjects. |
+| [**SelectAsync(int page, DateTime? createdSince, DateTime? updatedSince, string customId)**](#selectasyncint-page-datetime-createdsince-datetime-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously paged list of subjects |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Selects asynchronously single subject with specified ID. |
+| [**UpdateAsync(FakturoidSubject entity)**](#updateasyncfakturoidsubject-entity) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Updates asynchronously the specified subject. |
+## Methods
+
+### CreateAsync(FakturoidSubject entity)
+
+Creates asynchronously the specified new subject.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [FakturoidSubject](#fakturoidsubject-class) | The new subject. |
+
+
+### Returns
+
+Task<int>
+
+ID of newly created subject.
+
+### DeleteAsync(int id)
+
+Deletes asynchronously with specified id.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The contact id. |
+
+
+### Returns
+
+Task
+
+
+
+### SearchAsync(string query)
+
+Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
+
+| Parameter | Type | Description |
+|---|---|---|
+| query | string | Search string. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
+
+Collection of search results.
+
+### SearchAsync(int page, string query)
+
+Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note with pagination.
+
+| Parameter | Type | Description |
+|---|---|---|
+| query | int | Search string. |
+| page | string | The page number. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
+
+Collection of search results.
+
+### SelectAsync(DateTime? createdSince, DateTime? updatedSince, string customId)
+
+Gets asynchronously list of all subjects.
+
+| Parameter | Type | Description |
+|---|---|---|
+| customId | DateTime? | The custom identifier used for filtering. |
+| createdSince | DateTime? | List only subjects created since certain date. |
+| updatedSince | string | List only subjects updated since certain date. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
+
+### SelectAsync(int page, DateTime? createdSince, DateTime? updatedSince, string customId)
+
+Gets asynchronously paged list of subjects
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| createdSince | DateTime? | List only subjects created since certain date. |
+| updatedSince | DateTime? | List only subjects updated since certain date. |
+| customId | string | The custom identifier used for filtering. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
+
+### SelectSingleAsync(int id)
+
+Selects asynchronously single subject with specified ID.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The subject id. |
+
+
+### Returns
+
+Task<[FakturoidSubject](#fakturoidsubject-class)>
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidSubject** class.
+
+### UpdateAsync(FakturoidSubject entity)
+
+Updates asynchronously the specified subject.
+
+| Parameter | Type | Description |
+|---|---|---|
+| entity | [FakturoidSubject](#fakturoidsubject-class) | The subject to update. |
+
+
+### Returns
+
+Task<[FakturoidSubject](#fakturoidsubject-class)>
+
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidSubject** class with modified entity.
+
+# FakturoidTodosProxy Class
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with todo tasks.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
+## Methods
+
+### SelectAsync(DateTime? since)
+
+Gets asynchronously list of all current todos.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTime? | The date since when todos are to be selected. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
+
+### SelectAsync(int page, DateTime? since)
+
+Gets asynchronously paged list of current todos
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTime? | The date since when todos are to be selected. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
+
+# InvoiceMessageType Enum
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Type of e-mail message to be sent.
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **NoMessage** | Do not actually send anything, just mark invoice as sent |
+| **InvoiceMessage** | Predefined message containing link to invoice |
+| **PaymentReminderMessage** | Predefined message containing payment reminder |
+# InvoicePaymentStatus Enum
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Invoice payment status
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Unpaid** | Reset payment status to unpaid. |
+| **Paid** | Set status of regular invoice to paid. |
+| **ProformaPaid** | Set status of proforma invoice to paid. |
+| **PartialProformaPaid** | Set status of partial proforma invoice to paid. |
+| **Cancelled** | Set status to cancelled (for proforma or invoice without VAT) |
+# InvoiceStatusCondition Enum
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Query status condition for listing invoices
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Any** | Any |
+| **Open** | Faktura není zaplacena, odeslána ani po splatnosti. |
+| **Sent** | Faktura byla odeslána a není po splatnosti. |
+| **Overdue** | Faktura je po splatnosti. |
+| **Paid** | Faktura je zaplacena. |
+| **Cancelled** | Faktura je stornována (pouze neplátci DPH). |
+# InvoiceTypeCondition Enum
+
+Namespace: Altairis.Fakturoid.Client.Proxies
+
+Query invoice type condition for listing invoices.
+
+## Values
+
+| Name | Summary |
+|---|---|
+| **Any** | Any |
+| **Proforma** | The proforma invouice. |
+| **Regular** | The regular, non-proforma invoice |

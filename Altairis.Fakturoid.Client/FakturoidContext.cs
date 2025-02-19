@@ -52,11 +52,11 @@ public class FakturoidContext {
         this.UserAgent = userAgent;
 
         // Proxies
-        this.BankAccounts = new FakturoidBankAccountsProxy(this);
-        this.NumberFormats = new FakturoidNumberFormatsProxy(this);
+        this.BankAccounts = new(this);
+        this.NumberFormats = new(this);
+        this.Subjects = new(this);
         //this.Events = new FakturoidEventsProxy(this);
         //this.Todos = new FakturoidTodosProxy(this);
-        //this.Subjects = new FakturoidSubjectsProxy(this);
         //this.Invoices = new FakturoidInvoicesProxy(this);
         //this.Expenses = new FakturoidExpensesProxy(this);
     }
@@ -100,9 +100,17 @@ public class FakturoidContext {
     /// <summary>
     /// Gets the bank accounts.
     /// </summary>
-    public FakturoidBankAccountsProxy BankAccounts { get; } 
+    public FakturoidBankAccountsProxy BankAccounts { get; }
 
+    /// <summary>
+    /// Gets the number formats.
+    /// </summary>
     public FakturoidNumberFormatsProxy NumberFormats { get; }
+
+    /// <summary>
+    /// Gets the subjects.
+    /// </summary>
+    public FakturoidSubjectsProxy Subjects { get; }
 
     // Public methods
 

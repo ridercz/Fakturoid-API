@@ -29,10 +29,10 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             try {
                 ShowAccountInfo();
                 ShowSubjects();
+                SearchSubjects("Company");
                 //ShowEvents();
                 //ShowTodos();
                 //ShowInvoices();
-                //SearchSubjects("Company");
             } catch (AggregateException aex) when (aex.InnerExceptions.Count == 1) {
                 throw aex.InnerException;
             }
@@ -137,15 +137,15 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             Console.WriteLine();
         }
 
-        //private static void SearchSubjects(string searchTerm) {
-        //    Console.Write($"Searching Subjects. Term: {searchTerm}...");
-        //    var subjects = context.Subjects.Search(searchTerm);
-        //    Console.WriteLine("OK");
-        //    foreach (var subject in subjects) {
-        //        Console.WriteLine("Name: {0}, RegNo: {1}", subject.name, subject.registration_no);
-        //    }
-        //    Console.WriteLine();
-        //}
+        private static void SearchSubjects(string searchTerm) {
+            Console.Write($"Searching Subjects. Term: {searchTerm}...");
+            var subjects = context.Subjects.SearchAsync(searchTerm).Result;
+            Console.WriteLine("OK");
+            foreach (var subject in subjects) {
+                Console.WriteLine("Name: {0}, RegNo: {1}", subject.Name, subject.RegistrationNo);
+            }
+            Console.WriteLine();
+        }
 
         //private static void ShowTodos() {
         //    Console.Write("Getting all todos...");

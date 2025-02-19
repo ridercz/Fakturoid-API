@@ -14,7 +14,7 @@ public class FakturoidSubject {
     public int UserId { get; set; }
 
     /// <summary>Type of subject. Values: "customer", "supplier", "both". Default: "customer"</summary>
-    public string Type { get; set; }
+    public string Type { get; set; } = "customer";
 
     /// <summary>Name of the subject</summary>
     public string Name { get; set; }
@@ -65,7 +65,7 @@ public class FakturoidSubject {
     public string DeliveryCountry { get; set; }
 
     /// <summary>Number of days until an invoice is due for this subject. Default: Inherit from account settings</summary>
-    public int Due { get; set; }
+    public int? Due { get; set; }
 
     /// <summary>Currency (ISO code). Default: Inherit from account settings</summary>
     public string Currency { get; set; }
@@ -110,19 +110,19 @@ public class FakturoidSubject {
     public string VariableSymbol { get; set; }
 
     /// <summary>Whether to update subject data from ARES. Used to override account settings. Values: inherit, on, off. Default: inherit</summary>
-    public string SettingUpdateFromAres { get; set; }
+    public string SettingUpdateFromAres { get; set; } = "inherit";
 
     /// <summary>Whether to update subject data from ARES. Used to override account settings. Default: true. Deprecated in favor of setting_update_from_ares</summary>
     public bool AresUpdate { get; set; } = true;
 
     /// <summary>Whether to attach invoice PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit</summary>
-    public string SettingInvoicePdfAttachments { get; set; }
+    public string SettingInvoicePdfAttachments { get; set; } = "inherit";
 
     /// <summary>Whether to attach estimate PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit</summary>
-    public string SettingEstimatePdfAttachments { get; set; }
+    public string SettingEstimatePdfAttachments { get; set; } = "inherit";
 
     /// <summary>Whether to send overdue invoice email reminders. Used to override account settings. Values: inherit, on, off. Default: inherit</summary>
-    public string SettingInvoiceSendReminders { get; set; }
+    public string SettingInvoiceSendReminders { get; set; } = "inherit";
 
     /// <summary>Suggest for documents. Default: true</summary>
     public bool SuggestionEnabled { get; set; } = true;
