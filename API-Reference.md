@@ -4,20 +4,22 @@
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [FakturoidInventory Class](#fakturoidinventory-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) |
-| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) |
-| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
-| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidTodo Class](#fakturoidtodo-class) |
-| [GetCustomHttpClient Class](#getcustomhttpclient-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |
-| [InvoiceMessageType Enum](#invoicemessagetype-enum) | [FakturoidGenerator Class](#fakturoidgenerator-class) |   |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) |
+| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidTodo Class](#fakturoidtodo-class) |
+| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidUser Class](#fakturoiduser-class) |
+| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) |
+| [InvoiceMessageType Enum](#invoicemessagetype-enum) | [FakturoidInventory Class](#fakturoidinventory-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |
+| [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) |
+| [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) |   |
+| [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |   |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -90,25 +92,19 @@ Class representing connection to Fakturoid API, holds authentication information
 | **ClientId** | string | Gets the Fakturoid account email address. |
 | **ClientSecret** | string | Gets the Fakturoid authentication token. |
 | **UserAgent** | string | Gets the User-Agent header used for HTTP requests. |
-| **Events** | [FakturoidEventsProxy](#fakturoideventsproxy-class) | Proxy for working with events. |
-| **Todos** | [FakturoidTodosProxy](#fakturoidtodosproxy-class) | Proxy for working with todos. |
-| **Subjects** | [FakturoidSubjectsProxy](#fakturoidsubjectsproxy-class) | Proxy for working with subjects. |
-| **Invoices** | [FakturoidInvoicesProxy](#fakturoidinvoicesproxy-class) | Proxy for working with invoices |
-| **Expenses** | [FakturoidExpensesProxy](#fakturoidexpensesproxy-class) | Proxy for working with expenses |
-| **BankAccounts** | [FakturoidBankAccountsProxy](#fakturoidbankaccountsproxy-class) | Proxy for working with bank accounts. |
 ## Constructors
 
 | Name | Summary |
 |---|---|
-| [**FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent, GetCustomHttpClient getCustomHttpClient)**](#fakturoidcontextstring-accountname-string-clientid-string-clientsecret-string-useragent-getcustomhttpclient-getcustomhttpclient) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
+| [**FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent)**](#fakturoidcontextstring-accountname-string-clientid-string-clientsecret-string-useragent) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
 ## Methods
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**GetAccountInfo()**](#getaccountinfo) | [FakturoidAccount](#fakturoidaccount-class) | Gets the account information. |
+| [**GetAccountInfoAsync()**](#getaccountinfoasync) | Task\<[FakturoidAccount](#fakturoidaccount-class)\> | Gets the account information. |
 ## Constructors
 
-### FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent, GetCustomHttpClient getCustomHttpClient)
+### FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent)
 
 Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class.
 
@@ -118,12 +114,11 @@ Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext**
 | clientId | string | The client ID for OAuth 2 Client Credentials Flow. |
 | clientSecret | string | The client secret for OAuth 2 Client Credentials Flow. |
 | userAgent | string | The User-Agent HTTP header value. |
-| getCustomHttpClient | [GetCustomHttpClient](#getcustomhttpclient-class) | Getter for custom http client |
 
 
 ## Methods
 
-### GetAccountInfo()
+### GetAccountInfoAsync()
 
 Gets the account information.
 
@@ -131,7 +126,7 @@ Gets the account information.
 
 ### Returns
 
-[FakturoidAccount](#fakturoidaccount-class)
+Task<[FakturoidAccount](#fakturoidaccount-class)>
 
 Instance of **Altairis.Fakturoid.Client.Models.FakturoidAccount** class containing the account information.
 
@@ -174,6 +169,7 @@ Gets asynchronously list of all current events.
 | Parameter | Type | Description |
 |---|---|---|
 | since | DateTime? | The date since when events are to be selected. |
+| subjectId | int? | The ID of the subject to filter events by. |
 
 
 ### Returns
@@ -943,71 +939,6 @@ Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
 
-# GetCustomHttpClient Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: MulticastDelegate
-
-To provide custom http client
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **Target** | Object |  |
-| **Method** | MethodInfo |  |
-## Constructors
-
-| Name | Summary |
-|---|---|
-| [**GetCustomHttpClient(Object object, IntPtr method)**](#getcustomhttpclientobject-object-intptr-method) |  |
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**BeginInvoke(Uri uri, AsyncCallback callback, Object object)**](#begininvokeuri-uri-asynccallback-callback-object-object) | IAsyncResult |  |
-| [**EndInvoke(IAsyncResult result)**](#endinvokeiasyncresult-result) | HttpClient |  |
-| [**Invoke(Uri uri)**](#invokeuri-uri) | HttpClient |  |
-## Constructors
-
-### GetCustomHttpClient(Object object, IntPtr method)
-
-
-
-
-## Methods
-
-### BeginInvoke(Uri uri, AsyncCallback callback, Object object)
-
-
-
-
-### Returns
-
-IAsyncResult
-
-
-### EndInvoke(IAsyncResult result)
-
-
-
-
-### Returns
-
-HttpClient
-
-
-### Invoke(Uri uri)
-
-
-
-
-### Returns
-
-HttpClient
-
-
 # InvoiceMessageType Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -1389,6 +1320,26 @@ Generator
 | **SubjectUrl** | string | API address of subject |
 | **CreatedAt** | DateTime | Date and time of template creation |
 | **UpdatedAt** | DateTime | Date and time of last template update |
+# FakturoidInboxFile Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Inbox file
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid |
+| **Filename** | string | File name (with extension) |
+| **Bytesize** | int | File size in bytes |
+| **SendToOcr** | bool | The file will be sent to OCR |
+| **SentToOcrAt** | DateTime? | The date and time the file was sent to OCR |
+| **OcrStatus** | string | OCR file processing status<br>Values: created, processing, processing_failed, processing_rejected, processed<br>Note: null value is returned when the file is not sent to OCR |
+| **OcrCompletedAt** | DateTime? | The date and time the OCR file was completed |
+| **DownloadUrl** | string | URL to download the file |
+| **CreatedAt** | DateTime | The date and time of file creation |
+| **UpdatedAt** | DateTime | The date and time of last file update |
 # FakturoidInventory Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1574,6 +1525,21 @@ Invoice data.
 | **SubjectUrl** | string | Subject API address. |
 | **CreatedAt** | DateTime | Date and time of document creation. |
 | **UpdatedAt** | DateTime | Date and time of last document update. |
+# FakturoidInvoiceMessage Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Invoice message
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Subject** | string | Email subject<br>Default: Inherit from account settings |
+| **Email** | string | Email address<br>Default: Inherit from invoice subject |
+| **EmailCopy** | string | Email copy address<br>Default: Inherit from invoice subject |
+| **Message** | string | Email message<br>Default: Inherit from account settings |
+| **DeliverNow** | bool | Deliver e-mail immediately if you are outside of the delivery times set in settings<br>Default: false<br>This option has effect only if you have set e-mail delivery window in Fakturoid settings and you are outside of the given times. If the delivery times are not set or you are in the given window e-mail are always sent immediately. |
 # FakturoidInvoicePaidAdvance Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1652,6 +1618,22 @@ Invoice line.
 | **InventoryItemId** | int | ID of the related inventory item. |
 | **Sku** | string | Stock Keeping Unit (SKU). |
 | **Inventory** | [FakturoidInventory](#fakturoidinventory-class) | Inventory information. |
+# FakturoidNumberFormat Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Invoice number format.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **Format** | string | Format. |
+| **Preview** | string | Preview of number format. |
+| **Default** | bool | Default number format. |
+| **CreatedAt** | DateTime | Date and time of number format creation. |
+| **UpdatedAt** | DateTime | Date and time of last number format update. |
 # FakturoidRelatedObject Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1742,6 +1724,40 @@ Todo task.
 | **Text** | string | Todo text. |
 | **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class) | Attributes of objects related to the todo. |
 | **Params** | Object | Parameters with details about todo, specific for each type of todo. |
+# FakturoidUser Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+User
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid |
+| **FullName** | string | User full name |
+| **Email** | string | User email |
+| **AvatarUrl** | string | User avatar URL |
+| **DefaultAccount** | string | Default account slug (Only on the /user.json endpoint) |
+| **Permission** | string | User permission for the current account |
+| **AllowedScope** | List\<string\> | List of allowed scopes. Values: reports, expenses, invoices |
+| **Accounts** | List\<[FakturoidUserAccount](#fakturoiduseraccount-class)\> | List of accounts the user has access to (Only on the /user.json endpoint) |
+# FakturoidUserAccount Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+User account information.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Slug** | string | Account URL slug.<br>Goes to https://app.fakturoid.cz/api/v3/accounts/{slug}/… |
+| **Logo** | string | Account logo URL. |
+| **Name** | string | Account name. |
+| **RegistrationNo** | string | Account registration number. |
+| **Permission** | string | Current user account permission. |
+| **AllowedScope** | string[] | List of allowed scopes for current user.<br>Values: reports, expenses, invoices |
 # FakturoidVatRateSummary Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1759,3 +1775,21 @@ VAT rate summary.
 | **NativeBase** | decimal | Base total in account currency. |
 | **NativeVat** | decimal | VAT total in account currency. |
 | **NativeCurrency** | string | Account currency. |
+# FakturoidWebhook Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Webhook
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid |
+| **WebhookUrl** | string | URL of webhook endpoint |
+| **AuthHeader** | string | Value send in Authorization header |
+| **Active** | bool | Send webhook? |
+| **Events** | List\<string\> | List of events when webhook is fired |
+| **Url** | string | Webhook API address |
+| **CreatedAt** | DateTime | Date and time of webhook creation |
+| **UpdatedAt** | DateTime | Date and time of last webhook update |

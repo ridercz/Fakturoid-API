@@ -12,17 +12,9 @@ public class FakturoidContext {
     private const string API_BASE_URL_FORMAT = "https://app.fakturoid.cz/api/v3/accounts/{0}/";
     private const float ACCESS_TOKEN_REFRESH_MARGIN = 0.66f; // Refresh access token in 2/3 of its lifetime
 
-    private readonly GetCustomHttpClient getCustomHttpClient;
     private string accessTokenType;
     private string accessTokenValue;
     private DateTime accessTokenRefresh;
-
-    /// <summary>
-    /// To provide custom http client
-    /// </summary>
-    /// <param name="uri"></param>
-    /// <returns></returns>
-    public delegate HttpClient GetCustomHttpClient(Uri uri);
 
     // Constructor
     /// <summary>
@@ -32,7 +24,6 @@ public class FakturoidContext {
     /// <param name="clientId">The client ID for OAuth 2 Client Credentials Flow.</param>
     /// <param name="clientSecret">The client secret for OAuth 2 Client Credentials Flow.</param>
     /// <param name="userAgent">The User-Agent HTTP header value.</param>
-    /// <param name="getCustomHttpClient">Getter for custom http client</param>
     /// <exception cref="ArgumentNullException">accountName
     /// or
     /// authenticationToken
@@ -43,7 +34,7 @@ public class FakturoidContext {
     /// Value cannot be empty or whitespace only string.;authenticationToken
     /// or
     /// Value cannot be empty or whitespace only string.;userAgent</exception>
-    public FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent = DEFAULT_USER_AGENT, GetCustomHttpClient getCustomHttpClient = null) {
+    public FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent = DEFAULT_USER_AGENT) {
         if (accountName == null) throw new ArgumentNullException(nameof(accountName));
         if (string.IsNullOrWhiteSpace(accountName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(accountName));
         if (clientId == null) throw new ArgumentNullException(nameof(clientId));
@@ -60,15 +51,12 @@ public class FakturoidContext {
         this.UserAgent = userAgent;
 
         // Proxies
-        this.Events = new FakturoidEventsProxy(this);
-        this.Todos = new FakturoidTodosProxy(this);
-        this.Subjects = new FakturoidSubjectsProxy(this);
-        this.Invoices = new FakturoidInvoicesProxy(this);
-        this.Expenses = new FakturoidExpensesProxy(this);
-        this.BankAccounts = new FakturoidBankAccountsProxy(this);
-
-        // Custom HTTP client
-        this.getCustomHttpClient = getCustomHttpClient;
+        //this.Events = new FakturoidEventsProxy(this);
+        //this.Todos = new FakturoidTodosProxy(this);
+        //this.Subjects = new FakturoidSubjectsProxy(this);
+        //this.Invoices = new FakturoidInvoicesProxy(this);
+        //this.Expenses = new FakturoidExpensesProxy(this);
+        //this.BankAccounts = new FakturoidBankAccountsProxy(this);
     }
 
     // Properties
@@ -105,35 +93,7 @@ public class FakturoidContext {
     /// </value>
     public string UserAgent { get; private set; }
 
-    /// <summary>
-    /// Proxy for working with events.
-    /// </summary>
-    public FakturoidEventsProxy Events { get; private set; }
-
-    /// <summary>
-    /// Proxy for working with todos.
-    /// </summary>
-    public FakturoidTodosProxy Todos { get; private set; }
-
-    /// <summary>
-    /// Proxy for working with subjects.
-    /// </summary>
-    public FakturoidSubjectsProxy Subjects { get; private set; }
-
-    /// <summary>
-    /// Proxy for working with invoices
-    /// </summary>
-    public FakturoidInvoicesProxy Invoices { get; private set; }
-
-    /// <summary>
-    /// Proxy for working with expenses
-    /// </summary>
-    public FakturoidExpensesProxy Expenses { get; private set; }
-
-    /// <summary>
-    /// Proxy for working with bank accounts.
-    /// </summary>
-    public FakturoidBankAccountsProxy BankAccounts { get; private set; }
+    // Proxies
 
     // Public methods
 
@@ -141,14 +101,14 @@ public class FakturoidContext {
     /// Gets the account information.
     /// </summary>
     /// <returns>Instance of <see cref="FakturoidAccount"/> class containing the account information.</returns>
-    public FakturoidAccount GetAccountInfo() {
+    public async Task<FakturoidAccount> GetAccountInfoAsync() {
         var c = this.GetHttpClient();
-        var r = c.GetAsync("account.json").Result;
+        var r = await c.GetAsync("account.json");
         r.EnsureFakturoidSuccess();
-        return r.Content.FakturoidReadAsAsync<FakturoidAccount>().Result;
+        return await r.Content.FakturoidReadAsAsync<FakturoidAccount>();
     }
 
-    // Internal methods
+    // Non-public methods
 
     /// <summary>
     /// Gets the <see cref="System.Net.Http.HttpClient"/> class, initialized for use with Fakturoid API.
@@ -158,7 +118,7 @@ public class FakturoidContext {
     internal HttpClient GetHttpClient(bool forceTokenRefresh = false) {
         // Setup HTTP client
         var baseAddress = new Uri(string.Format(API_BASE_URL_FORMAT, this.AccountName));
-        var client = this.getCustomHttpClient is not null ? this.getCustomHttpClient(baseAddress) : new HttpClient { BaseAddress = baseAddress };
+        var client = new HttpClient { BaseAddress = baseAddress };
 
         // Set default headers
         client.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
@@ -178,7 +138,7 @@ public class FakturoidContext {
     /// <param name="client">The <see cref="HttpClient"/> instance used to make the request.</param>
     /// <exception cref="HttpRequestException">Thrown when the request to get the access token fails.</exception>
     /// <exception cref="InvalidOperationException">Thrown when the response content cannot be read as <see cref="FakturoidAccessToken"/>.</exception>
-    internal void GetAccessToken(HttpClient client) {
+    private void GetAccessToken(HttpClient client) {
         // Prepare request body
         var body = new { grant_type = "client_credentials" };
 
