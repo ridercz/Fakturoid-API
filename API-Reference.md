@@ -1,25 +1,25 @@
-# Altairis.Fakturoid.Client.dll v.2.11.1.0 API documentation
+# Altairis.Fakturoid.Client.dll v.3.0.0.0 API documentation
 
 # All types
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) |
-| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidTodo Class](#fakturoidtodo-class) |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) |
+| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
+| [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidTodo Class](#fakturoidtodo-class) |
 | [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidUser Class](#fakturoiduser-class) |
 | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) |
 | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [FakturoidInventory Class](#fakturoidinventory-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |
 | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) |
 | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) |   |
-| [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |   |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -92,6 +92,8 @@ Class representing connection to Fakturoid API, holds authentication information
 | **ClientId** | string | Gets the Fakturoid account email address. |
 | **ClientSecret** | string | Gets the Fakturoid authentication token. |
 | **UserAgent** | string | Gets the User-Agent header used for HTTP requests. |
+| **BankAccounts** | [FakturoidBankAccountsProxy](#fakturoidbankaccountsproxy-class) | Gets the bank accounts. |
+| **NumberFormats** | [FakturoidNumberFormatsProxy](#fakturoidnumberformatsproxy-class) |  |
 ## Constructors
 
 | Name | Summary |
@@ -754,6 +756,38 @@ Task<[FakturoidInvoice](#fakturoidinvoice-class)>
 
 Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
 
+# FakturoidNumberFormatsProxy Class
+
+Namespace: Altairis.Fakturoid.Client
+
+Base class: [FakturoidEntityProxy](#fakturoidentityproxy-class)
+
+Proxy class for working with number formats
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Context** | [FakturoidContext](#fakturoidcontext-class) | Gets the related context. |
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidNumberFormat](#fakturoidnumberformat-class)\>\> | Gets asynchronously list of all number formats. |
+## Methods
+
+### SelectAsync()
+
+Gets asynchronously list of all number formats.
+
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidNumberFormat](#fakturoidnumberformat-class)>>
+
+List of **Altairis.Fakturoid.Client.Models.FakturoidNumberFormat** instances.
+
 # FakturoidSubjectsProxy Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -1048,8 +1082,8 @@ Recurring invoice generator.
 | **HtmlUrl** | string | Generator HTML web address. |
 | **Url** | string | Generator API address. |
 | **SubjectUrl** | string | API address of subject. |
-| **CreatedAt** | DateTime | Date and time of generator creation. |
-| **UpdatedAt** | DateTime | Date and time of last generator update. |
+| **CreatedAt** | DateTimeOffset | Date and time of generator creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last generator update. |
 # FakturoidAccessToken Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1114,8 +1148,8 @@ Account data.
 | **DigitooEnabled** | bool | Digitoo service enabled? |
 | **DigitooAutoProcessingEnabled** | bool | Digitoo service auto processing enabled. |
 | **DigitooExtractionsRemaining** | int | Number of remaining extractions by Digitoo service. |
-| **CreatedAt** | string | Account creation date. |
-| **UpdatedAt** | string | The date the account was last modified. |
+| **CreatedAt** | DateTimeOffset | Account creation date. |
+| **UpdatedAt** | DateTimeOffset | The date the account was last modified. |
 # FakturoidAttachment Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1161,8 +1195,8 @@ Bank account data.
 | **ExpensePairing** | bool | Pairing of outgoing payments. |
 | **PaymentAdjustment** | bool | Small amount settlement when matching payments. |
 | **Default** | bool | Default bank account. |
-| **CreatedAt** | DateTime | Date and time of bank account creation. |
-| **UpdatedAt** | DateTime | Date and time of last bank account update. |
+| **CreatedAt** | DateTimeOffset | Date and time of bank account creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last bank account update. |
 # FakturoidEvent Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1174,7 +1208,7 @@ Event data.
 | Name | Type | Summary |
 |---|---|---|
 | **Name** | string | Event name |
-| **CreatedAt** | DateTime | Date and time of event creation |
+| **CreatedAt** | DateTimeOffset | Date and time of event creation |
 | **Text** | string | Text of the event |
 | **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class)[] | Attributes of objects related to the event |
 | **User** | [FakturoidEventUser](#fakturoideventuser-class) | User details |
@@ -1251,8 +1285,8 @@ Expense data.
 | **HtmlUrl** | string | Expense HTML web address. |
 | **Url** | string | Expense API address. |
 | **SubjectUrl** | string | Subject API address. |
-| **CreatedAt** | DateTime | Date and time of expense creation. |
-| **UpdatedAt** | DateTime | Date and time of last expense update. |
+| **CreatedAt** | DateTimeOffset | Date and time of expense creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last expense update. |
 # FakturoidExpensePayment Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1271,8 +1305,8 @@ Expense payment data.
 | **MarkDocumentAsPaid** | bool | Mark document as paid?<br>Default: true if the total paid amount becomes greater or equal to remaining amount to pay |
 | **VariableSymbol** | string | Payment variable symbol<br>Default: Expense variable symbol |
 | **BankAccountId** | int | Bank account ID<br>Default: Expense bank account or default bank account |
-| **CreatedAt** | DateTime | The date and time of payment creation |
-| **UpdatedAt** | DateTime | The date and time of last payment update |
+| **CreatedAt** | DateTimeOffset | The date and time of payment creation |
+| **UpdatedAt** | DateTimeOffset | The date and time of last payment update |
 # FakturoidGenerator Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1318,8 +1352,8 @@ Generator
 | **HtmlUrl** | string | Template HTML web address |
 | **Url** | string | Template API address |
 | **SubjectUrl** | string | API address of subject |
-| **CreatedAt** | DateTime | Date and time of template creation |
-| **UpdatedAt** | DateTime | Date and time of last template update |
+| **CreatedAt** | DateTimeOffset | Date and time of template creation |
+| **UpdatedAt** | DateTimeOffset | Date and time of last template update |
 # FakturoidInboxFile Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1338,8 +1372,8 @@ Inbox file
 | **OcrStatus** | string | OCR file processing status<br>Values: created, processing, processing_failed, processing_rejected, processed<br>Note: null value is returned when the file is not sent to OCR |
 | **OcrCompletedAt** | DateTime? | The date and time the OCR file was completed |
 | **DownloadUrl** | string | URL to download the file |
-| **CreatedAt** | DateTime | The date and time of file creation |
-| **UpdatedAt** | DateTime | The date and time of last file update |
+| **CreatedAt** | DateTimeOffset | The date and time of file creation |
+| **UpdatedAt** | DateTimeOffset | The date and time of last file update |
 # FakturoidInventory Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1385,8 +1419,8 @@ Inventory item data.
 | **Archived** | bool | If item is archived. |
 | **PrivateNote** | string | Private note. |
 | **SuggestFor** | string | Suggest item for documents. Values: invoices, expenses, both. Default: both. |
-| **CreatedAt** | DateTime | Date and time of item creation. |
-| **UpdatedAt** | DateTime | Date and time of last item update. |
+| **CreatedAt** | DateTimeOffset | Date and time of item creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last item update. |
 # FakturoidInventoryMove Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1410,8 +1444,8 @@ Inventory move.
 | **PrivateNote** | string | Private note. |
 | **InventoryItemId** | int | Inventory item ID. |
 | **Document** | Object | Details about document and line the move is tied to. Default: null. |
-| **CreatedAt** | DateTime | Date and time of move creation. |
-| **UpdatedAt** | DateTime | Date and time of last move update. |
+| **CreatedAt** | DateTimeOffset | Date and time of move creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last move update. |
 # FakturoidInventoryMoveDocument Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1523,8 +1557,8 @@ Invoice data.
 | **Url** | string | Document API address. |
 | **PdfUrl** | string | PDF download address. |
 | **SubjectUrl** | string | Subject API address. |
-| **CreatedAt** | DateTime | Date and time of document creation. |
-| **UpdatedAt** | DateTime | Date and time of last document update. |
+| **CreatedAt** | DateTimeOffset | Date and time of document creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last document update. |
 # FakturoidInvoiceMessage Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1578,8 +1612,8 @@ Invoice payment data.
 | **VariableSymbol** | string | Payment variable symbol.<br>Default: Invoice variable symbol |
 | **BankAccountId** | int | Bank account ID.<br>Default: Invoice bank account or default bank account |
 | **TaxDocumentId** | int | Tax document ID (if present). |
-| **CreatedAt** | DateTime | The date and time of payment creation. |
-| **UpdatedAt** | DateTime | The date and time of last payment update. |
+| **CreatedAt** | DateTimeOffset | The date and time of payment creation. |
+| **UpdatedAt** | DateTimeOffset | The date and time of last payment update. |
 # FakturoidLegacyBankDetails Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1632,8 +1666,8 @@ Invoice number format.
 | **Format** | string | Format. |
 | **Preview** | string | Preview of number format. |
 | **Default** | bool | Default number format. |
-| **CreatedAt** | DateTime | Date and time of number format creation. |
-| **UpdatedAt** | DateTime | Date and time of last number format update. |
+| **CreatedAt** | DateTimeOffset | Date and time of number format creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last number format update. |
 # FakturoidRelatedObject Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1705,8 +1739,8 @@ Subject (contact).
 | **WebinvoiceHistory** | string | Webinvoice history. Values: null, "disabled", "recent", "client_portal". Default: null (inherit from account settings) |
 | **HtmlUrl** | string | Subject HTML web address |
 | **Url** | string | Subject API address |
-| **CreatedAt** | DateTime | Date and time of subject creation |
-| **UpdatedAt** | DateTime | Date and time of last subject update |
+| **CreatedAt** | DateTimeOffset | Date and time of subject creation |
+| **UpdatedAt** | DateTimeOffset | Date and time of last subject update |
 # FakturoidTodo Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1719,7 +1753,7 @@ Todo task.
 |---|---|---|
 | **Id** | int | Unique identifier in Fakturoid. |
 | **Name** | string | Todo name. |
-| **CreatedAt** | DateTime | Date and time of todo creation. |
+| **CreatedAt** | DateTimeOffset | Date and time of todo creation. |
 | **CompletedAt** | DateTime? | Date and time of todo completion. |
 | **Text** | string | Todo text. |
 | **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class) | Attributes of objects related to the todo. |
@@ -1791,5 +1825,5 @@ Webhook
 | **Active** | bool | Send webhook? |
 | **Events** | List\<string\> | List of events when webhook is fired |
 | **Url** | string | Webhook API address |
-| **CreatedAt** | DateTime | Date and time of webhook creation |
-| **UpdatedAt** | DateTime | Date and time of last webhook update |
+| **CreatedAt** | DateTimeOffset | Date and time of webhook creation |
+| **UpdatedAt** | DateTimeOffset | Date and time of last webhook update |
