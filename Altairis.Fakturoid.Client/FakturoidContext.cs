@@ -10,8 +10,8 @@ namespace Altairis.Fakturoid.Client;
 public class FakturoidContext {
     private const string DEFAULT_USER_AGENT = "C#/.NET API Client v3 by Altairis (fakturoid@rider.cz)";
     private const string API_BASE_URL_FORMAT = "https://app.fakturoid.cz/api/v3/accounts/{0}/";
+    private const string ACCESS_TOKEN_URL = "https://app.fakturoid.cz/api/v3/oauth/token";
     private const float ACCESS_TOKEN_REFRESH_MARGIN = 0.66f; // Refresh access token in 2/3 of its lifetime
-
     private string accessTokenType;
     private string accessTokenValue;
     private DateTime accessTokenRefresh;
@@ -147,7 +147,7 @@ public class FakturoidContext {
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeader);
 
         // Send request
-        var response = client.FakturoidPostAsJsonAsync("oauth/token", body).Result;
+        var response = client.FakturoidPostAsJsonAsync(ACCESS_TOKEN_URL, body).Result;
         response.EnsureSuccessStatusCode();
 
         // Parse response
