@@ -4,14 +4,14 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>latestMajor</LangVersion>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>2.11.1</Version>
+		<Version>3.0.0</Version>
 		<Authors>Michal Altair Valášek</Authors>
 		<Company>Altairis</Company>
 		<Description>The C#/.NET client library for Fakturoid.cz service API.</Description>
 		<PackageProjectUrl>https://github.com/ridercz/Fakturoid-API</PackageProjectUrl>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageIconUrl></PackageIconUrl>
-		<Copyright>Copyright (c) Michal A. Valášek - Altairis, 2013-2022</Copyright>
+		<Copyright>Copyright (c) Michal A. Valášek - Altairis, 2013-2025</Copyright>
 		<RepositoryUrl>https://github.com/ridercz/Fakturoid-API.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
