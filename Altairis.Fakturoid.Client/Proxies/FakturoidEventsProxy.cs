@@ -25,10 +25,8 @@ public class FakturoidEventsProxy : FakturoidEntityProxy {
     /// List of <see cref="FakturoidEvent" /> instances.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
-    public async Task<IEnumerable<FakturoidEvent>> SelectAsync(int page, DateTime? since = null) {
-        return page < 1
+    public async Task<IEnumerable<FakturoidEvent>> SelectAsync(int page, DateTime? since = null) => page < 1
             ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
             : await GetPagedEntitiesAsync<FakturoidEvent>("events.json", page, new { since });
-    }
 
 }

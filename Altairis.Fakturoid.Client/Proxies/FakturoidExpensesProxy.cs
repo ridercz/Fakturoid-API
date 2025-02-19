@@ -62,11 +62,9 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// Instance of <see cref="FakturoidExpense" /> class.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-    public async Task<FakturoidExpense> SelectSingleAsync(int id) {
-        return id < 1
+    public async Task<FakturoidExpense> SelectSingleAsync(int id) => id < 1
             ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
             : await GetSingleEntityAsync<FakturoidExpense>(string.Format(EntityPath, id));
-    }
 
     /// <summary>
     /// Gets asynchronously list of all invoices.
@@ -177,9 +175,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <param name="entity">The new expense.</param>
     /// <returns>ID of newly created expense.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<int> CreateAsync(FakturoidExpense entity) {
-        return entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync(CollectionPath, entity);
-    }
+    public async Task<int> CreateAsync(FakturoidExpense entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync(CollectionPath, entity);
 
     /// <summary>
     /// Updates asynchronously the specified expense.
@@ -187,11 +183,9 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <param name="entity">The expense to update.</param>
     /// <returns>Instance of <see cref="FakturoidExpense"/> class with modified entity.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<FakturoidExpense> UpdateAsync(FakturoidExpense entity) {
-        return entity == null
+    public async Task<FakturoidExpense> UpdateAsync(FakturoidExpense entity) => entity == null
             ? throw new ArgumentNullException(nameof(entity))
             : await UpdateSingleEntityAsync(string.Format(EntityPath, entity.Id), entity);
-    }
 
     /// <summary>
     /// Sets asynchronously the expense payment status.

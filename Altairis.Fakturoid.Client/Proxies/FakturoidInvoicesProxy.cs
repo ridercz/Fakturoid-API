@@ -127,11 +127,9 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// Instance of <see cref="FakturoidInvoice" /> class.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-    public async Task<FakturoidInvoice> SelectSingleAsync(int id) {
-        return id < 1
+    public async Task<FakturoidInvoice> SelectSingleAsync(int id) => id < 1
             ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
             : await GetSingleEntityAsync<FakturoidInvoice>(string.Format("invoices/{0}.json", id));
-    }
 
     /// <summary>
     /// Gets asynchronously list of all invoices.
@@ -268,11 +266,9 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <param name="entity">The invoice to update.</param>
     /// <returns>Instance of <see cref="FakturoidInvoice"/> class with modified entity.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<FakturoidInvoice> UpdateAsync(FakturoidInvoice entity) {
-        return entity == null
+    public async Task<FakturoidInvoice> UpdateAsync(FakturoidInvoice entity) => entity == null
             ? throw new ArgumentNullException(nameof(entity))
             : await UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.Id), entity);
-    }
 
     /// <summary>
     /// Sends asynchronously e-mail message for the specified invoice.
