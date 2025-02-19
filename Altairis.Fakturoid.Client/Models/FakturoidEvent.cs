@@ -23,7 +23,7 @@ public partial class FakturoidEvent {
     /// <summary>
     /// Attributes of objects related to the event
     /// </summary>
-    public FakturoidRelatedObject[] RelatedObjects { get; set; }
+    public List<FakturoidRelatedObject> RelatedObjects { get; set; }
 
     /// <summary>
     /// User details

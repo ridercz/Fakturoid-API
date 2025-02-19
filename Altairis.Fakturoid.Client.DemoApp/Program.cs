@@ -31,7 +31,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
                 ShowSubjects();
                 SearchSubjects("Company");
                 ShowTodos();
-                //ShowEvents();
+                ShowEvents();
                 //ShowInvoices();
             } catch (AggregateException aex) when (aex.InnerExceptions.Count == 1) {
                 throw aex.InnerException;
@@ -158,16 +158,16 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             Console.WriteLine();
         }
 
-        //private static void ShowEvents() {
-        //    Console.Write("Getting all events in last 24 hour...");
-        //    var items = context.Events.Select(since: DateTime.Now.AddDays(-1));
-        //    Console.WriteLine("OK");
+        private static void ShowEvents() {
+            Console.Write("Getting all events in last 24 hour...");
+            var items = context.Events.SelectAsync(DateTime.Now.AddDays(-1)).Result;
+            Console.WriteLine("OK");
 
-        //    foreach (var item in items) {
-        //        Console.WriteLine("{0}: ({1}) {2}", item.created_at, item.name, item.text);
-        //    }
-        //    Console.WriteLine();
-        //}
+            foreach (var item in items) {
+                Console.WriteLine($"{item.CreatedAt}: ({item.Name}) {item.Text}");
+            }
+            Console.WriteLine();
+        }
 
         private static void ShowAccountInfo() {
             Console.Write("Getting account information...");

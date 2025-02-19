@@ -38,6 +38,7 @@ Class representing connection to Fakturoid API, holds authentication information
 | **NumberFormats** | [FakturoidNumberFormatsProxy](#fakturoidnumberformatsproxy-class) | Gets the number formats. |
 | **Subjects** | [FakturoidSubjectsProxy](#fakturoidsubjectsproxy-class) | Gets the subjects. |
 | **Todos** | [FakturoidTodosProxy](#fakturoidtodosproxy-class) | Gets the todos. |
+| **Events** | [FakturoidEventsProxy](#fakturoideventsproxy-class) | Gets the events. |
 ## Constructors
 
 | Name | Summary |
@@ -413,7 +414,7 @@ Event data.
 | **Name** | string | Event name |
 | **CreatedAt** | DateTimeOffset | Date and time of event creation |
 | **Text** | string | Text of the event |
-| **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class)[] | Attributes of objects related to the event |
+| **RelatedObjects** | List\<[FakturoidRelatedObject](#fakturoidrelatedobject-class)\> | Attributes of objects related to the event |
 | **User** | [FakturoidEventUser](#fakturoideventuser-class) | User details |
 | **Params** | Object | Parameters with details about event, specific for each type of event |
 # FakturoidEventUser Class
