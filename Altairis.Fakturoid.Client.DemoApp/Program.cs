@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Altairis.Fakturoid.Client.Models;
 
 namespace Altairis.Fakturoid.Client.DemoApp {
     internal class Program {
@@ -25,12 +26,16 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             context = new FakturoidContext(accountName, clientId, clientSecret);
 
             // Do some magic
-            ShowAccountInfo();
-            //ShowEvents();
-            //ShowTodos();
-            //ShowSubjects();
-            //ShowInvoices();
-            //SearchSubjects("Company");
+            try {
+                ShowAccountInfo();
+                ShowSubjects();
+                //ShowEvents();
+                //ShowTodos();
+                //ShowInvoices();
+                //SearchSubjects("Company");
+            } catch (AggregateException aex) when (aex.InnerExceptions.Count == 1) {
+                throw aex.InnerException;
+            }
 
             // Wait for ENTER
             Console.WriteLine("Press ENTER to continue...");
@@ -83,49 +88,54 @@ namespace Altairis.Fakturoid.Client.DemoApp {
         //    Console.WriteLine("OK");
         //}
 
-        //private static void ShowSubjects() {
-        //    Console.Write("Creating new subject...");
-        //    var subject = new JsonSubject {
-        //        name = "Altairis, s. r. o.",
-        //        street = "Bořivojova 35",
-        //        city = "Praha",
-        //        zip = "17000",
-        //        country = "CZ",
-        //        registration_no = "27560911",
-        //        vat_no = "CZ27560911",
-        //    };
-        //    var newId = context.Subjects.Create(subject);
-        //    Console.WriteLine("OK, ID={0}", newId);
+        private static void ShowSubjects() {
+            Console.Write("Creating new subject...");
+            var subject = new FakturoidSubject {
+                Name = "Altairis, s. r. o.",
+                Street = "Bořivojova 35",
+                City = "Praha 3",
+                Zip = "1300",
+                Country = "CZ",
+                RegistrationNo = "27560911",
+                VatNo = "CZ27560911",
+            };
+            var newId = context.Subjects.CreateAsync(subject).Result;
+            Console.WriteLine("OK, ID={0}", newId);
 
-        //    Console.Write("Getting information about newly created subject...");
-        //    subject = context.Subjects.SelectSingle(newId);
-        //    Console.WriteLine("OK, listing properties:");
-        //    subject.DumpProperties(Console.Out, "\t");
+            Console.Write("Getting information about newly created subject...");
+            subject = context.Subjects.SelectSingleAsync(newId).Result;
+            Console.WriteLine("OK, listing properties:");
+            subject.DumpProperties(Console.Out, "\t");
 
-        //    Console.Write("Updating subject...");
-        //    subject.custom_id = "MY_CUSTOM_ID";
-        //    subject = context.Subjects.Update(subject);
-        //    Console.WriteLine("OK, listing properties:");
-        //    subject.DumpProperties(Console.Out, "\t");
+            Console.Write("Updating subject...");
+            subject.CustomId = "MY_CUSTOM_ID";
+            subject = context.Subjects.UpdateAsync(subject).Result;
+            Console.WriteLine("OK, listing properties:");
+            subject.DumpProperties(Console.Out, "\t");
 
-        //    try {
-        //        Console.Write("Causing intentional error...");
-        //        context.Subjects.Create(subject);
-        //        Console.WriteLine("OK (that's unexpected!)");
-        //    } catch (FakturoidException fex) {
-        //        Console.WriteLine("Failed! (that's expected)");
-        //        Console.WriteLine(fex.Message);
-        //        foreach (var item in fex.Errors) {
-        //            Console.WriteLine("\tProperty '{0}': {1}", item.Key, item.Value);
-        //        }
-        //    }
+            try {
+                Console.Write("Causing intentional error...");
+                context.Subjects.CreateAsync(subject).Wait();
+                Console.WriteLine("OK (that's unexpected!)");
+            } catch (AggregateException ex) {
+                var fex = ex.InnerException as FakturoidException;
+                if (fex != null) {
+                    Console.WriteLine("Failed! (that's expected)");
+                    Console.WriteLine(fex.Message);
+                    foreach (var item in fex.Errors) {
+                        Console.WriteLine("\tProperty '{0}': {1}", item.Key, item.Value);
+                    }
+                } else {
+                    throw;
+                }
+            }
 
-        //    Console.Write("Deleting newly created contact...");
-        //    context.Subjects.Delete(newId);
-        //    Console.WriteLine("OK");
+            Console.Write("Deleting newly created subject...");
+            context.Subjects.DeleteAsync(newId).Wait();
+            Console.WriteLine("OK");
 
-        //    Console.WriteLine();
-        //}
+            Console.WriteLine();
+        }
 
         //private static void SearchSubjects(string searchTerm) {
         //    Console.Write($"Searching Subjects. Term: {searchTerm}...");
