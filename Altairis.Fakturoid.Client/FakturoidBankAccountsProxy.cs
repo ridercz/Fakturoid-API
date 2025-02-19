@@ -1,19 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿namespace Altairis.Fakturoid.Client;
+/// <summary>
+/// Proxy class form working with bank accounts
+/// </summary>
+public class FakturoidBankAccountsProxy : FakturoidEntityProxy {
 
-namespace Altairis.Fakturoid.Client {
+    internal FakturoidBankAccountsProxy(FakturoidContext context) : base(context) { }
+
     /// <summary>
-    /// Proxy class form working with bank accounts
+    /// Gets asynchronously list of all bank accounts.
     /// </summary>
-    public class FakturoidBankAccountsProxy : FakturoidEntityProxy {
+    /// <returns>List of <see cref="FakturoidBankAccount"/> instances.</returns>
+    public Task<IEnumerable<FakturoidBankAccount>> SelectAsync() => base.GetUnpagedEntitiesAsync<FakturoidBankAccount>("bank_accounts.json");
 
-        internal FakturoidBankAccountsProxy(FakturoidContext context) : base(context) { }
-
-        /// <summary>
-        /// Gets asynchronously list of all bank accounts.
-        /// </summary>
-        /// <returns>List of <see cref="JsonBankAccount"/> instances.</returns>
-        public Task<IEnumerable<JsonBankAccount>> SelectAsync() => base.GetUnpagedEntitiesAsync<JsonBankAccount>("bank_accounts.json");
-
-    }
 }

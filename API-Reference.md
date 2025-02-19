@@ -4,17 +4,20 @@
 
 |   |   |   |
 |---|---|---|
-| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [GetCustomHttpClient Class](#getcustomhttpclient-class) | [JsonEntityLine Class](#jsonentityline-class) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InternalExtensionMethods Class](#internalextensionmethods-class) | [JsonEvent Class](#jsonevent-class) |
-| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) | [JsonExpense Class](#jsonexpense-class) |
-| [FakturoidContext Class](#fakturoidcontext-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [JsonExpenseLine Class](#jsonexpenseline-class) |
-| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [JsonInvoice Class](#jsoninvoice-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [JsonInvoiceLine Class](#jsoninvoiceline-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [JsonAccessToken Class](#jsonaccesstoken-class) | [JsonRelatedObject Class](#jsonrelatedobject-class) |
-| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [JsonAccount Class](#jsonaccount-class) | [JsonSubject Class](#jsonsubject-class) |
-| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [JsonAttachment Class](#jsonattachment-class) | [JsonTodo Class](#jsontodo-class) |
-| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [JsonBankAccount Class](#jsonbankaccount-class) | [JsonUser Class](#jsonuser-class) |
-| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [JsonEet Class](#jsoneet-class) | [MyHttpClientExtensions Class](#myhttpclientextensions-class) |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) | [FakturoidInventory Class](#fakturoidinventory-class) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) |
+| [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) |
+| [FakturoidContext Class](#fakturoidcontext-class) | [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
+| [FakturoidException Class](#fakturoidexception-class) | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) |
+| [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) |
+| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) |
+| [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
+| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidTodo Class](#fakturoidtodo-class) |
+| [GetCustomHttpClient Class](#getcustomhttpclient-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |
+| [InvoiceMessageType Enum](#invoicemessagetype-enum) | [FakturoidGenerator Class](#fakturoidgenerator-class) |   |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -58,7 +61,7 @@ Proxy class form working with bank accounts
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[JsonBankAccount](#jsonbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
+| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidBankAccount](#fakturoidbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
 ## Methods
 
 ### SelectAsync()
@@ -69,9 +72,9 @@ Gets asynchronously list of all bank accounts.
 
 ### Returns
 
-Task<IEnumerable<[JsonBankAccount](#jsonbankaccount-class)>>
+Task<IEnumerable<[FakturoidBankAccount](#fakturoidbankaccount-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonBankAccount** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidBankAccount** instances.
 
 # FakturoidContext Class
 
@@ -102,7 +105,7 @@ Class representing connection to Fakturoid API, holds authentication information
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**GetAccountInfo()**](#getaccountinfo) | [JsonAccount](#jsonaccount-class) | Gets the account information. |
+| [**GetAccountInfo()**](#getaccountinfo) | [FakturoidAccount](#fakturoidaccount-class) | Gets the account information. |
 ## Constructors
 
 ### FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent, GetCustomHttpClient getCustomHttpClient)
@@ -128,9 +131,9 @@ Gets the account information.
 
 ### Returns
 
-[JsonAccount](#jsonaccount-class)
+[FakturoidAccount](#fakturoidaccount-class)
 
-Instance of **Altairis.Fakturoid.Client.JsonAccount** class containing the account information.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidAccount** class containing the account information.
 
 # FakturoidEntityProxy Class
 
@@ -160,8 +163,8 @@ Proxy class for working with events
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync(DateTime? since, int? subjectId)**](#selectasyncdatetime-since-int-subjectid) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of all current events. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonEvent](#jsonevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
+| [**SelectAsync(DateTime? since, int? subjectId)**](#selectasyncdatetime-since-int-subjectid) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of all current events. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
 ## Methods
 
 ### SelectAsync(DateTime? since, int? subjectId)
@@ -175,9 +178,9 @@ Gets asynchronously list of all current events.
 
 ### Returns
 
-Task<IEnumerable<[JsonEvent](#jsonevent-class)>>
+Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonEvent** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
 
 ### SelectAsync(int page, DateTime? since)
 
@@ -191,9 +194,9 @@ Gets asynchronously list of current events, paged by 40.
 
 ### Returns
 
-Task<IEnumerable<[JsonEvent](#jsonevent-class)>>
+Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonEvent** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
 
 # FakturoidException Class
 
@@ -319,25 +322,25 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**CreateAsync(JsonExpense entity)**](#createasyncjsonexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
+| [**CreateAsync(FakturoidExpense entity)**](#createasyncfakturoidexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
-| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonExpense](#jsonexpense-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonExpense](#jsonexpense-class)\> | Selects asynchronously single expense with specified ID. |
+| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Selects asynchronously single expense with specified ID. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
 | [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
 | [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
-| [**UpdateAsync(JsonExpense entity)**](#updateasyncjsonexpense-entity) | Task\<[JsonExpense](#jsonexpense-class)\> | Updates asynchronously the specified expense. |
+| [**UpdateAsync(FakturoidExpense entity)**](#updateasyncfakturoidexpense-entity) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Updates asynchronously the specified expense. |
 ## Methods
 
-### CreateAsync(JsonExpense entity)
+### CreateAsync(FakturoidExpense entity)
 
 Creates asynchronously the specified new expense.
 
 | Parameter | Type | Description |
 |---|---|---|
-| entity | [JsonExpense](#jsonexpense-class) | The new expense. |
+| entity | [FakturoidExpense](#fakturoidexpense-class) | The new expense. |
 
 
 ### Returns
@@ -375,9 +378,9 @@ Gets asynchronously list of all invoices.
 
 ### Returns
 
-Task<IEnumerable<[JsonExpense](#jsonexpense-class)>>
+Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonExpense** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
 
 ### SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
 
@@ -394,9 +397,9 @@ Gets asynchronously paged list of invoices.
 
 ### Returns
 
-Task<IEnumerable<[JsonExpense](#jsonexpense-class)>>
+Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonExpense** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
 
 ### SelectSingleAsync(int id)
 
@@ -409,9 +412,9 @@ Selects asynchronously single expense with specified ID.
 
 ### Returns
 
-Task<[JsonExpense](#jsonexpense-class)>
+Task<[FakturoidExpense](#fakturoidexpense-class)>
 
-Instance of **Altairis.Fakturoid.Client.JsonExpense** class.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class.
 
 ### SetAttachmentAsync(int id, string filePath)
 
@@ -460,7 +463,7 @@ Sets asynchronously the expense payment status.
 
 Task
 
-Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class with modified entity.
 
 ### SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)
 
@@ -479,20 +482,70 @@ Task
 
 
 
-### UpdateAsync(JsonExpense entity)
+### UpdateAsync(FakturoidExpense entity)
 
 Updates asynchronously the specified expense.
 
 | Parameter | Type | Description |
 |---|---|---|
-| entity | [JsonExpense](#jsonexpense-class) | The expense to update. |
+| entity | [FakturoidExpense](#fakturoidexpense-class) | The expense to update. |
 
 
 ### Returns
 
-Task<[JsonExpense](#jsonexpense-class)>
+Task<[FakturoidExpense](#fakturoidexpense-class)>
 
-Instance of **Altairis.Fakturoid.Client.JsonExpense** class with modified entity.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidExpense** class with modified entity.
+
+# FakturoidExtensionMethods Class
+
+Namespace: Altairis.Fakturoid.Client
+
+
+## Methods
+
+| Name | Returns | Summary |
+|---|---|---|
+| [**EnsureFakturoidSuccess(HttpResponseMessage r)**](#ensurefakturoidsuccesshttpresponsemessage-r) | void |  |
+| [**FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpatchasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
+| [**FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpostasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
+| [**FakturoidReadAsAsync(HttpContent content)**](#fakturoidreadasasynchttpcontent-content) | Task\<T\> |  |
+## Methods
+
+### EnsureFakturoidSuccess(HttpResponseMessage r)
+
+
+
+
+### FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)
+
+
+
+
+### Returns
+
+Task<HttpResponseMessage>
+
+
+### FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)
+
+
+
+
+### Returns
+
+Task<HttpResponseMessage>
+
+
+### FakturoidReadAsAsync(HttpContent content)
+
+
+
+
+### Returns
+
+Task<T>
+
 
 # FakturoidInvoicesProxy Class
 
@@ -511,26 +564,26 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**CreateAsync(JsonInvoice entity)**](#createasyncjsoninvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
+| [**CreateAsync(FakturoidInvoice entity)**](#createasyncfakturoidinvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
-| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[JsonInvoice](#jsoninvoice-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Selects asynchronously single invoice with specified ID. |
+| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Selects asynchronously single invoice with specified ID. |
 | [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
 | [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status) | Task | Sets asynchronously the invoice payment status. |
 | [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
-| [**UpdateAsync(JsonInvoice entity)**](#updateasyncjsoninvoice-entity) | Task\<[JsonInvoice](#jsoninvoice-class)\> | Updates asynchronously the specified invoice. |
+| [**UpdateAsync(FakturoidInvoice entity)**](#updateasyncfakturoidinvoice-entity) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Updates asynchronously the specified invoice. |
 ## Methods
 
-### CreateAsync(JsonInvoice entity)
+### CreateAsync(FakturoidInvoice entity)
 
 Creates asynchronously the specified new invoice.
 
 | Parameter | Type | Description |
 |---|---|---|
-| entity | [JsonInvoice](#jsoninvoice-class) | The new invoice. |
+| entity | [FakturoidInvoice](#fakturoidinvoice-class) | The new invoice. |
 
 
 ### Returns
@@ -569,9 +622,9 @@ Gets asynchronously list of all invoices.
 
 ### Returns
 
-Task<IEnumerable<[JsonInvoice](#jsoninvoice-class)>>
+Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
 
 ### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
 
@@ -589,9 +642,9 @@ Gets asynchronously paged list of invoices.
 
 ### Returns
 
-Task<IEnumerable<[JsonInvoice](#jsoninvoice-class)>>
+Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonInvoice** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
 
 ### SelectSingleAsync(int id)
 
@@ -604,9 +657,9 @@ Selects asynchronously single invoice with specified ID.
 
 ### Returns
 
-Task<[JsonInvoice](#jsoninvoice-class)>
+Task<[FakturoidInvoice](#fakturoidinvoice-class)>
 
-Instance of **Altairis.Fakturoid.Client.JsonInvoice** class.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class.
 
 ### SendMessageAsync(int id, InvoiceMessageType messageType)
 
@@ -671,7 +724,7 @@ Sets asynchronously the invoice payment status.
 
 Task
 
-Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
 
 ### SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)
 
@@ -690,20 +743,20 @@ Task
 
 
 
-### UpdateAsync(JsonInvoice entity)
+### UpdateAsync(FakturoidInvoice entity)
 
 Updates asynchronously the specified invoice.
 
 | Parameter | Type | Description |
 |---|---|---|
-| entity | [JsonInvoice](#jsoninvoice-class) | The invoice to update. |
+| entity | [FakturoidInvoice](#fakturoidinvoice-class) | The invoice to update. |
 
 
 ### Returns
 
-Task<[JsonInvoice](#jsoninvoice-class)>
+Task<[FakturoidInvoice](#fakturoidinvoice-class)>
 
-Instance of **Altairis.Fakturoid.Client.JsonInvoice** class with modified entity.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
 
 # FakturoidSubjectsProxy Class
 
@@ -722,22 +775,22 @@ Proxy class for working with subjects/contacts.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**CreateAsync(JsonSubject entity)**](#createasyncjsonsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
+| [**CreateAsync(FakturoidSubject entity)**](#createasyncfakturoidsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
-| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
-| [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously paged list of subjects |
-| [**SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)**](#selectasyncstring-customid-datetime-createdsince-datetime-updatedsince) | Task\<IEnumerable\<[JsonSubject](#jsonsubject-class)\>\> | Gets asynchronously list of all subjects. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[JsonSubject](#jsonsubject-class)\> | Selects asynchronously single subject with specified ID. |
-| [**UpdateAsync(JsonSubject entity)**](#updateasyncjsonsubject-entity) | Task\<[JsonSubject](#jsonsubject-class)\> | Updates asynchronously the specified subject. |
+| [**SearchAsync(string searchTerm)**](#searchasyncstring-searchterm) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
+| [**SelectAsync(int page)**](#selectasyncint-page) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously paged list of subjects |
+| [**SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)**](#selectasyncstring-customid-datetime-createdsince-datetime-updatedsince) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously list of all subjects. |
+| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Selects asynchronously single subject with specified ID. |
+| [**UpdateAsync(FakturoidSubject entity)**](#updateasyncfakturoidsubject-entity) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Updates asynchronously the specified subject. |
 ## Methods
 
-### CreateAsync(JsonSubject entity)
+### CreateAsync(FakturoidSubject entity)
 
 Creates asynchronously the specified new subject.
 
 | Parameter | Type | Description |
 |---|---|---|
-| entity | [JsonSubject](#jsonsubject-class) | The new subject. |
+| entity | [FakturoidSubject](#fakturoidsubject-class) | The new subject. |
 
 
 ### Returns
@@ -772,7 +825,7 @@ Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Regi
 
 ### Returns
 
-Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
 
 Collection if search results.
 
@@ -787,9 +840,9 @@ Gets asynchronously paged list of subjects
 
 ### Returns
 
-Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonSubject** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
 
 ### SelectAsync(string customId, DateTime? createdSince, DateTime? updatedSince)
 
@@ -804,9 +857,9 @@ Gets asynchronously list of all subjects.
 
 ### Returns
 
-Task<IEnumerable<[JsonSubject](#jsonsubject-class)>>
+Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonSubject** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
 
 ### SelectSingleAsync(int id)
 
@@ -819,24 +872,24 @@ Selects asynchronously single subject with specified ID.
 
 ### Returns
 
-Task<[JsonSubject](#jsonsubject-class)>
+Task<[FakturoidSubject](#fakturoidsubject-class)>
 
-Instance of **Altairis.Fakturoid.Client.JsonSubject** class.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidSubject** class.
 
-### UpdateAsync(JsonSubject entity)
+### UpdateAsync(FakturoidSubject entity)
 
 Updates asynchronously the specified subject.
 
 | Parameter | Type | Description |
 |---|---|---|
-| entity | [JsonSubject](#jsonsubject-class) | The subject to update. |
+| entity | [FakturoidSubject](#fakturoidsubject-class) | The subject to update. |
 
 
 ### Returns
 
-Task<[JsonSubject](#jsonsubject-class)>
+Task<[FakturoidSubject](#fakturoidsubject-class)>
 
-Instance of **Altairis.Fakturoid.Client.JsonSubject** class with modified entity.
+Instance of **Altairis.Fakturoid.Client.Models.FakturoidSubject** class with modified entity.
 
 # FakturoidTodosProxy Class
 
@@ -855,8 +908,8 @@ Proxy class for working with todo tasks.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously list of all current todos. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[JsonTodo](#jsontodo-class)\>\> | Gets asynchronously paged list of current todos |
+| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
+| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
 ## Methods
 
 ### SelectAsync(DateTime? since)
@@ -870,9 +923,9 @@ Gets asynchronously list of all current todos.
 
 ### Returns
 
-Task<IEnumerable<[JsonTodo](#jsontodo-class)>>
+Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonTodo** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
 
 ### SelectAsync(int page, DateTime? since)
 
@@ -886,9 +939,9 @@ Gets asynchronously paged list of current todos
 
 ### Returns
 
-Task<IEnumerable<[JsonTodo](#jsontodo-class)>>
+Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
 
-List of **Altairis.Fakturoid.Client.JsonTodo** instances.
+List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
 
 # GetCustomHttpClient Class
 
@@ -955,23 +1008,6 @@ HttpClient
 HttpClient
 
 
-# InternalExtensionMethods Class
-
-Namespace: Altairis.Fakturoid.Client
-
-
-## Methods
-
-| Name | Returns | Summary |
-|---|---|---|
-| [**EnsureFakturoidSuccess(HttpResponseMessage r)**](#ensurefakturoidsuccesshttpresponsemessage-r) | void |  |
-## Methods
-
-### EnsureFakturoidSuccess(HttpResponseMessage r)
-
-
-
-
 # InvoiceMessageType Enum
 
 Namespace: Altairis.Fakturoid.Client
@@ -1029,23 +1065,78 @@ Query invoice type condition for listing invoices.
 | **Any** | Any |
 | **Proforma** | The proforma invouice. |
 | **Regular** | The regular, non-proforma invoice |
-# JsonAccessToken Class
+# RecurringGenerator Class
 
 Namespace: Altairis.Fakturoid.Client
 
+Recurring invoice generator.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **AccessToken** | string |  |
-| **TokenType** | string |  |
-| **ExpiresIn** | int |  |
-# JsonAccount Class
+| **Id** | int | Unique identifier in Fakturoid. |
+| **CustomId** | string | Identifier in your application. |
+| **Name** | string | Generator name. |
+| **Active** | bool | Generator is active or paused. |
+| **Proforma** | bool | Issue invoice as a proforma. |
+| **Paypal** | bool | Show PayPal pay button on invoice. |
+| **Gopay** | bool | Show GoPay pay button on invoice. |
+| **StartDate** | DateTime | Start date. |
+| **EndDate** | DateTime | End date. |
+| **MonthsPeriod** | int | Number of months until the next invoice. |
+| **NextOccurrenceOn** | DateTime | Next invoice date. |
+| **LastDayInMonth** | bool | Issue an invoice on the last day of the month. |
+| **TaxDateAtEndOfLastMonth** | bool | Set CED at the end of last month. |
+| **Due** | int | Number of days until the invoice is overdue. |
+| **SendEmail** | bool | Send invoice by email. |
+| **SubjectId** | int | Subject ID. |
+| **NumberFormatId** | int | Number format ID. |
+| **Note** | string | Text before invoice lines. |
+| **FooterNote** | string | Text in invoice footer. |
+| **LegacyBankDetails** | [FakturoidLegacyBankDetails](#fakturoidlegacybankdetails-class) | Display IBAN, BIC (SWIFT) and bank account number for legacy generators set without bank account ID. |
+| **BankAccountId** | int | Bank account ID. |
+| **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show. |
+| **Tags** | List\<string\> | List of tags. |
+| **OrderNumber** | string | Order number. |
+| **Currency** | string | Currency ISO code. |
+| **ExchangeRate** | decimal | Exchange rate. |
+| **PaymentMethod** | string | Payment method. |
+| **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null). |
+| **Language** | string | Invoice language. |
+| **VatPriceMode** | string | Calculate VAT from base or final amount. |
+| **TransferredTaxLiability** | bool | Use reverse charge. |
+| **SupplyCode** | int | Supply code for reverse charge. |
+| **Oss** | string | Use OSS mode on invoice. |
+| **RoundTotal** | bool | Round total amount (VAT included). |
+| **Subtotal** | decimal | Total amount without VAT. |
+| **Total** | decimal | Total amount with VAT. |
+| **NativeSubtotal** | decimal | Total amount without VAT in the account currency. |
+| **NativeTotal** | decimal | Total amount with VAT in the account currency. |
+| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to invoice. You can use variables for inserting dates to your text. |
+| **HtmlUrl** | string | Generator HTML web address. |
+| **Url** | string | Generator API address. |
+| **SubjectUrl** | string | API address of subject. |
+| **CreatedAt** | DateTime | Date and time of generator creation. |
+| **UpdatedAt** | DateTime | Date and time of last generator update. |
+# FakturoidAccessToken Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-Account information, as received from JSON API.
+Access token
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **AccessToken** | string | Gets or sets the access token. |
+| **TokenType** | string | Gets or sets the type of the token. |
+| **ExpiresIn** | int | Gets or sets the expiration time in seconds. |
+# FakturoidAccount Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Account data.
 
 ## Properties
 
@@ -1094,25 +1185,36 @@ Account information, as received from JSON API.
 | **DigitooExtractionsRemaining** | int | Number of remaining extractions by Digitoo service. |
 | **CreatedAt** | string | Account creation date. |
 | **UpdatedAt** | string | The date the account was last modified. |
-# JsonAttachment Class
+# FakturoidAttachment Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-User account information, as received from JSON API.
-Single invoice
+Attachment for download
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **file_name** | string | Název souboru |
-| **content_type** | string | MIME type souboru |
-| **download_url** | string | URL pro download přílohy přes API |
-# JsonBankAccount Class
+| **FileName** | string | Attachment file name. |
+| **ContentType** | string | Attachment file MIME type. |
+| **DownloadUrl** | string | API URL for file download. |
+# FakturoidAttachmentUpload Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-Bank account information, as received from JSON API.
+Attachment.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Filename** | string | Attachment file name. |
+| **DataUrl** | string | Attachment contents in the form of a Data URI. |
+# FakturoidBankAccount Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Bank account data.
 
 ## Properties
 
@@ -1130,63 +1232,11 @@ Bank account information, as received from JSON API.
 | **Default** | bool | Default bank account. |
 | **CreatedAt** | DateTime | Date and time of bank account creation. |
 | **UpdatedAt** | DateTime | Date and time of last bank account update. |
-# JsonEet Class
+# FakturoidEvent Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-EET Information, as recieved from API
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **id** | long | ID záznamu |
-| **vat_no** | string | DIČ účtu ve Fakturoidu |
-| **number** | string | Pořadové číslo dokladu |
-| **store** | long | ID provozovny |
-| **cash_register** | string | Číslo pokladny |
-| **paid_at** | DateTimeOffset | Datum a čas tržby |
-| **vat_base0** | Object | Základ nepodléhající DPH |
-| **vat1** | string | DPH pro základní sazbu |
-| **vat_base1** | string | Základ pro základní sazbu DPH (21 %) |
-| **vat2** | Object | DPH pro 1. sníženou sazbu DPH |
-| **vat_base2** | Object | Základ pro 1. sníženou sazbu DPH (15 %) |
-| **vat3** | Object | DPH pro 2. sníženou sazbu DPH |
-| **vat_base3** | Object | Základ pro 2. sníženou sazbu DPH (10 %) |
-| **total** | string | Celková částka tržby |
-| **fik** | string | FIK kód |
-| **bkp** | string | BKP kód |
-| **pkp** | string | PKP kód |
-| **status** | string | Stav zaevidování:<br>   waiting - čeká se na první odpověď serveru EET<br>   pkp - na faktuře se zobrazí PKP kód<br>   fik - na faktuře se zobrazí FIK kód |
-| **fik_received_at** | DateTimeOffset | Datum a čas získání FIK ze serverů EET |
-| **external** | bool | Tržba je zaevidována mimo Fakturoid a potřebné kódy jsou zadány přes API |
-| **attempts** | long | Počet pokusů o zaevidování tržby |
-| **last_attempt_at** | DateTimeOffset | Datum a čas posledního pokusu o zaevidování tržby |
-| **last_uuid** | Guid | UUID posledního pokusu o zaevidování tržby |
-| **playground** | bool | Evidováno v EET Playground prostředí |
-| **invoice_id** | long | ID faktury, ke které EET záznam patří |
-| **created_at** | DateTimeOffset | Datum a čas vytvoření záznamu |
-| **updated_at** | DateTimeOffset | Datum a čas poslední úpravy záznamu |
-# JsonEntityLine Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Represents single line of entity, as received from JSON API.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **name** | string | Název položky |
-| **quantity** | decimal | Množství |
-| **unit_name** | string | Měrná jednotka |
-| **unit_price** | decimal | Jednotková cena |
-| **vat_rate** | decimal | Sazba DPH |
-# JsonEvent Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Event, as received from JSON API.
+Event data.
 
 ## Properties
 
@@ -1195,196 +1245,416 @@ Event, as received from JSON API.
 | **Name** | string | Event name |
 | **CreatedAt** | DateTime | Date and time of event creation |
 | **Text** | string | Text of the event |
-| **RelatedObjects** | [JsonRelatedObject](#jsonrelatedobject-class)[] | Attributes of objects related to the event |
-| **User** | [JsonUser](#jsonuser-class) | User details |
+| **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class)[] | Attributes of objects related to the event |
+| **User** | [FakturoidEventUser](#fakturoideventuser-class) | User details |
 | **Params** | Object | Parameters with details about event, specific for each type of event |
-# JsonExpense Class
+# FakturoidEventUser Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-User account information, as received from JSON API.
-Single invoice
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **id** | int | Identifikátor nákladu |
-| **custom_id** | string | identifikátor nákladu ve vaší aplikaci |
-| **number** | string | číslo nákladu (Př: N20150101, musí odpovídat formátu čísla v nastavení účtu, doplní se automaticky) |
-| **original_number** | string | číslo dokladu (uvedené na přijaté faktuře) |
-| **variable_symbol** | string | Variabilní symbol |
-| **supplier_name** | string | Nazev firmy kontaktu |
-| **supplier_street** | string | kontakt ulice |
-| **supplier_city** | string | kontakt město |
-| **supplier_zip** | string | kontakt PSČ |
-| **supplier_country** | string | kontakt země |
-| **supplier_registration_no** | string | kontakt IČ |
-| **supplier_vat_no** | string | kontakt DIČ |
-| **subject_id** | int | ID kontaktu příjemce |
-| **status** | string | Stav nákladu - open/overdue/paid |
-| **document_type** | string | typ dokumentu - bill/invoice/other |
-| **issued_on** | DateTime? | Datum vystavení (zobrazeno na faktuře) |
-| **received_on** | DateTime? | Datum přijetí (nepovinné - doplní se dle duzp) |
-| **taxable_fulfillment_due** | DateTime? | Datum zdanitelného plnění (nepovinné - doplní se dnes) |
-| **due_on** | DateTime? | Datum splatnosti (doplní se podle due) |
-| **paid_on** | DateTime? | Datum a čas zaplacení nákladu |
-| **description** | string | popis (nepovinné) |
-| **private_note** | string | Soukromá poznámka (nepovinné) |
-| **tags** | ICollection\<string\> | Seznam tagů nákladu |
-| **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
-| **iban** | string | IBAN (nepovinné - doplní se z účtu) |
-| **swift_bic** | string | BIC (nepovinné - doplní se z účtu) |
-| **payment_method** | string | Způsob úhrady: bank (bankovní převod) / cash (hotově) / cod (dobírka) |
-| **currency** | string | Kód měny (nepovinné - doplní se z účtu, 3 znaky) |
-| **exchange_rate** | decimal | Kurz (nepovinné) |
-| **transferred_tax_liability** | bool | Přenesená daňová povinnost |
-| **vat_price_mode** | string | Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).<br>Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost. |
-| **supply_code** | int? | Kód plnění pro souhrnná hlášení (pouze pro zahraniční nákladu do EU, nepovinné) |
-| **round_total** | bool? | Zaokrouhlit cenu s DPH při vystavení (nepovinné) |
-| **subtotal** | decimal | Součet bez DPH |
-| **native_subtotal** | decimal | Součet bez DPH v měně účtu |
-| **total** | decimal | Součet včetně DPH |
-| **native_total** | decimal | Součet včetně DPH v měně účtu |
-| **attachment** | [JsonAttachment](#jsonattachment-class) | Příloha |
-| **html_url** | string | Adresa nákladu v GUI |
-| **url** | string | API adresa nákladu |
-| **pdf_url** | string | API adresa pro stažení nákladu v PDF |
-| **subject_url** | string | API adresa kontaktu příjemce |
-| **created_at** | DateTime? | Datum vytvoreni nákladu |
-| **updated_at** | DateTime? | Datum poslední aktualizace nákladu |
-| **lines** | ICollection\<[JsonExpenseLine](#jsonexpenseline-class)\> | Položky nákladu |
-# JsonExpenseLine Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Base class: [JsonEntityLine](#jsonentityline-class)
-
-Expense line information, as received from JSON API.
+User related to event
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **name** | string | Název položky |
-| **quantity** | decimal | Množství |
-| **unit_name** | string | Měrná jednotka |
-| **unit_price** | decimal | Jednotková cena |
-| **vat_rate** | decimal | Sazba DPH |
-# JsonInvoice Class
+| **Id** | int | User ID |
+| **FullName** | string | Full user name |
+| **Avatar** | string | Avatar URL |
+# FakturoidExpense Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-User account information, as received from JSON API.
-Single invoice
+Expense data.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **custom_id** | string | identifikátor faktury ve vaší aplikaci, nepovinné |
-| **id** | int | Identifikátor faktury |
-| **proforma** | bool | Příznak proformy |
-| **partial_proforma** | bool? | Přiznak zda je proforma na plnou částku |
-| **number** | string | Číslo faktury (např.: 2011-0001, musí odpovídat formátu čísla v nastavení účtu) |
-| **number_format_id** | int | ID číselné řady	- nepovinné |
-| **variable_symbol** | string | Variabilní symbol |
-| **your_name** | string | Vaše obchodní jméno |
-| **your_street** | string | Vaše ulice |
-| **your_street2** | string | Vaše ulice - druhý řádek |
-| **your_city** | string | Vaše město |
-| **your_zip** | string | Vaše PSČ |
-| **your_country** | string | Vaše země |
-| **your_registration_no** | string | Vaše IČ |
-| **your_vat_no** | string | Vaše DIČ |
-| **your_local_vat_no** | string | vaše SK DIČ (pouze pro Slovensko, nezačíná kódem země) - nepovinné |
-| **client_name** | string | Obchodní jméno příjemce |
-| **client_street** | string | Ulice příjemce |
-| **client_street2** | string | Ulice příjemce - druhý řádek |
-| **client_city** | string | Místo příjemce |
-| **client_zip** | string | PSČ příjemce |
-| **client_country** | string | Země příjemce |
-| **client_registration_no** | string | IČ příjemce |
-| **client_vat_no** | string | DIČ příjemce |
-| **client_local_vat_no** | string | SK DIČ kontaktu (pouze pro Slovensko, nezačíná kódem země) - Nepovinné |
-| **subject_id** | int | ID kontaktu příjemce |
-| **subject_custom_id** | string | identifikátor kontaktu ve vaší aplikaci - nepovinné |
-| **generator_id** | int? | ID šablony ze které byla faktura vystavena (nepovinné) |
-| **related_id** | int? | ID proformy/faktury (nepovinné) |
-| **correction** | bool? | Opravný daňový doklad (false = faktura/proforma, nepovinné) |
-| **correction_id** | int? | ID opravovaného dokladu, zdává se pouze pokud je correction=true, na opravovaný doklad<br>se doplní automaticky doplní ID opravného daňového dokladu (nepovinné) |
-| **token** | string | Token pro public akci |
-| **status** | string | Stav faktury - open/sent/overdue/paid |
-| **order_number** | string | Číslo objednávky (nepovinné) |
-| **issued_on** | DateTime? | Datum vystavení (zobrazeno na faktuře) |
-| **taxable_fulfillment_due** | DateTime? | Datum zdanitelného plnění (nepovinné - doplní se dnes) |
-| **due** | int? | Počet dní, než bude po splatnosti (nepovinné - doplní se z účtu) |
-| **due_on** | DateTime? | Datum splatnosti (doplní se podle due) |
-| **sent_at** | DateTime? | Datum a čas odeslání faktury |
-| **paid_at** | DateTime? | Datum a čas zaplacení faktury |
-| **reminder_sent_at** | DateTime? | Datum a čas odeslání upomínky |
-| **accepted_at** | DateTime? | Datum a čas odsouhlasení faktury klientem |
-| **cancelled_at** | DateTime? | Datum stornování faktury (pouze pro neplátce DPH) |
-| **note** | string | Text před položkami faktury (nepovinné - doplní se z účtu) |
-| **footer_note** | string | Patička faktury (nepovinné - doplní se z účtu) |
-| **private_note** | string | Soukromá poznámka (nepovinné) |
-| **tags** | ICollection\<string\> | Seznam tagů faktury |
-| **bank_account_id** | int? | ID bankovního účtu (nepovinné - použije se výchozí bankovní účet) |
-| **bank_account** | string | Číslo bankovního účtu (nepovinné - doplní se z účtu) |
-| **iban** | string | IBAN (nepovinné - doplní se z účtu) |
-| **iban_visibility** | string | viditelnost IBANu |
-| **swift_bic** | string | BIC (nepovinné - doplní se z účtu) |
-| **show_already_paid_note_in_pdf** | bool | zobrazí na faktuře "Neplaťte již uhrazeno" v jazyce faktury **bez ohledu na stav platby**. Lze nastavit pouze pro faktury, pro proformy je vždy `false`. Pro faktury vystavené z plné proformy je vždy `true`. - nepovinné |
-| **payment_method** | string | Způsob úhrady: bank (bankovní převod) / cash (hotově) / cod (dobírka) |
-| **currency** | string | Kód měny (nepovinné - doplní se z účtu, 3 znaky) |
-| **exchange_rate** | decimal | Kurz (nepovinné) |
-| **paypal** | bool? | Tlačítko pro platbu PayPalem - true/false (nepovinné) |
-| **language** | string | Jazyk faktury |
-| **transferred_tax_liability** | bool | Přenesená daňová povinnost |
-| **supply_code** | int? | Kód plnění pro souhrnná hlášení (pouze pro zahraniční faktury do EU, nepovinné) |
-| **eu_electronic_service** | bool? | Příznak, pokud je faktura v režimu MOSS (nepovinné) |
-| **oss** | string | příznak, jestli je faktura v režimu OSS, povolené hodnoty disabled - vypnuto, service - služba, goods - zboží. Prázdná hodnota znamená disabled, nepovinné |
-| **vat_price_mode** | string | Způsob zadávání cen do řádků (hodnoty: null, without_vat, with_vat, default: dle účtu).<br>Je ignorováno, pokud účet je neplátce DPH nebo je zapnuta přenesená daňová povinnost. |
-| **round_total** | bool? | Zaokrouhlit cenu s DPH při vystavení (nepovinné) |
-| **subtotal** | decimal | Součet bez DPH |
-| **native_subtotal** | decimal | Součet bez DPH v měně účtu |
-| **total** | decimal | Součet včetně DPH |
-| **native_total** | decimal | Součet včetně DPH v měně účtu |
-| **remaining_amount** | decimal | Částka k zaplacení |
-| **remaining_native_amount** | decimal | Částka k zaplacení v měně účtu |
-| **paid_amount** | decimal | skutečně zaplacená částka |
-| **attachment** | [JsonAttachment](#jsonattachment-class) | Příloha |
-| **html_url** | string | Adresa faktury v GUI |
-| **public_html_url** | string | Veřejná HTML adresa faktury |
-| **url** | string | API adresa faktury |
-| **pdf_url** | string | API adresa pro stažení faktury v PDF |
-| **subject_url** | string | API adresa kontaktu příjemce |
-| **updated_at** | DateTime? | Datum poslední aktualizace faktury |
-| **lines** | ICollection\<[JsonInvoiceLine](#jsoninvoiceline-class)\> | Položky faktury |
-| **eet** | bool? | true - Vystavená faktura se zaeviduje do EET / false - Vystavená faktura se nezaeviduje do EET |
-| **eet_store** | string | Pokladna |
-| **eet_cash_register** | string | Číslo provozovny |
-| **eet_records** | [JsonEet](#jsoneet-class)[] | EET záznamy	- nepovinné |
-# JsonInvoiceLine Class
+| **Id** | int | Unique identifier in Fakturoid. |
+| **CustomId** | string | Identifier in your application. |
+| **Number** | string | Expense number. Default: Calculate new number automatically. |
+| **OriginalNumber** | string | Original expense number. |
+| **VariableSymbol** | string | Variable symbol. |
+| **SupplierName** | string | Subject company name. |
+| **SupplierStreet** | string | Subject address street. |
+| **SupplierCity** | string | Subject address city. |
+| **SupplierZip** | string | Subject address postal code. |
+| **SupplierCountry** | string | Subject address country (ISO Code). |
+| **SupplierRegistrationNo** | string | Subject registration number (IČO). |
+| **SupplierVatNo** | string | Subject VAT number (DIČ). |
+| **SupplierLocalVatNo** | string | Subject SK DIČ (only for Slovakia, does not start with country code). |
+| **SubjectId** | int | Subject ID. |
+| **Status** | string | Current state of the expense. Values: open, overdue, paid. |
+| **DocumentType** | string | Type of expense document. Values: invoice, bill (Receipt), other. Default: invoice. |
+| **IssuedOn** | DateTime | Date of issue. |
+| **TaxableFulfillmentDue** | DateTime | Chargeable event date. |
+| **ReceivedOn** | DateTime | Date when you received the expense from your supplier. |
+| **DueOn** | DateTime | Date when the expense becomes overdue. |
+| **RemindDueDate** | bool | Remind the upcoming due date with a Todo. Default: true. |
+| **PaidOn** | DateTime | Date when the expense was marked as paid. |
+| **LockedAt** | DateTime | Date and time when the expense was locked. |
+| **Description** | string | Expense description. |
+| **PrivateNote** | string | Private note. |
+| **Tags** | List\<string\> | List of tags. |
+| **BankAccount** | string | Supplier bank account number. Default: Inherit from supplier subject. |
+| **Iban** | string | Supplier bank account IBAN. Default: Inherit from supplier subject. |
+| **SwiftBic** | string | Supplier bank account BIC (for SWIFT payments). Default: Inherit from supplier subject. |
+| **PaymentMethod** | string | Payment method. Values: bank, cash, cod (cash on delivery), card, paypal, custom. Default: bank. |
+| **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null). Value: String up to 20 characters. |
+| **Currency** | string | Currency ISO Code. Default: Inherit from account settings. |
+| **ExchangeRate** | decimal | Exchange rate (required if expense currency differs from account currency). |
+| **TransferredTaxLiability** | bool | Self-assesment of VAT? Default: false. |
+| **SupplyCode** | string | Supply code for statement about expenses in reverse charge. |
+| **VatPriceMode** | string | Calculate VAT from base or final amount. Values: without_vat, from_total_with_vat. Default: without_vat. |
+| **ProportionalVatDeduction** | int | Proportional VAT deduction (percent). Default: 100. |
+| **TaxDeductible** | bool | Tax deductible. Default: true. |
+| **Subtotal** | decimal | Total without VAT. |
+| **Total** | decimal | Total with VAT. |
+| **NativeSubtotal** | decimal | Total without VAT in the account currency. |
+| **NativeTotal** | decimal | Total with VAT in the account currency. |
+| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to expense. |
+| **VatRatesSummary** | List\<[FakturoidVatRateSummary](#fakturoidvatratesummary-class)\> | VAT rates summary. |
+| **Payments** | List\<[FakturoidExpensePayment](#fakturoidexpensepayment-class)\> | List of payments. |
+| **Attachments** | List\<[FakturoidAttachment](#fakturoidattachment-class)\> | List of attachments. |
+| **HtmlUrl** | string | Expense HTML web address. |
+| **Url** | string | Expense API address. |
+| **SubjectUrl** | string | Subject API address. |
+| **CreatedAt** | DateTime | Date and time of expense creation. |
+| **UpdatedAt** | DateTime | Date and time of last expense update. |
+# FakturoidExpensePayment Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-Base class: [JsonEntityLine](#jsonentityline-class)
-
-Invoice line information, as received from JSON API.
+Expense payment data.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **name** | string | Název položky |
-| **quantity** | decimal | Množství |
-| **unit_name** | string | Měrná jednotka |
-| **unit_price** | decimal | Jednotková cena |
-| **vat_rate** | decimal | Sazba DPH |
-# JsonRelatedObject Class
+| **Id** | int | Unique identifier in Fakturoid |
+| **PaidOn** | DateTime | Payment date<br>Default: Today |
+| **Currency** | string | Currency ISO Code (same as expense currency) |
+| **Amount** | decimal | Paid amount in document currency<br>Default: Remaining amount to pay |
+| **NativeAmount** | decimal | Paid amount in account currency<br>Default: Remaining amount to pay converted to account currency |
+| **MarkDocumentAsPaid** | bool | Mark document as paid?<br>Default: true if the total paid amount becomes greater or equal to remaining amount to pay |
+| **VariableSymbol** | string | Payment variable symbol<br>Default: Expense variable symbol |
+| **BankAccountId** | int | Bank account ID<br>Default: Expense bank account or default bank account |
+| **CreatedAt** | DateTime | The date and time of payment creation |
+| **UpdatedAt** | DateTime | The date and time of last payment update |
+# FakturoidGenerator Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
+
+Generator
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid |
+| **CustomId** | string | Identifier in your application |
+| **Name** | string | Template name |
+| **Proforma** | bool | Issue invoice as a proforma<br>Default: false |
+| **Paypal** | bool | Show PayPal pay button on invoice<br>Default: false |
+| **Gopay** | bool | Show GoPay pay button on invoice<br>Default: false |
+| **TaxDateAtEndOfLastMonth** | bool | Set CED at the end of last month<br>Default: false |
+| **Due** | int | Number of days until the invoice is overdue<br>Default: Inherit from account settings |
+| **SubjectId** | int | Subject ID |
+| **NumberFormatId** | int | Number format ID<br>Default: Inherit from default account settings |
+| **Note** | string | Text before invoice lines |
+| **FooterNote** | string | Text in invoice footer |
+| **LegacyBankDetails** | Object | Display IBAN, BIC (SWIFT) and bank account number for legacy templates set without bank account ID<br>Default: null |
+| **BankAccountId** | int | Bank account ID<br>Default: Inherit from account settings |
+| **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show<br>Values: automatically, always<br>Default: automatically |
+| **Tags** | List\<string\> | List of tags |
+| **OrderNumber** | string | Order number |
+| **Currency** | string | Currency ISO code<br>Default: Inherit from account settings |
+| **ExchangeRate** | decimal | Exchange rate |
+| **PaymentMethod** | string | Payment method<br>Values: bank, cash, cod (cash on delivery), card, paypal, custom<br>Default: Inherit from account settings |
+| **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null)<br>Value: String up to 20 characters<br>Default: Inherit from account settings if default account payment method is set to custom |
+| **Language** | string | Invoice language<br>Values: cz, sk, en, de, fr, it, es, ru, pl, hu, ro<br>Default: Inherit from account settings |
+| **VatPriceMode** | string | Calculate VAT from base or final amount, more info in a table below<br>Values: without_vat, from_total_with_vat<br>Default: Inherit from account settings |
+| **TransferredTaxLiability** | bool | Use reverse charge<br>Default: false |
+| **SupplyCode** | int | Supply code for reverse charge<br>List of codes |
+| **Oss** | string | Use OSS mode on invoice<br>Values: disabled, service, goods<br>Default: disabled |
+| **RoundTotal** | bool | Round total amount (VAT included)<br>Default: false |
+| **Subtotal** | decimal | Total amount without VAT |
+| **Total** | decimal | Total amount with VAT |
+| **NativeSubtotal** | decimal | Total amount without VAT in the account currency |
+| **NativeTotal** | decimal | Total amount with VAT in the account currency |
+| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to invoice |
+| **HtmlUrl** | string | Template HTML web address |
+| **Url** | string | Template API address |
+| **SubjectUrl** | string | API address of subject |
+| **CreatedAt** | DateTime | Date and time of template creation |
+| **UpdatedAt** | DateTime | Date and time of last template update |
+# FakturoidInventory Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Inventory information.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **ItemId** | int | ID of the related inventory item. |
+| **Sku** | string | Stock Keeping Unit (SKU). |
+| **ArticleNumberType** | string | Article number type (only if article_number is present).<br>Values: ian, ean, isbn |
+| **ArticleNumber** | string | Article number (if present). |
+| **MoveId** | int | ID of the related inventory move. |
+# FakturoidInventoryItem Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Inventory item data.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **Name** | string | Item name. |
+| **Sku** | string | Stock Keeping Unit (SKU). Required if track_quantity is enabled. |
+| **ArticleNumberType** | string | Article number type. Values: ian, ean, isbn. Default: ian. |
+| **ArticleNumber** | string | Article number. |
+| **UnitName** | string | Unit of measure. |
+| **TrackQuantity** | bool | Track quantity via inventory moves? Default: false. |
+| **Quantity** | decimal | Quantity in stock. Required if track_quantity is enabled. Becomes read-only after item creation and can be changed only via inventory moves. |
+| **MinQuantity** | decimal | Minimum stock quantity. |
+| **MaxQuantity** | decimal | Maximum stock quantity. |
+| **AllowBelowZero** | bool | Allow quantity below zero. Default: false. |
+| **LowQuantityDate** | DateTime | Date when item quantity dropped below min_quantity. |
+| **NativePurchasePrice** | decimal | Unit purchase price without VAT in account currency. Required if track_quantity is enabled. |
+| **NativeRetailPrice** | decimal | Unit retail price without VAT in account currency. |
+| **VatRate** | string | VAT rate. Values: standard (21%), reduced (15%), reduced2 (10%), zero (0%). |
+| **AverageNativePurchasePrice** | decimal | Average purchase price in account currency. |
+| **SupplyType** | string | Item type. Values: goods, service. Default: goods. |
+| **Archived** | bool | If item is archived. |
+| **PrivateNote** | string | Private note. |
+| **SuggestFor** | string | Suggest item for documents. Values: invoices, expenses, both. Default: both. |
+| **CreatedAt** | DateTime | Date and time of item creation. |
+| **UpdatedAt** | DateTime | Date and time of last item update. |
+# FakturoidInventoryMove Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Inventory move.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **Direction** | string | Move direction. Values: in, out. |
+| **MovedOn** | DateTime | Move date. |
+| **QuantityChange** | decimal | Item quantity in move. |
+| **PurchasePrice** | decimal | Purchase price per unit (without VAT). |
+| **PurchaseCurrency** | string | Purchase currency. Values: Currency code (3 characters). Default: Inherit from account settings. |
+| **NativePurchasePrice** | decimal | Unit purchase price in account currency. |
+| **RetailPrice** | decimal | Retail price per unit. |
+| **RetailCurrency** | string | Retail currency. Values: Currency code (3 characters). Default: Inherit from account settings. |
+| **NativeRetailPrice** | decimal | Retail price in account currency. |
+| **PrivateNote** | string | Private note. |
+| **InventoryItemId** | int | Inventory item ID. |
+| **Document** | Object | Details about document and line the move is tied to. Default: null. |
+| **CreatedAt** | DateTime | Date and time of move creation. |
+| **UpdatedAt** | DateTime | Date and time of last move update. |
+# FakturoidInventoryMoveDocument Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Document related to inventory move.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Gets or sets the document ID. |
+| **Type** | string | Gets or sets the type of document.<br>Values: Estimate, Expense, ExpenseGenerator, Generator, Invoice |
+| **LineId** | int | Gets or sets the document line ID. |
+# FakturoidInvoice Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Invoice data.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **CustomId** | string | Identifier in your application. |
+| **DocumentType** | string | Type of document.<br>Values: partial_proforma, proforma, correction, tax_document, final_invoice, invoice |
+| **ProformaFollowupDocument** | string | What to issue after a proforma is paid.<br>Values: final_invoice_paid, final_invoice, tax_document, none |
+| **TaxDocumentIds** | List\<int\> | Required only when creating a final invoice from tax documents. |
+| **CorrectionId** | int | ID of the invoice being corrected. |
+| **Number** | string | Document number. |
+| **NumberFormatId** | int | ID of a number format. |
+| **VariableSymbol** | string | Variable symbol. |
+| **YourName** | string | Name of your company. |
+| **YourStreet** | string | Your address street. |
+| **YourCity** | string | Your address city. |
+| **YourZip** | string | Your address postal code. |
+| **YourCountry** | string | Your address country (ISO code). |
+| **YourRegistrationNo** | string | Your registration number (IČO). |
+| **YourVatNo** | string | Your VAT number (DIČ). |
+| **YourLocalVatNo** | string | Your SK DIČ (only for Slovakia, does not start with country code). |
+| **ClientName** | string | Subject company name. |
+| **ClientStreet** | string | Subject address street. |
+| **ClientCity** | string | Subject address city. |
+| **ClientZip** | string | Subject address postal code. |
+| **ClientCountry** | string | Subject address country (ISO code). |
+| **ClientHasDeliveryAddress** | bool | Enable delivery address. |
+| **ClientDeliveryName** | string | Subject company delivery name. |
+| **ClientDeliveryStreet** | string | Subject delivery address street. |
+| **ClientDeliveryCity** | string | Subject delivery address city. |
+| **ClientDeliveryZip** | string | Subject delivery address postal code. |
+| **ClientDeliveryCountry** | string | Subject delivery address country (ISO code). |
+| **ClientRegistrationNo** | string | Subject registration number. |
+| **ClientVatNo** | string | Subject VAT number. |
+| **ClientLocalVatNo** | string | Subject SK DIČ (only for Slovakia, does not start with country code). |
+| **SubjectId** | int | Subject ID. |
+| **SubjectCustomId** | string | Subject identifier in your application. |
+| **GeneratorId** | int | Generator ID from which the document was generated. |
+| **RelatedId** | int | ID of related document. |
+| **Paypal** | bool | Enable PayPal payment button on invoice. |
+| **Gopay** | bool | Enable GoPay payment button on invoice. |
+| **Token** | string | Token string for the webinvoice URL. |
+| **Status** | string | Current state of the document.<br>Values: open, sent, overdue, paid, cancelled, uncollectible |
+| **OrderNumber** | string | Order number in your application. |
+| **IssuedOn** | DateTime | Date of issue. |
+| **TaxableFulfillmentDue** | string | Chargeable event date. |
+| **Due** | int | Number of days until the invoice becomes overdue. |
+| **DueOn** | DateTime | Date when the invoice becomes overdue. |
+| **SentAt** | DateTime | Date and time of sending the document via email. |
+| **PaidOn** | DateTime | Date when the document was marked as paid. |
+| **ReminderSentAt** | DateTime | Date and time of sending a reminder. |
+| **CancelledAt** | DateTime | Date and time when the invoice was cancelled (only for non-VAT-payers). |
+| **UncollectibleAt** | DateTime | Date and time when an invoice was marked as uncollectible. |
+| **LockedAt** | DateTime | Date and time when the document was locked. |
+| **WebinvoiceSeenOn** | DateTime | Date when the client visited the webinvoice. |
+| **Note** | string | Text before lines. |
+| **FooterNote** | string | Invoice footer. |
+| **PrivateNote** | string | Private note. |
+| **Tags** | List\<string\> | List of tags. |
+| **BankAccountId** | int | Bank account ID (used only on create action). |
+| **BankAccount** | string | Bank account number. |
+| **Iban** | string | IBAN. |
+| **SwiftBic** | string | BIC (for SWIFT payments). |
+| **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF.<br>Values: automatically, always |
+| **ShowAlreadyPaidNoteInPdf** | bool | Show „Do not pay, …“ on document webinvoice and PDF. |
+| **PaymentMethod** | string | Payment method.<br>Values: bank, cash, cod, card, paypal, custom |
+| **CustomPaymentMethod** | string | Custom payment method. |
+| **HideBankAccount** | bool | Hide bank account on webinvoice and PDF. |
+| **Currency** | string | Currency ISO code. |
+| **ExchangeRate** | decimal | Exchange rate (required if document currency differs from account currency). |
+| **Language** | string | Language of the document.<br>Values: cz, sk, en, de, fr, it, es, ru, pl, hu, ro |
+| **TransferredTaxLiability** | bool | Use reverse charge. |
+| **SupplyCode** | string | Supply code for statement about invoices in reverse charge. |
+| **Oss** | string | Use OSS mode.<br>Values: disabled, service, goods |
+| **VatPriceMode** | string | Calculate VAT from base or final amount.<br>Values: without_vat, from_total_with_vat |
+| **RoundTotal** | bool | Round total amount (VAT included). |
+| **Subtotal** | decimal | Total without VAT. |
+| **Total** | decimal | Total with VAT. |
+| **NativeSubtotal** | decimal | Total without VAT in the account currency. |
+| **NativeTotal** | decimal | Total with VAT in the account currency. |
+| **RemainingAmount** | decimal | Remaining amount to pay (VAT included). |
+| **RemainingNativeAmount** | decimal | Remaining amount to pay in the account currency (VAT included). |
+| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to invoice. |
+| **VatRatesSummary** | List\<[FakturoidVatRateSummary](#fakturoidvatratesummary-class)\> | VAT rates summary. |
+| **PaidAdvances** | List\<[FakturoidInvoicePaidAdvance](#fakturoidinvoicepaidadvance-class)\> | List of paid advances (if final invoice). |
+| **Payments** | List\<[FakturoidInvoicePayment](#fakturoidinvoicepayment-class)\> | List of payments. |
+| **Attachments** | List\<[FakturoidAttachment](#fakturoidattachment-class)\> | List of attachments. |
+| **HtmlUrl** | string | Document HTML web address. |
+| **PublicHtmlUrl** | string | Webinvoice web address. |
+| **Url** | string | Document API address. |
+| **PdfUrl** | string | PDF download address. |
+| **SubjectUrl** | string | Subject API address. |
+| **CreatedAt** | DateTime | Date and time of document creation. |
+| **UpdatedAt** | DateTime | Date and time of last document update. |
+# FakturoidInvoicePaidAdvance Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Paid advance
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Tax document ID. |
+| **Number** | string | Document number. |
+| **VariableSymbol** | string | Variable symbol. |
+| **PaidOn** | DateTime | Date of payment. |
+| **VatRate** | decimal | VAT rate. |
+| **Price** | decimal | Price for given VAT rate. |
+| **Vat** | decimal | VAT for given VAT rate. |
+# FakturoidInvoicePayment Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Invoice payment data.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **PaidOn** | DateTime | Payment date.<br>Default: Today |
+| **Currency** | string | Currency ISO Code (same as invoice currency). |
+| **Amount** | decimal | Paid amount in document currency.<br>Default: Remaining amount to pay |
+| **NativeAmount** | decimal | Paid amount in account currency.<br>Default: Remaining amount to pay converted to account currency |
+| **MarkDocumentAsPaid** | bool | Mark document as paid?<br>Default: true if the total paid amount becomes greater or equal to remaining amount to pay |
+| **ProformaFollowupDocument** | string | Issue a followup document with payment.<br>Only for proformas and mark_document_as_paid must be true.<br>Values: final_invoice_paid, final_invoice, tax_document, none |
+| **SendThankYouEmail** | bool | Send thank-you email?<br>mark_document_as_paid must be true<br>Default: Inherit from account settings |
+| **VariableSymbol** | string | Payment variable symbol.<br>Default: Invoice variable symbol |
+| **BankAccountId** | int | Bank account ID.<br>Default: Invoice bank account or default bank account |
+| **TaxDocumentId** | int | Tax document ID (if present). |
+| **CreatedAt** | DateTime | The date and time of payment creation. |
+| **UpdatedAt** | DateTime | The date and time of last payment update. |
+# FakturoidLegacyBankDetails Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Legacy bank account details
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **BankAccount** | string | Bank account number |
+| **Iban** | string | IBAN |
+| **SwiftBic** | string | BIC (for SWIFT payments) |
+# FakturoidLine Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Invoice line.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **Name** | string | Line name. |
+| **Quantity** | decimal | Quantity. |
+| **UnitName** | string | Unit name. |
+| **UnitPrice** | decimal | Unit price. |
+| **VatRate** | decimal | VAT rate. |
+| **UnitPriceWithoutVat** | decimal | Unit price without VAT. |
+| **UnitPriceWithVat** | decimal | Unit price including VAT. |
+| **TotalPriceWithoutVat** | decimal | Total price without VAT. |
+| **TotalVat** | decimal | Total VAT. |
+| **NativeTotalPriceWithoutVat** | decimal | Total price without VAT in account currency. |
+| **NativeTotalVat** | decimal | Total VAT in account currency. |
+| **InventoryItemId** | int | ID of the related inventory item. |
+| **Sku** | string | Stock Keeping Unit (SKU). |
+| **Inventory** | [FakturoidInventory](#fakturoidinventory-class) | Inventory information. |
+# FakturoidRelatedObject Class
+
+Namespace: Altairis.Fakturoid.Client.Models
 
 Represents an object related to the event.
 
@@ -1394,139 +1664,98 @@ Represents an object related to the event.
 |---|---|---|
 | **Type** | string | Type of the object related to the event<br>Values: Invoice, Subject, Expense, Generator, RecurringGenerator, ExpenseGenerator, Estimate |
 | **Id** | int | ID of the object related to event |
-# JsonSubject Class
+# FakturoidSubject Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-Subject (contact), as received from JSON API.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
-| **id** | int | Unique identifier in Fakturoid |
-| **custom_id** | string | Identifier in your application |
-| **user_id** | int | User ID who created the subject |
-| **type** | string | Type of subject. Values: "customer", "supplier", "both". Default: "customer" |
-| **name** | string | Name of the subject |
-| **full_name** | string | Contact person name |
-| **email** | string | Main email address to receive invoice emails |
-| **email_copy** | string | Email copy address to receive invoice emails |
-| **phone** | string | Phone number |
-| **web** | string | Web page |
-| **street** | string | Street |
-| **city** | string | City |
-| **zip** | string | ZIP or postal code |
-| **country** | string | Country (ISO code). Default: Account setting |
-| **has_delivery_address** | bool | Enable delivery address. Default: false |
-| **delivery_name** | string | Delivery address name |
-| **delivery_street** | string | Delivery address street |
-| **delivery_city** | string | Delivery address city |
-| **delivery_zip** | string | Delivery address ZIP or postal code |
-| **delivery_country** | string | Delivery address country (ISO code). Default: Account setting |
-| **due** | int | Number of days until an invoice is due for this subject. Default: Inherit from account settings |
-| **currency** | string | Currency (ISO code). Default: Inherit from account settings |
-| **language** | string | Invoice language. Default: Inherit from account settings |
-| **private_note** | string | Private note |
-| **registration_no** | string | Registration number (IČO) |
-| **vat_no** | string | VAT-payer VAT number (DIČ, IČ DPH in Slovakia, typically starts with the country code) |
-| **local_vat_no** | string | SK DIČ (only in Slovakia, does not start with country code) |
-| **unreliable** | bool | Unreliable VAT-payer |
-| **unreliable_checked_at** | DateTime? | Date of last check for unreliable VAT-payer |
-| **legal_form** | string | Legal form |
-| **vat_mode** | string | VAT mode |
-| **bank_account** | string | Bank account number |
-| **iban** | string | IBAN |
-| **swift_bic** | string | SWIFT/BIC |
-| **variable_symbol** | string | Fixed variable symbol (used for all invoices for this client instead of invoice number) |
-| **setting_update_from_ares** | string | Whether to update subject data from ARES. Used to override account settings. Values: inherit, on, off. Default: inherit |
-| **ares_update** | bool | Whether to update subject data from ARES. Used to override account settings. Default: true. Deprecated in favor of setting_update_from_ares |
-| **setting_invoice_pdf_attachments** | string | Whether to attach invoice PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit |
-| **setting_estimate_pdf_attachments** | string | Whether to attach estimate PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit |
-| **setting_invoice_send_reminders** | string | Whether to send overdue invoice email reminders. Used to override account settings. Values: inherit, on, off. Default: inherit |
-| **suggestion_enabled** | bool | Suggest for documents. Default: true |
-| **custom_email_text** | string | New invoice custom email text |
-| **overdue_email_text** | string | Overdue reminder custom email text |
-| **invoice_from_proforma_email_text** | string | Proforma paid custom email text |
-| **thank_you_email_text** | string | Thanks for payment custom email text |
-| **custom_estimate_email_text** | string | Estimate custom email text |
-| **webinvoice_history** | string | Webinvoice history. Values: null, "disabled", "recent", "client_portal". Default: null (inherit from account settings) |
-| **html_url** | string | Subject HTML web address |
-| **url** | string | Subject API address |
-| **created_at** | DateTime | Date and time of subject creation |
-| **updated_at** | DateTime | Date and time of last subject update |
-# JsonTodo Class
-
-Namespace: Altairis.Fakturoid.Client
-
-Represents a todo task, as received from JSON API.
+Subject (contact).
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **name** | string | Typ události - initial_todo, initial_fb, already_paid, unpaired_payment, email_bounced |
-| **created_at** | DateTime | Datum a čas vytvoření události |
-| **completed_at** | DateTime? | Datum a čas odškrtnutí události |
-| **invoice_id** | int? | ID faktury |
-| **subject_id** | int? | ID kontaktu |
-| **text** | string | Text události |
-| **invoice_url** | string | API adresa faktury |
-| **subject_url** | string | API adresa kontaktu |
-# JsonUser Class
+| **Id** | int | Unique identifier in Fakturoid |
+| **CustomId** | string | Identifier in your application |
+| **UserId** | int | User ID who created the subject |
+| **Type** | string | Type of subject. Values: "customer", "supplier", "both". Default: "customer" |
+| **Name** | string | Name of the subject |
+| **FullName** | string | Contact person name |
+| **Email** | string | Main email address to receive invoice emails |
+| **EmailCopy** | string | Email copy address to receive invoice emails |
+| **Phone** | string | Phone number |
+| **Web** | string | Web page |
+| **Street** | string | Street |
+| **City** | string | City |
+| **Zip** | string | ZIP or postal code |
+| **Country** | string | Country (ISO code). Default: Account setting |
+| **HasDeliveryAddress** | bool | Enable delivery address. Default: false |
+| **DeliveryName** | string | Delivery address name |
+| **DeliveryStreet** | string | Delivery address street |
+| **DeliveryCity** | string | Delivery address city |
+| **DeliveryZip** | string | Delivery address ZIP or postal code |
+| **DeliveryCountry** | string | Delivery address country (ISO code). Default: Account setting |
+| **Due** | int | Number of days until an invoice is due for this subject. Default: Inherit from account settings |
+| **Currency** | string | Currency (ISO code). Default: Inherit from account settings |
+| **Language** | string | Invoice language. Default: Inherit from account settings |
+| **PrivateNote** | string | Private note |
+| **RegistrationNo** | string | Registration number (IČO) |
+| **VatNo** | string | VAT-payer VAT number (DIČ, IČ DPH in Slovakia, typically starts with the country code) |
+| **LocalVatNo** | string | SK DIČ (only in Slovakia, does not start with country code) |
+| **Unreliable** | bool | Unreliable VAT-payer |
+| **UnreliableCheckedAt** | DateTime? | Date of last check for unreliable VAT-payer |
+| **LegalForm** | string | Legal form |
+| **VatMode** | string | VAT mode |
+| **BankAccount** | string | Bank account number |
+| **Iban** | string | IBAN |
+| **SwiftBic** | string | SWIFT/BIC |
+| **VariableSymbol** | string | Fixed variable symbol (used for all invoices for this client instead of invoice number) |
+| **SettingUpdateFromAres** | string | Whether to update subject data from ARES. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **AresUpdate** | bool | Whether to update subject data from ARES. Used to override account settings. Default: true. Deprecated in favor of setting_update_from_ares |
+| **SettingInvoicePdfAttachments** | string | Whether to attach invoice PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **SettingEstimatePdfAttachments** | string | Whether to attach estimate PDF in email. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **SettingInvoiceSendReminders** | string | Whether to send overdue invoice email reminders. Used to override account settings. Values: inherit, on, off. Default: inherit |
+| **SuggestionEnabled** | bool | Suggest for documents. Default: true |
+| **CustomEmailText** | string | New invoice custom email text |
+| **OverdueEmailText** | string | Overdue reminder custom email text |
+| **InvoiceFromProformaEmailText** | string | Proforma paid custom email text |
+| **ThankYouEmailText** | string | Thanks for payment custom email text |
+| **CustomEstimateEmailText** | string | Estimate custom email text |
+| **WebinvoiceHistory** | string | Webinvoice history. Values: null, "disabled", "recent", "client_portal". Default: null (inherit from account settings) |
+| **HtmlUrl** | string | Subject HTML web address |
+| **Url** | string | Subject API address |
+| **CreatedAt** | DateTime | Date and time of subject creation |
+| **UpdatedAt** | DateTime | Date and time of last subject update |
+# FakturoidTodo Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
-Represents a user associated with the event.
+Todo task.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **Id** | int | User ID |
-| **FullName** | string | Full user name |
-| **Avatar** | string | Avatar URL |
-# MyHttpClientExtensions Class
+| **Id** | int | Unique identifier in Fakturoid. |
+| **Name** | string | Todo name. |
+| **CreatedAt** | DateTime | Date and time of todo creation. |
+| **CompletedAt** | DateTime? | Date and time of todo completion. |
+| **Text** | string | Todo text. |
+| **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class) | Attributes of objects related to the todo. |
+| **Params** | Object | Parameters with details about todo, specific for each type of todo. |
+# FakturoidVatRateSummary Class
 
-Namespace: Altairis.Fakturoid.Client
+Namespace: Altairis.Fakturoid.Client.Models
 
+VAT rate summary.
 
-## Methods
+## Properties
 
-| Name | Returns | Summary |
+| Name | Type | Summary |
 |---|---|---|
-| [**FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpatchasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
-| [**FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpostasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
-| [**FakturoidReadAsAsync(HttpContent content)**](#fakturoidreadasasynchttpcontent-content) | Task\<T\> |  |
-## Methods
-
-### FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)
-
-
-
-
-### Returns
-
-Task<HttpResponseMessage>
-
-
-### FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)
-
-
-
-
-### Returns
-
-Task<HttpResponseMessage>
-
-
-### FakturoidReadAsAsync(HttpContent content)
-
-
-
-
-### Returns
-
-Task<T>
-
-
+| **VatRate** | decimal | VAT rate. |
+| **Base** | decimal | Base total. |
+| **Vat** | decimal | VAT total. |
+| **Currency** | string | Currency. |
+| **NativeBase** | decimal | Base total in account currency. |
+| **NativeVat** | decimal | VAT total in account currency. |
+| **NativeCurrency** | string | Account currency. |
