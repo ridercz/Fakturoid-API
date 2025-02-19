@@ -159,7 +159,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
         }
 
         private static void ShowEvents() {
-            Console.Write("Getting all events in last 24 hour...");
+            Console.Write("Getting all events in last 24 hours...");
             var items = context.Events.SelectAsync(DateTime.Now.AddDays(-1)).Result;
             Console.WriteLine("OK");
 

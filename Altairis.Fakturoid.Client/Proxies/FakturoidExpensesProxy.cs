@@ -77,7 +77,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// List of <see cref="FakturoidExpense" /> instances.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
-    public Task<IEnumerable<FakturoidExpense>> SelectAsync(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+    public Task<IEnumerable<FakturoidExpense>> SelectAsync(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTimeOffset? since = null, string number = null) {
         if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
         // Get URI based on expense type
@@ -125,7 +125,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// or
     /// subjectId;Value must be greater than zero.
     /// </exception>
-    public Task<IEnumerable<FakturoidExpense>> SelectAsync(int page, ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+    public Task<IEnumerable<FakturoidExpense>> SelectAsync(int page, ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTimeOffset? since = null, string number = null) {
         if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
         if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 

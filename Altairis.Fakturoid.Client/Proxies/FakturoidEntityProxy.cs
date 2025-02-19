@@ -223,16 +223,27 @@ public abstract class FakturoidEntityProxy {
             if (rawValue == null) continue; // null queryParams do not propagate to query
 
             string stringValue = null;
-            if (rawValue is DateTime time)                 // Format date
+            if (rawValue is DateTimeOffset dto) {
+                // Format DateTimeOffset
+                stringValue = XmlConvert.ToString(dto);
+            } else if (rawValue is DateTimeOffset?) {
+                // Format nullable DateTimeOffset
+                var dateValue = (DateTimeOffset?)rawValue;
+                if (dateValue.HasValue) stringValue = XmlConvert.ToString(dateValue.Value);
+            } else if (rawValue is DateTime time) {
+                // Format DateTime
                 stringValue = XmlConvert.ToString(time, XmlDateTimeSerializationMode.RoundtripKind);
-            else if (rawValue is DateTime?) {
-                // Format nullable date
+            } else if (rawValue is DateTime?) {
+                // Format nullable DateTime
                 var dateValue = (DateTime?)rawValue;
                 if (dateValue.HasValue) stringValue = XmlConvert.ToString(dateValue.Value, XmlDateTimeSerializationMode.RoundtripKind);
-            } else if (rawValue is IFormattable formattableValue)                     // Format IFormattable rawValue
+            } else if (rawValue is IFormattable formattableValue) {
+                // Format IFormattable rawValue
                 stringValue = formattableValue.ToString(null, System.Globalization.CultureInfo.InvariantCulture);
-            else                     // Format other value - just use ToString()
+            } else {
+                // Format other value - just use ToString()
                 stringValue = rawValue.ToString();
+            }
 
             if (string.IsNullOrWhiteSpace(stringValue)) continue; // empty value after string conversion
             qsb.AppendFormat("{0}={1}&", descriptor.Name, Uri.EscapeDataString(stringValue));

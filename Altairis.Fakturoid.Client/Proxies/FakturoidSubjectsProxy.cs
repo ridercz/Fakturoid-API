@@ -16,7 +16,7 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidSubject" /> instances.
     /// </returns>
-    public Task<IEnumerable<FakturoidSubject>> SelectAsync(DateTime? createdSince = default, DateTime? updatedSince = default, string customId = null) => GetAllPagedEntitiesAsync<FakturoidSubject>("subjects.json", new { since = createdSince, updated_since = updatedSince, custom_id = customId });
+    public Task<IEnumerable<FakturoidSubject>> SelectAsync(DateTime? createdSince = default, DateTimeOffset? updatedSince = default, string customId = null) => GetAllPagedEntitiesAsync<FakturoidSubject>("subjects.json", new { since = createdSince, updated_since = updatedSince, custom_id = customId });
 
     /// <summary>
     /// Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
@@ -44,7 +44,7 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// <param name="customId">The custom identifier used for filtering.</param>
     /// <returns>List of <see cref="FakturoidSubject"/> instances.</returns>
     /// <exception cref="ArgumentOutOfRangeException">page;Value must be greater than zero.</exception>
-    public async Task<IEnumerable<FakturoidSubject>> SelectAsync(int page, DateTime? createdSince = default, DateTime? updatedSince = default, string customId = null) => page < 1 ? throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.") : await GetPagedEntitiesAsync<FakturoidSubject>("subjects.json", page, new { since = createdSince, updated_since = updatedSince, custom_id = customId });
+    public async Task<IEnumerable<FakturoidSubject>> SelectAsync(int page, DateTime? createdSince = default, DateTimeOffset? updatedSince = default, string customId = null) => page < 1 ? throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.") : await GetPagedEntitiesAsync<FakturoidSubject>("subjects.json", page, new { since = createdSince, updated_since = updatedSince, custom_id = customId });
 
     /// <summary>
     /// Selects asynchronously single subject with specified ID.

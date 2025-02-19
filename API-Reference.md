@@ -1117,17 +1117,17 @@ Proxy class for working with events
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync(DateTime? since, int? subjectId)**](#selectasyncdatetime-since-int-subjectid) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of all current events. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
+| [**SelectAsync(DateTimeOffset? since, int? subjectId)**](#selectasyncdatetimeoffset-since-int-subjectid) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of all current events. |
+| [**SelectAsync(int page, DateTimeOffset? since)**](#selectasyncint-page-datetimeoffset-since) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
 ## Methods
 
-### SelectAsync(DateTime? since, int? subjectId)
+### SelectAsync(DateTimeOffset? since, int? subjectId)
 
 Gets asynchronously list of all current events.
 
 | Parameter | Type | Description |
 |---|---|---|
-| since | DateTime? | The date since when events are to be selected. |
+| since | DateTimeOffset? | The date since when events are to be selected. |
 | subjectId | int? | The ID of the subject to filter events by. |
 
 
@@ -1137,14 +1137,14 @@ Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidEvent** instances.
 
-### SelectAsync(int page, DateTime? since)
+### SelectAsync(int page, DateTimeOffset? since)
 
 Gets asynchronously list of current events, paged by 40.
 
 | Parameter | Type | Description |
 |---|---|---|
 | page | int | The page number. |
-| since | DateTime? | The date since when events are to be selected. |
+| since | DateTimeOffset? | The date since when events are to be selected. |
 
 
 ### Returns
@@ -1172,8 +1172,8 @@ Proxy class for working with invoices.
 |---|---|---|
 | [**CreateAsync(FakturoidExpense entity)**](#createasyncfakturoidexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
-| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously paged list of invoices. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Selects asynchronously single expense with specified ID. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
 | [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
@@ -1212,7 +1212,7 @@ Task
 
 
 
-### SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
+### SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)
 
 Gets asynchronously list of all invoices.
 
@@ -1220,7 +1220,7 @@ Gets asynchronously list of all invoices.
 |---|---|---|
 | status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
 | subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the expense was created. |
+| since | DateTimeOffset? | The date since when the expense was created. |
 | number | string | The expense display number. |
 
 
@@ -1230,7 +1230,7 @@ Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidExpense** instances.
 
-### SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTime? since, string number)
+### SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)
 
 Gets asynchronously paged list of invoices.
 
@@ -1239,7 +1239,7 @@ Gets asynchronously paged list of invoices.
 | page | int | The page number. |
 | status | [ExpenseStatusCondition](#expensestatuscondition-enum) | The expense status. |
 | subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the expense was created. |
+| since | DateTimeOffset? | The date since when the expense was created. |
 | number | string | The expense display number. |
 
 
@@ -1364,8 +1364,8 @@ Proxy class for working with invoices.
 |---|---|---|
 | [**CreateAsync(FakturoidInvoice entity)**](#createasyncfakturoidinvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
-| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetime-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously paged list of invoices. |
+| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously list of all invoices. |
+| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously paged list of invoices. |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Selects asynchronously single invoice with specified ID. |
 | [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
 | [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
@@ -1405,7 +1405,7 @@ Task
 
 
 
-### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
+### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)
 
 Gets asynchronously list of all invoices.
 
@@ -1414,7 +1414,7 @@ Gets asynchronously list of all invoices.
 | type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
 | status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
 | subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the invoice was created. |
+| since | DateTimeOffset? | The date since when the invoice was created. |
 | number | string | The invoice display number. |
 
 
@@ -1424,7 +1424,7 @@ Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
 
-### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTime? since, string number)
+### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)
 
 Gets asynchronously paged list of invoices.
 
@@ -1434,7 +1434,7 @@ Gets asynchronously paged list of invoices.
 | type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
 | status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
 | subjectId | int? | The customer subject id. |
-| since | DateTime? | The date since when the invoice was created. |
+| since | DateTimeOffset? | The date since when the invoice was created. |
 | number | string | The invoice display number. |
 
 
@@ -1609,8 +1609,8 @@ Proxy class for working with subjects/contacts.
 | [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
 | [**SearchAsync(string query)**](#searchasyncstring-query) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
 | [**SearchAsync(int page, string query)**](#searchasyncint-page-string-query) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note with pagination. |
-| [**SelectAsync(DateTime? createdSince, DateTime? updatedSince, string customId)**](#selectasyncdatetime-createdsince-datetime-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously list of all subjects. |
-| [**SelectAsync(int page, DateTime? createdSince, DateTime? updatedSince, string customId)**](#selectasyncint-page-datetime-createdsince-datetime-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously paged list of subjects |
+| [**SelectAsync(DateTime? createdSince, DateTimeOffset? updatedSince, string customId)**](#selectasyncdatetime-createdsince-datetimeoffset-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously list of all subjects. |
+| [**SelectAsync(int page, DateTime? createdSince, DateTimeOffset? updatedSince, string customId)**](#selectasyncint-page-datetime-createdsince-datetimeoffset-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously paged list of subjects |
 | [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Selects asynchronously single subject with specified ID. |
 | [**UpdateAsync(FakturoidSubject entity)**](#updateasyncfakturoidsubject-entity) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Updates asynchronously the specified subject. |
 ## Methods
@@ -1676,14 +1676,14 @@ Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
 
 Collection of search results.
 
-### SelectAsync(DateTime? createdSince, DateTime? updatedSince, string customId)
+### SelectAsync(DateTime? createdSince, DateTimeOffset? updatedSince, string customId)
 
 Gets asynchronously list of all subjects.
 
 | Parameter | Type | Description |
 |---|---|---|
 | customId | DateTime? | The custom identifier used for filtering. |
-| createdSince | DateTime? | List only subjects created since certain date. |
+| createdSince | DateTimeOffset? | List only subjects created since certain date. |
 | updatedSince | string | List only subjects updated since certain date. |
 
 
@@ -1693,7 +1693,7 @@ Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidSubject** instances.
 
-### SelectAsync(int page, DateTime? createdSince, DateTime? updatedSince, string customId)
+### SelectAsync(int page, DateTime? createdSince, DateTimeOffset? updatedSince, string customId)
 
 Gets asynchronously paged list of subjects
 
@@ -1701,7 +1701,7 @@ Gets asynchronously paged list of subjects
 |---|---|---|
 | page | int | The page number. |
 | createdSince | DateTime? | List only subjects created since certain date. |
-| updatedSince | DateTime? | List only subjects updated since certain date. |
+| updatedSince | DateTimeOffset? | List only subjects updated since certain date. |
 | customId | string | The custom identifier used for filtering. |
 
 
@@ -1758,18 +1758,18 @@ Proxy class for working with todo tasks.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
-| [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
+| [**SelectAsync(DateTimeOffset? since)**](#selectasyncdatetimeoffset-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
+| [**SelectAsync(int page, DateTimeOffset? since)**](#selectasyncint-page-datetimeoffset-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
 | [**ToggleCompletion(int id)**](#togglecompletionint-id) | Task\<[FakturoidTodo](#fakturoidtodo-class)\> | Toggles the completion status of a todo task asynchronously. |
 ## Methods
 
-### SelectAsync(DateTime? since)
+### SelectAsync(DateTimeOffset? since)
 
 Gets asynchronously list of all current todos.
 
 | Parameter | Type | Description |
 |---|---|---|
-| since | DateTime? | The date since when todos are to be selected. |
+| since | DateTimeOffset? | The date since when todos are to be selected. |
 
 
 ### Returns
@@ -1778,14 +1778,14 @@ Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
 
-### SelectAsync(int page, DateTime? since)
+### SelectAsync(int page, DateTimeOffset? since)
 
 Gets asynchronously paged list of current todos
 
 | Parameter | Type | Description |
 |---|---|---|
 | page | int | The page number. |
-| since | DateTime? | The date since when todos are to be selected. |
+| since | DateTimeOffset? | The date since when todos are to be selected. |
 
 
 ### Returns

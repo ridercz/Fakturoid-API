@@ -143,7 +143,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// List of <see cref="FakturoidInvoice" /> instances.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
-    public Task<IEnumerable<FakturoidInvoice>> SelectAsync(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+    public Task<IEnumerable<FakturoidInvoice>> SelectAsync(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTimeOffset? since = null, string number = null) {
         if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
         var uri = type switch {
             InvoiceTypeCondition.Proforma => "invoices/proforma.json",
@@ -200,7 +200,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// or
     /// subjectId;Value must be greater than zero.
     /// </exception>
-    public Task<IEnumerable<FakturoidInvoice>> SelectAsync(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
+    public Task<IEnumerable<FakturoidInvoice>> SelectAsync(int page, InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTimeOffset? since = null, string number = null) {
         if (page < 1) throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.");
         if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
         var uri = type switch {
