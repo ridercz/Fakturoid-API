@@ -10,9 +10,10 @@ public class FakturoidEventsProxy : FakturoidEntityProxy {
     /// Gets asynchronously list of all current events.
     /// </summary>
     /// <param name="since">The date since when events are to be selected.</param>
+    /// <param name="subjectId">The ID of the subject to filter events by.</param>
     /// <returns>List of <see cref="FakturoidEvent"/> instances.</returns>
-    /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-    public Task<IEnumerable<FakturoidEvent>> SelectAsync(DateTime? since = null, int? subjectId = null) => base.GetAllPagedEntitiesAsync<FakturoidEvent>("events.json", new { since, subject_id = subjectId});
+    /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve this.</remarks>
+    public Task<IEnumerable<FakturoidEvent>> SelectAsync(DateTime? since = null, int? subjectId = null) => base.GetAllPagedEntitiesAsync<FakturoidEvent>("events.json", new { since, subject_id = subjectId });
 
     /// <summary>
     /// Gets asynchronously list of current events, paged by 40.
