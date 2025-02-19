@@ -50,11 +50,11 @@ public class FakturoidInboxFile {
     /// <summary>
     /// The date and time of file creation
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time of last file update
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 
 }

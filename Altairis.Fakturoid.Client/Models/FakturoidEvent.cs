@@ -13,7 +13,7 @@ public partial class FakturoidEvent {
     /// <summary>
     /// Date and time of event creation
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Text of the event

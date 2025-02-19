@@ -107,10 +107,10 @@ public class FakturoidInventoryItem {
     /// <summary>
     /// Date and time of item creation.
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Date and time of last item update.
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }

@@ -54,11 +54,11 @@ public class FakturoidExpensePayment {
     /// <summary>
     /// The date and time of payment creation
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time of last payment update
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 
 }

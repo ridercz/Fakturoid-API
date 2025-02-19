@@ -18,7 +18,7 @@ public class FakturoidTodo {
     /// <summary>
     /// Date and time of todo creation.
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Date and time of todo completion.

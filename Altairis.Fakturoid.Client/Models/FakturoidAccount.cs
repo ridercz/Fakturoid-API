@@ -213,11 +213,11 @@ public class FakturoidAccount {
     /// <summary>
     /// Account creation date.
     /// </summary>
-    public string CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date the account was last modified.
     /// </summary>
-    public string UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 
 }

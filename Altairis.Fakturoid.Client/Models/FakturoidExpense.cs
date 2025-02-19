@@ -253,10 +253,10 @@ public class FakturoidExpense {
     /// <summary>
     /// Date and time of expense creation.
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Date and time of last expense update.
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }

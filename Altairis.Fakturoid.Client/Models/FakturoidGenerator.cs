@@ -207,10 +207,10 @@ public class FakturoidGenerator {
     /// <summary>
     /// Date and time of template creation
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Date and time of last template update
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }

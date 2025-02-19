@@ -152,8 +152,8 @@ public class FakturoidSubject {
     public string Url { get; set; }
 
     /// <summary>Date and time of subject creation</summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>Date and time of last subject update</summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }
