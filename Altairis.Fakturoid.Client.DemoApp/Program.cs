@@ -30,8 +30,8 @@ namespace Altairis.Fakturoid.Client.DemoApp {
                 ShowAccountInfo();
                 ShowSubjects();
                 SearchSubjects("Company");
+                ShowTodos();
                 //ShowEvents();
-                //ShowTodos();
                 //ShowInvoices();
             } catch (AggregateException aex) when (aex.InnerExceptions.Count == 1) {
                 throw aex.InnerException;
@@ -123,7 +123,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
                     Console.WriteLine("Failed! (that's expected)");
                     Console.WriteLine(fex.Message);
                     foreach (var item in fex.Errors) {
-                        Console.WriteLine("\tProperty '{0}': {1}", item.Key, item.Value);
+                        Console.WriteLine($"\tProperty '{item.Key}': {item.Value}");
                     }
                 } else {
                     throw;
@@ -142,21 +142,21 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             var subjects = context.Subjects.SearchAsync(searchTerm).Result;
             Console.WriteLine("OK");
             foreach (var subject in subjects) {
-                Console.WriteLine("Name: {0}, RegNo: {1}", subject.Name, subject.RegistrationNo);
+                Console.WriteLine($"Name: {subject.Name}, RegNo: {subject.RegistrationNo}");
             }
             Console.WriteLine();
         }
 
-        //private static void ShowTodos() {
-        //    Console.Write("Getting all todos...");
-        //    var items = context.Todos.Select();
-        //    Console.WriteLine("OK");
+        private static void ShowTodos() {
+            Console.Write("Getting all todos...");
+            var items = context.Todos.SelectAsync().Result;
+            Console.WriteLine("OK");
 
-        //    foreach (var item in items) {
-        //        Console.WriteLine("{0}: ({1}) {2}", item.created_at, item.name, item.text);
-        //    }
-        //    Console.WriteLine();
-        //}
+            foreach (var item in items) {
+                Console.WriteLine($"{item.CreatedAt}: ({item.Name}) {item.Text} {(item.CompletedAt.HasValue ? "(completed)" : "(not completed)")}");
+            }
+            Console.WriteLine();
+        }
 
         //private static void ShowEvents() {
         //    Console.Write("Getting all events in last 24 hour...");

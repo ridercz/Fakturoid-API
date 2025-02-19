@@ -24,8 +24,19 @@ public class FakturoidTodosProxy : FakturoidEntityProxy {
     /// List of <see cref="FakturoidTodo" /> instances.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
-    public async Task<IEnumerable<FakturoidTodo>> SelectAsync(int page, DateTime? since = null) => page < 1
-            ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
-            : await GetPagedEntitiesAsync<FakturoidTodo>("todos.json", page, new { since });
+    public async Task<IEnumerable<FakturoidTodo>> SelectAsync(int page, DateTime? since = null) => page < 1 ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.") : await GetPagedEntitiesAsync<FakturoidTodo>("todos.json", page, new { since });
+
+    /// <summary>
+    /// Toggles the completion status of a todo task asynchronously.
+    /// </summary>
+    /// <param name="id">The ID of the todo task to toggle.</param>
+    /// <returns>The updated <see cref="FakturoidTodo"/> instance.</returns>
+    public async Task<FakturoidTodo> ToggleCompletion(int id) {
+        var c = this.Context.GetHttpClient();
+        var r = await c.PostAsync($"todos/{id}/toggle_completion.json", null);
+        r.EnsureFakturoidSuccess();
+        return await r.Content.FakturoidReadAsAsync<FakturoidTodo>();
+    }
+
 
 }

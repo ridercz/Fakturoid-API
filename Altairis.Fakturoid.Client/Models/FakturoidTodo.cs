@@ -33,7 +33,7 @@ public class FakturoidTodo {
     /// <summary>
     /// Attributes of objects related to the todo.
     /// </summary>
-    public FakturoidRelatedObject RelatedObjects { get; set; }
+    public List<FakturoidRelatedObject> RelatedObjects { get; set; }
 
     /// <summary>
     /// Parameters with details about todo, specific for each type of todo.

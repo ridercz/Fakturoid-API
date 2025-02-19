@@ -37,6 +37,7 @@ Class representing connection to Fakturoid API, holds authentication information
 | **BankAccounts** | [FakturoidBankAccountsProxy](#fakturoidbankaccountsproxy-class) | Gets the bank accounts. |
 | **NumberFormats** | [FakturoidNumberFormatsProxy](#fakturoidnumberformatsproxy-class) | Gets the number formats. |
 | **Subjects** | [FakturoidSubjectsProxy](#fakturoidsubjectsproxy-class) | Gets the subjects. |
+| **Todos** | [FakturoidTodosProxy](#fakturoidtodosproxy-class) | Gets the todos. |
 ## Constructors
 
 | Name | Summary |
@@ -958,7 +959,7 @@ Todo task.
 | **CreatedAt** | DateTimeOffset | Date and time of todo creation. |
 | **CompletedAt** | DateTime? | Date and time of todo completion. |
 | **Text** | string | Todo text. |
-| **RelatedObjects** | [FakturoidRelatedObject](#fakturoidrelatedobject-class) | Attributes of objects related to the todo. |
+| **RelatedObjects** | List\<[FakturoidRelatedObject](#fakturoidrelatedobject-class)\> | Attributes of objects related to the todo. |
 | **Params** | Object | Parameters with details about todo, specific for each type of todo. |
 # FakturoidUser Class
 
@@ -1758,6 +1759,7 @@ Proxy class for working with todo tasks.
 |---|---|---|
 | [**SelectAsync(DateTime? since)**](#selectasyncdatetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
 | [**SelectAsync(int page, DateTime? since)**](#selectasyncint-page-datetime-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
+| [**ToggleCompletion(int id)**](#togglecompletionint-id) | Task\<[FakturoidTodo](#fakturoidtodo-class)\> | Toggles the completion status of a todo task asynchronously. |
 ## Methods
 
 ### SelectAsync(DateTime? since)
@@ -1790,6 +1792,21 @@ Gets asynchronously paged list of current todos
 Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>>
 
 List of **Altairis.Fakturoid.Client.Models.FakturoidTodo** instances.
+
+### ToggleCompletion(int id)
+
+Toggles the completion status of a todo task asynchronously.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The ID of the todo task to toggle. |
+
+
+### Returns
+
+Task<[FakturoidTodo](#fakturoidtodo-class)>
+
+The updated **Altairis.Fakturoid.Client.Models.FakturoidTodo** instance.
 
 # InvoiceMessageType Enum
 

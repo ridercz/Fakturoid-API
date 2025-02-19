@@ -55,8 +55,8 @@ public class FakturoidContext {
         this.BankAccounts = new(this);
         this.NumberFormats = new(this);
         this.Subjects = new(this);
+        this.Todos = new(this);
         //this.Events = new FakturoidEventsProxy(this);
-        //this.Todos = new FakturoidTodosProxy(this);
         //this.Invoices = new FakturoidInvoicesProxy(this);
         //this.Expenses = new FakturoidExpensesProxy(this);
     }
@@ -111,6 +111,11 @@ public class FakturoidContext {
     /// Gets the subjects.
     /// </summary>
     public FakturoidSubjectsProxy Subjects { get; }
+
+    /// <summary>
+    /// Gets the todos.
+    /// </summary>
+    public FakturoidTodosProxy Todos { get; }
 
     // Public methods
 
