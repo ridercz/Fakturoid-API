@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace Altairis.Fakturoid.Client;
+namespace Altairis.Fakturoid.Client.Proxies;
 
 #region Enums
 
@@ -126,11 +126,11 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <returns>
     /// Instance of <see cref="FakturoidInvoice" /> class.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public async Task<FakturoidInvoice> SelectSingleAsync(int id) {
         return id < 1
             ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
-            : await base.GetSingleEntityAsync<FakturoidInvoice>(string.Format("invoices/{0}.json", id));
+            : await GetSingleEntityAsync<FakturoidInvoice>(string.Format("invoices/{0}.json", id));
     }
 
     /// <summary>
@@ -144,7 +144,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidInvoice" /> instances.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
     public Task<IEnumerable<FakturoidInvoice>> SelectAsync(InvoiceTypeCondition type = InvoiceTypeCondition.Any, InvoiceStatusCondition status = InvoiceStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
         if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
         var uri = type switch {
@@ -182,7 +182,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return base.GetAllPagedEntitiesAsync<FakturoidInvoice>(uri, queryParams);
+        return GetAllPagedEntitiesAsync<FakturoidInvoice>(uri, queryParams);
     }
 
     /// <summary>
@@ -197,7 +197,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidInvoice" /> instances.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">
+    /// <exception cref="ArgumentOutOfRangeException">
     /// page;Value must be greater than zero.
     /// or
     /// subjectId;Value must be greater than zero.
@@ -240,18 +240,18 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return base.GetPagedEntitiesAsync<FakturoidInvoice>(uri, page, queryParams);
+        return GetPagedEntitiesAsync<FakturoidInvoice>(uri, page, queryParams);
     }
 
     /// <summary>
     /// Deletes asynchronously invoice with specified id.
     /// </summary>
     /// <param name="id">The contact id.</param>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public Task DeleteAsync(int id) {
         if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-        return base.DeleteSingleEntityAsync(string.Format("invoices/{0}.json", id));
+        return DeleteSingleEntityAsync(string.Format("invoices/{0}.json", id));
     }
 
     /// <summary>
@@ -260,7 +260,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <param name="entity">The new invoice.</param>
     /// <returns>ID of newly created invoice.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<int> CreateAsync(FakturoidInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync("invoices.json", entity);
+    public async Task<int> CreateAsync(FakturoidInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync("invoices.json", entity);
 
     /// <summary>
     /// Updates asynchronously the specified invoice.
@@ -271,7 +271,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     public async Task<FakturoidInvoice> UpdateAsync(FakturoidInvoice entity) {
         return entity == null
             ? throw new ArgumentNullException(nameof(entity))
-            : await base.UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.Id), entity);
+            : await UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.Id), entity);
     }
 
     /// <summary>
@@ -279,7 +279,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// </summary>
     /// <param name="id">The invoice id.</param>
     /// <param name="messageType">Type of the message.</param>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public async Task SendMessageAsync(int id, InvoiceMessageType messageType) {
         if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
         var eventName = messageType switch {

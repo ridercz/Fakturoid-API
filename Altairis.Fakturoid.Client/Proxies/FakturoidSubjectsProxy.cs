@@ -1,4 +1,5 @@
-﻿namespace Altairis.Fakturoid.Client;
+﻿namespace Altairis.Fakturoid.Client.Proxies;
+
 /// <summary>
 /// Proxy class for working with subjects/contacts.
 /// </summary>
@@ -15,7 +16,7 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidSubject" /> instances.
     /// </returns>
-    public Task<IEnumerable<FakturoidSubject>> SelectAsync(string customId = null, DateTime? createdSince = default, DateTime? updatedSince = default) => base.GetAllPagedEntitiesAsync<FakturoidSubject>("subjects.json", new { custom_id = customId, updated_since = updatedSince, since = createdSince });
+    public Task<IEnumerable<FakturoidSubject>> SelectAsync(string customId = null, DateTime? createdSince = default, DateTime? updatedSince = default) => GetAllPagedEntitiesAsync<FakturoidSubject>("subjects.json", new { custom_id = customId, updated_since = updatedSince, since = createdSince });
 
     /// <summary>
     /// Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note.
@@ -23,7 +24,7 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// <param name="searchTerm">Search string.</param>
     /// <returns>Collection if search results.</returns>
     public Task<IEnumerable<FakturoidSubject>> SearchAsync(string searchTerm) =>
-        base.GetUnpagedEntitiesAsync<FakturoidSubject>("subjects/search.json", new {
+        GetUnpagedEntitiesAsync<FakturoidSubject>("subjects/search.json", new {
             query = searchTerm
         });
 
@@ -32,11 +33,11 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// </summary>
     /// <param name="page">The page number.</param>
     /// <returns>List of <see cref="FakturoidSubject"/> instances.</returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">page;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">page;Value must be greater than zero.</exception>
     public async Task<IEnumerable<FakturoidSubject>> SelectAsync(int page) {
         return page < 1
             ? throw new ArgumentOutOfRangeException(nameof(page), "Value must be greater than zero.")
-            : await base.GetPagedEntitiesAsync<FakturoidSubject>("subjects.json", page);
+            : await GetPagedEntitiesAsync<FakturoidSubject>("subjects.json", page);
     }
 
     /// <summary>
@@ -44,22 +45,22 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// </summary>
     /// <param name="id">The subject id.</param>
     /// <returns>Instance of <see cref="FakturoidSubject"/> class.</returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public async Task<FakturoidSubject> SelectSingleAsync(int id) {
         return id < 1
             ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
-            : await base.GetSingleEntityAsync<FakturoidSubject>(string.Format("subjects/{0}.json", id));
+            : await GetSingleEntityAsync<FakturoidSubject>(string.Format("subjects/{0}.json", id));
     }
 
     /// <summary>
     /// Deletes asynchronously with specified id.
     /// </summary>
     /// <param name="id">The contact id.</param>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public Task DeleteAsync(int id) {
         if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-        return base.DeleteSingleEntityAsync(string.Format("subjects/{0}.json", id));
+        return DeleteSingleEntityAsync(string.Format("subjects/{0}.json", id));
     }
 
     /// <summary>
@@ -68,7 +69,7 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     /// <param name="entity">The new subject.</param>
     /// <returns>ID of newly created subject.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<int> CreateAsync(FakturoidSubject entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync("subjects.json", entity);
+    public async Task<int> CreateAsync(FakturoidSubject entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync("subjects.json", entity);
 
     /// <summary>
     /// Updates asynchronously the specified subject.
@@ -79,7 +80,7 @@ public class FakturoidSubjectsProxy : FakturoidEntityProxy {
     public async Task<FakturoidSubject> UpdateAsync(FakturoidSubject entity) {
         return entity == null
             ? throw new ArgumentNullException(nameof(entity))
-            : await base.UpdateSingleEntityAsync(string.Format("subjects/{0}.json", entity.Id), entity);
+            : await UpdateSingleEntityAsync(string.Format("subjects/{0}.json", entity.Id), entity);
     }
 
 }

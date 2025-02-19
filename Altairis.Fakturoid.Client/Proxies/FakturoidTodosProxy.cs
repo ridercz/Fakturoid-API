@@ -1,4 +1,4 @@
-﻿namespace Altairis.Fakturoid.Client;
+﻿namespace Altairis.Fakturoid.Client.Proxies;
 
 /// <summary>
 /// Proxy class for working with todo tasks.
@@ -13,7 +13,7 @@ public class FakturoidTodosProxy : FakturoidEntityProxy {
     /// <param name="since">The date since when todos are to be selected.</param>
     /// <returns>List of <see cref="FakturoidTodo"/> instances.</returns>
     /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve rhis.</remarks>
-    public Task<IEnumerable<FakturoidTodo>> SelectAsync(DateTime? since = null) => base.GetAllPagedEntitiesAsync<FakturoidTodo>("todos.json", new { since });
+    public Task<IEnumerable<FakturoidTodo>> SelectAsync(DateTime? since = null) => GetAllPagedEntitiesAsync<FakturoidTodo>("todos.json", new { since });
 
     /// <summary>
     /// Gets asynchronously paged list of current todos
@@ -23,11 +23,11 @@ public class FakturoidTodosProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidTodo" /> instances.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
     public async Task<IEnumerable<FakturoidTodo>> SelectAsync(int page, DateTime? since = null) {
         return page < 1
             ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
-            : await base.GetPagedEntitiesAsync<FakturoidTodo>("todos.json", page, new { since });
+            : await GetPagedEntitiesAsync<FakturoidTodo>("todos.json", page, new { since });
     }
 
 }

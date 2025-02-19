@@ -1,6 +1,7 @@
 ﻿global using Altairis.Fakturoid.Client.Models;
 using System.Net.Http.Headers;
 using System.Text;
+using Altairis.Fakturoid.Client.Proxies;
 
 namespace Altairis.Fakturoid.Client;
 

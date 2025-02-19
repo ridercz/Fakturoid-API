@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace Altairis.Fakturoid.Client;
+namespace Altairis.Fakturoid.Client.Proxies;
 
 #region Enums
 
@@ -61,11 +61,11 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <returns>
     /// Instance of <see cref="FakturoidExpense" /> class.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public async Task<FakturoidExpense> SelectSingleAsync(int id) {
         return id < 1
             ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
-            : await base.GetSingleEntityAsync<FakturoidExpense>(string.Format(EntityPath, id));
+            : await GetSingleEntityAsync<FakturoidExpense>(string.Format(EntityPath, id));
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidExpense" /> instances.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">subjectId;Value must be greater than zero.</exception>
     public Task<IEnumerable<FakturoidExpense>> SelectAsync(ExpenseStatusCondition status = ExpenseStatusCondition.Any, int? subjectId = null, DateTime? since = null, string number = null) {
         if (subjectId.HasValue && subjectId.Value < 1) throw new ArgumentOutOfRangeException(nameof(subjectId), "Value must be greater than zero.");
 
@@ -108,7 +108,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return base.GetAllPagedEntitiesAsync<FakturoidExpense>(uri, queryParams);
+        return GetAllPagedEntitiesAsync<FakturoidExpense>(uri, queryParams);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidExpense" /> instances.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">
+    /// <exception cref="ArgumentOutOfRangeException">
     /// page;Value must be greater than zero.
     /// or
     /// subjectId;Value must be greater than zero.
@@ -157,18 +157,18 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return base.GetPagedEntitiesAsync<FakturoidExpense>(uri, page);
+        return GetPagedEntitiesAsync<FakturoidExpense>(uri, page);
     }
 
     /// <summary>
     /// Deletes asynchronously expense with specified id.
     /// </summary>
     /// <param name="id">The contact id.</param>
-    /// <exception cref="System.ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public Task DeleteAsync(int id) {
         if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-        return base.DeleteSingleEntityAsync(string.Format(EntityPath, id));
+        return DeleteSingleEntityAsync(string.Format(EntityPath, id));
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <returns>ID of newly created expense.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
     public async Task<int> CreateAsync(FakturoidExpense entity) {
-        return entity == null ? throw new ArgumentNullException(nameof(entity)) : await base.CreateEntityAsync(CollectionPath, entity);
+        return entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync(CollectionPath, entity);
     }
 
     /// <summary>
@@ -190,7 +190,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     public async Task<FakturoidExpense> UpdateAsync(FakturoidExpense entity) {
         return entity == null
             ? throw new ArgumentNullException(nameof(entity))
-            : await base.UpdateSingleEntityAsync(string.Format(EntityPath, entity.Id), entity);
+            : await UpdateSingleEntityAsync(string.Format(EntityPath, entity.Id), entity);
     }
 
     /// <summary>

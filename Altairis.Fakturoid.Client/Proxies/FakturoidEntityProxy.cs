@@ -2,7 +2,7 @@
 using System.Text;
 using System.Xml;
 
-namespace Altairis.Fakturoid.Client;
+namespace Altairis.Fakturoid.Client.Proxies;
 
 /// <summary>
 /// Proxy class for working with any Fakturoid entity
@@ -62,7 +62,7 @@ public abstract class FakturoidEntityProxy {
     /// <returns>Paged list of entities of given type.</returns>
     /// <exception cref="ArgumentNullException">uri</exception>
     /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.;uri</exception>
-    /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
     /// <remarks>The number of entities on single page is determined by API and is different for each type. In current version of API, there is no way to detect or change page size.</remarks>
     protected Task<IEnumerable<T>> GetPagedEntitiesAsync<T>(string baseUri, int page, object additionalQueryParams = null) {
         if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
@@ -179,9 +179,9 @@ public abstract class FakturoidEntityProxy {
     /// <param name="uri">The entity URI.</param>
     /// <param name="entity">The entity object.</param>
     /// <returns>Returns the updated entity</returns>
-    /// <exception cref="System.ArgumentNullException">
+    /// <exception cref="ArgumentNullException">
     /// </exception>
-    /// <exception cref="System.ArgumentException">Value cannot be empty or whitespace only string.</exception>
+    /// <exception cref="ArgumentException">Value cannot be empty or whitespace only string.</exception>
     /// <exception cref="ArgumentNullException">uri
     /// or
     /// entity</exception>
@@ -223,22 +223,16 @@ public abstract class FakturoidEntityProxy {
             if (rawValue == null) continue; // null queryParams do not propagate to query
 
             string stringValue = null;
-            if (rawValue is DateTime time) {
-                // Format date
+            if (rawValue is DateTime time)                 // Format date
                 stringValue = XmlConvert.ToString(time, XmlDateTimeSerializationMode.RoundtripKind);
-            } else if (rawValue is DateTime?) {
+            else if (rawValue is DateTime?) {
                 // Format nullable date
                 var dateValue = (DateTime?)rawValue;
                 if (dateValue.HasValue) stringValue = XmlConvert.ToString(dateValue.Value, XmlDateTimeSerializationMode.RoundtripKind);
-            } else {
-                if (rawValue is IFormattable formattableValue) {
-                    // Format IFormattable rawValue
-                    stringValue = formattableValue.ToString(null, System.Globalization.CultureInfo.InvariantCulture);
-                } else {
-                    // Format other value - just use ToString()
-                    stringValue = rawValue.ToString();
-                }
-            }
+            } else if (rawValue is IFormattable formattableValue)                     // Format IFormattable rawValue
+                stringValue = formattableValue.ToString(null, System.Globalization.CultureInfo.InvariantCulture);
+            else                     // Format other value - just use ToString()
+                stringValue = rawValue.ToString();
 
             if (string.IsNullOrWhiteSpace(stringValue)) continue; // empty value after string conversion
             qsb.AppendFormat("{0}={1}&", descriptor.Name, Uri.EscapeDataString(stringValue));

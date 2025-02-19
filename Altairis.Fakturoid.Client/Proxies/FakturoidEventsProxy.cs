@@ -1,4 +1,5 @@
-﻿namespace Altairis.Fakturoid.Client;
+﻿namespace Altairis.Fakturoid.Client.Proxies;
+
 /// <summary>
 /// Proxy class for working with events
 /// </summary>
@@ -13,7 +14,7 @@ public class FakturoidEventsProxy : FakturoidEntityProxy {
     /// <param name="subjectId">The ID of the subject to filter events by.</param>
     /// <returns>List of <see cref="FakturoidEvent"/> instances.</returns>
     /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve this.</remarks>
-    public Task<IEnumerable<FakturoidEvent>> SelectAsync(DateTime? since = null, int? subjectId = null) => base.GetAllPagedEntitiesAsync<FakturoidEvent>("events.json", new { since, subject_id = subjectId });
+    public Task<IEnumerable<FakturoidEvent>> SelectAsync(DateTime? since = null, int? subjectId = null) => GetAllPagedEntitiesAsync<FakturoidEvent>("events.json", new { since, subject_id = subjectId });
 
     /// <summary>
     /// Gets asynchronously list of current events, paged by 40.
@@ -23,11 +24,11 @@ public class FakturoidEventsProxy : FakturoidEntityProxy {
     /// <returns>
     /// List of <see cref="FakturoidEvent" /> instances.
     /// </returns>
-    /// <exception cref="System.ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
     public async Task<IEnumerable<FakturoidEvent>> SelectAsync(int page, DateTime? since = null) {
         return page < 1
             ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
-            : await base.GetPagedEntitiesAsync<FakturoidEvent>("events.json", page, new { since });
+            : await GetPagedEntitiesAsync<FakturoidEvent>("events.json", page, new { since });
     }
 
 }
