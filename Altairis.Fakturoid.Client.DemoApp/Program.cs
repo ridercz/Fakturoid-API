@@ -32,7 +32,7 @@ namespace Altairis.Fakturoid.Client.DemoApp {
                 SearchSubjects("Company");
                 ShowTodos();
                 ShowEvents();
-                //ShowInvoices();
+                ShowInvoices();
             } catch (AggregateException aex) when (aex.InnerExceptions.Count == 1) {
                 throw aex.InnerException;
             }
@@ -42,51 +42,44 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             Console.ReadLine();
         }
 
-        //private static void ShowInvoices() {
-        //    Console.Write("Creating new subject...");
-        //    var subjectId = context.Subjects.Create(new JsonSubject {
-        //        name = "ACME, s. r. o.",
-        //        street = "Testovací 123",
-        //        city = "Praha",
-        //        zip = "11000",
-        //        country = "CZ",
-        //        registration_no = "12345678",
-        //        vat_no = "CZ12345678",
-        //        email = "acmecorp@mailinator.com"
-        //    });
-        //    Console.WriteLine("OK, ID={0}", subjectId);
+        private static void ShowInvoices() {
+            Console.Write("Creating new subject...");
+            var subject = new FakturoidSubject {
+                Name = "ACME, s. r. o.",
+                Street = "Testovací 123",
+                City = "Praha",
+                Zip = "11000",
+                Country = "CZ",
+                RegistrationNo = "12345678",
+                VatNo = "CZ12345678",
+                Email = "acmecorp@mailinator.com"
+            };
+            var subjectId = context.Subjects.CreateAsync(subject).Result;
+            Console.WriteLine($"OK, ID={subjectId}");
 
-        //    Console.Write("Creating new invoice...");
-        //    var newInvoice = new JsonInvoice {
-        //        subject_id = subjectId,
-        //        client_street = "Jiná ulice 123",
-        //        lines = new List<JsonInvoiceLine>(),
-        //    };
-        //    newInvoice.lines.Add(new JsonInvoiceLine { name = "Položka 1", quantity = 1, unit_name = "ks", unit_price = 100, vat_rate = 21 });
-        //    newInvoice.lines.Add(new JsonInvoiceLine { name = "Položka 2", quantity = 3, unit_name = "hod.", unit_price = 1234, vat_rate = 21 });
-        //    var newInvoiceId = context.Invoices.Create(newInvoice);
-        //    Console.WriteLine("OK, ID={0}", newInvoiceId);
+            Console.Write("Creating new invoice...");
+            var newInvoice = new FakturoidInvoice {
+                SubjectId = subjectId, 
+                ClientStreet = "Jiná ulice 123",
+                Lines = new List<FakturoidLine>(),
+            };
+            newInvoice.Lines.Add(new FakturoidLine { Name = "Položka 1", Quantity = 1, UnitName = "ks", UnitPrice = 100, VatRate = 21 });
+            newInvoice.Lines.Add(new FakturoidLine { Name = "Položka 2", Quantity = 3, UnitName = "hod.", UnitPrice = 1234, VatRate = 21 });
+            var newInvoiceId = context.Invoices.CreateAsync(newInvoice).Result;
+            Console.WriteLine($"OK, ID={newInvoiceId}");
 
-        //    Console.Write("Reading back invoice information...");
-        //    newInvoice = context.Invoices.SelectSingle(newInvoiceId);
-        //    Console.WriteLine("OK");
+            Console.Write("Reading back invoice information...");
+            newInvoice = context.Invoices.SelectSingleAsync(newInvoiceId).Result;
+            Console.WriteLine("OK");
 
-        //    Console.Write("Sending invoice by e-mail...");
-        //    context.Invoices.SendMessage(newInvoiceId, InvoiceMessageType.InvoiceMessage);
-        //    Console.WriteLine("OK");
+            Console.Write("Deleting invoice...");
+            context.Invoices.DeleteAsync(newInvoiceId).Wait();
+            Console.WriteLine("OK");
 
-        //    Console.Write("Marking invoice as paid...");
-        //    context.Invoices.SetPaymentStatus(newInvoiceId, InvoicePaymentStatus.Paid);
-        //    Console.WriteLine("OK");
-
-        //    Console.Write("Deleting invoice...");
-        //    context.Invoices.Delete(newInvoiceId);
-        //    Console.WriteLine("OK");
-
-        //    Console.Write("Deleting subject...");
-        //    context.Subjects.Delete(subjectId);
-        //    Console.WriteLine("OK");
-        //}
+            Console.Write("Deleting subject...");
+            context.Subjects.DeleteAsync(subjectId).Wait();
+            Console.WriteLine("OK");
+        }
 
         private static void ShowSubjects() {
             Console.Write("Creating new subject...");
@@ -108,7 +101,8 @@ namespace Altairis.Fakturoid.Client.DemoApp {
             subject.DumpProperties(Console.Out, "\t");
 
             Console.Write("Updating subject...");
-            subject.CustomId = "MY_CUSTOM_ID";
+            var rng = new Random();
+            subject.CustomId = rng.Next(rng.Next()).ToString();
             subject = context.Subjects.UpdateAsync(subject).Result;
             Console.WriteLine("OK, listing properties:");
             subject.DumpProperties(Console.Out, "\t");

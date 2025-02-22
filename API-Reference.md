@@ -1,25 +1,24 @@
-# Altairis.Fakturoid.Client.dll v.3.0.0.0 API documentation
+# Altairis.Fakturoid.Client.dll v3.0.0.0 API documentation
 
 # All types
 
 |   |   |   |
 |---|---|---|
-| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) |
-| [FakturoidException Class](#fakturoidexception-class) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) | [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) |
-| [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) | [ExpenseStatusCondition Enum](#expensestatuscondition-enum) |
-| [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidInvoice Class](#fakturoidinvoice-class) | [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) |
-| [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) | [FakturoidEntityProxy Class](#fakturoidentityproxy-class) |
-| [FakturoidAccount Class](#fakturoidaccount-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) | [FakturoidEventsProxy Class](#fakturoideventsproxy-class) |
-| [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) | [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) |
-| [FakturoidAttachmentUpload Class](#fakturoidattachmentupload-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) | [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) |
-| [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidLine Class](#fakturoidline-class) | [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) |
-| [FakturoidEvent Class](#fakturoidevent-class) | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) | [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) |
-| [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) |
-| [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidSubject Class](#fakturoidsubject-class) | [InvoiceMessageType Enum](#invoicemessagetype-enum) |
-| [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) | [FakturoidTodo Class](#fakturoidtodo-class) | [InvoicePaymentStatus Enum](#invoicepaymentstatus-enum) |
-| [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidUser Class](#fakturoiduser-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) |
-| [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) |
-| [FakturoidInventory Class](#fakturoidinventory-class) | [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) |   |
+| [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidException Class](#fakturoidexception-class) | [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) |
+| [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidAccount Class](#fakturoidaccount-class) |
+| [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidEvent Class](#fakturoidevent-class) |
+| [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) |
+| [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidInventory Class](#fakturoidinventory-class) |
+| [FakturoidInventoryItem Class](#fakturoidinventoryitem-class) | [FakturoidInventoryMove Class](#fakturoidinventorymove-class) | [FakturoidInventoryMoveDocument Class](#fakturoidinventorymovedocument-class) |
+| [FakturoidInvoice Class](#fakturoidinvoice-class) | [FakturoidInvoiceMessage Class](#fakturoidinvoicemessage-class) | [FakturoidInvoicePaidAdvance Class](#fakturoidinvoicepaidadvance-class) |
+| [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) | [FakturoidLine Class](#fakturoidline-class) |
+| [FakturoidNumberFormat Class](#fakturoidnumberformat-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
+| [FakturoidTodo Class](#fakturoidtodo-class) | [FakturoidUser Class](#fakturoiduser-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) |
+| [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) | [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) |
+| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [FakturoidEntityProxy Class](#fakturoidentityproxy-class) |
+| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) |
+| [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) | [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) |
+| [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) |   |
 # FakturoidContext Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -39,16 +38,17 @@ Class representing connection to Fakturoid API, holds authentication information
 | **Subjects** | [FakturoidSubjectsProxy](#fakturoidsubjectsproxy-class) | Gets the subjects. |
 | **Todos** | [FakturoidTodosProxy](#fakturoidtodosproxy-class) | Gets the todos. |
 | **Events** | [FakturoidEventsProxy](#fakturoideventsproxy-class) | Gets the events. |
+| **Invoices** | [FakturoidInvoicesProxy](#fakturoidinvoicesproxy-class) | Gets the invoices. |
 ## Constructors
 
 | Name | Summary |
 |---|---|
-| [**FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent)**](#fakturoidcontextstring-accountname-string-clientid-string-clientsecret-string-useragent) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
+| [FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent)](#fakturoidcontextstring-accountname-string-clientid-string-clientsecret-string-useragent) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidContext** class. |
 ## Methods
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**GetAccountInfoAsync()**](#getaccountinfoasync) | Task\<[FakturoidAccount](#fakturoidaccount-class)\> | Gets the account information. |
+| [GetAccountInfoAsync()](#getaccountinfoasync) | Task<[FakturoidAccount](#fakturoidaccount-class)> | Gets the account information. |
 ## Constructors
 
 ### FakturoidContext(string accountName, string clientId, string clientSecret, string userAgent)
@@ -91,30 +91,30 @@ The exception representing error returned by Fakturoid API.
 |---|---|---|
 | **Response** | HttpResponseMessage | Gets or sets the related HTTP response object. |
 | **ResponseBody** | string | Gets the HTTP response body as string. |
-| **Errors** | IEnumerable\<KeyValuePair\<string, string\>\> | Gets the errors returned by Fakturoid API. |
+| **Errors** | IEnumerable<KeyValuePair<string, string>> | Gets the errors returned by Fakturoid API. |
 | **TargetSite** | MethodBase |  |
-| **StackTrace** | string |  |
 | **Message** | string |  |
 | **Data** | IDictionary |  |
 | **InnerException** | Exception |  |
 | **HelpLink** | string |  |
 | **Source** | string |  |
 | **HResult** | int |  |
+| **StackTrace** | string |  |
 ## Constructors
 
 | Name | Summary |
 |---|---|
-| [**FakturoidException()**](#fakturoidexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string message)**](#fakturoidexceptionstring-message) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(HttpResponseMessage response)**](#fakturoidexceptionhttpresponsemessage-response) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string format, Object[] args)**](#fakturoidexceptionstring-format-object-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string message, Exception innerException)**](#fakturoidexceptionstring-message-exception-innerexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
-| [**FakturoidException(string format, Exception innerException, Object[] args)**](#fakturoidexceptionstring-format-exception-innerexception-object-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [FakturoidException()](#fakturoidexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [FakturoidException(string message)](#fakturoidexceptionstring-message) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [FakturoidException(HttpResponseMessage response)](#fakturoidexceptionhttpresponsemessage-response) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [FakturoidException(string format, Object[] args)](#fakturoidexceptionstring-format-object-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [FakturoidException(string message, Exception innerException)](#fakturoidexceptionstring-message-exception-innerexception) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
+| [FakturoidException(string format, Exception innerException, Object[] args)](#fakturoidexceptionstring-format-exception-innerexception-object-args) | Initializes a new instance of the **Altairis.Fakturoid.Client.FakturoidException** class. |
 ## Methods
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**GetObjectData(SerializationInfo info, StreamingContext context)**](#getobjectdataserializationinfo-info-streamingcontext-context) | void | Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception. |
+| [GetObjectData(SerializationInfo info, StreamingContext context)](#getobjectdataserializationinfo-info-streamingcontext-context) | void | Sets the **System.Runtime.Serialization.SerializationInfo** with information about the exception. |
 ## Constructors
 
 ### FakturoidException()
@@ -189,17 +189,19 @@ Sets the **System.Runtime.Serialization.SerializationInfo** with information abo
 Namespace: Altairis.Fakturoid.Client
 
 
+
 ## Methods
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**EnsureFakturoidSuccess(HttpResponseMessage r)**](#ensurefakturoidsuccesshttpresponsemessage-r) | void |  |
-| [**FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpatchasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
-| [**FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)**](#fakturoidpostasjsonasynchttpclient-client-string-requesturi-t-value) | Task\<HttpResponseMessage\> |  |
-| [**FakturoidReadAsAsync(HttpContent content)**](#fakturoidreadasasynchttpcontent-content) | Task\<T\> |  |
+| [EnsureFakturoidSuccess(HttpResponseMessage r)](#ensurefakturoidsuccesshttpresponsemessage-r) | void |  |
+| [FakturoidPatchAsJsonAsync(HttpClient client, string requestUri, T value)](#fakturoidpatchasjsonasynchttpclient-client-string-requesturi-t-value) | Task<HttpResponseMessage> |  |
+| [FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)](#fakturoidpostasjsonasynchttpclient-client-string-requesturi-t-value) | Task<HttpResponseMessage> |  |
+| [FakturoidReadAsAsync(HttpContent content)](#fakturoidreadasasynchttpcontent-content) | Task<T> |  |
 ## Methods
 
 ### EnsureFakturoidSuccess(HttpResponseMessage r)
+
 
 
 
@@ -209,9 +211,11 @@ Namespace: Altairis.Fakturoid.Client
 
 
 
+
 ### Returns
 
 Task<HttpResponseMessage>
+
 
 
 ### FakturoidPostAsJsonAsync(HttpClient client, string requestUri, T value)
@@ -219,9 +223,11 @@ Task<HttpResponseMessage>
 
 
 
+
 ### Returns
 
 Task<HttpResponseMessage>
+
 
 
 ### FakturoidReadAsAsync(HttpContent content)
@@ -229,9 +235,11 @@ Task<HttpResponseMessage>
 
 
 
+
 ### Returns
 
 Task<T>
+
 
 
 # RecurringGenerator Class
@@ -266,7 +274,7 @@ Recurring invoice generator.
 | **LegacyBankDetails** | [FakturoidLegacyBankDetails](#fakturoidlegacybankdetails-class) | Display IBAN, BIC (SWIFT) and bank account number for legacy generators set without bank account ID. |
 | **BankAccountId** | int | Bank account ID. |
 | **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show. |
-| **Tags** | List\<string\> | List of tags. |
+| **Tags** | List<string> | List of tags. |
 | **OrderNumber** | string | Order number. |
 | **Currency** | string | Currency ISO code. |
 | **ExchangeRate** | decimal | Exchange rate. |
@@ -282,7 +290,7 @@ Recurring invoice generator.
 | **Total** | decimal | Total amount with VAT. |
 | **NativeSubtotal** | decimal | Total amount without VAT in the account currency. |
 | **NativeTotal** | decimal | Total amount with VAT in the account currency. |
-| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to invoice. You can use variables for inserting dates to your text. |
+| **Lines** | List<[FakturoidLine](#fakturoidline-class)> | List of lines to invoice. You can use variables for inserting dates to your text. |
 | **HtmlUrl** | string | Generator HTML web address. |
 | **Url** | string | Generator API address. |
 | **SubjectUrl** | string | API address of subject. |
@@ -364,21 +372,10 @@ Attachment for download
 
 | Name | Type | Summary |
 |---|---|---|
-| **FileName** | string | Attachment file name. |
-| **ContentType** | string | Attachment file MIME type. |
-| **DownloadUrl** | string | API URL for file download. |
-# FakturoidAttachmentUpload Class
-
-Namespace: Altairis.Fakturoid.Client.Models
-
-Attachment.
-
-## Properties
-
-| Name | Type | Summary |
-|---|---|---|
 | **Filename** | string | Attachment file name. |
-| **DataUrl** | string | Attachment contents in the form of a Data URI. |
+| **ContentType** | string | Attachment file MIME type (download only). |
+| **DownloadUrl** | string | API URL for file download (download only). |
+| **DataUrl** | string | Attachment contents in the form of a Data URI (upload only). |
 # FakturoidBankAccount Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -414,7 +411,7 @@ Event data.
 | **Name** | string | Event name |
 | **CreatedAt** | DateTimeOffset | Date and time of event creation |
 | **Text** | string | Text of the event |
-| **RelatedObjects** | List\<[FakturoidRelatedObject](#fakturoidrelatedobject-class)\> | Attributes of objects related to the event |
+| **RelatedObjects** | List<[FakturoidRelatedObject](#fakturoidrelatedobject-class)> | Attributes of objects related to the event |
 | **User** | [FakturoidEventUser](#fakturoideventuser-class) | User details |
 | **Params** | Object | Parameters with details about event, specific for each type of event |
 # FakturoidEventUser Class
@@ -465,27 +462,27 @@ Expense data.
 | **LockedAt** | DateTime | Date and time when the expense was locked. |
 | **Description** | string | Expense description. |
 | **PrivateNote** | string | Private note. |
-| **Tags** | List\<string\> | List of tags. |
+| **Tags** | List<string> | List of tags. |
 | **BankAccount** | string | Supplier bank account number. Default: Inherit from supplier subject. |
 | **Iban** | string | Supplier bank account IBAN. Default: Inherit from supplier subject. |
 | **SwiftBic** | string | Supplier bank account BIC (for SWIFT payments). Default: Inherit from supplier subject. |
 | **PaymentMethod** | string | Payment method. Values: bank, cash, cod (cash on delivery), card, paypal, custom. Default: bank. |
 | **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null). Value: String up to 20 characters. |
 | **Currency** | string | Currency ISO Code. Default: Inherit from account settings. |
-| **ExchangeRate** | decimal | Exchange rate (required if expense currency differs from account currency). |
+| **ExchangeRate** | decimal? | Exchange rate (required if expense currency differs from account currency). |
 | **TransferredTaxLiability** | bool | Self-assesment of VAT? Default: false. |
 | **SupplyCode** | string | Supply code for statement about expenses in reverse charge. |
 | **VatPriceMode** | string | Calculate VAT from base or final amount. Values: without_vat, from_total_with_vat. Default: without_vat. |
-| **ProportionalVatDeduction** | int | Proportional VAT deduction (percent). Default: 100. |
+| **ProportionalVatDeduction** | int? | Proportional VAT deduction (percent). Default: 100. |
 | **TaxDeductible** | bool | Tax deductible. Default: true. |
-| **Subtotal** | decimal | Total without VAT. |
-| **Total** | decimal | Total with VAT. |
-| **NativeSubtotal** | decimal | Total without VAT in the account currency. |
-| **NativeTotal** | decimal | Total with VAT in the account currency. |
-| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to expense. |
-| **VatRatesSummary** | List\<[FakturoidVatRateSummary](#fakturoidvatratesummary-class)\> | VAT rates summary. |
-| **Payments** | List\<[FakturoidExpensePayment](#fakturoidexpensepayment-class)\> | List of payments. |
-| **Attachments** | List\<[FakturoidAttachment](#fakturoidattachment-class)\> | List of attachments. |
+| **Subtotal** | decimal? | Total without VAT. |
+| **Total** | decimal? | Total with VAT. |
+| **NativeSubtotal** | decimal? | Total without VAT in the account currency. |
+| **NativeTotal** | decimal? | Total with VAT in the account currency. |
+| **Lines** | List<[FakturoidLine](#fakturoidline-class)> | List of lines to expense. |
+| **VatRatesSummary** | List<[FakturoidVatRateSummary](#fakturoidvatratesummary-class)> | VAT rates summary. |
+| **Payments** | List<[FakturoidExpensePayment](#fakturoidexpensepayment-class)> | List of payments. |
+| **Attachments** | List<[FakturoidAttachment](#fakturoidattachment-class)> | List of attachments. |
 | **HtmlUrl** | string | Expense HTML web address. |
 | **Url** | string | Expense API address. |
 | **SubjectUrl** | string | Subject API address. |
@@ -530,29 +527,29 @@ Generator
 | **TaxDateAtEndOfLastMonth** | bool | Set CED at the end of last month<br>Default: false |
 | **Due** | int | Number of days until the invoice is overdue<br>Default: Inherit from account settings |
 | **SubjectId** | int | Subject ID |
-| **NumberFormatId** | int | Number format ID<br>Default: Inherit from default account settings |
+| **NumberFormatId** | int? | Number format ID<br>Default: Inherit from default account settings |
 | **Note** | string | Text before invoice lines |
 | **FooterNote** | string | Text in invoice footer |
-| **LegacyBankDetails** | Object | Display IBAN, BIC (SWIFT) and bank account number for legacy templates set without bank account ID<br>Default: null |
-| **BankAccountId** | int | Bank account ID<br>Default: Inherit from account settings |
+| **LegacyBankDetails** | [FakturoidLegacyBankDetails](#fakturoidlegacybankdetails-class) | Display IBAN, BIC (SWIFT) and bank account number for legacy templates set without bank account ID<br>Default: null |
+| **BankAccountId** | int? | Bank account ID<br>Default: Inherit from account settings |
 | **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show<br>Values: automatically, always<br>Default: automatically |
-| **Tags** | List\<string\> | List of tags |
+| **Tags** | List<string> | List of tags |
 | **OrderNumber** | string | Order number |
 | **Currency** | string | Currency ISO code<br>Default: Inherit from account settings |
-| **ExchangeRate** | decimal | Exchange rate |
+| **ExchangeRate** | decimal? | Exchange rate |
 | **PaymentMethod** | string | Payment method<br>Values: bank, cash, cod (cash on delivery), card, paypal, custom<br>Default: Inherit from account settings |
 | **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null)<br>Value: String up to 20 characters<br>Default: Inherit from account settings if default account payment method is set to custom |
 | **Language** | string | Invoice language<br>Values: cz, sk, en, de, fr, it, es, ru, pl, hu, ro<br>Default: Inherit from account settings |
 | **VatPriceMode** | string | Calculate VAT from base or final amount, more info in a table below<br>Values: without_vat, from_total_with_vat<br>Default: Inherit from account settings |
 | **TransferredTaxLiability** | bool | Use reverse charge<br>Default: false |
-| **SupplyCode** | int | Supply code for reverse charge<br>List of codes |
+| **SupplyCode** | int? | Supply code for reverse charge<br>List of codes |
 | **Oss** | string | Use OSS mode on invoice<br>Values: disabled, service, goods<br>Default: disabled |
 | **RoundTotal** | bool | Round total amount (VAT included)<br>Default: false |
 | **Subtotal** | decimal | Total amount without VAT |
-| **Total** | decimal | Total amount with VAT |
-| **NativeSubtotal** | decimal | Total amount without VAT in the account currency |
-| **NativeTotal** | decimal | Total amount with VAT in the account currency |
-| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to invoice |
+| **Total** | decimal? | Total amount with VAT |
+| **NativeSubtotal** | decimal? | Total amount without VAT in the account currency |
+| **NativeTotal** | decimal? | Total amount with VAT in the account currency |
+| **Lines** | List<[FakturoidLine](#fakturoidline-class)> | List of lines to invoice |
 | **HtmlUrl** | string | Template HTML web address |
 | **Url** | string | Template API address |
 | **SubjectUrl** | string | API address of subject |
@@ -610,15 +607,15 @@ Inventory item data.
 | **ArticleNumber** | string | Article number. |
 | **UnitName** | string | Unit of measure. |
 | **TrackQuantity** | bool | Track quantity via inventory moves? Default: false. |
-| **Quantity** | decimal | Quantity in stock. Required if track_quantity is enabled. Becomes read-only after item creation and can be changed only via inventory moves. |
-| **MinQuantity** | decimal | Minimum stock quantity. |
-| **MaxQuantity** | decimal | Maximum stock quantity. |
+| **Quantity** | decimal? | Quantity in stock. Required if track_quantity is enabled. Becomes read-only after item creation and can be changed only via inventory moves. |
+| **MinQuantity** | decimal? | Minimum stock quantity. |
+| **MaxQuantity** | decimal? | Maximum stock quantity. |
 | **AllowBelowZero** | bool | Allow quantity below zero. Default: false. |
 | **LowQuantityDate** | DateTime | Date when item quantity dropped below min_quantity. |
-| **NativePurchasePrice** | decimal | Unit purchase price without VAT in account currency. Required if track_quantity is enabled. |
-| **NativeRetailPrice** | decimal | Unit retail price without VAT in account currency. |
+| **NativePurchasePrice** | decimal? | Unit purchase price without VAT in account currency. Required if track_quantity is enabled. |
+| **NativeRetailPrice** | decimal? | Unit retail price without VAT in account currency. |
 | **VatRate** | string | VAT rate. Values: standard (21%), reduced (15%), reduced2 (10%), zero (0%). |
-| **AverageNativePurchasePrice** | decimal | Average purchase price in account currency. |
+| **AverageNativePurchasePrice** | decimal? | Average purchase price in account currency. |
 | **SupplyType** | string | Item type. Values: goods, service. Default: goods. |
 | **Archived** | bool | If item is archived. |
 | **PrivateNote** | string | Private note. |
@@ -639,15 +636,15 @@ Inventory move.
 | **Direction** | string | Move direction. Values: in, out. |
 | **MovedOn** | DateTime | Move date. |
 | **QuantityChange** | decimal | Item quantity in move. |
-| **PurchasePrice** | decimal | Purchase price per unit (without VAT). |
+| **PurchasePrice** | decimal? | Purchase price per unit (without VAT). |
 | **PurchaseCurrency** | string | Purchase currency. Values: Currency code (3 characters). Default: Inherit from account settings. |
-| **NativePurchasePrice** | decimal | Unit purchase price in account currency. |
-| **RetailPrice** | decimal | Retail price per unit. |
+| **NativePurchasePrice** | decimal? | Unit purchase price in account currency. |
+| **RetailPrice** | decimal? | Retail price per unit. |
 | **RetailCurrency** | string | Retail currency. Values: Currency code (3 characters). Default: Inherit from account settings. |
 | **NativeRetailPrice** | decimal | Retail price in account currency. |
 | **PrivateNote** | string | Private note. |
 | **InventoryItemId** | int | Inventory item ID. |
-| **Document** | Object | Details about document and line the move is tied to. Default: null. |
+| **Document** | [FakturoidInventoryMoveDocument](#fakturoidinventorymovedocument-class) | Details about document and line the move is tied to. Default: null. |
 | **CreatedAt** | DateTimeOffset | Date and time of move creation. |
 | **UpdatedAt** | DateTimeOffset | Date and time of last move update. |
 # FakturoidInventoryMoveDocument Class
@@ -677,10 +674,10 @@ Invoice data.
 | **CustomId** | string | Identifier in your application. |
 | **DocumentType** | string | Type of document.<br>Values: partial_proforma, proforma, correction, tax_document, final_invoice, invoice |
 | **ProformaFollowupDocument** | string | What to issue after a proforma is paid.<br>Values: final_invoice_paid, final_invoice, tax_document, none |
-| **TaxDocumentIds** | List\<int\> | Required only when creating a final invoice from tax documents. |
-| **CorrectionId** | int | ID of the invoice being corrected. |
+| **TaxDocumentIds** | List<int> | Required only when creating a final invoice from tax documents. |
+| **CorrectionId** | int? | ID of the invoice being corrected. |
 | **Number** | string | Document number. |
-| **NumberFormatId** | int | ID of a number format. |
+| **NumberFormatId** | int? | ID of a number format. |
 | **VariableSymbol** | string | Variable symbol. |
 | **YourName** | string | Name of your company. |
 | **YourStreet** | string | Your address street. |
@@ -706,8 +703,8 @@ Invoice data.
 | **ClientLocalVatNo** | string | Subject SK DIČ (only for Slovakia, does not start with country code). |
 | **SubjectId** | int | Subject ID. |
 | **SubjectCustomId** | string | Subject identifier in your application. |
-| **GeneratorId** | int | Generator ID from which the document was generated. |
-| **RelatedId** | int | ID of related document. |
+| **GeneratorId** | int? | Generator ID from which the document was generated. |
+| **RelatedId** | int? | ID of related document. |
 | **Paypal** | bool | Enable PayPal payment button on invoice. |
 | **Gopay** | bool | Enable GoPay payment button on invoice. |
 | **Token** | string | Token string for the webinvoice URL. |
@@ -715,7 +712,7 @@ Invoice data.
 | **OrderNumber** | string | Order number in your application. |
 | **IssuedOn** | DateTime | Date of issue. |
 | **TaxableFulfillmentDue** | string | Chargeable event date. |
-| **Due** | int | Number of days until the invoice becomes overdue. |
+| **Due** | int? | Number of days until the invoice becomes overdue. |
 | **DueOn** | DateTime | Date when the invoice becomes overdue. |
 | **SentAt** | DateTime | Date and time of sending the document via email. |
 | **PaidOn** | DateTime | Date when the document was marked as paid. |
@@ -727,8 +724,8 @@ Invoice data.
 | **Note** | string | Text before lines. |
 | **FooterNote** | string | Invoice footer. |
 | **PrivateNote** | string | Private note. |
-| **Tags** | List\<string\> | List of tags. |
-| **BankAccountId** | int | Bank account ID (used only on create action). |
+| **Tags** | List<string> | List of tags. |
+| **BankAccountId** | int? | Bank account ID (used only on create action). |
 | **BankAccount** | string | Bank account number. |
 | **Iban** | string | IBAN. |
 | **SwiftBic** | string | BIC (for SWIFT payments). |
@@ -738,24 +735,24 @@ Invoice data.
 | **CustomPaymentMethod** | string | Custom payment method. |
 | **HideBankAccount** | bool | Hide bank account on webinvoice and PDF. |
 | **Currency** | string | Currency ISO code. |
-| **ExchangeRate** | decimal | Exchange rate (required if document currency differs from account currency). |
+| **ExchangeRate** | decimal? | Exchange rate (required if document currency differs from account currency). |
 | **Language** | string | Language of the document.<br>Values: cz, sk, en, de, fr, it, es, ru, pl, hu, ro |
 | **TransferredTaxLiability** | bool | Use reverse charge. |
 | **SupplyCode** | string | Supply code for statement about invoices in reverse charge. |
 | **Oss** | string | Use OSS mode.<br>Values: disabled, service, goods |
 | **VatPriceMode** | string | Calculate VAT from base or final amount.<br>Values: without_vat, from_total_with_vat |
 | **RoundTotal** | bool | Round total amount (VAT included). |
-| **Subtotal** | decimal | Total without VAT. |
-| **Total** | decimal | Total with VAT. |
-| **NativeSubtotal** | decimal | Total without VAT in the account currency. |
-| **NativeTotal** | decimal | Total with VAT in the account currency. |
-| **RemainingAmount** | decimal | Remaining amount to pay (VAT included). |
-| **RemainingNativeAmount** | decimal | Remaining amount to pay in the account currency (VAT included). |
-| **Lines** | List\<[FakturoidLine](#fakturoidline-class)\> | List of lines to invoice. |
-| **VatRatesSummary** | List\<[FakturoidVatRateSummary](#fakturoidvatratesummary-class)\> | VAT rates summary. |
-| **PaidAdvances** | List\<[FakturoidInvoicePaidAdvance](#fakturoidinvoicepaidadvance-class)\> | List of paid advances (if final invoice). |
-| **Payments** | List\<[FakturoidInvoicePayment](#fakturoidinvoicepayment-class)\> | List of payments. |
-| **Attachments** | List\<[FakturoidAttachment](#fakturoidattachment-class)\> | List of attachments. |
+| **Subtotal** | decimal? | Total without VAT. |
+| **Total** | decimal? | Total with VAT. |
+| **NativeSubtotal** | decimal? | Total without VAT in the account currency. |
+| **NativeTotal** | decimal? | Total with VAT in the account currency. |
+| **RemainingAmount** | decimal? | Remaining amount to pay (VAT included). |
+| **RemainingNativeAmount** | decimal? | Remaining amount to pay in the account currency (VAT included). |
+| **Lines** | List<[FakturoidLine](#fakturoidline-class)> | List of lines to invoice. |
+| **VatRatesSummary** | List<[FakturoidVatRateSummary](#fakturoidvatratesummary-class)> | VAT rates summary. |
+| **PaidAdvances** | List<[FakturoidInvoicePaidAdvance](#fakturoidinvoicepaidadvance-class)> | List of paid advances (if final invoice). |
+| **Payments** | List<[FakturoidInvoicePayment](#fakturoidinvoicepayment-class)> | List of payments. |
+| **Attachments** | List<[FakturoidAttachment](#fakturoidattachment-class)> | List of attachments. |
 | **HtmlUrl** | string | Document HTML web address. |
 | **PublicHtmlUrl** | string | Webinvoice web address. |
 | **Url** | string | Document API address. |
@@ -792,9 +789,9 @@ Paid advance
 | **Number** | string | Document number. |
 | **VariableSymbol** | string | Variable symbol. |
 | **PaidOn** | DateTime | Date of payment. |
-| **VatRate** | decimal | VAT rate. |
-| **Price** | decimal | Price for given VAT rate. |
-| **Vat** | decimal | VAT for given VAT rate. |
+| **VatRate** | decimal? | VAT rate. |
+| **Price** | decimal? | Price for given VAT rate. |
+| **Vat** | decimal? | VAT for given VAT rate. |
 # FakturoidInvoicePayment Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -809,13 +806,13 @@ Invoice payment data.
 | **PaidOn** | DateTime | Payment date.<br>Default: Today |
 | **Currency** | string | Currency ISO Code (same as invoice currency). |
 | **Amount** | decimal | Paid amount in document currency.<br>Default: Remaining amount to pay |
-| **NativeAmount** | decimal | Paid amount in account currency.<br>Default: Remaining amount to pay converted to account currency |
+| **NativeAmount** | decimal? | Paid amount in account currency.<br>Default: Remaining amount to pay converted to account currency |
 | **MarkDocumentAsPaid** | bool | Mark document as paid?<br>Default: true if the total paid amount becomes greater or equal to remaining amount to pay |
 | **ProformaFollowupDocument** | string | Issue a followup document with payment.<br>Only for proformas and mark_document_as_paid must be true.<br>Values: final_invoice_paid, final_invoice, tax_document, none |
 | **SendThankYouEmail** | bool | Send thank-you email?<br>mark_document_as_paid must be true<br>Default: Inherit from account settings |
 | **VariableSymbol** | string | Payment variable symbol.<br>Default: Invoice variable symbol |
-| **BankAccountId** | int | Bank account ID.<br>Default: Invoice bank account or default bank account |
-| **TaxDocumentId** | int | Tax document ID (if present). |
+| **BankAccountId** | int? | Bank account ID.<br>Default: Invoice bank account or default bank account |
+| **TaxDocumentId** | int? | Tax document ID (if present). |
 | **CreatedAt** | DateTimeOffset | The date and time of payment creation. |
 | **UpdatedAt** | DateTimeOffset | The date and time of last payment update. |
 # FakturoidLegacyBankDetails Class
@@ -841,7 +838,7 @@ Invoice line.
 
 | Name | Type | Summary |
 |---|---|---|
-| **Id** | int | Unique identifier in Fakturoid. |
+| **Id** | int? | Unique identifier in Fakturoid. |
 | **Name** | string | Line name. |
 | **Quantity** | decimal | Quantity. |
 | **UnitName** | string | Unit name. |
@@ -853,7 +850,7 @@ Invoice line.
 | **TotalVat** | decimal | Total VAT. |
 | **NativeTotalPriceWithoutVat** | decimal | Total price without VAT in account currency. |
 | **NativeTotalVat** | decimal | Total VAT in account currency. |
-| **InventoryItemId** | int | ID of the related inventory item. |
+| **InventoryItemId** | int? | ID of the related inventory item. |
 | **Sku** | string | Stock Keeping Unit (SKU). |
 | **Inventory** | [FakturoidInventory](#fakturoidinventory-class) | Inventory information. |
 # FakturoidNumberFormat Class
@@ -960,7 +957,7 @@ Todo task.
 | **CreatedAt** | DateTimeOffset | Date and time of todo creation. |
 | **CompletedAt** | DateTime? | Date and time of todo completion. |
 | **Text** | string | Todo text. |
-| **RelatedObjects** | List\<[FakturoidRelatedObject](#fakturoidrelatedobject-class)\> | Attributes of objects related to the todo. |
+| **RelatedObjects** | List<[FakturoidRelatedObject](#fakturoidrelatedobject-class)> | Attributes of objects related to the todo. |
 | **Params** | Object | Parameters with details about todo, specific for each type of todo. |
 # FakturoidUser Class
 
@@ -978,8 +975,8 @@ User
 | **AvatarUrl** | string | User avatar URL |
 | **DefaultAccount** | string | Default account slug (Only on the /user.json endpoint) |
 | **Permission** | string | User permission for the current account |
-| **AllowedScope** | List\<string\> | List of allowed scopes. Values: reports, expenses, invoices |
-| **Accounts** | List\<[FakturoidUserAccount](#fakturoiduseraccount-class)\> | List of accounts the user has access to (Only on the /user.json endpoint) |
+| **AllowedScope** | List<string> | List of allowed scopes. Values: reports, expenses, invoices |
+| **Accounts** | List<[FakturoidUserAccount](#fakturoiduseraccount-class)> | List of accounts the user has access to (Only on the /user.json endpoint) |
 # FakturoidUserAccount Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1027,7 +1024,7 @@ Webhook
 | **WebhookUrl** | string | URL of webhook endpoint |
 | **AuthHeader** | string | Value send in Authorization header |
 | **Active** | bool | Send webhook? |
-| **Events** | List\<string\> | List of events when webhook is fired |
+| **Events** | List<string> | List of events when webhook is fired |
 | **Url** | string | Webhook API address |
 | **CreatedAt** | DateTimeOffset | Date and time of webhook creation |
 | **UpdatedAt** | DateTimeOffset | Date and time of last webhook update |
@@ -1074,7 +1071,7 @@ Proxy class form working with bank accounts
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidBankAccount](#fakturoidbankaccount-class)\>\> | Gets asynchronously list of all bank accounts. |
+| [SelectAsync()](#selectasync) | Task<IEnumerable<[FakturoidBankAccount](#fakturoidbankaccount-class)>> | Gets asynchronously list of all bank accounts. |
 ## Methods
 
 ### SelectAsync()
@@ -1117,8 +1114,8 @@ Proxy class for working with events
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync(DateTimeOffset? since, int? subjectId)**](#selectasyncdatetimeoffset-since-int-subjectid) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of all current events. |
-| [**SelectAsync(int page, DateTimeOffset? since)**](#selectasyncint-page-datetimeoffset-since) | Task\<IEnumerable\<[FakturoidEvent](#fakturoidevent-class)\>\> | Gets asynchronously list of current events, paged by 40. |
+| [SelectAsync(DateTimeOffset? since, int? subjectId)](#selectasyncdatetimeoffset--since-int--subjectid) | Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>> | Gets asynchronously list of all current events. |
+| [SelectAsync(int page, DateTimeOffset? since)](#selectasyncint-page-datetimeoffset--since) | Task<IEnumerable<[FakturoidEvent](#fakturoidevent-class)>> | Gets asynchronously list of current events, paged by 40. |
 ## Methods
 
 ### SelectAsync(DateTimeOffset? since, int? subjectId)
@@ -1170,16 +1167,16 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**CreateAsync(FakturoidExpense entity)**](#createasyncfakturoidexpense-entity) | Task\<int\> | Creates asynchronously the specified new expense. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
-| [**SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncexpensestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncint-page-expensestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidExpense](#fakturoidexpense-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Selects asynchronously single expense with specified ID. |
-| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
-| [**SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
-| [**UpdateAsync(FakturoidExpense entity)**](#updateasyncfakturoidexpense-entity) | Task\<[FakturoidExpense](#fakturoidexpense-class)\> | Updates asynchronously the specified expense. |
+| [CreateAsync(FakturoidExpense entity)](#createasyncfakturoidexpense-entity) | Task<int> | Creates asynchronously the specified new expense. |
+| [DeleteAsync(int id)](#deleteasyncint-id) | Task | Deletes asynchronously expense with specified id. |
+| [SelectAsync(ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)](#selectasyncexpensestatuscondition-status-int--subjectid-datetimeoffset--since-string-number) | Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>> | Gets asynchronously list of all invoices. |
+| [SelectAsync(int page, ExpenseStatusCondition status, int? subjectId, DateTimeOffset? since, string number)](#selectasyncint-page-expensestatuscondition-status-int--subjectid-datetimeoffset--since-string-number) | Task<IEnumerable<[FakturoidExpense](#fakturoidexpense-class)>> | Gets asynchronously paged list of invoices. |
+| [SelectSingleAsync(int id)](#selectsingleasyncint-id) | Task<[FakturoidExpense](#fakturoidexpense-class)> | Selects asynchronously single expense with specified ID. |
+| [SetAttachmentAsync(int id, string filePath)](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
+| [SetAttachmentAsync(int id, string mimeType, byte[] fileContent)](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
+| [SetPaymentStatusAsync(int id, ExpensePaymentStatus status)](#setpaymentstatusasyncint-id-expensepaymentstatus-status) | Task | Sets asynchronously the expense payment status. |
+| [SetPaymentStatusAsync(int id, ExpensePaymentStatus status, DateTime effectiveDate)](#setpaymentstatusasyncint-id-expensepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the expense payment status. |
+| [UpdateAsync(FakturoidExpense entity)](#updateasyncfakturoidexpense-entity) | Task<[FakturoidExpense](#fakturoidexpense-class)> | Updates asynchronously the specified expense. |
 ## Methods
 
 ### CreateAsync(FakturoidExpense entity)
@@ -1362,18 +1359,39 @@ Proxy class for working with invoices.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**CreateAsync(FakturoidInvoice entity)**](#createasyncfakturoidinvoice-entity) | Task\<int\> | Creates asynchronously the specified new invoice. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
-| [**SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncinvoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously list of all invoices. |
-| [**SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)**](#selectasyncint-page-invoicetypecondition-type-invoicestatuscondition-status-int-subjectid-datetimeoffset-since-string-number) | Task\<IEnumerable\<[FakturoidInvoice](#fakturoidinvoice-class)\>\> | Gets asynchronously paged list of invoices. |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Selects asynchronously single invoice with specified ID. |
-| [**SendMessageAsync(int id, InvoiceMessageType messageType)**](#sendmessageasyncint-id-invoicemessagetype-messagetype) | Task | Sends asynchronously e-mail message for the specified invoice. |
-| [**SetAttachmentAsync(int id, string filePath)**](#setattachmentasyncint-id-string-filepath) | Task | Sets attachment for invoice. |
-| [**SetAttachmentAsync(int id, string mimeType, byte[] fileContent)**](#setattachmentasyncint-id-string-mimetype-byte-filecontent) | Task | Sets attachment for invoice. |
-| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status) | Task | Sets asynchronously the invoice payment status. |
-| [**SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)**](#setpaymentstatusasyncint-id-invoicepaymentstatus-status-datetime-effectivedate) | Task | Sets asynchronously the invoice payment status. |
-| [**UpdateAsync(FakturoidInvoice entity)**](#updateasyncfakturoidinvoice-entity) | Task\<[FakturoidInvoice](#fakturoidinvoice-class)\> | Updates asynchronously the specified invoice. |
+| [Cancel(int invoiceId)](#cancelint-invoiceid) | Task | Cancels the specified invoice asynchronously. |
+| [CreateAsync(FakturoidInvoice entity)](#createasyncfakturoidinvoice-entity) | Task<int> | Creates asynchronously the specified new invoice. |
+| [DeleteAsync(int id)](#deleteasyncint-id) | Task | Deletes asynchronously invoice with specified id. |
+| [DownloadAttachment(int invoiceId, int attachmentId)](#downloadattachmentint-invoiceid-int-attachmentid) | Task<byte[]> | Downloads the attachment for the specified invoice asynchronously. |
+| [DownloadPdfAsync(int id)](#downloadpdfasyncint-id) | Task<byte[]> | Downloads the PDF representation of the specified invoice asynchronously. |
+| [LockAsync(int invoiceId)](#lockasyncint-invoiceid) | Task | Locks the specified invoice asynchronously. |
+| [MarkAsSent(int invoiceId)](#markassentint-invoiceid) | Task | Marks the specified invoice as sent asynchronously. |
+| [MarkAsUncollectibleAsync(int invoiceId)](#markasuncollectibleasyncint-invoiceid) | Task | Marks the specified invoice as uncollectible asynchronously. |
+| [SearchAsync(string query)](#searchasyncstring-query) | Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>> | Searches asynchronously for invoices based on the specified query. |
+| [SearchAsync(int page, string query)](#searchasyncint-page-string-query) | Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>> | Searches asynchronously for invoices based on the specified query. |
+| [SelectAsync(DateTimeOffset? since, DateTimeOffset? until, DateTimeOffset? updatedSince, DateTimeOffset? updatedUntil, int? subjectId, string customId, string number, InvoiceStatusCondition status, InvoiceTypeCondition documentType)](#selectasyncdatetimeoffset--since-datetimeoffset--until-datetimeoffset--updatedsince-datetimeoffset--updateduntil-int--subjectid-string-customid-string-number-invoicestatuscondition-status-invoicetypecondition-documenttype) | Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>> | Selects asynchronously a list of invoices based on the specified conditions. |
+| [SelectAsync(int page, DateTimeOffset? since, DateTimeOffset? until, DateTimeOffset? updatedSince, DateTimeOffset? updatedUntil, int? subjectId, string customId, string number, InvoiceStatusCondition status, InvoiceTypeCondition documentType)](#selectasyncint-page-datetimeoffset--since-datetimeoffset--until-datetimeoffset--updatedsince-datetimeoffset--updateduntil-int--subjectid-string-customid-string-number-invoicestatuscondition-status-invoicetypecondition-documenttype) | Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>> | Selects asynchronously a paged list of invoices based on the specified conditions. |
+| [SelectSingleAsync(int id)](#selectsingleasyncint-id) | Task<[FakturoidInvoice](#fakturoidinvoice-class)> | Selects asynchronously single invoice with specified ID. |
+| [UndoCancelAsync(int invoiceId)](#undocancelasyncint-invoiceid) | Task | Reverts the cancellation of the specified invoice asynchronously. |
+| [UndoUncollectibleAsync(int invoiceId)](#undouncollectibleasyncint-invoiceid) | Task | Reverts the uncollectible status of the specified invoice asynchronously. |
+| [UnlockAsync(int invoiceId)](#unlockasyncint-invoiceid) | Task | Unlocks the specified invoice asynchronously. |
+| [UpdateAsync(FakturoidInvoice entity)](#updateasyncfakturoidinvoice-entity) | Task<[FakturoidInvoice](#fakturoidinvoice-class)> | Updates asynchronously the specified invoice. |
 ## Methods
+
+### Cancel(int invoiceId)
+
+Cancels the specified invoice asynchronously.
+
+| Parameter | Type | Description |
+|---|---|---|
+| invoiceId | int | The ID of the invoice to cancel. |
+
+
+### Returns
+
+Task
+
+
 
 ### CreateAsync(FakturoidInvoice entity)
 
@@ -1405,44 +1423,159 @@ Task
 
 
 
-### SelectAsync(InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)
+### DownloadAttachment(int invoiceId, int attachmentId)
 
-Gets asynchronously list of all invoices.
+Downloads the attachment for the specified invoice asynchronously.
 
 | Parameter | Type | Description |
 |---|---|---|
-| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
-| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTimeOffset? | The date since when the invoice was created. |
-| number | string | The invoice display number. |
+| invoiceId | int | The ID of the invoice. |
+| attachmentId | int | The ID of the attachment. |
+
+
+### Returns
+
+Task<byte[]>
+
+A task that represents the asynchronous operation. The task result contains the attachment file as a byte array.
+
+### DownloadPdfAsync(int id)
+
+Downloads the PDF representation of the specified invoice asynchronously.
+
+| Parameter | Type | Description |
+|---|---|---|
+| id | int | The ID of the invoice to download. |
+
+
+### Returns
+
+Task<byte[]>
+
+A task that represents the asynchronous operation. The task result contains the PDF file as a byte array or <c>null</c>, if file is not ready yet. If file is not ready, try again in a second or two.
+
+### LockAsync(int invoiceId)
+
+Locks the specified invoice asynchronously.
+
+| Parameter | Type | Description |
+|---|---|---|
+| invoiceId | int | The ID of the invoice to lock. |
+
+
+### Returns
+
+Task
+
+
+
+### MarkAsSent(int invoiceId)
+
+Marks the specified invoice as sent asynchronously.
+
+| Parameter | Type | Description |
+|---|---|---|
+| invoiceId | int | The ID of the invoice to mark as sent. |
+
+
+### Returns
+
+Task
+
+
+
+### MarkAsUncollectibleAsync(int invoiceId)
+
+Marks the specified invoice as uncollectible asynchronously.
+
+| Parameter | Type | Description |
+|---|---|---|
+| invoiceId | int | The ID of the invoice to mark as uncollectible. |
+
+
+### Returns
+
+Task
+
+
+
+### SearchAsync(string query)
+
+Searches asynchronously for invoices based on the specified query.
+
+| Parameter | Type | Description |
+|---|---|---|
+| query | string | The search query string. |
 
 
 ### Returns
 
 Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
 
-List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
+A task that represents the asynchronous operation. The task result contains a list of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances that match the search query.
 
-### SelectAsync(int page, InvoiceTypeCondition type, InvoiceStatusCondition status, int? subjectId, DateTimeOffset? since, string number)
+### SearchAsync(int page, string query)
 
-Gets asynchronously paged list of invoices.
+Searches asynchronously for invoices based on the specified query.
 
 | Parameter | Type | Description |
 |---|---|---|
 | page | int | The page number. |
-| type | [InvoiceTypeCondition](#invoicetypecondition-enum) | The invoice type. |
-| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The invoice status. |
-| subjectId | int? | The customer subject id. |
-| since | DateTimeOffset? | The date since when the invoice was created. |
-| number | string | The invoice display number. |
+| query | string | The search query string. |
 
 
 ### Returns
 
 Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
 
-List of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
+A task that represents the asynchronous operation. The task result contains a list of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances that match the search query.
+
+### SelectAsync(DateTimeOffset? since, DateTimeOffset? until, DateTimeOffset? updatedSince, DateTimeOffset? updatedUntil, int? subjectId, string customId, string number, InvoiceStatusCondition status, InvoiceTypeCondition documentType)
+
+Selects asynchronously a list of invoices based on the specified conditions.
+
+| Parameter | Type | Description |
+|---|---|---|
+| since | DateTimeOffset? | The date from which to start listing invoices. |
+| until | DateTimeOffset? | The date until which to list invoices. |
+| updatedSince | DateTimeOffset? | The date from which to start listing updated invoices. |
+| updatedUntil | DateTimeOffset? | The date until which to list updated invoices. |
+| subjectId | int? | The ID of the subject (customer) to filter invoices. |
+| customId | string | The custom ID to filter invoices. |
+| number | string | The invoice number to filter invoices. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The status condition to filter invoices. |
+| documentType | [InvoiceTypeCondition](#invoicetypecondition-enum) | The document type condition to filter invoices. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
+
+A task that represents the asynchronous operation. The task result contains a list of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
+
+### SelectAsync(int page, DateTimeOffset? since, DateTimeOffset? until, DateTimeOffset? updatedSince, DateTimeOffset? updatedUntil, int? subjectId, string customId, string number, InvoiceStatusCondition status, InvoiceTypeCondition documentType)
+
+Selects asynchronously a paged list of invoices based on the specified conditions.
+
+| Parameter | Type | Description |
+|---|---|---|
+| page | int | The page number. |
+| since | DateTimeOffset? | The date from which to start listing invoices. |
+| until | DateTimeOffset? | The date until which to list invoices. |
+| updatedSince | DateTimeOffset? | The date from which to start listing updated invoices. |
+| updatedUntil | DateTimeOffset? | The date until which to list updated invoices. |
+| subjectId | int? | The ID of the subject (customer) to filter invoices. |
+| customId | string | The custom ID to filter invoices. |
+| number | string | The invoice number to filter invoices. |
+| status | [InvoiceStatusCondition](#invoicestatuscondition-enum) | The status condition to filter invoices. |
+| documentType | [InvoiceTypeCondition](#invoicetypecondition-enum) | The document type condition to filter invoices. |
+
+
+### Returns
+
+Task<IEnumerable<[FakturoidInvoice](#fakturoidinvoice-class)>>
+
+A task that represents the asynchronous operation. The task result contains a list of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** instances.
 
 ### SelectSingleAsync(int id)
 
@@ -1459,14 +1592,13 @@ Task<[FakturoidInvoice](#fakturoidinvoice-class)>
 
 Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class.
 
-### SendMessageAsync(int id, InvoiceMessageType messageType)
+### UndoCancelAsync(int invoiceId)
 
-Sends asynchronously e-mail message for the specified invoice.
+Reverts the cancellation of the specified invoice asynchronously.
 
 | Parameter | Type | Description |
 |---|---|---|
-| id | int | The invoice id. |
-| messageType | [InvoiceMessageType](#invoicemessagetype-enum) | Type of the message. |
+| invoiceId | int | The ID of the invoice to undo cancellation. |
 
 
 ### Returns
@@ -1475,14 +1607,13 @@ Task
 
 
 
-### SetAttachmentAsync(int id, string filePath)
+### UndoUncollectibleAsync(int invoiceId)
 
-Sets attachment for invoice.
+Reverts the uncollectible status of the specified invoice asynchronously.
 
 | Parameter | Type | Description |
 |---|---|---|
-| id | int | The invoice id. |
-| filePath | string | The file path. |
+| invoiceId | int | The ID of the invoice to undo uncollectible status. |
 
 
 ### Returns
@@ -1491,48 +1622,13 @@ Task
 
 
 
-### SetAttachmentAsync(int id, string mimeType, byte[] fileContent)
+### UnlockAsync(int invoiceId)
 
-Sets attachment for invoice.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| mimeType | string | The mime type. |
-| fileContent | byte[] | The content of the file. |
-
-
-### Returns
-
-Task
-
-
-
-### SetPaymentStatusAsync(int id, InvoicePaymentStatus status)
-
-Sets asynchronously the invoice payment status.
+Unlocks the specified invoice asynchronously.
 
 | Parameter | Type | Description |
 |---|---|---|
-| id | int | The invoice id. |
-| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
-
-
-### Returns
-
-Task
-
-Instance of **Altairis.Fakturoid.Client.Models.FakturoidInvoice** class with modified entity.
-
-### SetPaymentStatusAsync(int id, InvoicePaymentStatus status, DateTime effectiveDate)
-
-Sets asynchronously the invoice payment status.
-
-| Parameter | Type | Description |
-|---|---|---|
-| id | int | The invoice id. |
-| status | [InvoicePaymentStatus](#invoicepaymentstatus-enum) | The new payment status. |
-| effectiveDate | DateTime | The date when payment was performed. |
+| invoiceId | int | The ID of the invoice to unlock. |
 
 
 ### Returns
@@ -1573,7 +1669,7 @@ Proxy class for working with number formats
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync()**](#selectasync) | Task\<IEnumerable\<[FakturoidNumberFormat](#fakturoidnumberformat-class)\>\> | Gets asynchronously list of all number formats. |
+| [SelectAsync()](#selectasync) | Task<IEnumerable<[FakturoidNumberFormat](#fakturoidnumberformat-class)>> | Gets asynchronously list of all number formats. |
 ## Methods
 
 ### SelectAsync()
@@ -1605,14 +1701,14 @@ Proxy class for working with subjects/contacts.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**CreateAsync(FakturoidSubject entity)**](#createasyncfakturoidsubject-entity) | Task\<int\> | Creates asynchronously the specified new subject. |
-| [**DeleteAsync(int id)**](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
-| [**SearchAsync(string query)**](#searchasyncstring-query) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
-| [**SearchAsync(int page, string query)**](#searchasyncint-page-string-query) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note with pagination. |
-| [**SelectAsync(DateTime? createdSince, DateTimeOffset? updatedSince, string customId)**](#selectasyncdatetime-createdsince-datetimeoffset-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously list of all subjects. |
-| [**SelectAsync(int page, DateTime? createdSince, DateTimeOffset? updatedSince, string customId)**](#selectasyncint-page-datetime-createdsince-datetimeoffset-updatedsince-string-customid) | Task\<IEnumerable\<[FakturoidSubject](#fakturoidsubject-class)\>\> | Gets asynchronously paged list of subjects |
-| [**SelectSingleAsync(int id)**](#selectsingleasyncint-id) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Selects asynchronously single subject with specified ID. |
-| [**UpdateAsync(FakturoidSubject entity)**](#updateasyncfakturoidsubject-entity) | Task\<[FakturoidSubject](#fakturoidsubject-class)\> | Updates asynchronously the specified subject. |
+| [CreateAsync(FakturoidSubject entity)](#createasyncfakturoidsubject-entity) | Task<int> | Creates asynchronously the specified new subject. |
+| [DeleteAsync(int id)](#deleteasyncint-id) | Task | Deletes asynchronously with specified id. |
+| [SearchAsync(string query)](#searchasyncstring-query) | Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note. |
+| [SearchAsync(int page, string query)](#searchasyncint-page-string-query) | Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>> | Searches asynchronously all Subjects in Name, Full name, Email, Email copy, Registration number, VAT number and Private note with pagination. |
+| [SelectAsync(DateTime? createdSince, DateTimeOffset? updatedSince, string customId)](#selectasyncdatetime--createdsince-datetimeoffset--updatedsince-string-customid) | Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>> | Gets asynchronously list of all subjects. |
+| [SelectAsync(int page, DateTime? createdSince, DateTimeOffset? updatedSince, string customId)](#selectasyncint-page-datetime--createdsince-datetimeoffset--updatedsince-string-customid) | Task<IEnumerable<[FakturoidSubject](#fakturoidsubject-class)>> | Gets asynchronously paged list of subjects |
+| [SelectSingleAsync(int id)](#selectsingleasyncint-id) | Task<[FakturoidSubject](#fakturoidsubject-class)> | Selects asynchronously single subject with specified ID. |
+| [UpdateAsync(FakturoidSubject entity)](#updateasyncfakturoidsubject-entity) | Task<[FakturoidSubject](#fakturoidsubject-class)> | Updates asynchronously the specified subject. |
 ## Methods
 
 ### CreateAsync(FakturoidSubject entity)
@@ -1758,9 +1854,9 @@ Proxy class for working with todo tasks.
 
 | Name | Returns | Summary |
 |---|---|---|
-| [**SelectAsync(DateTimeOffset? since)**](#selectasyncdatetimeoffset-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously list of all current todos. |
-| [**SelectAsync(int page, DateTimeOffset? since)**](#selectasyncint-page-datetimeoffset-since) | Task\<IEnumerable\<[FakturoidTodo](#fakturoidtodo-class)\>\> | Gets asynchronously paged list of current todos |
-| [**ToggleCompletion(int id)**](#togglecompletionint-id) | Task\<[FakturoidTodo](#fakturoidtodo-class)\> | Toggles the completion status of a todo task asynchronously. |
+| [SelectAsync(DateTimeOffset? since)](#selectasyncdatetimeoffset--since) | Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>> | Gets asynchronously list of all current todos. |
+| [SelectAsync(int page, DateTimeOffset? since)](#selectasyncint-page-datetimeoffset--since) | Task<IEnumerable<[FakturoidTodo](#fakturoidtodo-class)>> | Gets asynchronously paged list of current todos |
+| [ToggleCompletion(int id)](#togglecompletionint-id) | Task<[FakturoidTodo](#fakturoidtodo-class)> | Toggles the completion status of a todo task asynchronously. |
 ## Methods
 
 ### SelectAsync(DateTimeOffset? since)
@@ -1809,34 +1905,6 @@ Task<[FakturoidTodo](#fakturoidtodo-class)>
 
 The updated **Altairis.Fakturoid.Client.Models.FakturoidTodo** instance.
 
-# InvoiceMessageType Enum
-
-Namespace: Altairis.Fakturoid.Client.Proxies
-
-Type of e-mail message to be sent.
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **NoMessage** | Do not actually send anything, just mark invoice as sent |
-| **InvoiceMessage** | Predefined message containing link to invoice |
-| **PaymentReminderMessage** | Predefined message containing payment reminder |
-# InvoicePaymentStatus Enum
-
-Namespace: Altairis.Fakturoid.Client.Proxies
-
-Invoice payment status
-
-## Values
-
-| Name | Summary |
-|---|---|
-| **Unpaid** | Reset payment status to unpaid. |
-| **Paid** | Set status of regular invoice to paid. |
-| **ProformaPaid** | Set status of proforma invoice to paid. |
-| **PartialProformaPaid** | Set status of partial proforma invoice to paid. |
-| **Cancelled** | Set status to cancelled (for proforma or invoice without VAT) |
 # InvoiceStatusCondition Enum
 
 Namespace: Altairis.Fakturoid.Client.Proxies
@@ -1847,12 +1915,13 @@ Query status condition for listing invoices
 
 | Name | Summary |
 |---|---|
-| **Any** | Any |
-| **Open** | Faktura není zaplacena, odeslána ani po splatnosti. |
-| **Sent** | Faktura byla odeslána a není po splatnosti. |
-| **Overdue** | Faktura je po splatnosti. |
-| **Paid** | Faktura je zaplacena. |
-| **Cancelled** | Faktura je stornována (pouze neplátci DPH). |
+| **Any** | Any status of invoice |
+| **Open** | Invoice is issued without being paid, sent, overdue or in any other state |
+| **Sent** | Invoice was sent and is not overdue |
+| **Overdue** | Invoice is overdue |
+| **Paid** | Invoice is paid |
+| **Cancelled** | Invoice is cancelled (only for VAT-payers) |
+| **Uncollectible** | Invoice can no longer be paid and is thus uncollectible |
 # InvoiceTypeCondition Enum
 
 Namespace: Altairis.Fakturoid.Client.Proxies
@@ -1863,6 +1932,8 @@ Query invoice type condition for listing invoices.
 
 | Name | Summary |
 |---|---|
-| **Any** | Any |
-| **Proforma** | The proforma invouice. |
-| **Regular** | The regular, non-proforma invoice |
+| **Any** | Any type of invoice. |
+| **Regular** | Regular invoice. |
+| **Proforma** | Proforma invoice. |
+| **Correction** | Correction invoice. |
+| **TaxDocument** | Tax document invoice. |

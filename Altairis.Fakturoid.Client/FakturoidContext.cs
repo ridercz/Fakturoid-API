@@ -57,6 +57,7 @@ public class FakturoidContext {
         this.Subjects = new(this);
         this.Todos = new(this);
         this.Events = new(this);
+        this.Invoices = new(this);
     }
 
     // Properties
@@ -119,6 +120,11 @@ public class FakturoidContext {
     /// Gets the events.
     /// </summary>
     public FakturoidEventsProxy Events { get; }
+
+    /// <summary>
+    /// Gets the invoices.
+    /// </summary>
+    public FakturoidInvoicesProxy Invoices { get; }
 
     // Public methods
 
