@@ -5,15 +5,20 @@ using System.Text;
 namespace Altairis.Fakturoid.Client;
 
 internal static class FakturoidExtensionMethods {
-    private static readonly JsonSerializerSettings JSON_SETTINGS = new() { ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() } };
+    private static readonly JsonSerializerSettings JSON_SETTINGS = new() {
+        NullValueHandling = NullValueHandling.Ignore,
+        ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() } 
+    };
 
     public static Task<HttpResponseMessage> FakturoidPostAsJsonAsync<T>(this HttpClient client, string requestUri, T value) {
-        var content = new StringContent(JsonConvert.SerializeObject(value, JSON_SETTINGS), Encoding.UTF8, "application/json");
+        var json = JsonConvert.SerializeObject(value, JSON_SETTINGS);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
         return client.PostAsync(requestUri, content);
     }
 
     public static Task<HttpResponseMessage> FakturoidPatchAsJsonAsync<T>(this HttpClient client, string requestUri, T value) {
-        var content = new StringContent(JsonConvert.SerializeObject(value, JSON_SETTINGS), Encoding.UTF8, "application/json");
+        var json = JsonConvert.SerializeObject(value, JSON_SETTINGS);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
         var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) { Content = content };
         return client.SendAsync(request);
     }
