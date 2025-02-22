@@ -34,7 +34,7 @@ public class FakturoidInvoice {
     /// <summary>
     /// ID of the invoice being corrected.
     /// </summary>
-    public int CorrectionId { get; set; }
+    public int? CorrectionId { get; set; }
 
     /// <summary>
     /// Document number.
@@ -44,7 +44,7 @@ public class FakturoidInvoice {
     /// <summary>
     /// ID of a number format.
     /// </summary>
-    public int NumberFormatId { get; set; }
+    public int? NumberFormatId { get; set; }
 
     /// <summary>
     /// Variable symbol.
@@ -174,12 +174,12 @@ public class FakturoidInvoice {
     /// <summary>
     /// Generator ID from which the document was generated.
     /// </summary>
-    public int GeneratorId { get; set; }
+    public int? GeneratorId { get; set; }
 
     /// <summary>
     /// ID of related document.
     /// </summary>
-    public int RelatedId { get; set; }
+    public int? RelatedId { get; set; }
 
     /// <summary>
     /// Enable PayPal payment button on invoice.
@@ -220,7 +220,7 @@ public class FakturoidInvoice {
     /// <summary>
     /// Number of days until the invoice becomes overdue.
     /// </summary>
-    public int Due { get; set; }
+    public int? Due { get; set; }
 
     /// <summary>
     /// Date when the invoice becomes overdue.
@@ -285,7 +285,7 @@ public class FakturoidInvoice {
     /// <summary>
     /// Bank account ID (used only on create action).
     /// </summary>
-    public int BankAccountId { get; set; }
+    public int? BankAccountId { get; set; }
 
     /// <summary>
     /// Bank account number.
@@ -337,7 +337,7 @@ public class FakturoidInvoice {
     /// <summary>
     /// Exchange rate (required if document currency differs from account currency).
     /// </summary>
-    public decimal ExchangeRate { get; set; }
+    public decimal? ExchangeRate { get; set; }
 
     /// <summary>
     /// Language of the document.
@@ -375,32 +375,32 @@ public class FakturoidInvoice {
     /// <summary>
     /// Total without VAT.
     /// </summary>
-    public decimal Subtotal { get; set; }
+    public decimal? Subtotal { get; set; }
 
     /// <summary>
     /// Total with VAT.
     /// </summary>
-    public decimal Total { get; set; }
+    public decimal? Total { get; set; }
 
     /// <summary>
     /// Total without VAT in the account currency.
     /// </summary>
-    public decimal NativeSubtotal { get; set; }
+    public decimal? NativeSubtotal { get; set; }
 
     /// <summary>
     /// Total with VAT in the account currency.
     /// </summary>
-    public decimal NativeTotal { get; set; }
+    public decimal? NativeTotal { get; set; }
 
     /// <summary>
     /// Remaining amount to pay (VAT included).
     /// </summary>
-    public decimal RemainingAmount { get; set; }
+    public decimal? RemainingAmount { get; set; }
 
     /// <summary>
     /// Remaining amount to pay in the account currency (VAT included).
     /// </summary>
-    public decimal RemainingNativeAmount { get; set; }
+    public decimal? RemainingNativeAmount { get; set; }
 
     /// <summary>
     /// List of lines to invoice.

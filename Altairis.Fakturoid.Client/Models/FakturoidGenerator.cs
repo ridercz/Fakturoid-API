@@ -59,7 +59,7 @@ public class FakturoidGenerator {
     /// Number format ID
     /// Default: Inherit from default account settings
     /// </summary>
-    public int NumberFormatId { get; set; }
+    public int? NumberFormatId { get; set; }
 
     /// <summary>
     /// Text before invoice lines
@@ -75,13 +75,13 @@ public class FakturoidGenerator {
     /// Display IBAN, BIC (SWIFT) and bank account number for legacy templates set without bank account ID
     /// Default: null
     /// </summary>
-    public object LegacyBankDetails { get; set; } = null;
+    public FakturoidLegacyBankDetails LegacyBankDetails { get; set; } = null;
 
     /// <summary>
     /// Bank account ID
     /// Default: Inherit from account settings
     /// </summary>
-    public int BankAccountId { get; set; }
+    public int? BankAccountId { get; set; }
 
     /// <summary>
     /// Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show
@@ -109,7 +109,7 @@ public class FakturoidGenerator {
     /// <summary>
     /// Exchange rate
     /// </summary>
-    public decimal ExchangeRate { get; set; }
+    public decimal? ExchangeRate { get; set; }
 
     /// <summary>
     /// Payment method
@@ -149,7 +149,7 @@ public class FakturoidGenerator {
     /// Supply code for reverse charge
     /// List of codes
     /// </summary>
-    public int SupplyCode { get; set; }
+    public int? SupplyCode { get; set; }
 
     /// <summary>
     /// Use OSS mode on invoice
@@ -172,17 +172,17 @@ public class FakturoidGenerator {
     /// <summary>
     /// Total amount with VAT
     /// </summary>
-    public decimal Total { get; set; }
+    public decimal? Total { get; set; }
 
     /// <summary>
     /// Total amount without VAT in the account currency
     /// </summary>
-    public decimal NativeSubtotal { get; set; }
+    public decimal? NativeSubtotal { get; set; }
 
     /// <summary>
     /// Total amount with VAT in the account currency
     /// </summary>
-    public decimal NativeTotal { get; set; }
+    public decimal? NativeTotal { get; set; }
 
     /// <summary>
     /// List of lines to invoice

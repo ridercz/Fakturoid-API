@@ -27,15 +27,15 @@ public class FakturoidInvoicePaidAdvance {
     /// <summary>  
     /// VAT rate.  
     /// </summary>  
-    public decimal VatRate { get; set; }
+    public decimal? VatRate { get; set; }
 
     /// <summary>  
     /// Price for given VAT rate.  
     /// </summary>  
-    public decimal Price { get; set; }
+    public decimal? Price { get; set; }
 
     /// <summary>  
     /// VAT for given VAT rate.  
     /// </summary>  
-    public decimal Vat { get; set; }
+    public decimal? Vat { get; set; }
 }

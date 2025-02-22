@@ -7,7 +7,7 @@ public class FakturoidLine {
     /// <summary>
     /// Unique identifier in Fakturoid.
     /// </summary>
-    public int Id { get; set; }
+    public int? Id { get; set; }
 
     /// <summary>
     /// Line name.
@@ -67,7 +67,7 @@ public class FakturoidLine {
     /// <summary>
     /// ID of the related inventory item.
     /// </summary>
-    public int InventoryItemId { get; set; }
+    public int? InventoryItemId { get; set; }
 
     /// <summary>
     /// Stock Keeping Unit (SKU).

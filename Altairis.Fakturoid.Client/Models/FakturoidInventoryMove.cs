@@ -28,7 +28,7 @@ public class FakturoidInventoryMove {
     /// <summary>
     /// Purchase price per unit (without VAT).
     /// </summary>
-    public decimal PurchasePrice { get; set; }
+    public decimal? PurchasePrice { get; set; }
 
     /// <summary>
     /// Purchase currency. Values: Currency code (3 characters). Default: Inherit from account settings.
@@ -38,12 +38,12 @@ public class FakturoidInventoryMove {
     /// <summary>
     /// Unit purchase price in account currency.
     /// </summary>
-    public decimal NativePurchasePrice { get; set; }
+    public decimal? NativePurchasePrice { get; set; }
 
     /// <summary>
     /// Retail price per unit.
     /// </summary>
-    public decimal RetailPrice { get; set; }
+    public decimal? RetailPrice { get; set; }
 
     /// <summary>
     /// Retail currency. Values: Currency code (3 characters). Default: Inherit from account settings.
@@ -68,7 +68,7 @@ public class FakturoidInventoryMove {
     /// <summary>
     /// Details about document and line the move is tied to. Default: null.
     /// </summary>
-    public object Document { get; set; }
+    public FakturoidInventoryMoveDocument Document { get; set; }
 
     /// <summary>
     /// Date and time of move creation.

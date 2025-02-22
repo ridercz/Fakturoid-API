@@ -42,17 +42,17 @@ public class FakturoidInventoryItem {
     /// <summary>
     /// Quantity in stock. Required if track_quantity is enabled. Becomes read-only after item creation and can be changed only via inventory moves.
     /// </summary>
-    public decimal Quantity { get; set; }
+    public decimal? Quantity { get; set; }
 
     /// <summary>
     /// Minimum stock quantity.
     /// </summary>
-    public decimal MinQuantity { get; set; }
+    public decimal? MinQuantity { get; set; }
 
     /// <summary>
     /// Maximum stock quantity.
     /// </summary>
-    public decimal MaxQuantity { get; set; }
+    public decimal? MaxQuantity { get; set; }
 
     /// <summary>
     /// Allow quantity below zero. Default: false.
@@ -67,12 +67,12 @@ public class FakturoidInventoryItem {
     /// <summary>
     /// Unit purchase price without VAT in account currency. Required if track_quantity is enabled.
     /// </summary>
-    public decimal NativePurchasePrice { get; set; }
+    public decimal? NativePurchasePrice { get; set; }
 
     /// <summary>
     /// Unit retail price without VAT in account currency.
     /// </summary>
-    public decimal NativeRetailPrice { get; set; }
+    public decimal? NativeRetailPrice { get; set; }
 
     /// <summary>
     /// VAT rate. Values: standard (21%), reduced (15%), reduced2 (10%), zero (0%).
@@ -82,7 +82,7 @@ public class FakturoidInventoryItem {
     /// <summary>
     /// Average purchase price in account currency.
     /// </summary>
-    public decimal AverageNativePurchasePrice { get; set; }
+    public decimal? AverageNativePurchasePrice { get; set; }
 
     /// <summary>
     /// Item type. Values: goods, service. Default: goods.

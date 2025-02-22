@@ -31,7 +31,7 @@ public class FakturoidInvoicePayment {
     /// Paid amount in account currency.
     /// Default: Remaining amount to pay converted to account currency
     /// </summary>
-    public decimal NativeAmount { get; set; }
+    public decimal? NativeAmount { get; set; }
 
     /// <summary>
     /// Mark document as paid?
@@ -63,12 +63,12 @@ public class FakturoidInvoicePayment {
     /// Bank account ID.
     /// Default: Invoice bank account or default bank account
     /// </summary>
-    public int BankAccountId { get; set; }
+    public int? BankAccountId { get; set; }
 
     /// <summary>
     /// Tax document ID (if present).
     /// </summary>
-    public int TaxDocumentId { get; set; }
+    public int? TaxDocumentId { get; set; }
 
     /// <summary>
     /// The date and time of payment creation.

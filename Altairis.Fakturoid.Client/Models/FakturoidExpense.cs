@@ -168,7 +168,7 @@ public class FakturoidExpense {
     /// <summary>
     /// Exchange rate (required if expense currency differs from account currency).
     /// </summary>
-    public decimal ExchangeRate { get; set; }
+    public decimal? ExchangeRate { get; set; }
 
     /// <summary>
     /// Self-assesment of VAT? Default: false.
@@ -188,7 +188,7 @@ public class FakturoidExpense {
     /// <summary>
     /// Proportional VAT deduction (percent). Default: 100.
     /// </summary>
-    public int ProportionalVatDeduction { get; set; }
+    public int? ProportionalVatDeduction { get; set; }
 
     /// <summary>
     /// Tax deductible. Default: true.
@@ -198,22 +198,22 @@ public class FakturoidExpense {
     /// <summary>
     /// Total without VAT.
     /// </summary>
-    public decimal Subtotal { get; set; }
+    public decimal? Subtotal { get; set; }
 
     /// <summary>
     /// Total with VAT.
     /// </summary>
-    public decimal Total { get; set; }
+    public decimal? Total { get; set; }
 
     /// <summary>
     /// Total without VAT in the account currency.
     /// </summary>
-    public decimal NativeSubtotal { get; set; }
+    public decimal? NativeSubtotal { get; set; }
 
     /// <summary>
     /// Total with VAT in the account currency.
     /// </summary>
-    public decimal NativeTotal { get; set; }
+    public decimal? NativeTotal { get; set; }
 
     /// <summary>
     /// List of lines to expense.
