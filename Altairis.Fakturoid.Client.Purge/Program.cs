@@ -1,28 +1,29 @@
 ﻿using System;
+using System.Linq;
 
 namespace Altairis.Fakturoid.Client.Purge {
     internal class Program {
         private static void Main(string[] args) {
             // Show banner
-            Console.WriteLine("Fakturoid API v2 C#/.NET Client Purge Application");
+            Console.WriteLine("Fakturoid API v3 C#/.NET Client Purge Application");
             Console.WriteLine("http://github.com/ridercz/Fakturoid-API");
-            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2021");
+            Console.WriteLine("Copyright (c) Michal A. Valášek - Altairis, 2013-2025");
             Console.WriteLine();
 
             // Verify commandline arguments
             if (args.Length != 3) {
-                Console.WriteLine("USAGE: fpurge accountname email token");
+                Console.WriteLine("USAGE: fpurge accountname clientid clientsecret");
                 return;
             }
             var accountName = args[0];
-            var email = args[1];
-            var accountToken = args[2];
+            var clientId = args[1];
+            var clientSecret = args[2];
 
             // Create context
-            var context = new FakturoidContext(accountName, accountToken, "Fakturoid API v2 C#/.NET Client Demo Application (fakturoid@rider.cz)");
+            var context = new FakturoidContext(accountName, clientId, clientSecret, "Fakturoid API v3 C#/.NET Client Purge Application (fakturoid@rider.cz)");
 
             // Get account info
-            var info = context.GetAccountInfo();
+            var info = context.GetAccountInfoAsync().Result;
             Console.WriteLine("Company name:     {0}", info.Name);
             Console.WriteLine("Company reg. no.: {0}", info.RegistrationNo);
             Console.WriteLine("Account name:     {0}", info.Subdomain);
@@ -31,10 +32,10 @@ namespace Altairis.Fakturoid.Client.Purge {
             // Verify if user really wants to delete all
             var oldBg = Console.BackgroundColor;
             var oldFg = Console.ForegroundColor;
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-------------------------------------------------------------------------------");
-            Console.WriteLine("  This application will DELETE all contacts and invoices in this account!      ");
+            Console.WriteLine("  This application will DELETE all subjects and invoices in this account!      ");
             Console.WriteLine("  It comes handy in development, but can be disastrous in production.          ");
             Console.WriteLine("-------------------------------------------------------------------------------");
             Console.BackgroundColor = oldBg;
@@ -51,37 +52,26 @@ namespace Altairis.Fakturoid.Client.Purge {
 
             // Delete all invoices
             Console.Write("Getting list of invoices...");
-            var invoices = context.Invoices.Select();
-            Console.WriteLine("OK");
+            var invoices = context.Invoices.SelectAsync().Result;
+            Console.WriteLine($"OK, {invoices.Count()} items");
 
             Console.WriteLine("Deleting invoices:");
             foreach (var invoice in invoices) {
-                try {
-                    Console.Write("  #{0}: ({1}) {2}...", invoice.id, invoice.number, invoice.client_name);
-                    context.Invoices.Delete(invoice.id);
-                    Console.WriteLine("OK");
-                } catch (FakturoidException fex) {
-                    Console.WriteLine("Failed!");
-                    Console.WriteLine("    " + fex.Message);
-                }
+                Console.Write($"  #{invoice.Id}: ({invoice.Number}) {invoice.ClientName}...");
+                context.Invoices.DeleteAsync(invoice.Id).Wait();
+                Console.WriteLine("OK");
             }
 
             // Delete all subjects
             Console.Write("Getting list of subjects...");
-            var subjects = context.Subjects.Select();
-            Console.WriteLine("OK");
+            var subjects = context.Subjects.SelectAsync().Result;
+            Console.WriteLine($"OK, {subjects.Count()} items");
 
             Console.WriteLine("Deleting subjects:");
             foreach (var subject in subjects) {
-                try {
-                    Console.Write("  #{0}: {1}...", subject.id, subject.name);
-                    context.Subjects.Delete(subject.id);
-                    Console.WriteLine("OK");
-                } catch (FakturoidException fex) {
-                    Console.WriteLine("Failed!");
-                    Console.WriteLine("    " + fex.Message);
-                    Console.WriteLine(fex.Message);
-                }
+                Console.Write($"  #{subject.Id}: {subject.Name}...");
+                context.Subjects.DeleteAsync(subject.Id).Wait();
+                Console.WriteLine("OK");
             }
 
             // Okay

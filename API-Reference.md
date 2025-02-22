@@ -5,7 +5,7 @@
 |   |   |   |
 |---|---|---|
 | [FakturoidContext Class](#fakturoidcontext-class) | [FakturoidException Class](#fakturoidexception-class) | [FakturoidExtensionMethods Class](#fakturoidextensionmethods-class) |
-| [RecurringGenerator Class](#recurringgenerator-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidAccount Class](#fakturoidaccount-class) |
+| [FakturoidRateLimitException Class](#fakturoidratelimitexception-class) | [FakturoidAccessToken Class](#fakturoidaccesstoken-class) | [FakturoidAccount Class](#fakturoidaccount-class) |
 | [FakturoidAttachment Class](#fakturoidattachment-class) | [FakturoidBankAccount Class](#fakturoidbankaccount-class) | [FakturoidEvent Class](#fakturoidevent-class) |
 | [FakturoidEventUser Class](#fakturoideventuser-class) | [FakturoidExpense Class](#fakturoidexpense-class) | [FakturoidExpensePayment Class](#fakturoidexpensepayment-class) |
 | [FakturoidGenerator Class](#fakturoidgenerator-class) | [FakturoidInboxFile Class](#fakturoidinboxfile-class) | [FakturoidInventory Class](#fakturoidinventory-class) |
@@ -14,11 +14,11 @@
 | [FakturoidInvoicePayment Class](#fakturoidinvoicepayment-class) | [FakturoidLegacyBankDetails Class](#fakturoidlegacybankdetails-class) | [FakturoidLine Class](#fakturoidline-class) |
 | [FakturoidNumberFormat Class](#fakturoidnumberformat-class) | [FakturoidRelatedObject Class](#fakturoidrelatedobject-class) | [FakturoidSubject Class](#fakturoidsubject-class) |
 | [FakturoidTodo Class](#fakturoidtodo-class) | [FakturoidUser Class](#fakturoiduser-class) | [FakturoidUserAccount Class](#fakturoiduseraccount-class) |
-| [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) | [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) |
-| [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) | [FakturoidEntityProxy Class](#fakturoidentityproxy-class) |
-| [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) | [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) |
-| [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) | [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) | [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) |
-| [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) |   |
+| [FakturoidVatRateSummary Class](#fakturoidvatratesummary-class) | [FakturoidWebhook Class](#fakturoidwebhook-class) | [RecurringGenerator Class](#recurringgenerator-class) |
+| [ExpensePaymentStatus Enum](#expensepaymentstatus-enum) | [ExpenseStatusCondition Enum](#expensestatuscondition-enum) | [FakturoidBankAccountsProxy Class](#fakturoidbankaccountsproxy-class) |
+| [FakturoidEntityProxy Class](#fakturoidentityproxy-class) | [FakturoidEventsProxy Class](#fakturoideventsproxy-class) | [FakturoidExpensesProxy Class](#fakturoidexpensesproxy-class) |
+| [FakturoidInvoicesProxy Class](#fakturoidinvoicesproxy-class) | [FakturoidNumberFormatsProxy Class](#fakturoidnumberformatsproxy-class) | [FakturoidSubjectsProxy Class](#fakturoidsubjectsproxy-class) |
+| [FakturoidTodosProxy Class](#fakturoidtodosproxy-class) | [InvoiceStatusCondition Enum](#invoicestatuscondition-enum) | [InvoiceTypeCondition Enum](#invoicetypecondition-enum) |
 # FakturoidContext Class
 
 Namespace: Altairis.Fakturoid.Client
@@ -242,60 +242,43 @@ Task<T>
 
 
 
-# RecurringGenerator Class
+# FakturoidRateLimitException Class
 
 Namespace: Altairis.Fakturoid.Client
 
-Recurring invoice generator.
+Base class: Exception
+
+Exception thrown when the Fakturoid API rate limit is exceeded.
 
 ## Properties
 
 | Name | Type | Summary |
 |---|---|---|
-| **Id** | int | Unique identifier in Fakturoid. |
-| **CustomId** | string | Identifier in your application. |
-| **Name** | string | Generator name. |
-| **Active** | bool | Generator is active or paused. |
-| **Proforma** | bool | Issue invoice as a proforma. |
-| **Paypal** | bool | Show PayPal pay button on invoice. |
-| **Gopay** | bool | Show GoPay pay button on invoice. |
-| **StartDate** | DateTime | Start date. |
-| **EndDate** | DateTime | End date. |
-| **MonthsPeriod** | int | Number of months until the next invoice. |
-| **NextOccurrenceOn** | DateTime | Next invoice date. |
-| **LastDayInMonth** | bool | Issue an invoice on the last day of the month. |
-| **TaxDateAtEndOfLastMonth** | bool | Set CED at the end of last month. |
-| **Due** | int | Number of days until the invoice is overdue. |
-| **SendEmail** | bool | Send invoice by email. |
-| **SubjectId** | int | Subject ID. |
-| **NumberFormatId** | int | Number format ID. |
-| **Note** | string | Text before invoice lines. |
-| **FooterNote** | string | Text in invoice footer. |
-| **LegacyBankDetails** | [FakturoidLegacyBankDetails](#fakturoidlegacybankdetails-class) | Display IBAN, BIC (SWIFT) and bank account number for legacy generators set without bank account ID. |
-| **BankAccountId** | int | Bank account ID. |
-| **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show. |
-| **Tags** | List<string> | List of tags. |
-| **OrderNumber** | string | Order number. |
-| **Currency** | string | Currency ISO code. |
-| **ExchangeRate** | decimal | Exchange rate. |
-| **PaymentMethod** | string | Payment method. |
-| **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null). |
-| **Language** | string | Invoice language. |
-| **VatPriceMode** | string | Calculate VAT from base or final amount. |
-| **TransferredTaxLiability** | bool | Use reverse charge. |
-| **SupplyCode** | int | Supply code for reverse charge. |
-| **Oss** | string | Use OSS mode on invoice. |
-| **RoundTotal** | bool | Round total amount (VAT included). |
-| **Subtotal** | decimal | Total amount without VAT. |
-| **Total** | decimal | Total amount with VAT. |
-| **NativeSubtotal** | decimal | Total amount without VAT in the account currency. |
-| **NativeTotal** | decimal | Total amount with VAT in the account currency. |
-| **Lines** | List<[FakturoidLine](#fakturoidline-class)> | List of lines to invoice. You can use variables for inserting dates to your text. |
-| **HtmlUrl** | string | Generator HTML web address. |
-| **Url** | string | Generator API address. |
-| **SubjectUrl** | string | API address of subject. |
-| **CreatedAt** | DateTimeOffset | Date and time of generator creation. |
-| **UpdatedAt** | DateTimeOffset | Date and time of last generator update. |
+| **PolicyQuantity** | int | Gets the quantity of requests per interval as set by policy. |
+| **PolicyInterval** | int | Gets the policy interval length in seconds. |
+| **RemainingQuantity** | int | Gets the remaining quantity of requests. |
+| **RemainingInterval** | int | Gets the number of seconds in which the interval resets. |
+| **TargetSite** | MethodBase |  |
+| **Message** | string |  |
+| **Data** | IDictionary |  |
+| **InnerException** | Exception |  |
+| **HelpLink** | string |  |
+| **Source** | string |  |
+| **HResult** | int |  |
+| **StackTrace** | string |  |
+## Constructors
+
+| Name | Summary |
+|---|---|
+| [FakturoidRateLimitException(HttpResponseMessage response)](#fakturoidratelimitexceptionhttpresponsemessage-response) |  |
+## Constructors
+
+### FakturoidRateLimitException(HttpResponseMessage response)
+
+
+
+
+
 # FakturoidAccessToken Class
 
 Namespace: Altairis.Fakturoid.Client.Models
@@ -1028,6 +1011,60 @@ Webhook
 | **Url** | string | Webhook API address |
 | **CreatedAt** | DateTimeOffset | Date and time of webhook creation |
 | **UpdatedAt** | DateTimeOffset | Date and time of last webhook update |
+# RecurringGenerator Class
+
+Namespace: Altairis.Fakturoid.Client.Models
+
+Recurring invoice generator.
+
+## Properties
+
+| Name | Type | Summary |
+|---|---|---|
+| **Id** | int | Unique identifier in Fakturoid. |
+| **CustomId** | string | Identifier in your application. |
+| **Name** | string | Generator name. |
+| **Active** | bool | Generator is active or paused. |
+| **Proforma** | bool | Issue invoice as a proforma. |
+| **Paypal** | bool | Show PayPal pay button on invoice. |
+| **Gopay** | bool | Show GoPay pay button on invoice. |
+| **StartDate** | DateTime | Start date. |
+| **EndDate** | DateTime | End date. |
+| **MonthsPeriod** | int | Number of months until the next invoice. |
+| **NextOccurrenceOn** | DateTime | Next invoice date. |
+| **LastDayInMonth** | bool | Issue an invoice on the last day of the month. |
+| **TaxDateAtEndOfLastMonth** | bool | Set CED at the end of last month. |
+| **Due** | int | Number of days until the invoice is overdue. |
+| **SendEmail** | bool | Send invoice by email. |
+| **SubjectId** | int | Subject ID. |
+| **NumberFormatId** | int | Number format ID. |
+| **Note** | string | Text before invoice lines. |
+| **FooterNote** | string | Text in invoice footer. |
+| **LegacyBankDetails** | [FakturoidLegacyBankDetails](#fakturoidlegacybankdetails-class) | Display IBAN, BIC (SWIFT) and bank account number for legacy generators set without bank account ID. |
+| **BankAccountId** | int | Bank account ID. |
+| **IbanVisibility** | string | Controls IBAN visibility on the document webinvoice and PDF. IBAN must be valid to show. |
+| **Tags** | List<string> | List of tags. |
+| **OrderNumber** | string | Order number. |
+| **Currency** | string | Currency ISO code. |
+| **ExchangeRate** | decimal | Exchange rate. |
+| **PaymentMethod** | string | Payment method. |
+| **CustomPaymentMethod** | string | Custom payment method (payment_method attribute must be set to custom, otherwise the custom_payment_method value is ignored and set to null). |
+| **Language** | string | Invoice language. |
+| **VatPriceMode** | string | Calculate VAT from base or final amount. |
+| **TransferredTaxLiability** | bool | Use reverse charge. |
+| **SupplyCode** | int | Supply code for reverse charge. |
+| **Oss** | string | Use OSS mode on invoice. |
+| **RoundTotal** | bool | Round total amount (VAT included). |
+| **Subtotal** | decimal | Total amount without VAT. |
+| **Total** | decimal | Total amount with VAT. |
+| **NativeSubtotal** | decimal | Total amount without VAT in the account currency. |
+| **NativeTotal** | decimal | Total amount with VAT in the account currency. |
+| **Lines** | List<[FakturoidLine](#fakturoidline-class)> | List of lines to invoice. You can use variables for inserting dates to your text. |
+| **HtmlUrl** | string | Generator HTML web address. |
+| **Url** | string | Generator API address. |
+| **SubjectUrl** | string | API address of subject. |
+| **CreatedAt** | DateTimeOffset | Date and time of generator creation. |
+| **UpdatedAt** | DateTimeOffset | Date and time of last generator update. |
 # ExpensePaymentStatus Enum
 
 Namespace: Altairis.Fakturoid.Client.Proxies
