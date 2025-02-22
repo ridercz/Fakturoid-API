@@ -53,11 +53,11 @@ public class FakturoidContext {
 
         // Proxies
         this.BankAccounts = new(this);
+        this.Events = new(this);
+        this.Invoices = new(this);
         this.NumberFormats = new(this);
         this.Subjects = new(this);
         this.Todos = new(this);
-        this.Events = new(this);
-        this.Invoices = new(this);
     }
 
     // Properties
@@ -102,6 +102,16 @@ public class FakturoidContext {
     public FakturoidBankAccountsProxy BankAccounts { get; }
 
     /// <summary>
+    /// Gets the events.
+    /// </summary>
+    public FakturoidEventsProxy Events { get; }
+
+    /// <summary>
+    /// Gets the invoices.
+    /// </summary>
+    public FakturoidInvoicesProxy Invoices { get; }
+
+    /// <summary>
     /// Gets the number formats.
     /// </summary>
     public FakturoidNumberFormatsProxy NumberFormats { get; }
@@ -115,16 +125,6 @@ public class FakturoidContext {
     /// Gets the todos.
     /// </summary>
     public FakturoidTodosProxy Todos { get; }
-
-    /// <summary>
-    /// Gets the events.
-    /// </summary>
-    public FakturoidEventsProxy Events { get; }
-
-    /// <summary>
-    /// Gets the invoices.
-    /// </summary>
-    public FakturoidInvoicesProxy Invoices { get; }
 
     // Public methods
 
