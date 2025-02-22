@@ -64,7 +64,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
     public async Task<FakturoidExpense> SelectSingleAsync(int id) => id < 1
             ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.")
-            : await GetSingleEntityAsync<FakturoidExpense>(string.Format(EntityPath, id));
+            : await this.GetSingleEntityAsync<FakturoidExpense>(string.Format(EntityPath, id));
 
     /// <summary>
     /// Gets asynchronously list of all invoices.
@@ -106,7 +106,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return GetAllPagedEntitiesAsync<FakturoidExpense>(uri, queryParams);
+        return this.GetAllPagedEntitiesAsync<FakturoidExpense>(uri, queryParams);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return GetPagedEntitiesAsync<FakturoidExpense>(uri, page);
+        return this.GetPagedEntitiesAsync<FakturoidExpense>(uri, page);
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     public Task DeleteAsync(int id) {
         if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-        return DeleteSingleEntityAsync(string.Format(EntityPath, id));
+        return this.DeleteSingleEntityAsync(string.Format(EntityPath, id));
     }
 
     /// <summary>
@@ -175,7 +175,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <param name="entity">The new expense.</param>
     /// <returns>ID of newly created expense.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<int> CreateAsync(FakturoidExpense entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync(CollectionPath, entity);
+    public async Task<int> CreateAsync(FakturoidExpense entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await this.CreateEntityAsync(CollectionPath, entity);
 
     /// <summary>
     /// Updates asynchronously the specified expense.
@@ -185,7 +185,7 @@ public class FakturoidExpensesProxy : FakturoidEntityProxy {
     /// <exception cref="ArgumentNullException">entity</exception>
     public async Task<FakturoidExpense> UpdateAsync(FakturoidExpense entity) => entity == null
             ? throw new ArgumentNullException(nameof(entity))
-            : await UpdateSingleEntityAsync(string.Format(EntityPath, entity.Id), entity);
+            : await this.UpdateSingleEntityAsync(string.Format(EntityPath, entity.Id), entity);
 
     /// <summary>
     /// Sets asynchronously the expense payment status.

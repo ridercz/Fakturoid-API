@@ -159,7 +159,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return GetAllPagedEntitiesAsync<FakturoidInvoice>("invoices.json", queryParams);
+        return this.GetAllPagedEntitiesAsync<FakturoidInvoice>("invoices.json", queryParams);
     }
 
     /// <summary>
@@ -248,7 +248,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
         };
 
         // Get entities
-        return GetPagedEntitiesAsync<FakturoidInvoice>("invoices.json", page, queryParams);
+        return this.GetPagedEntitiesAsync<FakturoidInvoice>("invoices.json", page, queryParams);
     }
 
     /// <summary>
@@ -286,7 +286,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// Instance of <see cref="FakturoidInvoice" /> class.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">id;Value must be greater than zero.</exception>
-    public async Task<FakturoidInvoice> SelectSingleAsync(int id) => id < 1 ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.") : await GetSingleEntityAsync<FakturoidInvoice>($"invoices/{id}.json");
+    public async Task<FakturoidInvoice> SelectSingleAsync(int id) => id < 1 ? throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.") : await this.GetSingleEntityAsync<FakturoidInvoice>($"invoices/{id}.json");
 
     /// <summary>
     /// Downloads the PDF representation of the specified invoice asynchronously.
@@ -427,7 +427,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     public Task DeleteAsync(int id) {
         if (id < 1) throw new ArgumentOutOfRangeException(nameof(id), "Value must be greater than zero.");
 
-        return DeleteSingleEntityAsync(string.Format("invoices/{0}.json", id));
+        return this.DeleteSingleEntityAsync(string.Format("invoices/{0}.json", id));
     }
 
     /// <summary>
@@ -436,7 +436,7 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <param name="entity">The new invoice.</param>
     /// <returns>ID of newly created invoice.</returns>
     /// <exception cref="ArgumentNullException">entity</exception>
-    public async Task<int> CreateAsync(FakturoidInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await CreateEntityAsync("invoices.json", entity);
+    public async Task<int> CreateAsync(FakturoidInvoice entity) => entity == null ? throw new ArgumentNullException(nameof(entity)) : await this.CreateEntityAsync("invoices.json", entity);
 
     /// <summary>
     /// Updates asynchronously the specified invoice.
@@ -446,6 +446,6 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     /// <exception cref="ArgumentNullException">entity</exception>
     public async Task<FakturoidInvoice> UpdateAsync(FakturoidInvoice entity) => entity == null
             ? throw new ArgumentNullException(nameof(entity))
-            : await UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.Id), entity);
+            : await this.UpdateSingleEntityAsync(string.Format("invoices/{0}.json", entity.Id), entity);
 
 }

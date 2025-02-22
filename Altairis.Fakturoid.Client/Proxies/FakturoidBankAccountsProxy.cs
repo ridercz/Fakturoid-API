@@ -11,6 +11,6 @@ public class FakturoidBankAccountsProxy : FakturoidEntityProxy {
     /// Gets asynchronously list of all bank accounts.
     /// </summary>
     /// <returns>List of <see cref="FakturoidBankAccount"/> instances.</returns>
-    public Task<IEnumerable<FakturoidBankAccount>> SelectAsync() => GetUnpagedEntitiesAsync<FakturoidBankAccount>("bank_accounts.json");
+    public Task<IEnumerable<FakturoidBankAccount>> SelectAsync() => this.GetUnpagedEntitiesAsync<FakturoidBankAccount>("bank_accounts.json");
 
 }

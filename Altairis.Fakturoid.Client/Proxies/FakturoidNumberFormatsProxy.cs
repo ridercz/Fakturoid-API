@@ -11,6 +11,6 @@ public class FakturoidNumberFormatsProxy : FakturoidEntityProxy {
     /// Gets asynchronously list of all number formats.
     /// </summary>
     /// <returns>List of <see cref="FakturoidNumberFormat"/> instances.</returns>
-    public Task<IEnumerable<FakturoidNumberFormat>> SelectAsync() => GetUnpagedEntitiesAsync<FakturoidNumberFormat>("number_formats/invoices.json");
+    public Task<IEnumerable<FakturoidNumberFormat>> SelectAsync() => this.GetUnpagedEntitiesAsync<FakturoidNumberFormat>("number_formats/invoices.json");
 
 }

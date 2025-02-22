@@ -14,7 +14,7 @@ public class FakturoidEventsProxy : FakturoidEntityProxy {
     /// <param name="subjectId">The ID of the subject to filter events by.</param>
     /// <returns>List of <see cref="FakturoidEvent"/> instances.</returns>
     /// <remarks>The result may contain duplicate entities, if they are modified between requests for pages. In current version of API, there is no way to solve this.</remarks>
-    public Task<IEnumerable<FakturoidEvent>> SelectAsync(DateTimeOffset? since = null, int? subjectId = null) => GetAllPagedEntitiesAsync<FakturoidEvent>("events.json", new { since, subject_id = subjectId });
+    public Task<IEnumerable<FakturoidEvent>> SelectAsync(DateTimeOffset? since = null, int? subjectId = null) => this.GetAllPagedEntitiesAsync<FakturoidEvent>("events.json", new { since, subject_id = subjectId });
 
     /// <summary>
     /// Gets asynchronously list of current events, paged by 40.
@@ -27,6 +27,6 @@ public class FakturoidEventsProxy : FakturoidEntityProxy {
     /// <exception cref="ArgumentOutOfRangeException">page;Page must be greater than zero.</exception>
     public async Task<IEnumerable<FakturoidEvent>> SelectAsync(int page, DateTimeOffset? since = null) => page < 1
             ? throw new ArgumentOutOfRangeException(nameof(page), "Page must be greater than zero.")
-            : await GetPagedEntitiesAsync<FakturoidEvent>("events.json", page, new { since });
+            : await this.GetPagedEntitiesAsync<FakturoidEvent>("events.json", page, new { since });
 
 }
