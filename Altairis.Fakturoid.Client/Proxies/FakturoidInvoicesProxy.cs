@@ -467,4 +467,24 @@ public class FakturoidInvoicesProxy : FakturoidEntityProxy {
     public async Task DeleteInvoicePaymentAsync(int invoiceId, int paymentId) =>
             await this.DeleteSingleEntityAsync(string.Format("invoices/{0}/payments/{1}.json", invoiceId, paymentId));
 
+
+
+    /// <summary>
+    /// Sends an invoice to the client via email asynchronously.
+    /// </summary>
+    /// <param name="invoiceId">ID of the invoice.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="invoiceId"/> is less than 1.</exception>
+    public async Task SendMessageAsync(int invoiceId) {
+        if (invoiceId < 1) throw new ArgumentOutOfRangeException(nameof(invoiceId), "Value must be greater than zero.");
+
+        var c = this.Context.GetHttpClient();
+
+        var payload = new { replace_with_defaults = true };
+        var jsonText = Newtonsoft.Json.JsonConvert.SerializeObject(payload);
+
+        var r = await c.PostAsync($"invoices/{invoiceId}/message.json", new StringContent(jsonText, System.Text.Encoding.UTF8, "application/json"));
+
+        r.EnsureFakturoidSuccess();
+    }
+
 }
